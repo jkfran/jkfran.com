@@ -19,9 +19,9 @@ Link : https://jkfran.com
 
 <a href="https://awesome-github-readme-profile.netlify.app"><img src="https://raw.githubusercontent.com/elangosundar/awesome-README-templates/master/awesome-github-profile.png" alt="Awesome README Templates" /></a>
 
-# Contribute
+## :octocat: Contribute
 
-Contributions are always welcome! Please create a PR to add Github Profile.
+Contributions are always welcome!
 
 ## :pencil: License
 
