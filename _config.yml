@@ -15,12 +15,12 @@ permalink: /:title/
 authors:
   jkfran:
     name: Francisco Jiménez Cabrera
-    display_name: jkfran
+    display_name: Fran Cabrera
     gravatar: 5fdfe91237cdb6cc5d84b2776ee0b8ab
     email: jkfran@gmail.com
-    web: https://jkfran.com
+    web: https://jkfran.com/about
     twitter: https://twitter.com/bksfran
-    description: "Developer"
+    description: "I have always been interested in computer and technology scene. Currently, I spend my days working as a web developer at Canonical."
 
 # Plugins
 plugins:
