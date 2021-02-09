@@ -14,6 +14,6 @@ print("Hello World")
 
 I am trying you maintain this blog site, I didn't finish everything yet, but I decided to create the first blog entry anyway.
 
-To create this site, I decided to use Jekyll hosted on GitHub Pages. Here is the repo if you are curious.
+To create this site, I decided to use Jekyll hosted on GitHub Pages. [Here](https://github.com/jkfran/jkfran.com/) is the repo if you are curious.
 
 See ya!
