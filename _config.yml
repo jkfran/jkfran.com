@@ -1,6 +1,6 @@
 # Site
 name: "jkfran"
-title: "Francisco Jimenez Cabrera"
+title: "Francisco Jiménez Cabrera"
 description: "Personal website."
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
@@ -15,7 +15,7 @@ permalink: /:title/
 authors:
   jkfran:
     name: Francisco Jiménez Cabrera
-    display_name: Fran Cabrera
+    display_name: Francisco Jiménez Cabrera
     gravatar: 5fdfe91237cdb6cc5d84b2776ee0b8ab
     email: jkfran@gmail.com
     web: https://jkfran.com/about
@@ -54,10 +54,10 @@ kramdown:
 
 # Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
 adsense: "disabled"
-adsense-data-ad-client: "ca-pub-3412143450191416"
-adsense-data-ad-slot: "1363087678"
+adsense-data-ad-client: "ca-pub-xxxxxxxxxxxxxxxx"
+adsense-data-ad-slot: "xxxxxxxxxx"
 
 # Lazy Images ("enabled" or "disabled")
-lazyimages: "disabled"
+lazyimages: "enabled"
 
 exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
