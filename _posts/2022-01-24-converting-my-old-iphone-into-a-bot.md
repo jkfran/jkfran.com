@@ -58,7 +58,7 @@ I was really surprised by this tool; it allows you to script everything you can 
 
 ![image](https://user-images.githubusercontent.com/6353928/150153033-55902e45-58a6-42a1-9174-c5a2122b132d.png)
 
-Official site: https://autotouch.net/ and docs: https://docs.autotouch.net/
+Official site: [autotouch.net](https://autotouch.net/) and docs: [docs.autotouch.net](https://docs.autotouch.net/)
 
 It provides a web server option, where it is possible to access our phone scripts to create and run scripts remotely:
 ![image](https://user-images.githubusercontent.com/6353928/150154039-9bd76168-e673-43bb-9e14-e77ed545c209.png)
