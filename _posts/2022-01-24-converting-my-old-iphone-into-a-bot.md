@@ -36,8 +36,6 @@ It is important to mention that I wouldn't do it on my main iPhone for security 
 
 [Cydia](https://en.wikipedia.org/wiki/Cydia) is a graphical user interface of APT for iOS. It enables users to find and install software not authorised by Apple on jailbroken devices.
 
-![image](https://user-images.githubusercontent.com/6353928/150762225-08079e98-97fb-4c00-bdd1-0d0ce59c3cb3.png)
-
 Packages I needed to install in my use case:
 - OpenSSH
 - Autotouch (repo: `https://repo.autotouch.net/`)
