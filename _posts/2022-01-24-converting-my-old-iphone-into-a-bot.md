@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Converting my old iPhone into a bot"
+author: jkfran
+categories: [ blog ]
+image: https://user-images.githubusercontent.com/6353928/150762225-08079e98-97fb-4c00-bdd1-0d0ce59c3cb3.png
+---
+
 Hi there, I wanted to create a Twitter bot recently for personal purposes, but the data I wanted to tweet is from another iOS app that doesn't have any public API at the moment.
 
 Instead of desisting, I tried to find possible solutions. One was to create an [Apple Shortcuts](https://support.apple.com/en-gb/guide/shortcuts/welcome/ios), but it wasn't an option because the possibilities they offer are limited. So it came to my mind that I needed to Jailbreak my old iPhone 6 and get the information I needed somehow.
