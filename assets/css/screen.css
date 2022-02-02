@@ -896,11 +896,11 @@ iframe {
 }
 
 /* Goodreads widgets styling */
-.gr_custom_container_1643813099 {
+div[class^='gr_custom_container_'] {
   padding: 1rem 1rem;
 }
 
-.gr_custom_header_1643813099 {
+div[class^='gr_custom_header_'] {
   border-bottom: 1px solid #aaa;
   width: 100%;
   padding-bottom: 0.5rem;
@@ -909,7 +909,7 @@ iframe {
   font-size: 1rem;
 }
 
-.gr_custom_each_container_1643813099 {
+div[class^='gr_custom_each_container_'] {
   width: 100%;
   clear: both;
   margin-bottom: 10px;
@@ -918,7 +918,7 @@ iframe {
   border-bottom: 1px solid #aaa;
 }
 
-.gr_custom_book_container_1643813099 {
+div[class^='gr_custom_book_container_'] {
   overflow: hidden;
   height: 160px;
   float: left;
@@ -926,15 +926,14 @@ iframe {
   width: 98px;
 }
 
-.gr_custom_title_1643813099 {
+div[class^='gr_custom_title_'] {
   font-size: 0.9rem;
 }
 
-.gr_custom_author_1643813099 {
+div[class^='gr_custom_author_'] {
   font-size: 0.8rem;
 }
 
-
-.gr_custom_container_1643813099 > center {
+div[class^='gr_custom_container_'] > center {
   display: none;
 }
