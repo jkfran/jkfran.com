@@ -934,6 +934,10 @@ div[class^='gr_custom_author_'] {
   font-size: 0.8rem;
 }
 
+div[class^='gr_custom_rating_'] {
+  float: right;
+}
+
 div[class^='gr_custom_container_'] > center {
   display: none;
 }
