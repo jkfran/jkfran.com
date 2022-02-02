@@ -897,7 +897,7 @@ iframe {
 
 /* Goodreads widgets styling */
 div[class^='gr_custom_container_'] {
-  padding: 1rem 1rem;
+  padding: 0.5rem 0;
 }
 
 h2[class^='gr_custom_header_'] {
@@ -905,8 +905,11 @@ h2[class^='gr_custom_header_'] {
   width: 100%;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
-  text-align: center;
   font-size: 1rem;
+}
+
+h2[class^='gr_custom_header_'] > a {
+  color: rgba(0, 0, 0, 0.8);
 }
 
 div[class^='gr_custom_each_container_'] {
@@ -936,6 +939,10 @@ div[class^='gr_custom_author_'] {
 
 div[class^='gr_custom_rating_'] {
   float: right;
+}
+
+div[class^='gr_custom_container_'] > br {
+  display: none;
 }
 
 div[class^='gr_custom_container_'] > center {
