@@ -900,7 +900,7 @@ div[class^='gr_custom_container_'] {
   padding: 1rem 1rem;
 }
 
-div[class^='gr_custom_header_'] {
+h2[class^='gr_custom_header_'] {
   border-bottom: 1px solid #aaa;
   width: 100%;
   padding-bottom: 0.5rem;
