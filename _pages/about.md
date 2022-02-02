@@ -14,15 +14,7 @@ comments: true
     <div class="sticky-top sticky-top-80">
       <h5>Bookshelf</h5>
 
-      <div id="gr_custom_widget_1643813099">
-        <div class="gr_custom_container_1643813099">
-          <h2 class="gr_custom_header_1643813099">
-            <a style="text-decoration: none;" rel="nofollow" href="https://www.goodreads.com/review/list/76125049-fran-jim-nez-cabrera?shelf=currently-reading&amp;utm_medium=api&amp;utm_source=custom_widget">Currently reading</a>
-          </h2>
-          <div class="gr_custom_each_container_1643813099"></div>
-        </div>
-      </div>
-      
+      <div id="gr_custom_widget_1643813099"></div>
       <div id="gr_custom_widget_1643812651"></div>
 
     </div>
