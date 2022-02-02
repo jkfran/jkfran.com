@@ -5,7 +5,7 @@ description: "Personal website."
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /
-google_analytics: ''
+insights: 'A7gP_jf0zVamA1Pm'
 mailchimp-list: ''
 include: ["_pages"]
 permalink: /:title/
