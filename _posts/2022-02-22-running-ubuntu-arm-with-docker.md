@@ -18,13 +18,13 @@ To install it:
 sudo snap install docker
 ```
 
-To fix the permissions:
+Set up Docker group:
 ```
-sudo addgroup --system Docker
+sudo addgroup --system docker
 sudo adduser $USER docker
-newgrp Docker
-sudo snap disable Docker
-sudo snap enable Docker
+newgrp docker
+sudo snap disable docker
+sudo snap enable docker
 ```
 
 ## Running images from different architectures
