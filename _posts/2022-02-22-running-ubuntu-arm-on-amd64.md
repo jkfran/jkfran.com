@@ -38,7 +38,7 @@ However, it is possible to set up Docker to use QEMU, an emulator to run these i
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 
-This simple container will configure your host for you, automatically executing binaries for you using Qemu. For more details, you can check their [GitHub repo](https://github.com/tonistiigi/binfmt).
+This simple container will configure your host for you, automatically setting up Qemu for Docker. For more details, you can check their [GitHub repo](https://github.com/tonistiigi/binfmt).
  
  And we are done! In this case, I am running an Ubuntu image for ARM64:
  
