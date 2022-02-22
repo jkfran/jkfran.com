@@ -42,6 +42,10 @@ This simple container will configure your host for you, automatically executing 
  
  And we are done! In this case, I am running an Ubuntu image for ARM64:
  
+```
+docker run -it --rm --platform linux/arm64 arm64v8/ubuntu sh
+```
+ 
  
  ![image](https://user-images.githubusercontent.com/6353928/155136139-5beddb9c-738e-4ce8-b4f1-830118d9d375.png)
 
