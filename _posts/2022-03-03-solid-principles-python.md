@@ -64,7 +64,7 @@ main([1,2,3,4,5])
 ```
 
 ## Open-closed Principle
-> No need to modify the code you have already written to accommodate new functionality, but add what you now need**
+> No need to modify the code you have already written to accommodate new functionality, but add what you now need
 
 Bad:
 ```python
@@ -175,7 +175,7 @@ class Vehicle:
 
 LSP is a concept that applies to all kinds of polymorphism. If you don't use polymorphism, you don't need to care about the LSP.
 
-#3 Interface Segregation Principle
+## Interface Segregation Principle
 > A class should only have the interface needed and avoid methods that won't work or that have no reason to be part of that class
 
 Bad:
