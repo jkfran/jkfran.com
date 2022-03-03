@@ -21,9 +21,9 @@ D - Dependency Inversion Principle
 
 If you follow these principles, you can improve your code's reliability by working on its structure and logical consistency.
 
-# Single-responsibility Principle
+## Single-responsibility Principle
 
-**One class = one job**
+> One class = one job
 
 In other words, every component of your code (in general a class, but also a function) should have one and only one responsibility.
 
@@ -145,7 +145,7 @@ class Bicycle(Vehicle):
 ```
 
 Better:
-```
+```python
 class Vehicle:
    """A demo Vehicle class"""
    def __init__(self, name: str, speed: float):
@@ -248,7 +248,7 @@ if __name__ == '__main__':
 ```
 
 Better:
-```
+```python
 class CurrencyConverter(ABC):
     def convert(self, from_currency, to_currency, amount) -> float:
         pass
