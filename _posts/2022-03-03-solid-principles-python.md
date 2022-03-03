@@ -63,8 +63,8 @@ main([1,2,3,4,5])
 # the max is 5
 ```
 
-# Open-closed Principle
-**No need to modify the code you have already written to accommodate new functionality, but add what you now need**
+## Open-closed Principle
+> No need to modify the code you have already written to accommodate new functionality, but add what you now need**
 
 Bad:
 ```python
@@ -101,8 +101,8 @@ class AlbumBrowser:
         return [album for album in albums if searchby.is_matched(album)]
 ```
 
-# Liskov Substitution Principle
-**Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it**
+## Liskov Substitution Principle
+> Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it
 
 If you redefine a function in a subclass that is also present in the base class, the two functions should have the same behaviour. This does not mean that they must be mandatorily equal, but that the user should expect the same type of result, given the same input. 
 
@@ -175,8 +175,8 @@ class Vehicle:
 
 LSP is a concept that applies to all kinds of polymorphism. If you don't use polymorphism, you don't need to care about the LSP.
 
-# Interface Segregation Principle
-**A class should only have the interface needed and avoid methods that won't work or that have no reason to be part of that class**
+#3 Interface Segregation Principle
+> A class should only have the interface needed and avoid methods that won't work or that have no reason to be part of that class
 
 Bad:
 ```python
@@ -224,8 +224,8 @@ class Whale(Swimmer):
     return print("Whales can swim") 
 ```
 
-# The Dependency Inversion Principle
-**Entities must depend on abstractions, not on concretions**
+## The Dependency Inversion Principle
+> Entities must depend on abstractions, not on concretions
 
 The best example is a DB connection in our application. We probably want to use an abstraction when we use the DB, like: `getDBConnection()` instead of `getMySQLConnection()`. This way, we could switch from MySQL to Postgres effortlessly.
 
