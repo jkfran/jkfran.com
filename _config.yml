@@ -1,7 +1,7 @@
 # Site
 name: "jkfran"
 title: "Francisco Jiménez Cabrera"
-description: "Personal website."
+description: "A blog featuring tutorials, ideas, and anything interesting to me."
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /
@@ -28,7 +28,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-archives
-    
+
 # Archives
 jekyll-archives:
   enabled:
@@ -59,4 +59,4 @@ adsense-data-ad-slot: "xxxxxxxxxx"
 # Lazy Images ("enabled" or "disabled")
 lazyimages: "enabled"
 
-exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
+exclude: [changelog.md, LICENSE, README.md, Gemfile, Gemfile.lock]
