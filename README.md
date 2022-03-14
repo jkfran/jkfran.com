@@ -17,7 +17,7 @@ If you like this Repo, Please click the :star:
 
 Link : https://jkfran.com
 
-<a href="https://awesome-github-readme-profile.netlify.app"><img src="https://raw.githubusercontent.com/elangosundar/awesome-README-templates/master/awesome-github-profile.png" alt="Awesome README Templates" /></a>
+<a href="https://jkfran.com/"><img src="https://user-images.githubusercontent.com/6353928/158241813-5ed897da-d266-460a-9fa1-4c42a3faf92b.png" alt="jkfran.com homepage screenshot" /></a>
 
 ## :octocat: Contribute
 
