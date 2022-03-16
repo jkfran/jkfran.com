@@ -62,7 +62,7 @@ The complexity of the linear_algo function is linear in the above example since 
 
 ## Quadratic Complexity (O(n^2))
 
-Need to find a matching pair for each item in an array? Exponential growth is a trap we've all fall into at least once. Putting a loop inside a loop is an excellent way of turning an array of 1,000 items into a million operation search that'll freeze your browser. It's always better to have to do 2,000 operations over two separate loops than a million with two nested loops.
+Exponential growth is a trap we've all fall into at least once. Need to find a matching pair for each item in an array? Putting a loop inside a loop is an excellent way of turning an array of 1,000 items into a million operation search. It's always better to have to do 2,000 operations over two separate loops than a million with two nested loops.
 
 ```python
 def quadratic_algo(items):
@@ -78,4 +78,4 @@ quadratic_algo([4, 5, 6, 8])
 
 ## Conclusion
 
-The Big-O notation is the standard metric used to measure the complexity of an algorithm. Keeping your code as performant as possible may seem like an obvious concern, but I'm sure almost every developer has created double or triple nested loops at least once because 'it just works. Big O notation is essential in expressing and thinking about complexity.
+The Big-O notation is the standard metric used to measure the complexity of an algorithm. Keeping your code as performant as possible may seem like an obvious concern, but I'm sure almost every developer has created double or triple nested loops at least once because 'it just works'. Big O notation is essential in expressing and thinking about complexity.
