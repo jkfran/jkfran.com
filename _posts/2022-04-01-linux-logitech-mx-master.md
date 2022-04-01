@@ -100,4 +100,6 @@ devices: ({
 });
 ```
 
+As you can see, the gestures will be equivalent to pressing specific keys on my keyboard. In this case, I did it for my [PaperWM](https://github.com/paperwm/PaperWM) keymaps.
+
 Now we need to restart the service with `sudo systemctl restart logid` and done!
