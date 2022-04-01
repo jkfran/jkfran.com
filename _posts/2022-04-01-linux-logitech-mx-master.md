@@ -2,7 +2,7 @@
 layout: post
 title: "Logitech MX Master on Linux"
 author: jkfran
-categories: [ blog ]
+categories: [blog]
 image: https://user-images.githubusercontent.com/6353928/161268803-b3a16b4a-2d80-47e0-9f55-c8b656cbe3ea.png
 ---
 
@@ -27,6 +27,7 @@ For Debian/Ubuntu systems, first get all the needed dependencies: `sudo apt inst
 Clone the repo:`git clone https://github.com/PixlOne/logiops.git`
 
 Compile it:
+
 ```
 mkdir build
 cd build
@@ -35,6 +36,7 @@ make
 ```
 
 And install it:
+
 ```
 sudo make install
 sudo systemctl enable --now logid
@@ -45,6 +47,7 @@ sudo systemctl enable --now logid
 To enable the thumb gestures, we need to use a particular configuration. This one is for the Master MX 2S. Feel free to do any modifications:
 
 This configuration needs to be save on `/etc/logid.cfg`:
+
 ```
 devices: ({
   name: "Wireless Mouse MX Master 2S";

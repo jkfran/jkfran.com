@@ -2,10 +2,10 @@
 name: "jkfran"
 title: "Francisco Jiménez Cabrera"
 description: "A blog featuring tutorials, ideas, and anything interesting to me."
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/logo.png'
+logo: "assets/images/logo.png"
+favicon: "assets/images/logo.png"
 baseurl: /
-insights: 'A7gP_jf0zVamA1Pm'
+insights: "A7gP_jf0zVamA1Pm"
 mailchimp-list: null
 include: ["_pages"]
 permalink: /:title/
@@ -35,12 +35,12 @@ jekyll-archives:
     - categories
   layout: archive
   permalinks:
-    category: '/category/:name/'
-    
-# Pagination 
+    category: "/category/:name/"
+
+# Pagination
 paginate: 6
 paginate_path: /page:num/
-    
+
 # Other
 markdown: kramdown
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Algorithm Analysis (Big O) with Python"
 author: jkfran
-categories: [ blog ]
+categories: [blog]
 image: https://user-images.githubusercontent.com/6353928/158666789-b37d45a7-e213-4a4f-a21d-efdc94aacf5e.png
 ---
 
@@ -16,17 +16,15 @@ Big-O notation signifies the relationship between the input and the steps requir
 
 The following are some of the most common Big-O functions:
 
-| Name      | Big O |
-| ----------- | ----------- |
-| Constant      | O(c)       |
-| Linear   | O(n)        |
-| Quadratic   | O(n^2)        |
-| Cubic   | O(n^3)        |
-| Exponential   | O(2^n)        |
-| Logarithmic   | O(log(n))        |
-| Log Linear   | O(nlog(n))        |
-
-
+| Name        | Big O      |
+| ----------- | ---------- |
+| Constant    | O(c)       |
+| Linear      | O(n)       |
+| Quadratic   | O(n^2)     |
+| Cubic       | O(n^3)     |
+| Exponential | O(2^n)     |
+| Logarithmic | O(log(n))  |
+| Log Linear  | O(nlog(n)) |
 
 ## Constant Complexity (O(C))
 
@@ -74,7 +72,6 @@ quadratic_algo([4, 5, 6, 8])
 ```
 
 ![image](https://user-images.githubusercontent.com/6353928/158675551-3b645715-92f2-44da-aa30-b2e2cdf889f4.png)
-
 
 ## Conclusion
 

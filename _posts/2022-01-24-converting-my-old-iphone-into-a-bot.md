@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Converting my old iPhone into a bot"
+title: "Converting my old iPhone into a bot"
 author: jkfran
-categories: [ blog ]
+categories: [blog]
 image: https://user-images.githubusercontent.com/6353928/150762225-08079e98-97fb-4c00-bdd1-0d0ce59c3cb3.png
 ---
 
@@ -37,6 +37,7 @@ It is important to mention that I wouldn't do it on my main iPhone for security 
 [Cydia](https://en.wikipedia.org/wiki/Cydia) is a graphical user interface of APT for iOS. It enables users to find and install software not authorised by Apple on jailbroken devices.
 
 Packages I needed to install in my use case:
+
 - OpenSSH
 - Autotouch (repo: `https://repo.autotouch.net/`)
 - BundleIDsXII (repo: `https://repo.packix.com/`)
@@ -51,7 +52,6 @@ Once we have an SSH server installed, we are ready to start bashing:
 
 **An important reminder is to change the default root password**
 
-
 ### Autotouch
 
 I was really surprised by this tool; it allows you to script everything you can do with your phone, plus the execution of JavaScript/Lua code that will enable you to do everything, even access the official Apple SDK!
@@ -62,7 +62,6 @@ Official site: [autotouch.net](https://autotouch.net/) and docs: [docs.autotouch
 
 It provides a web server option, where it is possible to access our phone scripts to create and run scripts remotely:
 ![image](https://user-images.githubusercontent.com/6353928/150154039-9bd76168-e673-43bb-9e14-e77ed545c209.png)
-
 
 #### Scripting time
 

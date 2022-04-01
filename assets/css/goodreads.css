@@ -1,9 +1,9 @@
 /* Goodreads widgets styling */
-div[class^='gr_custom_container_'] {
+div[class^="gr_custom_container_"] {
   padding: 0.5rem 0;
 }
 
-h2[class^='gr_custom_header_'] {
+h2[class^="gr_custom_header_"] {
   border-bottom: 1px solid #aaa;
   width: 100%;
   padding-bottom: 0.5rem;
@@ -11,11 +11,11 @@ h2[class^='gr_custom_header_'] {
   font-size: 1rem;
 }
 
-h2[class^='gr_custom_header_'] > a {
+h2[class^="gr_custom_header_"] > a {
   color: rgba(0, 0, 0, 0.8);
 }
 
-div[class^='gr_custom_each_container_'] {
+div[class^="gr_custom_each_container_"] {
   width: 100%;
   clear: both;
   margin-bottom: 10px;
@@ -24,7 +24,7 @@ div[class^='gr_custom_each_container_'] {
   border-bottom: 1px solid #aaa;
 }
 
-div[class^='gr_custom_book_container_'] {
+div[class^="gr_custom_book_container_"] {
   overflow: hidden;
   height: 160px;
   float: left;
@@ -32,26 +32,26 @@ div[class^='gr_custom_book_container_'] {
   width: 98px;
 }
 
-div[class^='gr_custom_title_'] {
+div[class^="gr_custom_title_"] {
   font-size: 0.9rem;
 }
 
-div[class^='gr_custom_author_'] {
+div[class^="gr_custom_author_"] {
   font-size: 0.8rem;
 }
 
-div[class^='gr_custom_rating_'] {
+div[class^="gr_custom_rating_"] {
   float: right;
 }
 
-div[class^='gr_custom_review_'] {
+div[class^="gr_custom_review_"] {
   display: none;
 }
 
-div[class^='gr_custom_container_'] > br {
+div[class^="gr_custom_container_"] > br {
   display: none;
 }
 
-div[class^='gr_custom_container_'] > center {
+div[class^="gr_custom_container_"] > center {
   display: none;
 }

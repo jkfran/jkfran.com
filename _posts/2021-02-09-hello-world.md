@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Hello World"
+title: "Hello World"
 author: jkfran
-categories: [ blog ]
+categories: [blog]
 image: assets/images/hello-world.png
 ---
 
