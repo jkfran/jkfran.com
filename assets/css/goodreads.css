@@ -56,3 +56,7 @@ div[class^="gr_custom_container_"] > br {
 div[class^="gr_custom_container_"] > center {
   display: none;
 }
+
+h5#bookshelf-title {
+  margin-top: 0;
+}
