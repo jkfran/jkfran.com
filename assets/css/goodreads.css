@@ -43,7 +43,8 @@ div[class^="gr_custom_author_"] {
 
 div[class^="gr_custom_rating_"] {
   float: right;
-  
+  margin: 0 0 1rem 1rem;
+
   img {
     filter: hue-rotate(120deg) brightness(150%) contrast(50%);
   }
