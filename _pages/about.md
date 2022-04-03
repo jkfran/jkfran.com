@@ -11,7 +11,7 @@ permalink: /about
 
   <div class="col-md-4">
     <div class="sticky-top sticky-top-80">
-      <h5 id="bookshelf-title">Bookshelf</h5>
+      <h5 class="mt-0">Bookshelf</h5>
       <div id="gr_custom_widget_1643813099"></div>
       <div id="gr_custom_widget_1643812651"></div>
     </div>
