@@ -31,14 +31,18 @@ div[class^="gr_custom_each_container_"] {
 
 div[class^="gr_custom_book_container_"] {
   overflow: hidden;
-  height: 160px;
   float: left;
-  margin-right: 4px;
-  width: 98px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: 5rem;
 }
 
 div[class^="gr_custom_title_"] {
   font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 div[class^="gr_custom_author_"] {
