@@ -21,7 +21,7 @@ Then make sure you remove Firefox:
 
 ```bash
 sudo apt purge firefox
-sudo snap remove firefox
+sudo snap remove --purge firefox
 ```
 
 Now, let's add the Mozilla PPA to our system:
