@@ -12,7 +12,7 @@ The first step is to block the package from the Ubuntu repository:
 
 ```bash
 $ cat /etc/apt/preferences.d/firefox-no-snap 
-Package: Firefox*
+Package: firefox*
 Pin: release o=Ubuntu*
 Pin-Priority: -1
 ```
@@ -21,7 +21,7 @@ Then make sure you remove Firefox:
 
 ```bash
 sudo apt purge firefox
-sudo snap remove Firefox
+sudo snap remove firefox
 ```
 
 Now, let's add the Mozilla PPA to our system:
