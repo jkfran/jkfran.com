@@ -13,7 +13,7 @@ I had some trouble after doing a fresh install of Ubuntu 22.04 with my AirPods. 
 
 PipeWire is a server for handling audio and video streams and hardware on Linux. In April 2021, Fedora became the first Linux distribution to ship PipeWire for audio by default through its release 34 and guess what? PipeWire is pre-installed out-of-the-box on Ubuntu 22.04 and automatically runs as a background service, but it is not the default audio server.
 
-Official site: https://pipewire.org/
+If you want to learn more about it. Have a look at the [official site](https://pipewire.org/) or the [Wikipedia article](https://en.wikipedia.org/wiki/PipeWire).
 
 You can check yourself if PipeWire is running:
 ```
