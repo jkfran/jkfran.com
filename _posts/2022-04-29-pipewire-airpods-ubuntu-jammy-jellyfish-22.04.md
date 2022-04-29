@@ -3,9 +3,8 @@ layout: post
 title: "Connecting my AirPods on Ubuntu 22.04 with PipeWire"
 author: jkfran
 categories: [blog]
-image: https://user-images.githubusercontent.com/6353928/166060821-e95d6c25-67a6-48da-aede-e6fd662691c1.png
+image: https://user-images.githubusercontent.com/6353928/166063808-49214484-38ec-4d42-8e92-45c45a1b5a38.png
 ---
-
 
 I had some pain after doing a fresh install of Ubuntu 22.04 with my AirPods. So I will share my system configuration, including how to switch from ALSA to PipeWire.
 
