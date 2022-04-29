@@ -6,7 +6,7 @@ categories: [blog]
 image: https://user-images.githubusercontent.com/6353928/166063808-49214484-38ec-4d42-8e92-45c45a1b5a38.png
 ---
 
-I had some pain after doing a fresh install of Ubuntu 22.04 with my AirPods. So I will share my system configuration, including how to switch from ALSA to PipeWire.
+I had some trouble after doing a fresh install of Ubuntu 22.04 with my AirPods. So I will share my system configuration, and part of it includes switching from ALSA to PipeWire.
 
 
 # What is PipeWire
