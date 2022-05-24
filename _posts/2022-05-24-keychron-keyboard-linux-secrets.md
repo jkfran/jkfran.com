@@ -41,9 +41,10 @@ Run: `echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode`
 
 Once complete, the F1-F12 keys should work properly, and holding Fn turns them into multimedia keys.
 
-## To persist this change, add a module option for hid_apple:
+## To persist this change:
 
-Run:
+Run this to add a module option for hid_apple:
+
 `echo "options hid_apple fnmode=0" | sudo tee -a /etc/modprobe.d/hid_apple.conf`
 
 For ubuntu: `sudo update-initramfs -u`
