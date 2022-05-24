@@ -10,11 +10,11 @@ image: https://user-images.githubusercontent.com/6353928/170081400-318ce365-e8ed
 
 | Shortcut    | Description |
 | ----------- | ----------- |
-| FN + B | Battery level (RGB versions - if the power is above 70%, the charging indicator is green; at 30%~70 %, the charging indicator will be blue; when it is under 30%, the charging indicator will keep flashing.) |
-| FN + + | Faster LEDs |
-| FN + - | Slower LEDs |
-| FN + S + O (4 seconds) | Disable auto-sleep mode |
-| FN + X + L (4 seconds) | Switch between function and multimedia keys |
+| `FN + B` | Battery level (RGB versions - if the power is above 70%, the charging indicator is green; at 30%~70 %, the charging indicator will be blue; when it is under 30%, the charging indicator will keep flashing.) |
+| `FN + +` | Faster LEDs |
+| `FN + -` | Slower LEDs |
+| `FN + S + O` (4 seconds) | Disable auto-sleep mode |
+| `FN + X + L` (4 seconds) | Switch between function and multimedia keys |
 | FN + J + Z (4 seconds) | Factory reset |
 | FN + Left/Right Arrow | Change LED Colours for current effect |
 | FN + Caps Lock + P | Hold these three keys together for 6 seconds, The Caps Lock key will no longer follow the backlight mode, it will be used to indicate the status of capital/ small letters. Repeat to return to following other keys' |
@@ -33,10 +33,10 @@ image: https://user-images.githubusercontent.com/6353928/170081400-318ce365-e8ed
 
 On Linux, the Keychron K2 doesn't register any of the F1-F12 function keys as actual F keys, instead, treating them as multimedia keys by default. Here's how to fix it!
 
-## To fix this:
+## To fix it:
 
-Set the keyboard to Windows mode via the side switch
-Use the Fn + X + L shortcut to set the function key row to "Function" mode. (usually all that's necessary on Windows)
+Set the keyboard to Windows mode via the side switch and use the `Fn + X + L` shortcut to set the function key row to "Function" mode.
+
 Run: `echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode`
 
 Once complete, the F1-F12 keys should work properly, and holding Fn turns them into multimedia keys.
