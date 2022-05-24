@@ -3,7 +3,7 @@ layout: post
 title: "Keychron keyboard special shortcuts and Linux function keys"
 author: jkfran
 categories: [blog]
-image: [https://user-images.githubusercontent.com/6353928/166063808-49214484-38ec-4d42-8e92-45c45a1b5a38.png](https://user-images.githubusercontent.com/6353928/170081400-318ce365-e8ed-40f8-99ed-f211f47a5872.png)
+image: https://user-images.githubusercontent.com/6353928/170081400-318ce365-e8ed-40f8-99ed-f211f47a5872.png
 ---
 
 # Special Shortcuts
