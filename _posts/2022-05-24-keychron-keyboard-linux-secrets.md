@@ -43,7 +43,7 @@ Once complete, my F1-F12 keys work properly, and holding Fn turns them into mult
 
 To persist this change, add a module option for hid_apple:
 
-echo "options hid_apple fnmode=0" | sudo tee -a /etc/modprobe.d/hid_apple.conf
+`echo "options hid_apple fnmode=0" | sudo tee -a /etc/modprobe.d/hid_apple.conf`
 
 For ubuntu: `sudo update-initramfs -u`
 For Arch: `mkinitcpio -P`
