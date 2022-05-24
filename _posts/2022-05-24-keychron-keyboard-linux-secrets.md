@@ -15,18 +15,18 @@ image: https://user-images.githubusercontent.com/6353928/170081400-318ce365-e8ed
 | `FN + -` | Slower LEDs |
 | `FN + S + O` (4 seconds) | Disable auto-sleep mode |
 | `FN + X + L` (4 seconds) | Switch between function and multimedia keys |
-| FN + J + Z (4 seconds) | Factory reset |
-| FN + Left/Right Arrow | Change LED Colours for current effect |
-| FN + Caps Lock + P | Hold these three keys together for 6 seconds, The Caps Lock key will no longer follow the backlight mode, it will be used to indicate the status of capital/ small letters. Repeat to return to following other keys' |
-| FN + L + Light | Hold these three keys together for 6 seconds it will lock the light effect you are using now. To unlock the light effect, press these three keys together for 6 seconds again. Please make sure to hold the fn and L key first then hold the light effect key. |
-| FN + I + D | Hold these three keys together for 6 seconds, and the function of the del key will be reversed to insert. Then the short press the key to get insert, press fn key combination will get the del function. Hold these three keys together for 6 seconds again to change back to the default. |
-| FN + S + L + R | Set the auto sleep time to 10 mins |
-| FN + S + L + T | Set the auto sleep time to 20 mins |
-| FN + S + L + Y | Set the auto sleep time to 30 mins |
-| FN + Light | Turn lights on / off |
-| FN + Q (4 seconds) | Activate discoverable mode |
-| FN + 1 / 2 / 3 | Change connected device (up to 3 devices) |
-| FN + K + C (4 seconds) | The function of F5/F6 will switch to the normal F5/F6 function under the Mac system, and the keyboard backlight control will adjust to FN+F5/F6. And vice versa. |
+| `FN + J + Z` (4 seconds) | Factory reset |
+| `FN + Left/Right Arrow` | Change LED Colours for current effect |
+| `FN + Caps Lock + P` | Hold these three keys together for 6 seconds, The Caps Lock key will no longer follow the backlight mode, it will be used to indicate the status of capital/ small letters. Repeat to return to following other keys' |
+| `FN + L + Light` | Hold these three keys together for 6 seconds it will lock the light effect you are using now. To unlock the light effect, press these three keys together for 6 seconds again. Please make sure to hold the fn and L key first then hold the light effect key. |
+| `FN + I + D` | Hold these three keys together for 6 seconds, and the function of the del key will be reversed to insert. Then the short press the key to get insert, press fn key combination will get the del function. Hold these three keys together for 6 seconds again to change back to the default. |
+| `FN + S + L + R` | Set the auto sleep time to 10 mins |
+| `FN + S + L + T` | Set the auto sleep time to 20 mins |
+| `FN + S + L + Y` | Set the auto sleep time to 30 mins |
+| `FN + Light` | Turn lights on / off |
+| `FN + Q` (4 seconds) | Activate discoverable mode |
+| `FN + 1 / 2 / 3` | Change connected device (up to 3 devices) |
+| `FN + K + C` (4 seconds) | The function of F5/F6 will switch to the normal F5/F6 function under the Mac system, and the keyboard backlight control will adjust to FN+F5/F6. And vice versa. |
 
 
 # Linux Function Keys
