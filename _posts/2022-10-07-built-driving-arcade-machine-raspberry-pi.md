@@ -25,8 +25,6 @@ Here is my old Raspberry Pi 1:
 
 I decided to create a little game on the raspberry pi involving my niece in the process,
 I felt like I wanted to teach her that anybody can be an engineer and create stuff.
-It turns out the Raspberry Pi 1 was super slow, even with overclocking
-I was not surprised. When I bought it, it was a revolution but not anymore.
 
 We dedicated some time to building our own game. I wanted to start with something simple, so the following code for the pong game was a good start:
 https://github.com/Wireframe-Magazine/Code-the-Classics/blob/master/boing-master/boing.py
@@ -38,6 +36,8 @@ We ended up making many changes to the game, and my niece even wanted to change 
 
 ![image](https://user-images.githubusercontent.com/6353928/194565506-f02dff38-5fb2-4141-84ed-414a85405ecd.png)
 
+It turns out the Raspberry Pi 1 was super slow, even with overclocking
+I was not surprised. When I bought it, it was a revolution but not anymore.
 The Raspberry was struggling a bit to run this simple game, but we had a lot of fun just doing the game, so I didn't care much.
 
 When she left, I knew I had two options:
@@ -51,6 +51,7 @@ My next finding was the item that made me change course and build a driving arca
 
 ![image](https://user-images.githubusercontent.com/6353928/194569343-c3ad6fa3-c05d-4efe-ab26-fc2936fa0d0f.png)
 
+It's an old driving controller for PlayStation 1.
 I also found this old stool that I decided was going to be the machine body:
 
 ![image](https://user-images.githubusercontent.com/6353928/194569868-dbaf582d-c43b-4460-a2bf-310b5e979021.png)
