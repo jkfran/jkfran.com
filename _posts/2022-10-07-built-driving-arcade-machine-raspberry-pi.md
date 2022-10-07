@@ -6,9 +6,7 @@ categories: [blog]
 image: https://user-images.githubusercontent.com/6353928/194561045-81b72eb8-84e1-4c67-a34d-65420871c8ef.png
 ---
 
-Hello! This summer, I went to Spain as usual and decided to stay longer for different reasons.
-During this time, I wanted to occupy my mind and build something fun,
-I also wanted to involve my nieces and do something for them, so they remember me when I am away.
+Hello! This summer, I went to Spain as usual and decided to stay longer for different reasons. I wanted to occupy my mind and build something fun during this time. I also wanted to involve my nieces and do something for them, so they remember me when I am away.
 
 I started looking around in my parents' house, 
 it's a big house with a lot of space, enough to keep things that nobody needs anymore,
