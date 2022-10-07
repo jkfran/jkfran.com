@@ -36,7 +36,7 @@ We ended up making many changes to the game, and my niece even wanted to change 
 
 ![image](https://user-images.githubusercontent.com/6353928/194565506-f02dff38-5fb2-4141-84ed-414a85405ecd.png)
 
-It turns out the Raspberry Pi 1 was super slow, even with overclocking
+It turns out the Raspberry Pi 1 was super slow, even with overclocking.
 I was not surprised. When I bought it, it was a revolution but not anymore.
 The Raspberry was struggling a bit to run this simple game, but we had a lot of fun just doing the game, so I didn't care much.
 
