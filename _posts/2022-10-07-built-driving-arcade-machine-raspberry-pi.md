@@ -10,7 +10,7 @@ Hello! This summer, I went to Spain as usual and decided to stay longer for diff
 During this time, I wanted to occupy my mind and build something fun,
 I also wanted to involve my nieces and do something for them, so they remember me when I am away.
 
-So I started looking around in my parents' house, 
+I started looking around in my parents' house, 
 it's a big house with a lot of space, enough to keep things that nobody needs anymore,
 so I went to the garage, and I found this old screen:
 
