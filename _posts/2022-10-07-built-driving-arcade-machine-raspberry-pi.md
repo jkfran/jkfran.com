@@ -27,7 +27,7 @@ I decided to create a little game on the raspberry pi involving my niece in the 
 I felt like I wanted to teach her that anybody can be an engineer and create stuff.
 
 We dedicated some time to building our own game. I wanted to start with something simple, so the following code for the pong game was a good start:
-https://github.com/Wireframe-Magazine/Code-the-Classics/blob/master/boing-master/boing.py
+[github.com/Wireframe-Magazine/Code-the-Classics/blob/master/boing-master/boing.py](https://github.com/Wireframe-Magazine/Code-the-Classics/blob/master/boing-master/boing.py)
 
 ![image](https://user-images.githubusercontent.com/6353928/194565167-25fb1857-dac9-4e8f-bacd-5613034129bc.png)
 
