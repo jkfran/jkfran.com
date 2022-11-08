@@ -23,8 +23,12 @@
     margin-top: 2.5rem;
   }
   
-  table:not(.rouge-table), th, td {
+  table:not(.rouge-table) {
     border: 1px solid;
-    padding: 0.5rem;
+    
+    th, td {
+      border: 1px solid;
+      padding: 0.5rem;
+    }
   }
 }
