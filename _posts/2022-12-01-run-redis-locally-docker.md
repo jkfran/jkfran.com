@@ -25,6 +25,7 @@ That's it!
 
 ![image](https://user-images.githubusercontent.com/6353928/205104552-7ae20743-10ae-4f7f-a521-d81d16291074.png)
 
+Note: If you want to run something more customized, I recommend looking into the [Redis documentation](https://redis.io/docs/).
 
 ## Redis client
 
