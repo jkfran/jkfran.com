@@ -10,7 +10,7 @@ In this post, I want to share just one command to run Redis locally. That's it, 
 
 ## Requirements
 
-- Docker (https://docs.docker.com/get-docker/)
+- Docker ([https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/))
 
 
 ## Get and run Redis
