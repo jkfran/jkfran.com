@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Capturing Only Unhandled Exceptions with Sentry in Python"
+author: jkfran
+categories: [blog]
+image: https://user-images.githubusercontent.com/6353928/226624793-ab4a4fca-81b0-4b24-85a1-982594f9441e.png
+---
+
 # Capturing Only Unhandled Exceptions with Sentry in Python
 
 Sentry is a popular error tracking and monitoring tool that helps developers identify and fix issues in their applications. By default, Sentry captures unhandled exceptions and logged errors. However, in some cases, you might want to focus on unhandled exceptions only, or you might encounter a situation where Sentry reports handled exceptions without your consent from other integrations. In this blog post, we will show you how to configure Sentry to capture unhandled exceptions only in your Python applications.
