@@ -12,7 +12,6 @@ After a preliminary selection from the most popular vector/embedding databases, 
 - Scale
 - Performance
 - Disaster recovery
-- Dimensionality
 
 In this blog post, I'll walk you through my research process, offering insights into the various aspects I considered and revealing why we eventually decided on Qdrant. Let's dive into the journey of this decision-making process.
 
