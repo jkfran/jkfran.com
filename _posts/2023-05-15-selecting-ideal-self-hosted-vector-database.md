@@ -50,7 +50,7 @@ Another standout element was Qdrant's Scalar Quantization feature. Often mention
 
 A major attraction of Qdrant was its ease to run container. This allows for smooth deployment and management of Qdrant within a Kubernetes environment, which is particularly beneficial for teams using container orchestration systems.
 
-Despite the many strong points of Qdrant, our research did uncover some online concerns like missing [authentication in the Qdrant API](https://github.com/qdrant/qdrant/issues/1739), but this feature was addressed [recently](https://github.com/qdrant/qdrant/pull/1745), but I don't think it was released yet. However, this is a minor issue for us since we are not exposing the database to the outside. This is a relatively new Database and offers an excellent performance, making it an enticing choice for our needs.
+Despite the many strong points of Qdrant, our research did uncover some online concerns like missing [authentication in the Qdrant API](https://github.com/qdrant/qdrant/issues/1739), this feature was addressed [recently](https://github.com/qdrant/qdrant/pull/1745). But, it is in the development branch. However, this is a minor issue for us since we are not exposing the database to the outside. This is a relatively new Database and offers excellent performance, making it an enticing choice for our needs.
 
 In the end, the combination of dynamic query planning, payload data indexing, Scalar Quantization, and seamless Kubernetes integration swayed us in Qdrant's favor. Despite minor concerns, its robust performance, efficiency, and compatibility made it an ideal choice for our specific requirements.
 
