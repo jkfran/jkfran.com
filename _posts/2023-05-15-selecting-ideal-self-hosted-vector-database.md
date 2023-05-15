@@ -7,12 +7,13 @@ image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b9
 
 ---
 
-As an MLOps professional at Builder.ai, I was entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the unique requirements of our data scientists. A key factor in this decision-making process was the need for seamless integration with the widely-used Langchain library.
-After a preliminary selection from the most popular platforms, the potential candidates included Milvus, Pinecone, Qdrant, and PGVector (Postgres). With these options at hand, I had the opportunity to evaluate each database in terms of:
+As an MLOps professional at Builder.ai, I was entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.
+After a preliminary selection from the most popular vector/embedding databases, the potential candidates are Milvus, Pinecone, Qdrant, and PGVector (Postgres). With these options at hand, I had the opportunity to evaluate each database in terms of:
 - Scale
 - Performance
 - Data Persistence
 - Dimensionality
+
 In this blog post, I'll walk you through my research process, offering insights into the various aspects I considered and revealing why we eventually decided on Qdrant. Let's dive into the journey of this decision-making process.
 
 ---
@@ -75,8 +76,6 @@ In conclusion, despite its roots in the well-regarded PostgreSQL database, the c
 After conducting comprehensive research and carefully evaluating our options, we found Qdrant to be the ideal choice for our specific needs. This Rust-built vector database showcased superior performance and exhibited a significant edge over its competitors in a number of key areas.
 
 Qdrant's seamless scalability within a Kubernetes environment was a major factor in our decision, as it ensures the database can grow and adapt to our evolving needs. Moreover, standout features like dynamic query planning and payload data indexing further solidified its position as our top choice. These features collectively contribute to efficient data retrieval and improved search capabilities, which are critical to our operations.
-
-Adding to its appeal, Qdrant offers the ability to customize business logic on top of similarity matching. This flexibility allows us to tailor the database to our specific use cases, making it a compelling solution that can truly cater to our unique requirements.
 
 For those setting off on a similar journey in the world of vector databases, we plan to use the [official Helm chart](https://github.com/qdrant/qdrant-helm/) for deploying Qdrant in our Kubernetes clusters. This resource provides a reliable, streamlined approach to deployment, simplifying the integration process.
 
