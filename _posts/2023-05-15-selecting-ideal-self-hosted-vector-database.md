@@ -7,7 +7,7 @@ image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b9
 
 ---
 
-As an MLOps professional at Builder.ai, I was entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.
+As an MLOps engineer at Builder.ai, I was recently entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.
 After a preliminary selection from the most popular vector/embedding databases, the potential candidates are Milvus, Pinecone, Qdrant, and PGVector (Postgres). With these options at hand, I had the opportunity to evaluate each database in terms of:
 - Scale
 - Performance
