@@ -35,9 +35,7 @@ Our exploration then led us to Pinecone, a fully managed vector database renowne
 
 The standout feature in this new release was the introduction of single-stage filtering. This innovation greatly simplifies data querying, allowing users to retrieve relevant data more efficiently, without the need for multiple filtering stages. This unique aspect undoubtedly adds value, especially for teams seeking streamlined and efficient data management.
 
-However, despite Pinecone scoring highly on most of our key considerations – such as performance, scale, and data persistence – it fell short in a couple of critical areas for us. Firstly, Pinecone is a proprietary solution and not an open-source platform. This limited our ability to customize and tweak the system to perfectly align with our specific needs.
-
-Secondly, Pinecone does not provide a self-hosted option. This was a crucial requirement for us, as we were specifically seeking a self-hosted vector database to maintain greater control over our data and operations.
+However, despite Pinecone scoring highly on most of our key considerations – such as performance, scale, and data persistence – it fell short in a couple of critical areas for us. Firstly, Pinecone is a proprietary paid solution and not an open-source platform. Secondly, Pinecone does not provide a self-hosted option. This was a crucial requirement for us, as we were specifically seeking a self-hosted vector database to maintain greater control over our data and operations.
 
 In conclusion, while Pinecone's impressive capabilities and innovative features make it an excellent choice for many, it was not the perfect fit for our specific scenario due to its proprietary nature and lack of a self-hosting option. But, I can see Pinecone as the perfect choice for companies that need a solution but don't want to deal with self-hosting this kind of service.
 
