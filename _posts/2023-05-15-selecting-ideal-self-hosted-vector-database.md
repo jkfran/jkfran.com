@@ -7,11 +7,11 @@ image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b9
 
 ---
 
-As an MLOps engineer at Builder.ai, I was recently entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.
+As an MLOps engineer, I was recently entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.
 After a preliminary selection from the most popular vector/embedding databases, the potential candidates are Milvus, Pinecone, Qdrant, and PGVector (Postgres). With these options at hand, I had the opportunity to evaluate each database in terms of:
 - Scale
 - Performance
-- Data Persistence
+- Disaster recovery
 - Dimensionality
 
 In this blog post, I'll walk you through my research process, offering insights into the various aspects I considered and revealing why we eventually decided on Qdrant. Let's dive into the journey of this decision-making process.
@@ -63,7 +63,7 @@ However, upon further research, a few limitations came to light. One significant
 
 Another aspect where PGVector seemed to falter was performance. Compared to its competitors, search operations in PGVector were reported to be slower. While this might not be an issue for smaller scale projects, it could potentially become a bottleneck in more demanding scenarios, affecting the overall efficiency of data retrieval.
 
-On a positive note, with Postgres there are plenty of tools and integrations already available online, a key factor in our evaluation was data persistence and backups, and Postgres definetly scores high in this category. However, the lower performance and scalability scores made it less appealing compared to the other options we were considering.
+On a positive note, with Postgres there are plenty of tools and integrations already available online, a key factor in our evaluation was disaster recovery, and Postgres definetly scores high in this category. However, the lower performance and scalability scores made it less appealing compared to the other options we were considering.
 
 In conclusion, despite its roots in the well-regarded PostgreSQL database, the challenges related to scaling and performance led us to explore other options.
 
