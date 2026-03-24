@@ -410,6 +410,40 @@ iframe {
   top: 80px;
 }
 
+/** Buy Me A Coffee **/
+.buymeacoffee {
+  text-align: center;
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.buymeacoffee h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.buymeacoffee p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.buymeacoffee .btn-coffee {
+  display: inline-block;
+  background-color: #FF813F;
+  color: #fff;
+  font-size: 1.4em;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.buymeacoffee .btn-coffee:hover {
+  background-color: #e0702f;
+  color: #fff;
+  text-decoration: none;
+}
+
 /** Lazy img **/
 .lazyimg {
   display: block;
