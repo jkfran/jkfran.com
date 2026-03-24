@@ -1,0 +1,185 @@
+// Reusable UI components
+
+// Post cards (homepage)
+.maxthumb {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.listrecent {
+  h2.card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  h4.card-text {
+    color: rgba(0, 0, 0, 0.44);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+}
+
+.card .img-fluid {
+  width: 100%;
+}
+
+// Share buttons
+.share {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.44);
+  fill: rgba(0, 0, 0, 0.44);
+
+  a {
+    color: rgba(0, 0, 0, 0.44);
+    fill: rgba(0, 0, 0, 0.44);
+  }
+
+  p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      margin-bottom: 9px;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.sticky-top-offset {
+  top: 100px;
+}
+
+@media (min-width: 1024px) {
+  .share ul li {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .share {
+    margin-top: 30px;
+  }
+}
+
+// Pagination
+.bottompagination span.navigation {
+  display: block;
+  font-size: 0.93rem;
+  padding: 15px 0 0 0;
+  text-align: center;
+  margin-bottom: 0;
+  color: #999;
+  border-top: 1px solid #ddd;
+
+  i {
+    display: inline-block;
+  }
+}
+
+.pointerup {
+  margin-bottom: -17px;
+  margin-left: 49%;
+  font-size: 30px;
+
+  i.fa {
+    color: #eaeaea;
+  }
+}
+
+span.navigation {
+  display: inline-block;
+  font-size: 0.93rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pagination {
+  display: block;
+}
+
+// Tags
+ul.tags {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 3rem 0;
+
+  li {
+    display: inline-block;
+    font-size: 0.9rem;
+
+    a {
+      background: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.6);
+      border-radius: 3px;
+      padding: 5px 10px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.07);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Buy Me A Coffee
+.buymeacoffee {
+  text-align: center;
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #f2f2f2;
+
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+
+  .btn-coffee {
+    display: inline-block;
+    background-color: #FF813F;
+    color: #fff;
+    font-size: 1.4em;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #e0702f;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+// Lazy images
+.lazyimg {
+  display: block;
+  border: 0 none;
+  opacity: 1;
+  transition: opacity 0.25s;
+  background: #f2f2f2;
+  outline: 0 none;
+
+  &[data-src],
+  &[data-srcset] {
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+}
+
+// Utilities
+.sticky-top-80 {
+  top: 80px;
+}

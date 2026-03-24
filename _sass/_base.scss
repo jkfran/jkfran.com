@@ -1,0 +1,65 @@
+// Base element styles and typography
+
+@media screen and (min-width: 1500px) {
+  html {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 80%;
+  }
+}
+
+a {
+  color: #00ab6b;
+  transition: all 0.2s;
+
+  &:hover {
+    color: #038252;
+    text-decoration: none;
+  }
+}
+
+pre {
+  box-sizing: border-box;
+  border: #e3edf3 1px solid;
+  width: 100%;
+  padding: 7px;
+  font-family: monospace, sans-serif;
+  font-size: 0.9rem;
+  white-space: pre;
+  overflow: auto;
+  background: #fff;
+  border-radius: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+blockquote {
+  border-left: 4px solid #00ab6b;
+  padding: 0 20px;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+img {
+  max-width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6 {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.link-dark {
+  color: rgba(0, 0, 0, 0.8);
+}

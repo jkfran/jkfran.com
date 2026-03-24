@@ -1,10 +1,12 @@
----
-# Add a comment to make this file sass-y.
----
+// Goodreads widget styling (about page)
 
-/* Goodreads widgets styling */
 div[class^="gr_custom_container_"] {
   padding: 0.5rem 0;
+
+  > br,
+  > center {
+    display: none;
+  }
 }
 
 h2[class^="gr_custom_header_"] {
@@ -14,10 +16,10 @@ h2[class^="gr_custom_header_"] {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1rem;
-}
 
-h2[class^="gr_custom_header_"] > a {
-  color: rgba(0, 0, 0, 0.8);
+  > a {
+    color: rgba(0, 0, 0, 0.8);
+  }
 }
 
 div[class^="gr_custom_each_container_"] {
@@ -60,13 +62,5 @@ div[class^="gr_custom_rating_"] {
 }
 
 div[class^="gr_custom_review_"] {
-  display: none;
-}
-
-div[class^="gr_custom_container_"] > br {
-  display: none;
-}
-
-div[class^="gr_custom_container_"] > center {
   display: none;
 }

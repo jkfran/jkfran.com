@@ -1,29 +1,9 @@
 ---
-# Add a comment to make this file sass-y.
-# Change this file for any custom CSS.
 ---
 
-// Import partials from `sass_dir` (defaults to `_sass`)
+@import "base";
+@import "layout";
+@import "components";
+@import "post";
+@import "goodreads";
 @import "syntax";
-
-.article-post {
-  h1,
-  h2,
-  h3 {
-    margin-top: 3rem;
-  }
-  h4,
-  h5,
-  h6 {
-    margin-top: 2.5rem;
-  }
-  
-  table:not(.rouge-table) {
-    border: 1px solid;
-    
-    th, td {
-      border: 1px solid;
-      padding: 0.5rem;
-    }
-  }
-}

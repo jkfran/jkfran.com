@@ -1,0 +1,102 @@
+// Post and page specific styles
+
+.article-post {
+  font-family: Merriweather;
+  font-size: 1.1rem;
+  line-height: 1.84;
+  color: rgba(0, 0, 0, 0.8);
+
+  p,
+  blockquote {
+    margin: 0 0 1.5rem 0;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 1.5rem;
+  }
+
+  ol ol,
+  ul ul {
+    list-style: disc;
+    margin-bottom: 0;
+  }
+
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  h1, h2, h3 {
+    margin-top: 3rem;
+  }
+
+  h4, h5, h6 {
+    margin-top: 2.5rem;
+  }
+
+  img.shadow {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  table:not(.rouge-table) {
+    border: 1px solid;
+
+    th, td {
+      border: 1px solid;
+      padding: 0.5rem;
+    }
+  }
+}
+
+// Page layout overrides (about page etc.)
+.layout-page .article-post {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+// Author meta
+.author-thumb {
+  width: 40px;
+  height: 40px;
+  margin-right: 13px;
+  border-radius: 100%;
+}
+
+.post-top-meta {
+  margin-bottom: 2rem;
+
+  .author-thumb {
+    width: 72px;
+    height: 72px;
+  }
+
+  span {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.44);
+    display: inline-block;
+  }
+
+  .author-description {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 0.95rem;
+  }
+}
+
+span.post-date {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.44);
+}
+
+.featured-image {
+  display: block;
+  margin-bottom: 1.5rem;
+}
