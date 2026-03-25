@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Fix Claude Code's Broken Remote Control"
+title: "My Claude Code Setup: Fixing Remote Control and Running Unattended Sessions"
 author: jkfran
 categories: [blog]
 image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/claude-remote-control.jpg
