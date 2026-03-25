@@ -50,4 +50,4 @@ kramdown:
     block:
       line_numbers: true
 
-exclude: [changelog.md, LICENSE, README.md, Gemfile, Gemfile.lock]
+exclude: [LICENSE, README.md, Gemfile, Gemfile.lock]
