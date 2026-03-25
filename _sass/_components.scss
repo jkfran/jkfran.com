@@ -163,6 +163,31 @@ ul.tags {
   }
 }
 
+// Search results
+.lunrsearchresult {
+  .title {
+    color: #d9230f;
+  }
+
+  .url {
+    color: silver;
+  }
+
+  a {
+    display: block;
+    color: #777;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:hover .title {
+      text-decoration: underline;
+    }
+  }
+}
+
 // Utilities
 .sticky-top-80 {
   top: 80px;
