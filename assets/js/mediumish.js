@@ -1,46 +1,41 @@
-jQuery(document).ready(function ($) {
-  // Smooth on external page
-  $(function () {
-    setTimeout(function () {
-      if (location.hash) {
-        window.scrollTo(0, 0);
-        target = location.hash.split("#");
-        smoothScrollTo($("#" + target[1]));
+document.addEventListener("DOMContentLoaded", function () {
+  // Smooth scroll to hash on page load
+  setTimeout(function () {
+    if (location.hash) {
+      window.scrollTo(0, 0);
+      var target = document.getElementById(location.hash.substring(1));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
       }
-    }, 1);
+    }
+  }, 1);
 
-    $("a[href*=\\#]:not([href=\\#])").click(function () {
-      if (
-        location.pathname.replace(/^\//, "") ==
-          this.pathname.replace(/^\//, "") &&
-        location.hostname == this.hostname
-      ) {
-        smoothScrollTo($(this.hash));
-        return false;
-      }
-    });
+  // Smooth scroll for anchor links
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest('a[href*="#"]:not([href="#"])');
+    if (!link) return;
 
-    function smoothScrollTo(target) {
-      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
-
-      if (target.length) {
-        $("html,body").animate(
-          {
-            scrollTop: target.offset().top,
-          },
-          1000
-        );
+    if (
+      link.pathname.replace(/^\//, "") ===
+        location.pathname.replace(/^\//, "") &&
+      link.hostname === location.hostname
+    ) {
+      var target = document.querySelector(link.hash);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
       }
     }
   });
 
-  // Hide Header on scroll down
-  var didScroll;
+  // Hide navbar on scroll down, show on scroll up
+  var didScroll = false;
   var lastScrollTop = 0;
   var delta = 5;
-  var navbarHeight = $("nav").outerHeight();
+  var nav = document.querySelector("nav");
+  var navbarHeight = nav ? nav.offsetHeight : 0;
 
-  $(window).scroll(function (event) {
+  window.addEventListener("scroll", function () {
     didScroll = true;
   });
 
@@ -52,41 +47,40 @@ jQuery(document).ready(function ($) {
   }, 250);
 
   function hasScrolled() {
-    var st = $(this).scrollTop();
+    var st = window.pageYOffset || document.documentElement.scrollTop;
 
     if (Math.abs(lastScrollTop - st) <= delta) return;
 
     if (st > lastScrollTop && st > navbarHeight) {
-      $("nav").removeClass("nav-down").addClass("nav-up");
-      $(".nav-up").css("top", -$("nav").outerHeight() + "px");
+      nav.classList.remove("nav-down");
+      nav.classList.add("nav-up");
+      nav.style.top = -nav.offsetHeight + "px";
     } else {
-      if (st + $(window).height() < $(document).height()) {
-        $("nav").removeClass("nav-up").addClass("nav-down");
-        $(".nav-up, .nav-down").css("top", "0px");
+      if (st + window.innerHeight < document.body.scrollHeight) {
+        nav.classList.remove("nav-up");
+        nav.classList.add("nav-down");
+        nav.style.top = "0px";
       }
     }
 
     lastScrollTop = st;
   }
-
-  $(".site-content").css("margin-top", $("header").outerHeight() + "px");
 });
 
-// deferred style loading
+// Deferred style loading
 var loadDeferredStyles = function () {
   var addStylesNode = document.getElementById("deferred-styles");
+  if (!addStylesNode) return;
   var replacement = document.createElement("div");
   replacement.innerHTML = addStylesNode.textContent;
   document.body.appendChild(replacement);
   addStylesNode.parentElement.removeChild(addStylesNode);
 };
-var raf =
-  window.requestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.msRequestAnimationFrame;
-if (raf)
-  raf(function () {
+
+if (window.requestAnimationFrame) {
+  window.requestAnimationFrame(function () {
     window.setTimeout(loadDeferredStyles, 0);
   });
-else window.addEventListener("load", loadDeferredStyles);
+} else {
+  window.addEventListener("load", loadDeferredStyles);
+}
