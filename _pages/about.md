@@ -6,15 +6,21 @@ permalink: /about
 
 <div class="row justify-content-between">
   <div class="col-md-8 pr-5">
-    <p>I am Francisco Jiménez Cabrera, an MLOps Engineer at Builder.ai. My journey in technology began at a young age, learning about computers and programming through self-teaching. Passionate about computer science, I chose to pursue my education in the field, eventually working in various areas of web development, including backend programming and DevOps engineering.</p>
-    
+    <p>I have been obsessed with technology for as long as I can remember. What started as a childhood curiosity grew into a self-taught passion and eventually a career dedicated to building better software. Throughout my career, I have purposely moved across various layers of the stack — from coding e-commerce modules and Flask applications to engineering web systems at Canonical and leading MLOps projects at <a href="https://www.builder.ai/">Builder.ai</a>.</p>
+
+    <p>Today, I work as a Senior Software Engineer at PolyModels Hub in London, where I focus on DevOps engineering for scientific software platforms.</p>
+
     <h3>Work Experience</h3>
 
-    <p><strong>MLOps Engineer at Builder.ai</strong> (February 2023 - Present)<br>As a Data Platform Engineer, I specialize in MLOps, working closely with data scientists and engineers to design, develop, and deploy machine learning models. My responsibilities include streamlining ML pipelines, ensuring model reliability, and monitoring performance to drive efficiency and innovation in our AI-driven solutions.</p>
+    <p><strong>Senior Software Engineer - DevOps at PolyModels Hub</strong> (May 2025 - Present)<br>DevOps engineering for a chromatography and bioprocessing technology company, building and maintaining the infrastructure that supports scientific software platforms.</p>
 
-    <p><strong>Software Engineer at Canonical</strong> (October 2019 - January 2023)<br>I started my journey at Canonical as a Web Engineer, working primarily as a backend and Python developer. I quickly advanced to leading the development of the snapcraft.io and charmhub.io websites. My responsibilities included breaking down significant work into smaller tasks, planning implementation, writing specifications, estimating and setting goals, providing quality code reviews, mentoring new hires, and taking on technical lead responsibilities to drive initiatives to completion.</p>
+    <p><strong>Associate Tech Lead / Senior MLOps Engineer at <a href="https://www.builder.ai/">Builder.ai</a></strong> (February 2023 - May 2025)<br>Progressed from Senior Software Engineer to Associate Tech Lead within the MLOps team. Spearheaded the integration of advanced AI solutions and ML lifecycle management, growing the team from two to five members. Built FastAPI services, optimised ML pipelines, directed Kubernetes orchestration, and integrated vector databases and monitoring systems.</p>
 
-    <p>For more information about my other work experiences, please check my <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/">LinkedIn profile</a>.</p>
+    <p><strong>Senior Web Engineer at Canonical</strong> (October 2019 - January 2023)<br>Lead developer of the <a href="https://snapcraft.io/">snapcraft.io</a> and <a href="https://charmhub.io/">charmhub.io</a> websites. Responsible for breaking down significant projects, writing specifications, providing code reviews, mentoring new hires, and driving initiatives to completion. Built internal tooling for Kubernetes deployments and optimised Docker container builds.</p>
+
+    <p><strong>Full Stack Developer at Howamigoing</strong> (January 2018 - September 2019)<br>First employee at the startup. Worked closely with the CEO to deliver an MVP SaaS product and helped secure the first round of funding.</p>
+
+    <p>For more about my earlier experience, check my <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/">LinkedIn profile</a>.</p>
   </div>
 
   <div class="col-md-4">
