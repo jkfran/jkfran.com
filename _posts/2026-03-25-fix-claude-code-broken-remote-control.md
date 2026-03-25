@@ -3,7 +3,7 @@ layout: post
 title: "How to Fix Claude Code's Broken Remote Control"
 author: jkfran
 categories: [blog]
-image: https://github.com/user-attachments/assets/2fd8a254-e184-4275-8ae4-cb973acdf35f
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/claude-remote-control.jpg
 ---
 
 Claude Code's `/remote-control` is one of those features that sounds life-changing — start a task at your desk, walk away, keep working from your phone. And it *is* life-changing, until the connection silently dies after 15–60 minutes and never recovers. The status bar shows "Remote Control reconnecting" indefinitely, and your only option is to manually cycle `/remote-control` at the terminal. Which, of course, defeats the entire purpose of remote control.
