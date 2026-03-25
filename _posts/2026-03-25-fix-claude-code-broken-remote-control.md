@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Fix Claude Code's Broken Remote Control (For Real This Time)"
+title: "How to Fix Claude Code's Broken Remote Control"
 author: jkfran
 categories: [blog]
 image: https://github.com/user-attachments/assets/2fd8a254-e184-4275-8ae4-cb973acdf35f
@@ -95,24 +95,11 @@ You should see something like:
 
 If you see `[SKIP] No Remote Control sessions found`, make sure you have `/remote-control` active inside your tmux session.
 
----
-
-## Step 4: Don't Use the Slash Command
-
-Here's the first gotcha. The watchdog comes with a `/remote-watchdog` slash command you can run inside Claude Code. **Don't rely on it.** Every time it runs, Claude Code prompts you to approve the bash command:
-
-```
-Command contains $() command substitution
-Do you want to proceed?
-❯ 1. Yes
-  2. No
-```
-
-If you need to approve it every time, it can't fix anything automatically. The whole point is unattended recovery.
+The install also adds a `/remote-watchdog` slash command you can run inside Claude Code. It's nice to have for manual checks, but I went with the cronjob approach below for fully unattended recovery.
 
 ---
 
-## Step 5: Set Up Cron (The Right Way)
+## Step 4: Set Up Cron (The Right Way)
 
 Use crontab to run the watchdog every 5 minutes, completely outside Claude Code:
 
@@ -138,7 +125,7 @@ That's normal. It created a fresh crontab with your entry.
 
 ---
 
-## Step 6: Disable the Update Banner
+## Step 5: Disable the Update Banner
 
 This is the second gotcha that took a while to figure out. Claude Code shows an "Update available! Run: brew upgrade claude-code" banner in the status area — the same area where the Remote Control status normally appears. When this banner is showing, the watchdog captures that text instead of the Remote Control status, so it reports `[SKIP]` even though your session is right there.
 
@@ -146,7 +133,7 @@ The fix is to set `DISABLE_AUTOUPDATER=1`. More on where to put this below.
 
 ---
 
-## Step 7: Set Up Your Shell Alias
+## Step 6: Set Up Your Shell Alias
 
 By now you probably want a quick command that launches Claude Code with all the right settings. Add this to your `~/.zshrc`:
 
@@ -169,7 +156,7 @@ Now `c` gives you:
 
 ---
 
-## Step 8: Skip the Safety Confirmation
+## Step 7: Skip the Safety Confirmation
 
 When you run `--dangerously-skip-permissions`, Claude Code shows a scary warning and asks you to confirm. To skip it, add this to `~/.claude/settings.json`:
 
@@ -183,7 +170,7 @@ If you already have settings in that file, just add the key to the existing JSON
 
 ---
 
-## Step 9: Enable Remote Control by Default
+## Step 8: Enable Remote Control by Default
 
 So you don't have to type `/remote-control` every time you start a session, run `/config` inside Claude Code and set **"Enable Remote Control for all sessions"** to true. Every new Claude Code session will automatically start with Remote Control active.
 
