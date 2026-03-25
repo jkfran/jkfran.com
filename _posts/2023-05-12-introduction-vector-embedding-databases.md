@@ -2,7 +2,7 @@
 layout: post
 title: "Introduction to vector / embedding databases"
 author: jkfran
-categories: [blog]
+categories: [ai]
 image: https://github.com/jkfran/jkfran.com/assets/6353928/c709f19e-ebab-49a1-a5f1-6a13475d5f33
 
 ---

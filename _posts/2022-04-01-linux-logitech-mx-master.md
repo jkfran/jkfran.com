@@ -2,7 +2,7 @@
 layout: post
 title: "Logitech MX Master on Linux"
 author: jkfran
-categories: [blog]
+categories: [linux]
 image: https://user-images.githubusercontent.com/6353928/161268803-b3a16b4a-2d80-47e0-9f55-c8b656cbe3ea.png
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Connecting my AirPods on Ubuntu 22.04 with PipeWire"
 author: jkfran
-categories: [blog]
+categories: [linux]
 image: https://user-images.githubusercontent.com/6353928/166063808-49214484-38ec-4d42-8e92-45c45a1b5a38.png
 ---
 

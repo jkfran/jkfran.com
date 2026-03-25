@@ -2,7 +2,7 @@
 layout: post
 title: "My Claude Code Setup: Fixing Remote Control and Running Unattended Sessions"
 author: jkfran
-categories: [blog]
+categories: [tools]
 image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/claude-remote-control.jpg
 ---
 

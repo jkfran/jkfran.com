@@ -2,7 +2,7 @@
 layout: post
 title: "Converting my old iPhone into a bot"
 author: jkfran
-categories: [blog]
+categories: [projects]
 image: https://user-images.githubusercontent.com/6353928/150762225-08079e98-97fb-4c00-bdd1-0d0ce59c3cb3.png
 ---
 

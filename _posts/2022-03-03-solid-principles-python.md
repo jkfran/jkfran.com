@@ -2,7 +2,7 @@
 layout: post
 title: "SOLID Principles in Python"
 author: jkfran
-categories: [blog]
+categories: [python]
 image: https://user-images.githubusercontent.com/6353928/156574349-a8e92eda-c016-4a51-9c8c-6776cefd7f49.png
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Algorithm Analysis (Big O) with Python"
 author: jkfran
-categories: [blog]
+categories: [python]
 image: https://user-images.githubusercontent.com/6353928/158666789-b37d45a7-e213-4a4f-a21d-efdc94aacf5e.png
 ---
 

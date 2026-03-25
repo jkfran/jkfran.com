@@ -2,7 +2,7 @@
 layout: post
 title: "Validating JSON Outputs in MLflow with Custom Metrics"
 author: jkfran
-categories: [blog]
+categories: [python]
 image: https://github.com/jkfran/jkfran.com/assets/6353928/a8ed0521-a89e-4606-9922-13c5df584fd6
 ---
 

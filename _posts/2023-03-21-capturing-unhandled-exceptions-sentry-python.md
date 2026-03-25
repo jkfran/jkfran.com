@@ -2,7 +2,7 @@
 layout: post
 title: "Capturing Only Unhandled Exceptions with Sentry in Python"
 author: jkfran
-categories: [blog]
+categories: [python]
 image: https://user-images.githubusercontent.com/6353928/226624793-ab4a4fca-81b0-4b24-85a1-982594f9441e.png
 ---
 

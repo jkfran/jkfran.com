@@ -2,7 +2,7 @@
 layout: post
 title: "How to Choose the Right Virtual Machine for Your Kubernetes Cluster on Azure"
 author: jkfran
-categories: [blog]
+categories: [devops]
 image: https://user-images.githubusercontent.com/6353928/225109979-9c3ddf33-eda8-461f-8d55-44fc809b13ff.png
 ---
 

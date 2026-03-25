@@ -2,7 +2,7 @@
 layout: post
 title: "Running Ubuntu ARM64 with Docker"
 author: jkfran
-categories: [blog]
+categories: [devops]
 image: https://user-images.githubusercontent.com/6353928/155136689-7f3ccb69-608a-43b6-a294-59f4bdb83ce4.png
 ---
 

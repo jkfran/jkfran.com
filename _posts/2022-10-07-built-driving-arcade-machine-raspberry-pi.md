@@ -2,7 +2,7 @@
 layout: post
 title: "I built a little driving arcade machine with a Raspberry Pi"
 author: jkfran
-categories: [blog]
+categories: [projects]
 image: https://user-images.githubusercontent.com/6353928/194561045-81b72eb8-84e1-4c67-a34d-65420871c8ef.png
 ---
 

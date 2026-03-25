@@ -2,7 +2,7 @@
 layout: post
 title: "Hello World"
 author: jkfran
-categories: [blog]
+categories: [general]
 image: assets/images/hello-world.png
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Selecting the Ideal Self-Hosted Vector Database"
 author: jkfran
-categories: [blog]
+categories: [ai]
 image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b952-bba82a29529f
 
 ---

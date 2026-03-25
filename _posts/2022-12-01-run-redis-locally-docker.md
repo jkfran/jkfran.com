@@ -2,7 +2,7 @@
 layout: post
 title: "How to run Redis locally with Docker"
 author: jkfran
-categories: [blog]
+categories: [devops]
 image: https://user-images.githubusercontent.com/6353928/205102657-c1d7d9ae-1925-4f70-9700-215789fa0fbe.png
 ---
 
