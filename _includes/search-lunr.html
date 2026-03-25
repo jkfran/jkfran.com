@@ -1,8 +1,6 @@
-<script src="{{site.baseurl}}/assets/js/lunr.js"></script>
-
 <form
   class="bd-search"
-  onSubmit="return lunr_search(document.getElementById('lunrsearch').value);"
+  onSubmit="return handleSearch(document.getElementById('lunrsearch').value);"
 >
   <input
     type="text"
@@ -19,4 +17,42 @@
   <ul></ul>
 </div>
 
-<script src="{{site.baseurl}}/assets/js/lunrsearchengine.js"></script>
+<script>
+(function () {
+  var searchReady = false;
+  var pendingSearch = null;
+
+  function loadScript(src, callback) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.onload = callback;
+    document.body.appendChild(s);
+  }
+
+  function loadSearchScripts() {
+    if (searchReady || window._searchLoading) return;
+    window._searchLoading = true;
+    loadScript('{{ site.baseurl }}/assets/js/lunr.js', function () {
+      loadScript('{{ site.baseurl }}/assets/js/lunrsearchengine.js', function () {
+        searchReady = true;
+        window._searchLoading = false;
+        if (pendingSearch) {
+          lunr_search(pendingSearch);
+          pendingSearch = null;
+        }
+      });
+    });
+  }
+
+  document.getElementById('lunrsearch').addEventListener('focus', loadSearchScripts, { once: true });
+
+  window.handleSearch = function (term) {
+    if (searchReady) {
+      return lunr_search(term);
+    }
+    pendingSearch = term;
+    loadSearchScripts();
+    return false;
+  };
+})();
+</script>
