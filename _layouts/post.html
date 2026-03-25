@@ -69,7 +69,7 @@ layout: default
                     {% assign sortedCategories = page.categories | sort %}
                     {% for category in sortedCategories %}
                     <li>
-                        <a href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>
+                        <a href="{{site.baseurl}}/category/{{ category | slugify }}/">{{ category }}</a>
                     </li>
                     {% endfor %}
                 </ul>
