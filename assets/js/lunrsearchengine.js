@@ -56,11 +56,9 @@ function lunr_search(term) {
     return false;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('lunrsearchresults').addEventListener('click', function (e) {
-        if (e.target.id === 'btnx' || e.target.closest('#btnx')) {
-            document.getElementById('lunrsearchresults').style.display = 'none';
-            document.body.classList.remove('modal-open');
-        }
-    });
+document.getElementById('lunrsearchresults').addEventListener('click', function (e) {
+    if (e.target.id === 'btnx' || e.target.closest('#btnx')) {
+        document.getElementById('lunrsearchresults').style.display = 'none';
+        document.body.classList.remove('modal-open');
+    }
 });
