@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Navbar toggle
+  var toggler = document.querySelector(".navbar-toggler");
+  if (toggler) {
+    toggler.addEventListener("click", function () {
+      var nav = document.getElementById("navbarMediumish");
+      nav.classList.toggle("show");
+      toggler.setAttribute("aria-expanded", nav.classList.contains("show"));
+    });
+  }
+
   // Smooth scroll to hash on page load
   setTimeout(function () {
     if (location.hash) {
