@@ -11,17 +11,16 @@
 {% seo %}
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
 <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/" >
 </head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 <body class="{{layout}}">
-	<!-- defer loading of font and font awesome -->
+	<!-- defer loading of font -->
 	<noscript id="deferred-styles">
 		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	</noscript>
 
 
@@ -88,7 +87,7 @@
                 Copyright © {{ site.time | date: "%Y" }} {{ site.title }}
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">
-		Follow me on <a target="_blank" href="https://twitter.com/jkfran_"><i class="bi bi-twitter"></i> Twitter</a> or <a target="_blank" href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/"><i class="bi bi-linkedin"></i> LinkedIn</a>
+		Follow me on <a target="_blank" href="https://x.com/jkfran_"><i class="bi bi-twitter-x"></i> X</a> or <a target="_blank" href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/"><i class="bi bi-linkedin"></i> LinkedIn</a>
             </div>
         </div>
     </div>
