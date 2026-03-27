@@ -36,7 +36,7 @@ layout: default
                 {% endif %}
 
                 <!-- Post Title -->
-                <h1 class="posttitle">{{ page.title }}</h1>
+                <h1>{{ page.title }}</h1>
 
             </div>
 
@@ -64,7 +64,7 @@ layout: default
             </div>
 
             <!-- Post Categories -->
-            <div class="after-post-cats">
+            <div>
                 <ul class="tags mb-4">
                     {% assign sortedCategories = page.categories | sort %}
                     {% for category in sortedCategories %}
@@ -84,7 +84,7 @@ layout: default
             </section>
 
             <!-- Prev/Next -->
-            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            <div class="row d-flex justify-content-between font-weight-bold">
             {% if page.previous.url %}
             <a class="prev d-block col-md-6" href="{{page.previous.url}}"> &laquo; {{page.previous.title}}</a>
             {% endif %}
