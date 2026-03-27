@@ -76,19 +76,6 @@ layout: default
             </div>
             <!-- End Categories -->
 
-            <!-- Post Tags -->
-            <div class="after-post-tags">
-                <ul class="tags">
-                    {% assign sortedTags = page.tags | sort %}
-                    {% for tag in sortedTags %}
-                    <li>
-                        <a href="{{site.baseurl}}/tags#{{ tag | replace: " ","-" }}">#{{ tag }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!-- End Tags -->
-
             <!-- Buy Me A Coffee -->
             <section class="buymeacoffee">
               <h2>Enjoyed this article? Support my work!</h2>
