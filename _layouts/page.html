@@ -7,5 +7,5 @@ layout: default
     <h2><span>{{ page.title }}</span></h2>
   </div>
 
-  <div class="article-post">{{content}}</div>
+  <div class="{% unless page.raw_content %}article-post{% endunless %}">{{content}}</div>
 </section>
