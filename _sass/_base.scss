@@ -12,6 +12,7 @@
 
 a {
   color: #00ab6b;
+  text-decoration: none;
   transition: all 0.2s;
 
   &:hover {
@@ -61,5 +62,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .link-dark {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8) !important;
+  text-decoration: none !important;
 }
