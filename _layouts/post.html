@@ -2,23 +2,18 @@
 layout: default
 ---
 
-<!-- Begin Article
-================================================== -->
 <div class="container">
     <div class="row">
 
-        <!-- Post Share -->
         <div class="col-md-2 ps-0">
             {% include share.html %}
         </div>
 
-        <!-- Post -->
         {% assign author = site.authors[page.author] %}
 
         <div class="col-md-9 order-first order-md-0">
             <div class="mainheading">
 
-                <!-- Author Box -->
                 {% if page.author %}
                 <div class="row post-top-meta">
                     <div class="col-12 col-md-3 col-lg-2 text-center text-md-start mb-4 mb-md-0">
@@ -35,55 +30,42 @@ layout: default
                 </div>
                 {% endif %}
 
-                <!-- Post Title -->
                 <h1>{{ page.title }}</h1>
 
             </div>
 
-            <!-- Post Featured Image -->
             {% if page.image %}
-
             <img class="featured-image img-fluid" loading="lazy" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
-
             {% endif %}
-            <!-- End Featured Image -->
 
-            <!-- Post Date -->
             <p>
                 <small>
-                <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
+                <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>
                 {% if page.last_modified_at %}
                 (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
                 {% endif %}
                 </small>
             </p>
 
-            <!-- Post Content -->
             <div class="article-post">
                 {{content}}
             </div>
 
-            <!-- Post Categories -->
             <div>
                 <ul class="tags mb-4">
                     {% assign sortedCategories = page.categories | sort %}
                     {% for category in sortedCategories %}
-                    <li>
-                        {{ category }}
-                    </li>
+                    <li>{{ category }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <!-- End Categories -->
 
-            <!-- Buy Me A Coffee -->
             <section class="buymeacoffee">
               <h2>Enjoyed this article? Support my work!</h2>
               <p>If you found this content helpful, consider buying me a coffee to show your appreciation.</p>
               <a class="btn-coffee" href="https://www.buymeacoffee.com/jkfran" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
             </section>
 
-            <!-- Prev/Next -->
             <div class="row d-flex justify-content-between fw-bold">
             {% if page.previous.url %}
             <a class="prev d-block col-md-6" href="{{page.previous.url}}"> &laquo; {{page.previous.title}}</a>
@@ -92,13 +74,8 @@ layout: default
             <a class="next d-block col-md-6 text-lg-end" href="{{page.next.url}}">{{page.next.title}} &raquo; </a>
             {% endif %}
             </div>
-            <!-- End Categories -->
 
         </div>
-        <!-- End Post -->
 
     </div>
 </div>
-<!-- End Article
-================================================== -->
-
