@@ -1,0 +1,141 @@
+// Projects page
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: rgba(0, 0, 0, 0.8);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #00ab6b;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+
+    .project-link {
+      color: #00ab6b;
+    }
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+}
+
+.project-featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #f8fffe 0%, #f0faf6 100%);
+  border-color: #00ab6b;
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-featured {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+
+    .project-header {
+      min-width: 200px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .project-meta {
+      min-width: 160px;
+      text-align: right;
+    }
+  }
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.project-stars {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e3b341;
+  white-space: nowrap;
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.project-link {
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.2s;
+
+  i {
+    font-size: 0.7rem;
+    margin-left: 2px;
+  }
+}
+
+.project-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lang-rust {
+  background-color: #dea584;
+}
+
+.lang-python {
+  background-color: #3572A5;
+}
+
+.lang-ruby {
+  background-color: #701516;
+}
