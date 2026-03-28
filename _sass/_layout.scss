@@ -21,14 +21,14 @@ section.recent-posts {
 
 .section-title {
   h2 {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 1px solid rgb(0 0 0 / 12.5%);
     font-weight: 700;
     font-size: 1.4rem;
     margin-bottom: 27px;
   }
 
   span {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.44);
+    border-bottom: 1px solid rgb(0 0 0 / 44%);
     display: inline-block;
     padding-bottom: 20px;
     margin-bottom: -1px;
@@ -37,15 +37,15 @@ section.recent-posts {
 
 // Navigation
 .mediumnavigation {
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
+  background: rgb(255 255 255 / 97%);
+  box-shadow: 0 2px 2px -2px rgb(0 0 0 / 15%);
   transition: top 0.2s ease-in-out;
 
   .form-control {
     font-size: 16px;
     border-radius: 30px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.09);
+    border: 1px solid rgb(0 0 0 / 9%);
     min-width: 180px;
   }
 
@@ -62,7 +62,7 @@ section.recent-posts {
   }
 }
 
-@media (min-width: 992px) {
+@media (width >= 992px) {
   .mediumnavigation .navbar-collapse {
     padding-bottom: 0;
   }
@@ -73,10 +73,10 @@ section.recent-posts {
   }
 }
 
-@media (max-width: 991px) {
+@media (width <= 991px) {
   .mediumnavigation .navbar-nav {
     padding-top: 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgb(0 0 0 / 10%);
   }
 
   .mediumnavigation .nav-link {
@@ -89,24 +89,24 @@ section.recent-posts {
 }
 
 .navbar-brand h1.sitetitle {
-  font-family: Righteous;
+  font-family: Righteous, cursive;
   font-size: 2.5rem;
 }
 
 // Footer
 .footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgb(0 0 0 / 5%);
   padding-top: 15px;
   padding-bottom: 12px;
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.44);
+  color: rgb(0 0 0 / 44%);
   margin-top: 50px;
   margin-bottom: 62px;
   position: relative;
   background: #fff;
 }
 
-@media (max-width: 999px) {
+@media (width <= 999px) {
   .footer {
     margin-top: 0;
     margin-bottom: 0;

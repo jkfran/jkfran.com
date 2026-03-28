@@ -2,9 +2,13 @@
   "private": true,
   "scripts": {
     "format": "prettier --write \"**/*.{html,scss,js,md,yml}\"",
-    "format:check": "prettier --check \"**/*.{html,scss,js,md,yml}\""
+    "format:check": "prettier --check \"**/*.{html,scss,js,md,yml}\"",
+    "lint:css": "stylelint \"_sass/**/*.scss\"",
+    "lint:css:fix": "stylelint \"_sass/**/*.scss\" --fix"
   },
   "devDependencies": {
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard-scss": "^17.0.0"
   }
 }

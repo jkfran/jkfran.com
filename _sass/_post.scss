@@ -1,14 +1,14 @@
 // Post and page specific styles
 
 .article-post {
-  font-family: Merriweather;
+  font-family: Merriweather, serif;
   font-size: 1.1rem;
   line-height: 1.84;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgb(0 0 0 / 80%);
 
   p,
   blockquote {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem;
   }
 
   ol,
@@ -51,7 +51,7 @@
   }
 
   img.shadow {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
   }
 
   table:not(.rouge-table) {
@@ -95,7 +95,7 @@
 
   span {
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.44);
+    color: rgb(0 0 0 / 44%);
     display: inline-block;
   }
 
@@ -108,7 +108,7 @@
 
 span.post-date {
   display: inline-block;
-  color: rgba(0, 0, 0, 0.44);
+  color: rgb(0 0 0 / 44%);
 }
 
 .featured-image {
