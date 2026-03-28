@@ -58,8 +58,7 @@ section.recent-posts {
     }
   }
 
-  .nav-item,
-  .dropdown-menu {
+  .nav-item {
     font-size: 0.9rem;
   }
 }
@@ -95,17 +94,3 @@ section.recent-posts {
   }
 }
 
-// Flex ordering for post layout
-.flex-first {
-  order: -1;
-}
-
-@media (min-width: 768px) {
-  .flex-md-unordered {
-    order: 1;
-  }
-
-  .flex-first {
-    order: 1;
-  }
-}
