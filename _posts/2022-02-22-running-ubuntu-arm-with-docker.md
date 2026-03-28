@@ -14,13 +14,13 @@ The only requirement is to have Docker installed. Because I run Linux (Ubuntu), 
 
 To install it:
 
-```
+```bash
 sudo snap install docker
 ```
 
 Set up Docker group:
 
-```
+```bash
 sudo addgroup --system docker
 sudo adduser $USER docker
 newgrp docker
@@ -35,7 +35,7 @@ By default, you can't run images that are not for your host architecture on Dock
 
 However, it is possible to set up Docker to use QEMU, an emulator to run these images, and there is an easy way to do it.
 
-```
+```bash
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 
@@ -43,7 +43,7 @@ This simple container will configure your host for you, automatically setting up
 
 And we are done! In this case, I am running an Ubuntu image for ARM64:
 
-```
+```bash
 docker run -it --rm --platform linux/arm64 arm64v8/ubuntu sh
 ```
 

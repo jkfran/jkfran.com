@@ -16,7 +16,7 @@ If you want to learn more about it. Have a look at the [official site](https://p
 
 You can check yourself if PipeWire is running:
 
-```
+```bash
 systemctl --user status pipewire pipewire-session-manager
 ```
 
@@ -24,19 +24,19 @@ systemctl --user status pipewire pipewire-session-manager
 
 Install the client package:
 
-```
+```bash
 sudo apt install pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack
 ```
 
 The project maintainer now recommends a more advanced session manager when using Pipewire as a system sound server, so:
 
-```
+```bash
 sudo apt install wireplumber pipewire-media-session-
 ```
 
 Copy conf files:
 
-```
+```bash
 sudo cp /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/
 sudo cp /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf /etc/ld.so.conf.d/
 sudo ldconfig
@@ -44,7 +44,7 @@ sudo ldconfig
 
 Remove the Bluetooth package:
 
-```
+```bash
 sudo apt remove pulseaudio-module-bluetooth
 ```
 
@@ -53,7 +53,7 @@ Edit your `/etc/bluetooth/main.conf` and uncomment the ControllerMode line with 
 
 And, finally enable the media session by running this command:
 
-```
+```bash
 systemctl --user --now enable wireplumber.service
 ```
 

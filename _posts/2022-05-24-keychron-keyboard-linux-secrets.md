@@ -32,7 +32,7 @@ image: https://user-images.githubusercontent.com/6353928/170081400-318ce365-e8ed
 
 On Linux, the Keychron K2 doesn't register any of the F1-F12 function keys as actual F keys, instead, treating them as multimedia keys by default. Here's how to fix it!
 
-## To fix it:
+## To fix it
 
 Set the keyboard to Windows mode via the side switch and use the `Fn + X + L` shortcut to set the function key row to "Function" mode.
 
@@ -40,7 +40,7 @@ Run: `echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode`
 
 Once complete, the F1-F12 keys should work properly, and holding Fn turns them into multimedia keys.
 
-## To persist this change:
+## To persist this change
 
 Run this to add a module option for hid_apple:
 

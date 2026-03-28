@@ -87,7 +87,7 @@ Test it manually:
 
 You should see something like:
 
-```
+```text
 === Remote Control Watchdog 22:05:42 ===
 [HEALTHY] claude (%0)
 [OK] All Remote Control sessions healthy
@@ -109,14 +109,14 @@ crontab -e
 
 **Important:** Add a `PATH` line before the cron entry. Cron runs with a minimal PATH that doesn't include `/opt/homebrew/bin`, so it can't find `tmux`. Without this, the watchdog will run but report `[SKIP]` every single time because it literally cannot execute the `tmux` commands it needs.
 
-```
+```text
 PATH=/opt/homebrew/bin:/usr/bin:/bin
 */5 * * * * ~/.claude/scripts/remote-watchdog.sh >> /tmp/remote-watchdog.log 2>&1
 ```
 
 If you've never used crontab before, you'll see:
 
-```
+```text
 crontab: no crontab for yourname - using an empty one
 crontab: installing new crontab
 ```
@@ -190,7 +190,7 @@ tail -f /tmp/remote-watchdog.log
 
 A healthy log looks like:
 
-```
+```text
 === Remote Control Watchdog 13:40:00 ===
 [WARN] claude (%1): 'reconnecting' — confirming next check
 === Remote Control Watchdog 13:45:00 ===

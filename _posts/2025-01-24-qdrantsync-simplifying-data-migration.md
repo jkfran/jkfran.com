@@ -8,7 +8,7 @@ image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b9
 
 I recently developed **QdrantSync**, a CLI tool to simplify and streamline migrating collections and data points between [Qdrant](https://qdrant.tech/documentation/) instances. It was born out of my experience with Qdrant snapshots, which can be tedious and complex—especially when moving data to clusters with different configurations or sizes.
 
-### Why QdrantSync?
+## Why QdrantSync?
 
 Snapshots are powerful, but they’re not always the best option for every scenario. Challenges arise when migrating data:
 
@@ -18,36 +18,39 @@ Snapshots are powerful, but they’re not always the best option for every scena
 
 QdrantSync solves these pain points by providing a robust and flexible alternative for seamless data transfer.
 
-### Key Features:
+### Key Features
 
 - **Customizable Migration**: Fine-tune schema settings like replication factors and prefixes to suit your destination cluster.
 - **Incremental Migration**: Mark and track migrated data, allowing you to resume or refresh migrations without duplication.
 - **Scalable Batch Processing**: Scroll through large datasets efficiently with real-time progress tracking via `tqdm`.
 - **Error Handling**: Safe operations ensure no unintended overwrites or data loss, with options to continue migrations for existing collections.
 
-### Getting Started:
+### Getting Started
 
 1. **Install**:
+
    ```bash
    pip install QdrantSync
    qdrantsync --help
    ```
+
 2. **Migrate Data**:
+
    ```bash
    qdrantsync --source-url <source> --destination-url <destination> --migration-id <id>
    ```
 
-### Use Cases:
+### Use Cases
 
 - Migrate Qdrant data between environments (e.g., staging to production).
 - Upgrade infrastructure or move to a different cloud provider.
 - Perform selective or incremental backups.
 
-### Contribute:
+### Contribute
 
 I’d love to hear your feedback or see contributions! The project is open-source and MIT-licensed.
 
-### GitHub Repo:
+### GitHub Repo
 
 Check it out here: [GitHub](https://github.com/jkfran/QdrantSync).
 

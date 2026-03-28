@@ -8,19 +8,19 @@ image: https://github.com/jkfran/jkfran.com/assets/6353928/a8ed0521-a89e-4606-99
 
 Welcome to a new post on my blog. We'll delve into an interesting aspect of working with MLflow – adding a custom metric to validate JSON outputs. This tutorial is particularly useful for developers and data scientists looking to ensure the integrity and structure of their model's outputs when JSON is expected.
 
-#### Why Validate JSON Outputs?
+## Why Validate JSON Outputs?
 
 In the world of machine learning and data science, models often need to output data in structured formats, JSON being one of the most popular due to its versatility and wide adoption in web services and applications. Ensuring your model reliably produces valid JSON responses is crucial, especially in production environments where data consistency and integrity are paramount.
 
-#### Introducing Custom Metrics in MLflow
+### Introducing Custom Metrics in MLflow
 
 MLflow, an open-source platform for the machine learning lifecycle, includes capabilities for tracking experiments, packaging code into reproducible runs, and managing models. However, it might not natively support specific validation checks like verifying JSON output. This is where custom metrics come into play.
 
-#### Step-by-Step Guide to Creating a JSON Validity Metric
+### Step-by-Step Guide to Creating a JSON Validity Metric
 
 Below is a detailed walkthrough on how to implement a custom metric in MLflow for checking JSON validity. This script demonstrates adding such a metric and using it to evaluate a model's predictions.
 
-##### 1. Define the JSON Validity Evaluation Function
+#### 1. Define the JSON Validity Evaluation Function
 
 First, we define an evaluation function that checks if a given string is valid JSON. This function iterates through each model prediction, validating each one and appending the result (1 for valid, 0 for invalid) to a list of scores.
 
@@ -36,7 +36,7 @@ def _json_validity_eval_fn(outputs, references):
     return MetricValue(validity_scores)
 ```
 
-##### 2. Implement a Helper Function to Check JSON Validity
+#### 2. Implement a Helper Function to Check JSON Validity
 
 A helper function uses Python's `json.loads` method to determine if a string is a valid JSON. It returns True for valid JSON strings and False otherwise.
 
@@ -49,7 +49,7 @@ def _is_valid_json(s):
         return False
 ```
 
-##### 3. Create the Custom Metric
+#### 3. Create the Custom Metric
 
 We then wrap our evaluation function in a custom metric definition using MLflow's `make_metric` function, specifying our evaluation function, whether a higher score is better, and a name for the metric.
 
@@ -62,7 +62,7 @@ def json_validity() -> EvaluationMetric:
     )
 ```
 
-##### 4. Evaluate the Model
+#### 4. Evaluate the Model
 
 With the custom metric defined, we can now use it to evaluate a model's output. In this example, we use a remote tracking server plus MLflow deployments, feel free to adapt this to your needs, the DataFrame in my example are two inputs designed to produce JSON outputs and invoke `mlflow.evaluate` with our custom metric.
 
@@ -81,7 +81,7 @@ with mlflow.start_run() as run:
     )
 ```
 
-##### Final code
+#### Final code
 
 ```python
 import json
@@ -166,7 +166,7 @@ with mlflow.start_run() as run:
     print(f"Evaluation table: \n{eval_table}")
 ```
 
-#### Conclusion
+### Conclusion
 
 Adding custom metrics to MLflow allows for flexible and precise evaluation of your models, tailored to your specific needs. By validating JSON outputs, you ensure that your model meets the requirements for structured data output, enhancing its reliability and applicability in real-world scenarios.
 

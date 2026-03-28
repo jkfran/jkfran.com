@@ -28,7 +28,7 @@ Clone the repo:`git clone https://github.com/PixlOne/logiops.git`
 
 Compile it:
 
-```
+```bash
 mkdir build
 cd build
 cmake ..
@@ -37,7 +37,7 @@ make
 
 And install it:
 
-```
+```bash
 sudo make install
 sudo systemctl enable --now logid
 ```
@@ -48,7 +48,7 @@ To enable the thumb gestures, we need to use a particular configuration. This on
 
 This configuration needs to be save on `/etc/logid.cfg`:
 
-```
+```text
 devices: ({
   name: "Wireless Mouse MX Master 2S";
 
