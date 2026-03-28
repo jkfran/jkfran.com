@@ -50,7 +50,7 @@ Something that cached my attention was how fast this phone was after installing 
 Once we have an SSH server installed, we are ready to start bashing:
 ![image](https://user-images.githubusercontent.com/6353928/150141263-678c6459-17aa-4f65-bb7a-6ea247bf5a8b.png)
 
-**An important reminder is to change the default root password**
+## An important reminder is to change the default root password
 
 ### Autotouch
 

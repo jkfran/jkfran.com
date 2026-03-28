@@ -16,11 +16,11 @@ The mouse exists in 3 versions:
 
 The functionalities are the same in all three, I have the 2S, so one part of this guide will focus on this one.
 
-# logiops
+## logiops
 
 logiops is an unofficial driver for Logitech mice and keyboards. The source code can be found in [their GitHub repo](https://github.com/PixlOne/logiops).
 
-## Installation
+### Installation
 
 For Debian/Ubuntu systems, first get all the needed dependencies: `sudo apt install cmake libevdev-dev libudev-dev libconfig++-dev`.
 
@@ -42,7 +42,7 @@ sudo make install
 sudo systemctl enable --now logid
 ```
 
-## Configuration
+### Configuration
 
 To enable the thumb gestures, we need to use a particular configuration. This one is for the Master MX 2S. Feel free to do any modifications:
 

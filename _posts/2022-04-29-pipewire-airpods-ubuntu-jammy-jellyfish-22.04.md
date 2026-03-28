@@ -8,7 +8,7 @@ image: https://user-images.githubusercontent.com/6353928/166063808-49214484-38ec
 
 I had some trouble after doing a fresh install of Ubuntu 22.04 with my AirPods. So I will share my system configuration, and part of it includes switching from ALSA to PipeWire.
 
-# What is PipeWire
+## What is PipeWire
 
 PipeWire is a server for handling audio and video streams and hardware on Linux. In April 2021, Fedora became the first Linux distribution to ship PipeWire for audio by default through its release 34 and guess what? PipeWire is pre-installed out-of-the-box on Ubuntu 22.04 and automatically runs as a background service, but it is not the default audio server.
 
@@ -20,7 +20,7 @@ You can check yourself if PipeWire is running:
 systemctl --user status pipewire pipewire-session-manager
 ```
 
-# How to enable it
+## How to enable it
 
 Install the client package:
 
