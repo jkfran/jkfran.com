@@ -65,11 +65,8 @@
   }
 }
 
-// Page layout overrides (about page etc.)
-.layout-page .article-post {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// Page content (about, projects, etc.)
+.page-content {
   font-size: 1rem;
 
   p {

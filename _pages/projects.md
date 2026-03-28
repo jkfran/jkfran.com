@@ -2,7 +2,6 @@
 layout: page
 title: Open Source Projects
 permalink: /projects
-raw_content: true
 ---
 
 <div class="projects-grid">
