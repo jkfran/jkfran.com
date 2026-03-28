@@ -90,16 +90,4 @@ permalink: /projects
     </div>
   </a>
 
-  <a href="https://github.com/jkfran/homebrew-killport" target="_blank" rel="noopener noreferrer" class="project-card">
-    <div class="project-header">
-      <h3>homebrew-killport</h3>
-      <span class="project-stars"><i class="bi bi-star-fill"></i> 1</span>
-    </div>
-    <p>A custom Homebrew tap for Killport, a command-line utility to easily terminate processes running on a specific port.</p>
-    <div class="project-meta">
-      <span class="project-lang"><span class="lang-dot lang-ruby"></span> Ruby</span>
-      <span class="project-link">View on GitHub <i class="bi bi-arrow-right"></i></span>
-    </div>
-  </a>
-
 </div>
