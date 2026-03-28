@@ -4,11 +4,11 @@ title: "Selecting the Ideal Self-Hosted Vector Database"
 author: jkfran
 categories: [ai]
 image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b952-bba82a29529f
-
 ---
 
 As an MLOps engineer, I was recently entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.
 After a preliminary selection from the most popular vector/embedding databases, the potential candidates are Milvus, Pinecone, Qdrant, and PGVector (Postgres). With these options at hand, I had the opportunity to evaluate each database in terms of:
+
 - Scale
 - Performance
 - Disaster recovery
@@ -27,7 +27,6 @@ Despite the undeniable merits of Milvus, including its high performance, scalabl
 
 While Milvus undoubtedly excels in many dimensions, it underscored the importance of aligning the capabilities of a tool with our project's specific needs, a lesson we carried forward in our quest for the optimal vector database.
 
-
 ## Pinecone: A Powerful Proprietary Solution
 
 Our exploration then led us to Pinecone, a fully managed vector database renowned for adeptly handling unstructured search engine requirements. Pinecone distinguishes itself with its intuitive features and streamlined operations, which were evident in the recent 2.0 release.
@@ -37,7 +36,6 @@ The standout feature in this new release was the introduction of single-stage fi
 However, despite Pinecone scoring highly on most of our key considerations – such as performance, scale, and data persistence – it fell short in a couple of critical areas for us. Firstly, Pinecone is a proprietary paid solution and not an open-source platform. Secondly, Pinecone does not provide a self-hosted option. This was a crucial requirement for us, as we were specifically seeking a self-hosted vector database to maintain greater control over our data and operations.
 
 In conclusion, while Pinecone's impressive capabilities and innovative features make it an excellent choice for many, it was not the perfect fit for our specific scenario due to its proprietary nature and lack of a self-hosting option. But, I can see Pinecone as the perfect choice for companies that need a solution but don't want to deal with self-hosting this kind of service.
-
 
 ## Qdrant: A Robust Rust-built Vector Database
 
@@ -52,7 +50,6 @@ A major attraction of Qdrant was its ease to run container. This allows for smoo
 Despite the many strong points of Qdrant, our research did uncover some online concerns like missing [authentication in the Qdrant API](https://github.com/qdrant/qdrant/issues/1739), this feature was addressed [recently](https://github.com/qdrant/qdrant/pull/1745). But, it is in the development branch. However, this is a minor issue for us since we are not exposing the database to the outside. This is a relatively new Database and offers excellent performance, making it an enticing choice for our needs.
 
 In the end, the combination of dynamic query planning, payload data indexing, Scalar Quantization, and seamless Kubernetes integration swayed us in Qdrant's favor. Despite minor concerns, its robust performance, efficiency, and compatibility made it an ideal choice for our specific requirements.
-
 
 ## PGVector: A Trusted Postgres Extension with Scaling Challenges
 

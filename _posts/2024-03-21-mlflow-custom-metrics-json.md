@@ -6,7 +6,6 @@ categories: [python]
 image: https://github.com/jkfran/jkfran.com/assets/6353928/a8ed0521-a89e-4606-9922-13c5df584fd6
 ---
 
-
 Welcome to a new post on my blog. We'll delve into an interesting aspect of working with MLflow – adding a custom metric to validate JSON outputs. This tutorial is particularly useful for developers and data scientists looking to ensure the integrity and structure of their model's outputs when JSON is expected.
 
 #### Why Validate JSON Outputs?

@@ -6,7 +6,7 @@ categories: [tools]
 image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/claude-remote-control.jpg
 ---
 
-Claude Code's `/remote-control` is one of those features that sounds life-changing — start a task at your desk, walk away, keep working from your phone. And it *is* life-changing, until the connection silently dies after 15–60 minutes and never recovers. The status bar shows "Remote Control reconnecting" indefinitely, and your only option is to manually cycle `/remote-control` at the terminal. Which, of course, defeats the entire purpose of remote control.
+Claude Code's `/remote-control` is one of those features that sounds life-changing — start a task at your desk, walk away, keep working from your phone. And it _is_ life-changing, until the connection silently dies after 15–60 minutes and never recovers. The status bar shows "Remote Control reconnecting" indefinitely, and your only option is to manually cycle `/remote-control` at the terminal. Which, of course, defeats the entire purpose of remote control.
 
 This is a known issue ([anthropics/claude-code#34255](https://github.com/anthropics/claude-code/issues/34255)), and there's a community tool called **claude-remote-watchdog** that auto-detects and fixes dead sessions. But getting it working properly has some gotchas nobody tells you about. Here's the complete walkthrough, including every pitfall I hit along the way.
 
@@ -237,15 +237,15 @@ If you set `"effortLevel": "max"` in `settings.json`, it gets silently downgrade
 
 ## Quick Reference
 
-| What | Command |
-|------|---------|
-| Start Claude with everything | `c` (or `c -c` to continue) |
-| Check watchdog logs | `tail -20 /tmp/remote-watchdog.log` |
-| Run watchdog manually | `~/.claude/scripts/remote-watchdog.sh` |
-| Check crontab | `crontab -l` |
-| Check tmux sessions | `tmux ls` |
-| Attach to tmux | `tmux attach -t life` |
-| Detach from tmux | `Ctrl+B` then `D` |
+| What                         | Command                                |
+| ---------------------------- | -------------------------------------- |
+| Start Claude with everything | `c` (or `c -c` to continue)            |
+| Check watchdog logs          | `tail -20 /tmp/remote-watchdog.log`    |
+| Run watchdog manually        | `~/.claude/scripts/remote-watchdog.sh` |
+| Check crontab                | `crontab -l`                           |
+| Check tmux sessions          | `tmux ls`                              |
+| Attach to tmux               | `tmux attach -t life`                  |
+| Detach from tmux             | `Ctrl+B` then `D`                      |
 
 ---
 

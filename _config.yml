@@ -42,4 +42,4 @@ kramdown:
     block:
       line_numbers: true
 
-exclude: [LICENSE, README.md, Gemfile, Gemfile.lock]
+exclude: [LICENSE, README.md, Gemfile, Gemfile.lock, package.json, package-lock.json, node_modules]

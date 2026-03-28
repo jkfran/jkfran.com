@@ -1,0 +1,15 @@
+_site/
+.jekyll-cache/
+.sass-cache/
+node_modules/
+Gemfile.lock
+package-lock.json
+CLAUDE.md
+
+# Prettier can't parse Liquid/Jekyll template syntax
+_layouts/
+_includes/
+assets/js/lunr.js
+assets/js/lunrsearchengine.js
+index.html
+404.html

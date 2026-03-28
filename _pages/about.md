@@ -21,6 +21,7 @@ permalink: /about
     <p><strong>Full Stack Developer at Howamigoing</strong> (January 2018 - September 2019)<br>First employee at the startup. Worked closely with the CEO to deliver an MVP SaaS product and helped secure the first round of funding.</p>
 
     <p>For more about my earlier experience, check my <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/">LinkedIn profile</a>.</p>
+
   </div>
 
   <div class="col-md-4">

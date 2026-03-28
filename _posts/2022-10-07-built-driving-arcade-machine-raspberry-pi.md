@@ -8,7 +8,7 @@ image: https://user-images.githubusercontent.com/6353928/194561045-81b72eb8-84e1
 
 Hello! This summer, I went to Spain as usual and decided to stay longer for different reasons. I wanted to occupy my mind and build something fun during this time. I also wanted to involve my nieces and do something for them, so they remember me when I am away.
 
-I started looking around in my parents' house, 
+I started looking around in my parents' house,
 it's a big house with a lot of space, enough to keep things that nobody needs anymore,
 so I went to the garage, and I found this old screen:
 
@@ -29,7 +29,6 @@ We dedicated some time to building our own game. I wanted to start with somethin
 
 ![image](https://user-images.githubusercontent.com/6353928/194565167-25fb1857-dac9-4e8f-bacd-5613034129bc.png)
 
-
 We ended up making many changes to the game, and my niece even wanted to change the bars for 2D warriors:
 
 ![image](https://user-images.githubusercontent.com/6353928/194565506-f02dff38-5fb2-4141-84ed-414a85405ecd.png)
@@ -39,6 +38,7 @@ I was not surprised. When I bought it, it was a revolution but not anymore.
 The Raspberry was struggling a bit to run this simple game, but we had a lot of fun just doing the game, so I didn't care much.
 
 When she left, I knew I had two options:
+
 - Stop the adventure here
 - Build this pong machine and find two remotes for two players
 
@@ -53,7 +53,6 @@ It's an old driving controller for PlayStation 1.
 I also found this old stool that I decided was going to be the machine body:
 
 ![image](https://user-images.githubusercontent.com/6353928/194569868-dbaf582d-c43b-4460-a2bf-310b5e979021.png)
-
 
 I knew that building this kind of machine would require more computational power so I had to buy the latest Raspberry Pi 4 to finish this project,
 setting up the controls was a nightmare, but once I was done, I got a few games on Retropie

@@ -14,7 +14,10 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   color: rgba(0, 0, 0, 0.8);
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
 
   &:hover {
     transform: translateY(-4px);
@@ -133,7 +136,7 @@
 }
 
 .lang-python {
-  background-color: #3572A5;
+  background-color: #3572a5;
 }
 
 .lang-ruby {

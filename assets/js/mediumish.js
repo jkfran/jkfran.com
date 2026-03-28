@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!link) return;
 
     if (
-      link.pathname.replace(/^\//, "") ===
-        location.pathname.replace(/^\//, "") &&
+      link.pathname.replace(/^\//, "") === location.pathname.replace(/^\//, "") &&
       link.hostname === location.hostname
     ) {
       var target = document.querySelector(link.hash);
