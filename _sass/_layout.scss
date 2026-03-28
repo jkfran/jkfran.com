@@ -61,12 +61,35 @@ section.recent-posts {
   .nav-item {
     font-size: 0.9rem;
   }
+
+  .navbar-collapse {
+    padding-bottom: 0.5rem;
+  }
 }
 
 @media (min-width: 992px) {
+  .mediumnavigation .navbar-collapse {
+    padding-bottom: 0;
+  }
+
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.8rem;
     padding-left: 0.8rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .mediumnavigation .navbar-nav {
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .mediumnavigation .nav-link {
+    padding: 0.5rem 0;
+  }
+
+  .mediumnavigation .form-control {
+    min-width: auto;
   }
 }
 
