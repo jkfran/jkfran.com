@@ -5,6 +5,7 @@ description: "A blog featuring tutorials, ideas, and anything interesting to me.
 logo: "assets/images/logo.png"
 favicon: "assets/images/logo.png"
 baseurl: /
+url: "https://jkfran.com"
 insights: "A7gP_jf0zVamA1Pm"
 include: ["_pages"]
 permalink: /:title/
@@ -26,15 +27,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-archives
-
-# Archives
-jekyll-archives:
-  enabled:
-    - categories
-  layout: archive
-  permalinks:
-    category: "/category/:name/"
 
 # Pagination
 paginate: 9

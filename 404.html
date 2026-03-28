@@ -6,9 +6,17 @@ permalink: /404.html
 
 <div class="text-center">
   <h1 class="display-1 mt-5 mb-4">
-    <span class="badge badge-danger">404</span> Page does not exist!
+    <span class="badge badge-danger">404</span>
   </h1>
-  <p>
-    Please use the search bar at the top or visit the <a href="/">homepage</a>!
+  <p class="mb-4">
+    This page doesn't exist. Try searching above or check out the latest posts below.
   </p>
+</div>
+
+<div class="section-title">
+  <h2><span>Recent Posts</span></h2>
+</div>
+
+<div class="row listrecent">
+  {% for post in site.posts limit:6 %} {% include postbox.html %} {% endfor %}
 </div>
