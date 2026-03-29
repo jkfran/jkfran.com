@@ -6,7 +6,6 @@ logo: "assets/images/logo.png"
 favicon: "assets/images/logo.png"
 baseurl: /
 url: "https://jkfran.com"
-insights: "A7gP_jf0zVamA1Pm"
 include: ["_pages"]
 permalink: /:title/
 
