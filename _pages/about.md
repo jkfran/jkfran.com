@@ -18,7 +18,7 @@ permalink: /about
 <div class="row">
   <div class="col-lg-8 pe-lg-5">
 
-<p>I have been obsessed with technology for as long as I can remember. What started as a childhood curiosity grew into a self-taught passion and eventually a career dedicated to building better software. Throughout my career, I have purposely moved across various layers of the stack — from coding e-commerce modules and Flask applications to engineering web systems at Canonical and leading MLOps projects at <a href="https://www.builder.ai/">Builder.ai</a>.</p>
+<p>I have been obsessed with technology for as long as I can remember. What started as a childhood curiosity grew into a self-taught passion and eventually a career dedicated to building better software. Throughout my career, I have purposely moved across various layers of the stack — from coding e-commerce modules and Flask applications to engineering web systems at Canonical and leading MLOps projects at Builder.ai.</p>
 
 <p>Today, I work as a Senior Software Engineer at PolyModels Hub in London, where I focus on DevOps engineering for scientific software platforms.</p>
 
@@ -40,7 +40,7 @@ permalink: /about
   <div class="timeline-marker"></div>
   <div class="timeline-content">
     <h4>Associate Tech Lead / Senior MLOps Engineer</h4>
-    <p class="timeline-company"><a href="https://www.builder.ai/">Builder.ai</a></p>
+    <p class="timeline-company">Builder.ai</p>
     <p class="timeline-date">February 2023 - May 2025</p>
     <p>Progressed from Senior Software Engineer to Associate Tech Lead within the MLOps team. Spearheaded the integration of advanced AI solutions and ML lifecycle management, growing the team from two to five members. Built FastAPI services, optimised ML pipelines, directed Kubernetes orchestration, and integrated vector databases and monitoring systems.</p>
   </div>
