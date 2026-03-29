@@ -1,0 +1,115 @@
+// About page
+
+.about-hero {
+  padding: 1rem 0 0;
+}
+
+.about-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #00ab6b;
+  padding: 3px;
+}
+
+.about-location {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.95rem;
+}
+
+.about-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.1rem;
+    transition:
+      background 0.2s,
+      color 0.2s;
+
+    &:hover {
+      background: #00ab6b;
+      color: #fff;
+    }
+  }
+}
+
+// Work experience timeline
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2rem;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00ab6b;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #00ab6b;
+  transform: translateX(-5px);
+}
+
+.timeline-content {
+  h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  p:last-child {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+.timeline-company {
+  font-weight: 600;
+  color: #00ab6b;
+  font-size: 0.95rem;
+
+  a {
+    color: #00ab6b;
+  }
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.44);
+}
