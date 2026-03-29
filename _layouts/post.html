@@ -38,13 +38,16 @@ layout: default
             <img class="featured-image img-fluid" loading="lazy" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
             {% endif %}
 
-            <p>
-                <small>
-                <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>
+            {% assign words = content | number_of_words %}
+            {% if words < 200 %}{% assign read_time = 1 %}{% else %}{% assign read_time = words | divided_by: 200 %}{% endif %}
+            <p class="post-meta-info">
+                <span class="post-date"><time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>
+                <span class="post-meta-sep"><i class="bi bi-dot"></i></span>
+                <span class="post-read-time"><i class="bi bi-clock"></i> {{ read_time }} min read</span>
                 {% if page.last_modified_at %}
-                (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+                <span class="post-meta-sep"><i class="bi bi-dot"></i></span>
+                <span class="post-updated">Updated {{ page.last_modified_at | date: "%b %-d, %Y" }}</span>
                 {% endif %}
-                </small>
             </p>
 
             <div class="article-post">

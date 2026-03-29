@@ -103,6 +103,24 @@
   }
 }
 
+.post-meta-info {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.44);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.post-meta-sep {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.post-read-time i,
+.post-updated i {
+  font-size: 0.75rem;
+}
+
 span.post-date {
   display: inline-block;
   color: rgba(0, 0, 0, 0.44);

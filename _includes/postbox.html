@@ -7,7 +7,7 @@
         {% endif %}
       </a>
     </div>
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
       <h2 class="card-title">
         <a class="text-dark text-decoration-none" href="{{ site.baseurl }}{{ post.url }}"
           >{{ post.title }}</a
@@ -16,6 +16,11 @@
       <h4 class="card-text">
         {{ post.excerpt | strip_html | truncatewords:30 }}
       </h4>
+      {% assign words = post.content | number_of_words %}
+      {% if words < 200 %}{% assign read_time = 1 %}{% else %}{% assign read_time = words | divided_by: 200 %}{% endif %}
+      <p class="card-meta mt-auto">
+        {{ post.date | date_to_string }} <i class="bi bi-dot"></i> {{ read_time }} min read
+      </p>
     </div>
   </div>
 </div>
