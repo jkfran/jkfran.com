@@ -3,6 +3,10 @@
   "rules": {
     "selector-class-pattern": null,
     "scss/at-rule-no-unknown": true,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "media-feature-range-notation": "prefix",
+    "color-function-notation": "legacy",
+    "color-function-alias-notation": null,
+    "alpha-value-notation": "number"
   }
 }

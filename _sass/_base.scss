@@ -1,6 +1,6 @@
 // Base element styles and typography
 
-@media screen and (width >= 1500px) {
+@media screen and (min-width: 1500px) {
   html {
     font-size: 18px;
   }
@@ -40,7 +40,7 @@ blockquote {
   border-left: 4px solid #00ab6b;
   padding: 0 20px;
   font-style: italic;
-  color: rgb(0 0 0 / 50%);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 img {
@@ -73,6 +73,6 @@ h6 {
 }
 
 .link-dark {
-  color: rgb(0 0 0 / 80%) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
   text-decoration: none !important;
 }

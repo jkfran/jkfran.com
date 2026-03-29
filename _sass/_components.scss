@@ -18,7 +18,7 @@
   }
 
   h4.card-text {
-    color: rgb(0 0 0 / 44%);
+    color: rgba(0, 0, 0, 0.44);
     font-size: 0.95rem;
     line-height: 1.6;
     font-weight: 400;
@@ -32,12 +32,12 @@
 // Share buttons
 .share {
   text-align: center;
-  color: rgb(0 0 0 / 44%);
-  fill: rgb(0 0 0 / 44%);
+  color: rgba(0, 0, 0, 0.44);
+  fill: rgba(0, 0, 0, 0.44);
 
   a {
-    color: rgb(0 0 0 / 44%);
-    fill: rgb(0 0 0 / 44%);
+    color: rgba(0, 0, 0, 0.44);
+    fill: rgba(0, 0, 0, 0.44);
   }
 
   p {
@@ -61,13 +61,13 @@
   top: 100px;
 }
 
-@media (width >= 1024px) {
+@media (min-width: 1024px) {
   .share ul li {
     display: block;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .share {
     margin-top: 30px;
   }
@@ -120,13 +120,13 @@ ul.tags {
     font-size: 0.9rem;
 
     a {
-      background: rgb(0 0 0 / 5%);
-      color: rgb(0 0 0 / 60%);
+      background: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.6);
       border-radius: 3px;
       padding: 5px 10px;
 
       &:hover {
-        background: rgb(0 0 0 / 7%);
+        background: rgba(0, 0, 0, 0.07);
         text-decoration: none;
       }
     }

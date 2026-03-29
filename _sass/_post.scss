@@ -4,7 +4,7 @@
   font-family: Merriweather, serif;
   font-size: 1.1rem;
   line-height: 1.84;
-  color: rgb(0 0 0 / 80%);
+  color: rgba(0, 0, 0, 0.8);
 
   p,
   blockquote {
@@ -51,7 +51,7 @@
   }
 
   img.shadow {
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   }
 
   table:not(.rouge-table) {
@@ -92,7 +92,7 @@
 
   span {
     font-size: 0.9rem;
-    color: rgb(0 0 0 / 44%);
+    color: rgba(0, 0, 0, 0.44);
     display: inline-block;
   }
 
@@ -105,7 +105,7 @@
 
 span.post-date {
   display: inline-block;
-  color: rgb(0 0 0 / 44%);
+  color: rgba(0, 0, 0, 0.44);
 }
 
 .featured-image {
