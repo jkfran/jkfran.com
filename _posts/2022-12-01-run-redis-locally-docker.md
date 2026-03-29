@@ -3,6 +3,7 @@ layout: post
 title: "How to run Redis locally with Docker"
 author: jkfran
 categories: [devops]
+description: "A quick guide to running Redis in Docker with a single command and using the QRedis GUI client for easier data management."
 image: https://user-images.githubusercontent.com/6353928/205102657-c1d7d9ae-1925-4f70-9700-215789fa0fbe.png
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: "Introducing Killport: A Simple CLI Tool to Free Ports in Linux"
 author: jkfran
 categories: [linux]
+description: "Introducing Killport, an open-source Rust CLI tool to easily kill processes listening on specific ports in Linux."
 image: https://user-images.githubusercontent.com/6353928/226195669-85263e2b-6953-4476-8e42-5892dcce28dd.png
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: "SOLID Principles in Python"
 author: jkfran
 categories: [python]
+description: "A practical overview of the five SOLID design principles with Python code examples for writing clean, maintainable software."
 image: https://user-images.githubusercontent.com/6353928/156574349-a8e92eda-c016-4a51-9c8c-6776cefd7f49.png
 ---
 

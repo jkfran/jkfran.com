@@ -3,6 +3,7 @@ layout: post
 title: "Introduction to vector / embedding databases"
 author: jkfran
 categories: [ai]
+description: "An introduction to vector databases, covering word, image, and audio embeddings, how they work, and when to use them."
 image: https://github.com/jkfran/jkfran.com/assets/6353928/c709f19e-ebab-49a1-a5f1-6a13475d5f33
 ---
 

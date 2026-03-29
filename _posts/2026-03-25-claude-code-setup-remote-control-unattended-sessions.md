@@ -3,6 +3,7 @@ layout: post
 title: "My Claude Code Setup: Fixing Remote Control and Running Unattended Sessions"
 author: jkfran
 categories: [tools]
+description: "A complete guide to fixing Claude Code remote control disconnections using tmux, the claude-remote-watchdog, and cron."
 image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/claude-remote-control.jpg
 ---
 

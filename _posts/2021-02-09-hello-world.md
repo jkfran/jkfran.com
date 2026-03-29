@@ -3,6 +3,7 @@ layout: post
 title: "Hello World"
 author: jkfran
 categories: [general]
+description: "Welcome to my blog — a space for tutorials, ideas, and anything interesting in the world of technology."
 image: assets/images/hello-world.png
 ---
 
