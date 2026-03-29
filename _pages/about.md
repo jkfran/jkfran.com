@@ -5,8 +5,7 @@ permalink: /about
 ---
 
 <div class="about-hero text-center mb-5">
-  <img class="about-avatar" src="https://www.gravatar.com/avatar/5fdfe91237cdb6cc5d84b2776ee0b8ab?s=200&d=mm&r=x" alt="Francisco Jiménez Cabrera">
-  <h3 class="mt-3 mb-2">Senior Software Engineer</h3>
+  <h3 class="mb-2">Senior Software Engineer</h3>
   <p class="about-location"><i class="bi bi-geo-alt"></i> London, UK</p>
   <div class="about-social">
     <a href="https://github.com/jkfran" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bi bi-github"></i></a>
