@@ -42,4 +42,17 @@ kramdown:
     block:
       line_numbers: true
 
-exclude: [LICENSE, README.md, Gemfile, Gemfile.lock, package.json, package-lock.json, node_modules]
+exclude:
+  - LICENSE
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - node_modules
+  - eslint.config.js
+  - .prettierrc
+  - .prettierignore
+  - .stylelintrc.json
+  - .htmlhintrc
+  - .markdownlint-cli2.jsonc
