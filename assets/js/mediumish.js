@@ -37,6 +37,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Share links: native share on mobile, popup on desktop
+  document.querySelectorAll(".share-link").forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (navigator.share) {
+        navigator
+          .share({
+            title: document.title,
+            url: window.location.href,
+          })
+          .catch(function () {});
+      } else {
+        window.open(link.href, "share", "width=550,height=435");
+      }
+    });
+  });
+
   // Hide navbar on scroll down, show on scroll up
   var didScroll = false;
   var lastScrollTop = 0;
