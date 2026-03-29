@@ -4,7 +4,7 @@ title: "Introduction to vector / embedding databases"
 author: jkfran
 categories: [ai]
 description: "An introduction to vector databases, covering word, image, and audio embeddings, how they work, and when to use them."
-image: https://github.com/jkfran/jkfran.com/assets/6353928/c709f19e-ebab-49a1-a5f1-6a13475d5f33
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/vector-embedding-databases.jpg
 ---
 
 In recent years, there has been a growing interest in vector/embedding databases. These databases are designed to store and query vector representations of data, such as text, images, and audio. Vector representations are powerful tools for representing the meaning of data, and they can be used for a variety of tasks, such as search, recommendation, and machine learning.

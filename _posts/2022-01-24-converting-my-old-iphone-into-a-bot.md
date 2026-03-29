@@ -4,7 +4,7 @@ title: "Converting my old iPhone into a bot"
 author: jkfran
 categories: [projects]
 description: "How I jailbroke an old iPhone 6 to extract data and build a Twitter bot, covering tools like Checkra1n and SSH setup."
-image: https://user-images.githubusercontent.com/6353928/150762225-08079e98-97fb-4c00-bdd1-0d0ce59c3cb3.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/converting-iphone-bot.jpg
 ---
 
 Hi there, I wanted to create a Twitter bot recently for personal purposes, but the data I wanted to tweet is from another iOS app that doesn't have any public API at the moment.

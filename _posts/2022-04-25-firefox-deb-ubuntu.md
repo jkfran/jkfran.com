@@ -4,7 +4,7 @@ title: "Install Firefox from .deb (not from snap) on Ubuntu"
 author: jkfran
 categories: [linux]
 description: "Step-by-step instructions to install Firefox as a traditional .deb package instead of the snap version on Ubuntu."
-image: https://user-images.githubusercontent.com/6353928/165127566-5ed7bd3d-f787-4996-801f-9e871c9544b3.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/firefox-deb-ubuntu.jpg
 ---
 
 The latest Ubuntu LTS ships Firefox as a snap instead of a deb package. But if you prefer to install the browser in the traditional way like me, here is how you can do it.

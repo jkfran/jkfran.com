@@ -4,7 +4,7 @@ title: "Algorithm Analysis (Big O) with Python"
 author: jkfran
 categories: [python]
 description: "An introduction to Big O notation for analysing algorithm complexity, with practical Python examples for each complexity class."
-image: https://user-images.githubusercontent.com/6353928/158666789-b37d45a7-e213-4a4f-a21d-efdc94aacf5e.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/big-o-notation-python.jpg
 ---
 
 I started blogging about things that I care about to keep knowledge in my head and have these concepts present. I am not an expert on them, but the idea behind my posting about them is that at least I need to understand them and memorize some stuff.

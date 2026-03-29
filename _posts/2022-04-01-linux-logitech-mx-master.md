@@ -4,7 +4,7 @@ title: "Logitech MX Master on Linux"
 author: jkfran
 categories: [linux]
 description: "How to set up the Logitech MX Master mouse on Linux using the unofficial logiops driver for gestures and custom configuration."
-image: https://user-images.githubusercontent.com/6353928/161268803-b3a16b4a-2d80-47e0-9f55-c8b656cbe3ea.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/logitech-mx-master.jpg
 ---
 
 The basic functionality of the mouse should work with no particular configuration if using the unified receiver USB dongle. However, I miss the gestures of pressing my thumb and moving the mouse.

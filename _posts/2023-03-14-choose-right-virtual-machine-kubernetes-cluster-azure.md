@@ -4,7 +4,7 @@ title: "How to Choose the Right Virtual Machine for Your Kubernetes Cluster on A
 author: jkfran
 categories: [devops]
 description: "A comprehensive guide to selecting Azure VM types for Kubernetes clusters, covering memory, CPU, storage, networking, and cost."
-image: https://user-images.githubusercontent.com/6353928/225109979-9c3ddf33-eda8-461f-8d55-44fc809b13ff.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/azure-kubernetes-vm.jpg
 ---
 
 As a professional working in the tech industry, I know firsthand the importance of selecting the right virtual machine (VM) for your workload. Recently, in my current role, I was tasked with selecting the best VM for our Kubernetes cluster on Microsoft Azure. As I dove into my research, I discovered that there were several factors to consider, including memory, CPU, storage, and networking requirements, as well as operating system compatibility and cost.

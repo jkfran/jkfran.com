@@ -4,7 +4,7 @@ title: "Capturing Only Unhandled Exceptions with Sentry in Python"
 author: jkfran
 categories: [python]
 description: "How to configure Sentry in Python to capture only unhandled exceptions using the before_send callback."
-image: https://user-images.githubusercontent.com/6353928/226624793-ab4a4fca-81b0-4b24-85a1-982594f9441e.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/sentry-python.jpg
 ---
 
 ## Capturing Only Unhandled Exceptions with Sentry in Python

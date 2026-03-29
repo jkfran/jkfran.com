@@ -4,7 +4,7 @@ title: "I built a little driving arcade machine with a Raspberry Pi"
 author: jkfran
 categories: [projects]
 description: "The story of building a driving arcade game on a Raspberry Pi 1 with my niece, from modifying a Pong game to sourcing hardware."
-image: https://user-images.githubusercontent.com/6353928/194561045-81b72eb8-84e1-4c67-a34d-65420871c8ef.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/raspberry-pi-arcade.jpg
 ---
 
 Hello! This summer, I went to Spain as usual and decided to stay longer for different reasons. I wanted to occupy my mind and build something fun during this time. I also wanted to involve my nieces and do something for them, so they remember me when I am away.

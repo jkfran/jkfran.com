@@ -4,7 +4,7 @@ title: "QdrantSync: Simplifying Data Migration Between Qdrant Instances"
 author: jkfran
 categories: [devops]
 description: "Introducing QdrantSync, a CLI tool for migrating collections and data points between Qdrant vector database instances."
-image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b952-bba82a29529f
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/self-hosted-vector-database.jpg
 ---
 
 I recently developed **QdrantSync**, a CLI tool to simplify and streamline migrating collections and data points between [Qdrant](https://qdrant.tech/documentation/) instances. It was born out of my experience with Qdrant snapshots, which can be tedious and complex—especially when moving data to clusters with different configurations or sizes.

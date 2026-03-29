@@ -4,7 +4,7 @@ title: "Selecting the Ideal Self-Hosted Vector Database"
 author: jkfran
 categories: [ai]
 description: "Comparing self-hosted vector databases — Milvus, Pinecone, Qdrant, and PGVector — from an MLOps perspective."
-image: https://github.com/jkfran/jkfran.com/assets/6353928/8c5d0db8-eb7e-4c36-b952-bba82a29529f
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/self-hosted-vector-database.jpg
 ---
 
 As an MLOps engineer, I was recently entrusted with the responsibility of choosing the most suitable Vector Database to address one of our crucial Data Science needs. In this case, it was the need for seamless integration with the widely-used [Langchain](https://python.langchain.com/en/latest/index.html) library. My task was to make the selection from the MLOps perspective, aiming to identify a self-hosted vector database that would meet the requirements.

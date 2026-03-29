@@ -4,7 +4,7 @@ title: "Running Ubuntu ARM64 with Docker"
 author: jkfran
 categories: [devops]
 description: "Run Docker containers for different CPU architectures like ARM64 using QEMU emulation with the tonistiigi/binfmt container."
-image: https://user-images.githubusercontent.com/6353928/155136689-7f3ccb69-608a-43b6-a294-59f4bdb83ce4.png
+image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/ubuntu-arm-docker.jpg
 ---
 
 Hi there! Here is a basic guide and easy way to run Ubuntu ARM64 or any Docker container in different architectures.
