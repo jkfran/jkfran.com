@@ -30,4 +30,10 @@ permalink: /tools
     <p>Generate strong, random passwords with customizable length and character sets. Uses cryptographic randomness, nothing leaves your browser.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/regex-tester/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-regex"></i></div>
+    <h3>Regex Tester</h3>
+    <p>Test regular expressions with live match highlighting, capture group extraction, and plain-English explanations of each pattern part.</p>
+  </a>
+
 </div>

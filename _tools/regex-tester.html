@@ -1,0 +1,410 @@
+---
+layout: page
+title: "Regex Tester - Test Regular Expressions Online with Live Highlighting"
+permalink: /tools/regex-tester/
+description: "Free online regex tester with live match highlighting, capture group extraction, and plain-English pattern explanations. Test JavaScript regular expressions instantly."
+---
+
+<div class="tool-container">
+  <p class="text-muted mb-4">
+    Type a regular expression and test string to see matches highlighted live. Capture groups are extracted
+    automatically and each part of your pattern is explained in plain English.
+  </p>
+
+  <div class="alert alert-danger" id="errorBox" style="display: none">
+    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label small text-muted fw-semibold">Regular expression</label>
+    <div class="d-flex gap-2">
+      <div class="input-group">
+        <span class="input-group-text font-monospace">/</span>
+        <input type="text" id="regexInput" class="form-control font-monospace" placeholder="(\w+)@(\w+)\.(\w+)" />
+        <span class="input-group-text font-monospace">/</span>
+        <input
+          type="text"
+          id="flagsInput"
+          class="form-control font-monospace"
+          style="max-width: 80px"
+          value="g"
+          placeholder="gi"
+        />
+      </div>
+    </div>
+    <div class="d-flex gap-3 mt-2">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input flag-check" type="checkbox" id="flagG" checked data-flag="g" />
+        <label class="form-check-label small" for="flagG"><strong>g</strong> global</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input flag-check" type="checkbox" id="flagI" data-flag="i" />
+        <label class="form-check-label small" for="flagI"><strong>i</strong> case-insensitive</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input flag-check" type="checkbox" id="flagM" data-flag="m" />
+        <label class="form-check-label small" for="flagM"><strong>m</strong> multiline</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input flag-check" type="checkbox" id="flagS" data-flag="s" />
+        <label class="form-check-label small" for="flagS"><strong>s</strong> dotAll</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label for="testInput" class="form-label mb-0 small text-muted fw-semibold">Test string</label>
+      <span class="small text-muted" id="matchCount"></span>
+    </div>
+    <div id="highlightOutput" class="regex-highlight-box font-monospace" style="display: none"></div>
+    <textarea
+      id="testInput"
+      class="form-control font-monospace"
+      rows="6"
+      placeholder="Enter test text here...
+user@example.com
+admin@company.org
+test123@gmail.com"
+    ></textarea>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div id="groupsPanel" style="display: none">
+        <h6 class="fw-semibold mb-2">Capture groups</h6>
+        <div id="groupsOutput"></div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <div id="explainPanel" style="display: none">
+        <h6 class="fw-semibold mb-2">Pattern explanation</h6>
+        <div id="explainOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <h6 class="fw-semibold mb-2">Common patterns</h6>
+    <div class="d-flex gap-2 flex-wrap">
+      <button
+        class="btn btn-sm btn-outline-secondary regex-preset"
+        data-regex="[\w.+-]+@[\w-]+\.[\w.]+"
+        data-flags="g"
+        data-test="user@example.com&#10;admin@company.org&#10;not-an-email"
+      >
+        Email
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary regex-preset"
+        data-regex="https?://[\w\-._~:/?#\[\]@!$&'()*+,;=]+"
+        data-flags="g"
+        data-test="Visit https://jkfran.com and http://example.com/path?q=1"
+      >
+        URL
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary regex-preset"
+        data-regex="\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
+        data-flags="g"
+        data-test="Server 192.168.1.1 responded&#10;Blocked 10.0.0.255&#10;Not an IP: 999.999.999.999"
+      >
+        IPv4
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary regex-preset"
+        data-regex="#([0-9a-fA-F]{3}){1,2}\b"
+        data-flags="g"
+        data-test="Colors: #ff0000 #00ab6b #fff #123456"
+      >
+        Hex Color
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary regex-preset"
+        data-regex="\b\d{4}-\d{2}-\d{2}\b"
+        data-flags="g"
+        data-test="Released on 2026-03-29&#10;Updated: 2025-01-24&#10;Invalid: 2026-1-1"
+      >
+        ISO Date
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary regex-preset"
+        data-regex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$"
+        data-flags="gm"
+        data-test="Weak123&#10;Strong1!Pass&#10;NoSymbol1Aa&#10;short1!A"
+      >
+        Strong Password
+      </button>
+    </div>
+  </div>
+
+  <div class="tool-info">
+    <h3>Regex quick reference</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Characters</h4>
+        <ul>
+          <li><code>.</code> — Any character</li>
+          <li><code>\d</code> — Digit (0-9)</li>
+          <li><code>\w</code> — Word char (a-z, 0-9, _)</li>
+          <li><code>\s</code> — Whitespace</li>
+          <li><code>[abc]</code> — Character set</li>
+          <li><code>[^abc]</code> — Negated set</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Quantifiers</h4>
+        <ul>
+          <li><code>*</code> — 0 or more</li>
+          <li><code>+</code> — 1 or more</li>
+          <li><code>?</code> — 0 or 1</li>
+          <li><code>{3}</code> — Exactly 3</li>
+          <li><code>{2,5}</code> — Between 2 and 5</li>
+          <li><code>{3,}</code> — 3 or more</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Anchors & Groups</h4>
+        <ul>
+          <li><code>^</code> — Start of string/line</li>
+          <li><code>$</code> — End of string/line</li>
+          <li><code>\b</code> — Word boundary</li>
+          <li><code>(abc)</code> — Capture group</li>
+          <li><code>(?:abc)</code> — Non-capturing group</li>
+          <li><code>a|b</code> — Alternation (or)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var regexInput = document.getElementById("regexInput");
+    var flagsInput = document.getElementById("flagsInput");
+    var testInput = document.getElementById("testInput");
+    var highlightOutput = document.getElementById("highlightOutput");
+    var matchCount = document.getElementById("matchCount");
+    var groupsPanel = document.getElementById("groupsPanel");
+    var groupsOutput = document.getElementById("groupsOutput");
+    var explainPanel = document.getElementById("explainPanel");
+    var explainOutput = document.getElementById("explainOutput");
+    var errorBox = document.getElementById("errorBox");
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function update() {
+      var pattern = regexInput.value;
+      var flags = flagsInput.value;
+      var text = testInput.value;
+
+      errorBox.style.display = "none";
+      highlightOutput.style.display = "none";
+      matchCount.textContent = "";
+      groupsPanel.style.display = "none";
+      explainPanel.style.display = "none";
+
+      if (!pattern || !text) return;
+
+      var regex;
+      try {
+        regex = new RegExp(pattern, flags);
+      } catch (e) {
+        document.getElementById("errorMsg").textContent = e.message;
+        errorBox.style.display = "block";
+        return;
+      }
+
+      // Highlight matches
+      var count = 0;
+      var groups = [];
+      var highlighted = "";
+      var lastIndex = 0;
+
+      if (flags.indexOf("g") === -1) {
+        var m = regex.exec(text);
+        if (m) {
+          count = 1;
+          groups.push(m);
+          highlighted =
+            escapeHtml(text.substring(0, m.index)) +
+            '<mark class="regex-match">' +
+            escapeHtml(m[0]) +
+            "</mark>" +
+            escapeHtml(text.substring(m.index + m[0].length));
+        } else {
+          highlighted = escapeHtml(text);
+        }
+      } else {
+        var m;
+        regex.lastIndex = 0;
+        while ((m = regex.exec(text)) !== null) {
+          if (m[0].length === 0) {
+            regex.lastIndex++;
+            continue;
+          }
+          count++;
+          groups.push(m);
+          highlighted += escapeHtml(text.substring(lastIndex, m.index));
+          highlighted += '<mark class="regex-match">' + escapeHtml(m[0]) + "</mark>";
+          lastIndex = m.index + m[0].length;
+        }
+        highlighted += escapeHtml(text.substring(lastIndex));
+      }
+
+      highlightOutput.innerHTML = highlighted;
+      highlightOutput.style.display = "block";
+      matchCount.textContent = count + " match" + (count !== 1 ? "es" : "");
+
+      // Capture groups
+      if (groups.length > 0 && groups[0].length > 1) {
+        var html = '<div class="list-group list-group-flush small">';
+        groups.forEach(function (m, mi) {
+          html +=
+            '<div class="list-group-item py-1"><strong class="text-muted">Match ' +
+            (mi + 1) +
+            ":</strong> <code>" +
+            escapeHtml(m[0]) +
+            "</code>";
+          for (var i = 1; i < m.length; i++) {
+            html +=
+              '<br><span class="text-muted">Group ' + i + ":</span> <code>" + escapeHtml(m[i] || "(empty)") + "</code>";
+          }
+          html += "</div>";
+        });
+        html += "</div>";
+        groupsOutput.innerHTML = html;
+        groupsPanel.style.display = "block";
+      }
+
+      // Explain pattern
+      explainPattern(pattern);
+    }
+
+    function explainPattern(pattern) {
+      var explanations = {
+        ".": "any character",
+        "\\d": "digit (0-9)",
+        "\\D": "non-digit",
+        "\\w": "word character (a-z, 0-9, _)",
+        "\\W": "non-word character",
+        "\\s": "whitespace",
+        "\\S": "non-whitespace",
+        "\\b": "word boundary",
+        "\\B": "non-word boundary",
+        "^": "start of string",
+        $: "end of string",
+        "*": "0 or more of previous",
+        "+": "1 or more of previous",
+        "?": "0 or 1 of previous (optional)",
+        "|": "or",
+      };
+
+      var parts = [];
+      var i = 0;
+      while (i < pattern.length) {
+        var ch = pattern[i];
+
+        if (ch === "\\") {
+          var seq = pattern.substring(i, i + 2);
+          if (explanations[seq]) {
+            parts.push({ token: seq, desc: explanations[seq] });
+          } else {
+            parts.push({ token: seq, desc: "escaped '" + seq[1] + "'" });
+          }
+          i += 2;
+        } else if (ch === "[") {
+          var end = pattern.indexOf("]", i);
+          if (end === -1) end = pattern.length;
+          var set = pattern.substring(i, end + 1);
+          var neg = set[1] === "^" ? "any character NOT in " : "any character in ";
+          parts.push({ token: set, desc: neg + set });
+          i = end + 1;
+        } else if (ch === "(") {
+          var end = pattern.indexOf(")", i);
+          if (end === -1) end = pattern.length;
+          var group = pattern.substring(i, end + 1);
+          if (group.startsWith("(?:")) {
+            parts.push({ token: group, desc: "non-capturing group" });
+          } else if (group.startsWith("(?=")) {
+            parts.push({ token: group, desc: "positive lookahead" });
+          } else if (group.startsWith("(?!")) {
+            parts.push({ token: group, desc: "negative lookahead" });
+          } else if (group.startsWith("(?<=")) {
+            parts.push({ token: group, desc: "positive lookbehind" });
+          } else if (group.startsWith("(?<!")) {
+            parts.push({ token: group, desc: "negative lookbehind" });
+          } else {
+            parts.push({ token: group, desc: "capture group" });
+          }
+          i = end + 1;
+        } else if (ch === "{") {
+          var end = pattern.indexOf("}", i);
+          if (end === -1) end = pattern.length;
+          var quant = pattern.substring(i, end + 1);
+          parts.push({ token: quant, desc: "repeat " + quant });
+          i = end + 1;
+        } else if (explanations[ch]) {
+          parts.push({ token: ch, desc: explanations[ch] });
+          i++;
+        } else {
+          parts.push({ token: ch, desc: 'literal "' + ch + '"' });
+          i++;
+        }
+      }
+
+      if (parts.length > 0) {
+        var html = '<table class="table table-sm small mb-0">';
+        parts.forEach(function (p) {
+          html +=
+            "<tr><td><code>" +
+            escapeHtml(p.token) +
+            '</code></td><td class="text-muted">' +
+            escapeHtml(p.desc) +
+            "</td></tr>";
+        });
+        html += "</table>";
+        explainOutput.innerHTML = html;
+        explainPanel.style.display = "block";
+      }
+    }
+
+    // Live update
+    regexInput.addEventListener("input", update);
+    flagsInput.addEventListener("input", update);
+    testInput.addEventListener("input", update);
+
+    // Flag checkboxes sync with flags input
+    document.querySelectorAll(".flag-check").forEach(function (cb) {
+      cb.addEventListener("change", function () {
+        var flags = "";
+        document.querySelectorAll(".flag-check:checked").forEach(function (c) {
+          flags += c.getAttribute("data-flag");
+        });
+        flagsInput.value = flags;
+        update();
+      });
+    });
+
+    flagsInput.addEventListener("input", function () {
+      document.querySelectorAll(".flag-check").forEach(function (cb) {
+        cb.checked = flagsInput.value.indexOf(cb.getAttribute("data-flag")) !== -1;
+      });
+    });
+
+    // Presets
+    document.querySelectorAll(".regex-preset").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        regexInput.value = btn.getAttribute("data-regex");
+        flagsInput.value = btn.getAttribute("data-flags");
+        testInput.value = btn.getAttribute("data-test");
+        document.querySelectorAll(".flag-check").forEach(function (cb) {
+          cb.checked = flagsInput.value.indexOf(cb.getAttribute("data-flag")) !== -1;
+        });
+        update();
+      });
+    });
+  })();
+</script>
