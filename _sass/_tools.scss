@@ -73,6 +73,11 @@
   margin-bottom: 1.5rem;
 }
 
+.tool-stats-error {
+  background: #fce4ec;
+  color: #c62828;
+}
+
 .tool-area {
   margin-bottom: 2rem;
 }
@@ -246,4 +251,41 @@
     color: rgba(0, 0, 0, 0.6);
     line-height: 1.7;
   }
+}
+
+// JSON output
+
+.json-output {
+  margin-bottom: 1rem;
+}
+
+.json-pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  max-height: 500px;
+}
+
+.json-key {
+  color: #9cdcfe;
+}
+
+.json-string {
+  color: #ce9178;
+}
+
+.json-number {
+  color: #b5cea8;
+}
+
+.json-boolean {
+  color: #569cd6;
+}
+
+.json-null {
+  color: #569cd6;
 }

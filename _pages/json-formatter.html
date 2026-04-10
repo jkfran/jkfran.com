@@ -1,0 +1,237 @@
+---
+layout: page
+title: "JSON Formatter & Validator - Format, Minify, Validate JSON Online"
+permalink: /tools/json-formatter/
+description: "Free online JSON formatter, validator, and minifier. Paste your JSON to format with syntax highlighting, validate with clear error messages, or minify for production."
+---
+
+<div class="tool-container">
+  <p class="tool-description">
+    Paste your JSON to instantly format it with proper indentation, validate it with clear error messages pointing to
+    the exact line, or minify it for production use. Everything runs in your browser — no data is sent anywhere.
+  </p>
+
+  <div class="tool-stats tool-stats-error" id="errorBox" style="display: none">
+    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  </div>
+
+  <div class="tool-stats" id="successBox" style="display: none">
+    <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
+  </div>
+
+  <div class="tool-area">
+    <div class="tool-panel">
+      <div class="tool-panel-header">
+        <label for="jsonInput">Input JSON</label>
+        <div>
+          <button class="tool-btn-sm" id="pasteBtn" title="Paste from clipboard">
+            <i class="bi bi-clipboard"></i> Paste
+          </button>
+          <button class="tool-btn-sm" id="sampleBtn" title="Load sample JSON">
+            <i class="bi bi-filetype-json"></i> Sample
+          </button>
+        </div>
+      </div>
+      <textarea
+        id="jsonInput"
+        class="tool-textarea tool-textarea-mono"
+        rows="16"
+        placeholder='{"paste": "your JSON here"}'
+      ></textarea>
+    </div>
+
+    <div class="tool-actions">
+      <button class="tool-btn-primary" id="formatBtn"><i class="bi bi-code-slash"></i> Format</button>
+      <button class="tool-btn" id="minifyBtn"><i class="bi bi-arrows-collapse"></i> Minify</button>
+      <button class="tool-btn" id="validateBtn"><i class="bi bi-check2-circle"></i> Validate</button>
+      <button class="tool-btn" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+      <button class="tool-btn" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    </div>
+
+    <div id="jsonOutput" class="json-output" style="display: none">
+      <div class="tool-panel-header">
+        <label>Output</label>
+        <button class="tool-btn-sm" id="copyOutputBtn" title="Copy output"><i class="bi bi-copy"></i> Copy</button>
+      </div>
+      <pre id="jsonOutputPre" class="json-pre"><code id="jsonOutputCode"></code></pre>
+    </div>
+  </div>
+
+  <div class="tool-info">
+    <h3>Features</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <h4><i class="bi bi-code-slash"></i> Format</h4>
+        <p>Pretty-print JSON with 2-space indentation for easy reading and editing.</p>
+      </div>
+      <div class="col-md-4">
+        <h4><i class="bi bi-arrows-collapse"></i> Minify</h4>
+        <p>Compress JSON by removing all whitespace for smaller payload sizes.</p>
+      </div>
+      <div class="col-md-4">
+        <h4><i class="bi bi-check2-circle"></i> Validate</h4>
+        <p>Check if your JSON is valid with clear error messages showing exactly where the problem is.</p>
+      </div>
+    </div>
+
+    <h3>Common JSON errors this tool catches</h3>
+    <ul>
+      <li><strong>Trailing commas</strong> — <code>{"a": 1,}</code> is invalid JSON</li>
+      <li><strong>Single quotes</strong> — JSON requires double quotes: <code>{'key': 'value'}</code> is invalid</li>
+      <li><strong>Missing commas</strong> — Between key-value pairs or array elements</li>
+      <li><strong>Unquoted keys</strong> — <code>{key: "value"}</code> is JavaScript, not JSON</li>
+      <li><strong>Comments</strong> — JSON does not support <code>// comments</code> or <code>/* blocks */</code></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var inputEl = document.getElementById("jsonInput");
+    var outputEl = document.getElementById("jsonOutput");
+    var outputCode = document.getElementById("jsonOutputCode");
+    var errorBox = document.getElementById("errorBox");
+    var errorMsg = document.getElementById("errorMsg");
+    var successBox = document.getElementById("successBox");
+    var successMsg = document.getElementById("successMsg");
+
+    function hideMessages() {
+      errorBox.style.display = "none";
+      successBox.style.display = "none";
+    }
+
+    function showError(msg) {
+      hideMessages();
+      errorMsg.textContent = msg;
+      errorBox.style.display = "block";
+      outputEl.style.display = "none";
+    }
+
+    function showSuccess(msg) {
+      hideMessages();
+      successMsg.textContent = msg;
+      successBox.style.display = "block";
+    }
+
+    function getErrorPosition(text, err) {
+      var match = err.message.match(/position (\d+)/i);
+      if (!match) return "";
+      var pos = parseInt(match[1]);
+      var lines = text.substring(0, pos).split("\n");
+      return " (line " + lines.length + ", column " + lines[lines.length - 1].length + ")";
+    }
+
+    function syntaxHighlight(json) {
+      json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return json.replace(
+        /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
+        function (match) {
+          var cls = "json-number";
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              cls = "json-key";
+            } else {
+              cls = "json-string";
+            }
+          } else if (/true|false/.test(match)) {
+            cls = "json-boolean";
+          } else if (/null/.test(match)) {
+            cls = "json-null";
+          }
+          return '<span class="' + cls + '">' + match + "</span>";
+        }
+      );
+    }
+
+    function formatJSON() {
+      var text = inputEl.value.trim();
+      if (!text) return showError("Please enter some JSON");
+      try {
+        var parsed = JSON.parse(text);
+        var formatted = JSON.stringify(parsed, null, 2);
+        outputCode.innerHTML = syntaxHighlight(formatted);
+        outputEl.style.display = "block";
+        showSuccess("Valid JSON — " + formatted.split("\n").length + " lines formatted");
+      } catch (e) {
+        showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
+      }
+    }
+
+    function minifyJSON() {
+      var text = inputEl.value.trim();
+      if (!text) return showError("Please enter some JSON");
+      try {
+        var parsed = JSON.parse(text);
+        var minified = JSON.stringify(parsed);
+        outputCode.innerHTML = syntaxHighlight(minified);
+        outputEl.style.display = "block";
+        var saved = text.length - minified.length;
+        showSuccess("Minified — " + minified.length + " chars (" + saved + " bytes saved)");
+      } catch (e) {
+        showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
+      }
+    }
+
+    function validateJSON() {
+      var text = inputEl.value.trim();
+      if (!text) return showError("Please enter some JSON");
+      try {
+        var parsed = JSON.parse(text);
+        var type = Array.isArray(parsed)
+          ? "array with " + parsed.length + " elements"
+          : "object with " + Object.keys(parsed).length + " keys";
+        outputEl.style.display = "none";
+        showSuccess("Valid JSON — " + type);
+      } catch (e) {
+        showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
+      }
+    }
+
+    document.getElementById("formatBtn").addEventListener("click", formatJSON);
+    document.getElementById("minifyBtn").addEventListener("click", minifyJSON);
+    document.getElementById("validateBtn").addEventListener("click", validateJSON);
+
+    document.getElementById("copyBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(inputEl.value);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+      }, 2000);
+    });
+
+    document.getElementById("copyOutputBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(outputCode.textContent);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+      }, 2000);
+    });
+
+    document.getElementById("pasteBtn").addEventListener("click", function () {
+      navigator.clipboard.readText().then(function (text) {
+        inputEl.value = text;
+      });
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      inputEl.value = "";
+      outputEl.style.display = "none";
+      hideMessages();
+    });
+
+    document.getElementById("sampleBtn").addEventListener("click", function () {
+      inputEl.value =
+        '{\n  "name": "jkfran",\n  "role": "Senior Software Engineer",\n  "skills": ["Python", "DevOps", "Rust", "MLOps"],\n  "projects": [\n    {"name": "killport", "stars": 1817, "language": "Rust"},\n    {"name": "QdrantSync", "stars": 9, "language": "Python"}\n  ],\n  "open_source": true\n}';
+    });
+
+    // Auto-format on Ctrl+Enter
+    inputEl.addEventListener("keydown", function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        e.preventDefault();
+        formatJSON();
+      }
+    });
+  })();
+</script>
