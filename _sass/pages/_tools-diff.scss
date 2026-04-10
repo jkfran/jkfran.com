@@ -1,0 +1,62 @@
+// Diff Checker tool
+
+.diff-container {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  overflow: auto;
+  max-height: 600px;
+  margin-bottom: 1.5rem;
+}
+
+.diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.diff-ln {
+  width: 40px;
+  min-width: 40px;
+  padding: 0 8px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  user-select: none;
+  vertical-align: top;
+}
+
+.diff-code {
+  padding: 0 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.diff-equal {
+  background: #fff;
+}
+
+.diff-add {
+  background: #e6ffec;
+
+  .diff-code {
+    color: #22863a;
+  }
+
+  .diff-ln {
+    background: #d4f8db;
+  }
+}
+
+.diff-remove {
+  background: #ffeef0;
+
+  .diff-code {
+    color: #cb2431;
+  }
+
+  .diff-ln {
+    background: #fdd;
+  }
+}

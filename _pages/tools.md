@@ -48,4 +48,10 @@ permalink: /tools
     <p>Encode special characters for safe use in URLs, or decode percent-encoded strings back to readable text.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/diff-checker/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-file-diff"></i></div>
+    <h3>Diff Checker</h3>
+    <p>Compare two texts side by side and see additions, deletions, and changes highlighted line by line.</p>
+  </a>
+
 </div>

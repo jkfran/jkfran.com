@@ -1,0 +1,265 @@
+---
+layout: page
+title: "Diff Checker - Compare Text Online Side by Side"
+permalink: /tools/diff-checker/
+description: "Free online diff checker. Compare two texts side by side with highlighted additions, deletions, and changes. Supports line-by-line and inline diff views."
+---
+
+<div class="tool-container" style="max-width: 1100px">
+  <p class="text-muted mb-4">
+    Paste two versions of text to see the differences highlighted. Added lines are shown in green, removed lines in red,
+    and unchanged lines in grey. All processing happens in your browser.
+  </p>
+
+  <div class="row mb-3">
+    <div class="col-md-6 mb-3 mb-md-0">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="leftText" class="form-label mb-0 small text-muted fw-semibold">Original</label>
+        <button class="btn btn-sm btn-outline-secondary paste-btn" data-target="leftText">
+          <i class="bi bi-clipboard"></i> Paste
+        </button>
+      </div>
+      <textarea
+        id="leftText"
+        class="form-control font-monospace"
+        rows="12"
+        placeholder="Paste original text here..."
+      ></textarea>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="rightText" class="form-label mb-0 small text-muted fw-semibold">Modified</label>
+        <button class="btn btn-sm btn-outline-secondary paste-btn" data-target="rightText">
+          <i class="bi bi-clipboard"></i> Paste
+        </button>
+      </div>
+      <textarea
+        id="rightText"
+        class="form-control font-monospace"
+        rows="12"
+        placeholder="Paste modified text here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mb-3">
+    <button class="btn btn-success" id="diffBtn"><i class="bi bi-file-diff"></i> Compare</button>
+    <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-left-right"></i> Swap</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    <button class="btn btn-outline-secondary" id="sampleBtn"><i class="bi bi-file-earmark-text"></i> Sample</button>
+  </div>
+
+  <div class="alert alert-success" id="statsBox" style="display: none">
+    <i class="bi bi-check-circle"></i> <span id="statsText"></span>
+  </div>
+
+  <div id="diffOutput" style="display: none">
+    <div class="diff-container">
+      <table class="diff-table" id="diffTable"></table>
+    </div>
+  </div>
+
+  <div class="tool-info">
+    <h3>How to use</h3>
+    <ol>
+      <li>Paste the <strong>original</strong> text on the left</li>
+      <li>Paste the <strong>modified</strong> text on the right</li>
+      <li>Click <strong>Compare</strong> to see the diff</li>
+    </ol>
+
+    <h3>Reading the diff</h3>
+    <ul>
+      <li>
+        <span style="color: #22863a; background: #e6ffec; padding: 1px 4px; border-radius: 2px">Green lines</span> —
+        Added in the modified version
+      </li>
+      <li>
+        <span style="color: #cb2431; background: #ffeef0; padding: 1px 4px; border-radius: 2px">Red lines</span> —
+        Removed from the original
+      </li>
+      <li>Grey lines — Unchanged</li>
+    </ul>
+
+    <h3>Common uses</h3>
+    <ul>
+      <li>Comparing configuration file changes before deploying</li>
+      <li>Reviewing text edits in documents or emails</li>
+      <li>Checking code changes without git access</li>
+      <li>Verifying API response differences between environments</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var leftEl = document.getElementById("leftText");
+    var rightEl = document.getElementById("rightText");
+    var diffOutput = document.getElementById("diffOutput");
+    var diffTable = document.getElementById("diffTable");
+    var statsBox = document.getElementById("statsBox");
+    var statsText = document.getElementById("statsText");
+
+    function diff(a, b) {
+      var aLines = a.split("\n");
+      var bLines = b.split("\n");
+      var max = aLines.length + bLines.length;
+      var v = {};
+      v[1] = 0;
+      var trace = [];
+
+      for (var d = 0; d <= max; d++) {
+        trace.push(Object.assign({}, v));
+        for (var k = -d; k <= d; k += 2) {
+          var x;
+          if (k === -d || (k !== d && (v[k - 1] || 0) < (v[k + 1] || 0))) {
+            x = v[k + 1] || 0;
+          } else {
+            x = (v[k - 1] || 0) + 1;
+          }
+          var y = x - k;
+          while (x < aLines.length && y < bLines.length && aLines[x] === bLines[y]) {
+            x++;
+            y++;
+          }
+          v[k] = x;
+          if (x >= aLines.length && y >= bLines.length) {
+            return backtrack(trace, aLines, bLines, d);
+          }
+        }
+      }
+      return [];
+    }
+
+    function backtrack(trace, aLines, bLines, dMax) {
+      var ops = [];
+      var x = aLines.length;
+      var y = bLines.length;
+
+      for (var d = dMax; d > 0; d--) {
+        var v = trace[d - 1];
+        var k = x - y;
+        var prevK;
+        if (k === -d || (k !== d && (v[k - 1] || 0) < (v[k + 1] || 0))) {
+          prevK = k + 1;
+        } else {
+          prevK = k - 1;
+        }
+        var prevX = v[prevK] || 0;
+        var prevY = prevX - prevK;
+
+        while (x > prevX && y > prevY) {
+          x--;
+          y--;
+          ops.unshift({ type: "equal", left: x, right: y, text: aLines[x] });
+        }
+        if (d > 0) {
+          if (x === prevX) {
+            ops.unshift({ type: "add", right: prevY, text: bLines[prevY] });
+            y--;
+          } else {
+            ops.unshift({ type: "remove", left: prevX, text: aLines[prevX] });
+            x--;
+          }
+        }
+      }
+      while (x > 0 && y > 0) {
+        x--;
+        y--;
+        ops.unshift({ type: "equal", left: x, right: y, text: aLines[x] });
+      }
+      return ops;
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/ /g, "&nbsp;");
+    }
+
+    function renderDiff(ops) {
+      var added = 0,
+        removed = 0;
+      var html = "";
+
+      ops.forEach(function (op) {
+        var line = escapeHtml(op.text) || "&nbsp;";
+        if (op.type === "equal") {
+          html +=
+            '<tr class="diff-equal"><td class="diff-ln">' +
+            (op.left + 1) +
+            '</td><td class="diff-ln">' +
+            (op.right + 1) +
+            '</td><td class="diff-code">' +
+            line +
+            "</td></tr>";
+        } else if (op.type === "remove") {
+          removed++;
+          html +=
+            '<tr class="diff-remove"><td class="diff-ln">' +
+            (op.left + 1) +
+            '</td><td class="diff-ln"></td><td class="diff-code">- ' +
+            line +
+            "</td></tr>";
+        } else if (op.type === "add") {
+          added++;
+          html +=
+            '<tr class="diff-add"><td class="diff-ln"></td><td class="diff-ln">' +
+            (op.right + 1) +
+            '</td><td class="diff-code">+ ' +
+            line +
+            "</td></tr>";
+        }
+      });
+
+      diffTable.innerHTML = html;
+      diffOutput.style.display = "block";
+
+      var total = ops.length;
+      var unchanged = total - added - removed;
+      statsText.textContent =
+        added +
+        " addition" +
+        (added !== 1 ? "s" : "") +
+        ", " +
+        removed +
+        " deletion" +
+        (removed !== 1 ? "s" : "") +
+        ", " +
+        unchanged +
+        " unchanged line" +
+        (unchanged !== 1 ? "s" : "");
+      statsBox.style.display = "block";
+    }
+
+    document.getElementById("diffBtn").addEventListener("click", function () {
+      var ops = diff(leftEl.value, rightEl.value);
+      renderDiff(ops);
+    });
+
+    document.getElementById("swapBtn").addEventListener("click", function () {
+      var tmp = leftEl.value;
+      leftEl.value = rightEl.value;
+      rightEl.value = tmp;
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      leftEl.value = "";
+      rightEl.value = "";
+      diffOutput.style.display = "none";
+      statsBox.style.display = "none";
+    });
+
+    document.getElementById("sampleBtn").addEventListener("click", function () {
+      leftEl.value = 'function greet(name) {\n  console.log("Hello, " + name);\n  return true;\n}\n\ngreet("World");';
+      rightEl.value =
+        'function greet(name, greeting) {\n  const message = `${greeting}, ${name}!`;\n  console.log(message);\n  return message;\n}\n\ngreet("World", "Hi");';
+    });
+
+    document.querySelectorAll(".paste-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = document.getElementById(btn.getAttribute("data-target"));
+        navigator.clipboard.readText().then(function (t) {
+          target.value = t;
+        });
+      });
+    });
+  })();
+</script>
