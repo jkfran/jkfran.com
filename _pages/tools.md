@@ -24,4 +24,10 @@ permalink: /tools
     <p>Encode text or files to Base64, or decode Base64 strings back to text. Useful for JWTs, data URIs, and API payloads.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/password-generator/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-key"></i></div>
+    <h3>Password Generator</h3>
+    <p>Generate strong, random passwords with customizable length and character sets. Uses cryptographic randomness, nothing leaves your browser.</p>
+  </a>
+
 </div>
