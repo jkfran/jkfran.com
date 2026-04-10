@@ -1,7 +1,7 @@
 # Site
 name: "jkfran"
 title: "Francisco Jiménez Cabrera"
-description: "A blog featuring tutorials, ideas, and anything interesting to me."
+description: "Technical blog and free developer tools by Francisco Jiménez Cabrera. Tutorials on DevOps, Linux, Python, MLOps, and AI — plus online tools like JSON formatter, regex tester, and more."
 logo: "assets/images/logo.png"
 baseurl: /
 url: "https://jkfran.com"
