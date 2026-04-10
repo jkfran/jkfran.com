@@ -6,8 +6,9 @@
         target="_blank" rel="noopener noreferrer"
         href="https://x.com/intent/tweet?text={{ page.title }}&url={{ page.url | absolute_url }}"
         class="share-link"
+        aria-label="Share on X"
       >
-        <i class="bi bi-twitter-x"></i>
+        <i class="bi bi-twitter-x" aria-hidden="true"></i>
       </a>
     </li>
 
@@ -16,8 +17,9 @@
         target="_blank" rel="noopener noreferrer"
         href="https://facebook.com/sharer.php?u={{ page.url | absolute_url }}"
         class="share-link"
+        aria-label="Share on Facebook"
       >
-        <i class="bi bi-facebook"></i>
+        <i class="bi bi-facebook" aria-hidden="true"></i>
       </a>
     </li>
 
@@ -26,8 +28,9 @@
         target="_blank" rel="noopener noreferrer"
         href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}"
         class="share-link"
+        aria-label="Share on LinkedIn"
       >
-        <i class="bi bi-linkedin"></i>
+        <i class="bi bi-linkedin" aria-hidden="true"></i>
       </a>
     </li>
   </ul>

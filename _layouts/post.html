@@ -35,7 +35,7 @@ layout: default
             </div>
 
             {% if page.image %}
-            <img class="featured-image img-fluid" loading="lazy" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+            <img class="featured-image img-fluid" loading="lazy" width="1200" height="675" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
             {% endif %}
 
             {% assign words = content | number_of_words %}

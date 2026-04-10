@@ -3,7 +3,7 @@
     <div class="maxthumb">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {% if post.image %}
-        <img class="img-fluid" loading="lazy" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}/{{ post.image }}{% endif %}" alt="{{ post.title }}">
+        <img class="img-fluid" loading="lazy" width="1200" height="675" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}/{{ post.image }}{% endif %}" alt="{{ post.title }}">
         {% endif %}
       </a>
     </div>
@@ -13,9 +13,9 @@
           >{{ post.title }}</a
         >
       </h2>
-      <h4 class="card-text">
+      <p class="card-text">
         {{ post.excerpt | strip_html | truncatewords:30 }}
-      </h4>
+      </p>
       {% assign words = post.content | number_of_words %}
       {% if words < 200 %}{% assign read_time = 1 %}{% else %}{% assign read_time = words | divided_by: 200 %}{% endif %}
       <p class="card-meta mt-auto">

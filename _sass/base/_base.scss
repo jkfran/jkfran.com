@@ -76,3 +76,9 @@ h6 {
   color: rgba(0, 0, 0, 0.8) !important;
   text-decoration: none !important;
 }
+
+// Visible focus indicators for keyboard navigation
+:focus-visible {
+  outline: 2px solid #00ab6b;
+  outline-offset: 2px;
+}
