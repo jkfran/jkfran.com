@@ -54,4 +54,10 @@ permalink: /tools
     <p>Compare two texts side by side and see additions, deletions, and changes highlighted line by line.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/yaml-json/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-arrow-left-right"></i></div>
+    <h3>YAML to JSON / JSON to YAML</h3>
+    <p>Convert between YAML and JSON instantly with validation and error messages. Essential for Kubernetes, Docker Compose, and CI/CD configs.</p>
+  </a>
+
 </div>

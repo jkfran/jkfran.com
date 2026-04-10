@@ -1,0 +1,256 @@
+---
+layout: page
+title: "YAML to JSON / JSON to YAML - Free Online Converter"
+permalink: /tools/yaml-json/
+description: "Free online YAML to JSON and JSON to YAML converter with validation and clear error messages. Convert Kubernetes configs, Docker Compose files, and CI/CD pipelines instantly."
+---
+
+<div class="tool-container">
+  <p class="text-muted mb-4">
+    Convert between YAML and JSON instantly. Paste your YAML or JSON on the left, pick a direction, and get the
+    converted output on the right. Validates input and shows clear error messages. All processing happens in your
+    browser.
+  </p>
+
+  <div class="alert alert-danger" id="errorBox" style="display: none">
+    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  </div>
+
+  <div class="alert alert-success" id="successBox" style="display: none">
+    <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6 mb-3 mb-md-0">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="inputText" class="form-label mb-0 small text-muted fw-semibold" id="inputLabel"
+          >YAML or JSON input</label
+        >
+        <div>
+          <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+          <button class="btn btn-sm btn-outline-secondary" id="sampleYaml">YAML sample</button>
+          <button class="btn btn-sm btn-outline-secondary" id="sampleJson">JSON sample</button>
+        </div>
+      </div>
+      <textarea
+        id="inputText"
+        class="form-control font-monospace"
+        rows="16"
+        placeholder="Paste YAML or JSON here..."
+      ></textarea>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="outputText" class="form-label mb-0 small text-muted fw-semibold" id="outputLabel">Output</label>
+        <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+      </div>
+      <textarea
+        id="outputText"
+        class="form-control font-monospace"
+        rows="16"
+        readonly
+        placeholder="Converted output will appear here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mb-3">
+    <button class="btn btn-success" id="yamlToJson"><i class="bi bi-arrow-right"></i> YAML to JSON</button>
+    <button class="btn btn-success" id="jsonToYaml"><i class="bi bi-arrow-right"></i> JSON to YAML</button>
+    <button class="btn btn-outline-secondary" id="validateBtn"><i class="bi bi-check2-circle"></i> Validate</button>
+    <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-left-right"></i> Swap</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+  </div>
+
+  <div class="tool-info">
+    <h3>When to use YAML vs JSON</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>YAML</h4>
+        <ul>
+          <li>Kubernetes manifests</li>
+          <li>Docker Compose files</li>
+          <li>GitHub Actions workflows</li>
+          <li>Ansible playbooks</li>
+          <li>Human-edited configuration</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>JSON</h4>
+        <ul>
+          <li>API requests and responses</li>
+          <li>Package manifests (package.json)</li>
+          <li>Terraform state files</li>
+          <li>Machine-generated config</li>
+          <li>Browser localStorage</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Key differences</h3>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th class="text-muted small">Feature</th>
+          <th class="text-muted small">YAML</th>
+          <th class="text-muted small">JSON</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Readability</td>
+          <td>Indentation-based, very readable</td>
+          <td>Bracket-based, more verbose</td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>Supported (<code># comment</code>)</td>
+          <td>Not supported</td>
+        </tr>
+        <tr>
+          <td>Data types</td>
+          <td>Auto-detects dates, booleans</td>
+          <td>Strings, numbers, booleans, null</td>
+        </tr>
+        <tr>
+          <td>Multi-line strings</td>
+          <td>Supported (<code>|</code> and <code>></code>)</td>
+          <td>Escape sequences only</td>
+        </tr>
+        <tr>
+          <td>Parsing speed</td>
+          <td>Slower</td>
+          <td>Native in all languages</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script>
+  (function () {
+    var inputEl = document.getElementById("inputText");
+    var outputEl = document.getElementById("outputText");
+    var errorBox = document.getElementById("errorBox");
+    var successBox = document.getElementById("successBox");
+
+    function hideMessages() {
+      errorBox.style.display = "none";
+      successBox.style.display = "none";
+    }
+    function showError(msg) {
+      hideMessages();
+      document.getElementById("errorMsg").textContent = msg;
+      errorBox.style.display = "block";
+    }
+    function showSuccess(msg) {
+      hideMessages();
+      document.getElementById("successMsg").textContent = msg;
+      successBox.style.display = "block";
+    }
+
+    document.getElementById("yamlToJson").addEventListener("click", function () {
+      hideMessages();
+      var text = inputEl.value.trim();
+      if (!text) return showError("Please enter some YAML");
+      try {
+        var parsed = jsyaml.load(text);
+        var json = JSON.stringify(parsed, null, 2);
+        outputEl.value = json;
+        document.getElementById("inputLabel").textContent = "YAML input";
+        document.getElementById("outputLabel").textContent = "JSON output";
+        showSuccess("Converted YAML to JSON — " + json.split("\n").length + " lines");
+      } catch (e) {
+        showError("Invalid YAML: " + e.message);
+      }
+    });
+
+    document.getElementById("jsonToYaml").addEventListener("click", function () {
+      hideMessages();
+      var text = inputEl.value.trim();
+      if (!text) return showError("Please enter some JSON");
+      try {
+        var parsed = JSON.parse(text);
+        var yaml = jsyaml.dump(parsed, { indent: 2, lineWidth: -1, noRefs: true });
+        outputEl.value = yaml;
+        document.getElementById("inputLabel").textContent = "JSON input";
+        document.getElementById("outputLabel").textContent = "YAML output";
+        showSuccess("Converted JSON to YAML — " + yaml.split("\n").length + " lines");
+      } catch (e) {
+        showError("Invalid JSON: " + e.message);
+      }
+    });
+
+    document.getElementById("validateBtn").addEventListener("click", function () {
+      hideMessages();
+      var text = inputEl.value.trim();
+      if (!text) return showError("Please enter some text");
+
+      // Try JSON first
+      try {
+        var parsed = JSON.parse(text);
+        var type = Array.isArray(parsed)
+          ? "array with " + parsed.length + " elements"
+          : "object with " + Object.keys(parsed).length + " keys";
+        return showSuccess("Valid JSON — " + type);
+      } catch (e) {}
+
+      // Try YAML
+      try {
+        var parsed = jsyaml.load(text);
+        if (typeof parsed === "object" && parsed !== null) {
+          var type = Array.isArray(parsed)
+            ? "array with " + parsed.length + " elements"
+            : "object with " + Object.keys(parsed).length + " keys";
+          return showSuccess("Valid YAML — " + type);
+        }
+        return showSuccess("Valid YAML — scalar value");
+      } catch (e) {
+        showError("Invalid YAML/JSON: " + e.message);
+      }
+    });
+
+    document.getElementById("swapBtn").addEventListener("click", function () {
+      var tmp = inputEl.value;
+      inputEl.value = outputEl.value;
+      outputEl.value = tmp;
+      hideMessages();
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      inputEl.value = "";
+      outputEl.value = "";
+      hideMessages();
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(outputEl.value);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+      }, 2000);
+    });
+
+    document.getElementById("pasteBtn").addEventListener("click", function () {
+      navigator.clipboard.readText().then(function (t) {
+        inputEl.value = t;
+      });
+    });
+
+    document.getElementById("sampleYaml").addEventListener("click", function () {
+      inputEl.value =
+        "# Kubernetes Deployment\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: my-app\n  labels:\n    app: my-app\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: my-app\n  template:\n    metadata:\n      labels:\n        app: my-app\n    spec:\n      containers:\n        - name: app\n          image: my-app:latest\n          ports:\n            - containerPort: 8080\n          env:\n            - name: NODE_ENV\n              value: production\n            - name: LOG_LEVEL\n              value: info";
+      outputEl.value = "";
+      hideMessages();
+    });
+
+    document.getElementById("sampleJson").addEventListener("click", function () {
+      inputEl.value =
+        '{\n  "apiVersion": "apps/v1",\n  "kind": "Deployment",\n  "metadata": {\n    "name": "my-app",\n    "labels": {\n      "app": "my-app"\n    }\n  },\n  "spec": {\n    "replicas": 3,\n    "selector": {\n      "matchLabels": {\n        "app": "my-app"\n      }\n    }\n  }\n}';
+      outputEl.value = "";
+      hideMessages();
+    });
+  })();
+</script>
