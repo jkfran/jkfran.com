@@ -55,22 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Hide navbar on scroll down, show on scroll up
-  var didScroll = false;
   var lastScrollTop = 0;
   var delta = 5;
   var nav = document.querySelector("nav");
   var navbarHeight = nav ? nav.offsetHeight : 0;
-
-  window.addEventListener("scroll", function () {
-    didScroll = true;
-  });
-
-  setInterval(function () {
-    if (didScroll) {
-      hasScrolled();
-      didScroll = false;
-    }
-  }, 250);
+  var ticking = false;
 
   function hasScrolled() {
     var st = window.pageYOffset || document.documentElement.scrollTop;
@@ -87,4 +76,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastScrollTop = st;
   }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          hasScrolled();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
 });

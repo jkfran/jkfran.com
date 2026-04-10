@@ -233,20 +233,8 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
       }
     });
 
-    document.getElementById("copyBtn").addEventListener("click", function () {
-      navigator.clipboard.writeText(outputEl.value);
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
-      var btn = this;
-      setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
-      }, 2000);
-    });
-
-    document.getElementById("pasteBtn").addEventListener("click", function () {
-      navigator.clipboard.readText().then(function (t) {
-        inputEl.value = t;
-      });
-    });
+    attachCopyBtn("copyBtn", "outputText");
+    attachPasteBtn("pasteBtn", "inputText");
 
     document.getElementById("clearBtn").addEventListener("click", function () {
       inputEl.value = "";

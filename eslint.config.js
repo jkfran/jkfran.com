@@ -10,7 +10,7 @@ export default [
         window: "readonly",
         location: "readonly",
         setTimeout: "readonly",
-        setInterval: "readonly",
+        requestAnimationFrame: "readonly",
         navigator: "readonly",
       },
     },

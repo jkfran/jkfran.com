@@ -13,9 +13,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
 <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="dns-prefetch" href="https://github.com" >
-<link rel="dns-prefetch" href="https://fonts.googleapis.com" >
+<link rel="dns-prefetch" href="https://github.com">
 </head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
@@ -87,10 +88,13 @@
 </div>
 
 <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
+{% if page.url contains "/tools/" %}
+<script src="{{ site.baseurl }}/assets/js/tools-utils.js"></script>
+{% endif %}
 
 {% if page.url == "/about" %}
-<script src="https://www.goodreads.com/review/custom_widget/76125049.Currently%20reading?cover_position=left&cover_size=medium&num_books=1&order=a&shelf=currently-reading&show_author=1&show_cover=1&show_rating=0&show_review=0&show_tags=0&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=none&widget_id=1643813099&widget_text_color=212529&widget_title_size=large&widget_width=full" type="text/javascript" charset="utf-8"></script>
-<script src="https://www.goodreads.com/review/custom_widget/76125049.Recently%20read?cover_position=left&cover_size=medium&num_books=2&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=0&show_tags=1&show_title=1&sort=date_read&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=none&widget_id=1643812651&widget_text_color=212529&widget_title_size=large&widget_width=full" type="text/javascript" charset="utf-8"></script>
+<script async src="https://www.goodreads.com/review/custom_widget/76125049.Currently%20reading?cover_position=left&cover_size=medium&num_books=1&order=a&shelf=currently-reading&show_author=1&show_cover=1&show_rating=0&show_review=0&show_tags=0&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=none&widget_id=1643813099&widget_text_color=212529&widget_title_size=large&widget_width=full" charset="utf-8"></script>
+<script async src="https://www.goodreads.com/review/custom_widget/76125049.Recently%20read?cover_position=left&cover_size=medium&num_books=2&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=0&show_tags=1&show_title=1&sort=date_read&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=none&widget_id=1643812651&widget_text_color=212529&widget_title_size=large&widget_width=full" charset="utf-8"></script>
 {% endif %}
 
 </body>
