@@ -70,10 +70,10 @@ layout: default
 
             <p class="post-meta-info">
                 <span class="post-date"><time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>
-                <span class="post-meta-sep"><i class="bi bi-dot"></i></span>
-                <span class="post-read-time"><i class="bi bi-clock"></i> {{ read_time }} min read</span>
+                <span class="post-meta-sep"><i class="bi bi-dot" aria-hidden="true"></i></span>
+                <span class="post-read-time"><i class="bi bi-clock" aria-hidden="true"></i> {{ read_time }} min read</span>
                 {% if page.last_modified_at %}
-                <span class="post-meta-sep"><i class="bi bi-dot"></i></span>
+                <span class="post-meta-sep"><i class="bi bi-dot" aria-hidden="true"></i></span>
                 <span class="post-updated">Updated {{ page.last_modified_at | date: "%b %-d, %Y" }}</span>
                 {% endif %}
             </p>

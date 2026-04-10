@@ -16,7 +16,7 @@ description: "Free online diff checker. Compare two texts side by side with high
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="leftText" class="form-label mb-0 small text-muted fw-semibold">Original</label>
         <button class="btn btn-sm btn-outline-secondary paste-btn" data-target="leftText">
-          <i class="bi bi-clipboard"></i> Paste
+          <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
         </button>
       </div>
       <textarea
@@ -30,7 +30,7 @@ description: "Free online diff checker. Compare two texts side by side with high
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="rightText" class="form-label mb-0 small text-muted fw-semibold">Modified</label>
         <button class="btn btn-sm btn-outline-secondary paste-btn" data-target="rightText">
-          <i class="bi bi-clipboard"></i> Paste
+          <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
         </button>
       </div>
       <textarea
@@ -43,14 +43,18 @@ description: "Free online diff checker. Compare two texts side by side with high
   </div>
 
   <div class="d-flex gap-2 flex-wrap mb-3">
-    <button class="btn btn-success" id="diffBtn"><i class="bi bi-file-diff"></i> Compare</button>
-    <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-left-right"></i> Swap</button>
-    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
-    <button class="btn btn-outline-secondary" id="sampleBtn"><i class="bi bi-file-earmark-text"></i> Sample</button>
+    <button class="btn btn-success" id="diffBtn"><i class="bi bi-file-diff" aria-hidden="true"></i> Compare</button>
+    <button class="btn btn-outline-secondary" id="swapBtn">
+      <i class="bi bi-arrow-left-right" aria-hidden="true"></i> Swap
+    </button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg" aria-hidden="true"></i> Clear</button>
+    <button class="btn btn-outline-secondary" id="sampleBtn">
+      <i class="bi bi-file-earmark-text" aria-hidden="true"></i> Sample
+    </button>
   </div>
 
-  <div class="alert alert-success" id="statsBox" style="display: none">
-    <i class="bi bi-check-circle"></i> <span id="statsText"></span>
+  <div class="alert alert-success" id="statsBox" role="alert" style="display: none">
+    <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="statsText"></span>
   </div>
 
   <div id="diffOutput" style="display: none">

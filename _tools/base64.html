@@ -11,46 +11,74 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     Everything runs in your browser — no data is sent anywhere.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" style="display: none">
-    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" style="display: none">
-    <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
+  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+    <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
-  <ul class="nav nav-tabs mb-3" id="modeTabs">
-    <li class="nav-item">
-      <button class="nav-link active" data-mode="encode" type="button">Encode</button>
+  <ul class="nav nav-tabs mb-3" id="modeTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        data-mode="encode"
+        type="button"
+        role="tab"
+        aria-selected="true"
+        aria-controls="textMode"
+      >
+        Encode
+      </button>
     </li>
-    <li class="nav-item">
-      <button class="nav-link" data-mode="decode" type="button">Decode</button>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        data-mode="decode"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        aria-controls="textMode"
+      >
+        Decode
+      </button>
     </li>
-    <li class="nav-item">
-      <button class="nav-link" data-mode="file" type="button">File to Base64</button>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-mode="file" type="button" role="tab" aria-selected="false" aria-controls="fileMode">
+        File to Base64
+      </button>
     </li>
-    <li class="nav-item">
-      <button class="nav-link" data-mode="jwt" type="button">Decode JWT</button>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-mode="jwt" type="button" role="tab" aria-selected="false" aria-controls="jwtMode">
+        Decode JWT
+      </button>
     </li>
   </ul>
 
-  <div id="textMode">
+  <div id="textMode" role="tabpanel">
     <div class="mb-3">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="inputText" class="form-label mb-0 small text-muted fw-semibold" id="inputLabel"
           >Text to encode</label
         >
-        <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+        <button class="btn btn-sm btn-outline-secondary" id="pasteBtn">
+          <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
+        </button>
       </div>
       <textarea id="inputText" class="form-control font-monospace" rows="8" placeholder="Enter text here..."></textarea>
     </div>
 
     <div class="d-flex gap-2 flex-wrap mb-3">
       <button class="btn btn-success" id="convertBtn">
-        <i class="bi bi-arrow-repeat"></i> <span id="convertLabel">Encode</span>
+        <i class="bi bi-arrow-repeat" aria-hidden="true"></i> <span id="convertLabel">Encode</span>
       </button>
-      <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-down-up"></i> Swap</button>
-      <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+      <button class="btn btn-outline-secondary" id="swapBtn">
+        <i class="bi bi-arrow-down-up" aria-hidden="true"></i> Swap
+      </button>
+      <button class="btn btn-outline-secondary" id="clearBtn">
+        <i class="bi bi-x-lg" aria-hidden="true"></i> Clear
+      </button>
     </div>
 
     <div class="mb-3">
@@ -58,7 +86,9 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
         <label for="outputText" class="form-label mb-0 small text-muted fw-semibold" id="outputLabel"
           >Base64 output</label
         >
-        <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+        <button class="btn btn-sm btn-outline-secondary" id="copyBtn">
+          <i class="bi bi-copy" aria-hidden="true"></i> Copy
+        </button>
       </div>
       <textarea
         id="outputText"
@@ -70,7 +100,7 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     </div>
   </div>
 
-  <div id="fileMode" style="display: none">
+  <div id="fileMode" role="tabpanel" style="display: none">
     <div class="mb-3">
       <label for="fileInput" class="form-label small text-muted fw-semibold">Choose a file</label>
       <input type="file" id="fileInput" class="form-control" />
@@ -81,10 +111,10 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
         <label for="fileOutput" class="form-label mb-0 small text-muted fw-semibold">Base64 output</label>
         <div>
           <button class="btn btn-sm btn-outline-secondary" id="copyDataUri">
-            <i class="bi bi-link-45deg"></i> Copy as Data URI
+            <i class="bi bi-link-45deg" aria-hidden="true"></i> Copy as Data URI
           </button>
           <button class="btn btn-sm btn-outline-secondary" id="copyFileBase64">
-            <i class="bi bi-copy"></i> Copy Raw
+            <i class="bi bi-copy" aria-hidden="true"></i> Copy Raw
           </button>
         </div>
       </div>
@@ -98,11 +128,13 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     </div>
   </div>
 
-  <div id="jwtMode" style="display: none">
+  <div id="jwtMode" role="tabpanel" style="display: none">
     <div class="mb-3">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="jwtInput" class="form-label mb-0 small text-muted fw-semibold">JWT token</label>
-        <button class="btn btn-sm btn-outline-secondary" id="pasteJwt"><i class="bi bi-clipboard"></i> Paste</button>
+        <button class="btn btn-sm btn-outline-secondary" id="pasteJwt">
+          <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
+        </button>
       </div>
       <textarea
         id="jwtInput"
@@ -113,7 +145,7 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     </div>
 
     <div class="d-flex gap-2 flex-wrap mb-3">
-      <button class="btn btn-success" id="decodeJwt"><i class="bi bi-unlock"></i> Decode JWT</button>
+      <button class="btn btn-success" id="decodeJwt"><i class="bi bi-unlock" aria-hidden="true"></i> Decode JWT</button>
     </div>
 
     <div id="jwtOutput" style="display: none">
@@ -186,8 +218,10 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
       tab.addEventListener("click", function () {
         document.querySelectorAll("#modeTabs .nav-link").forEach(function (t) {
           t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
         });
         tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
         var mode = tab.getAttribute("data-mode");
         document.getElementById("textMode").style.display = mode === "encode" || mode === "decode" ? "block" : "none";
         document.getElementById("fileMode").style.display = mode === "file" ? "block" : "none";
@@ -245,10 +279,10 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     // Copy
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(outputEl.value).catch(function () {});
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
       var btn = this;
       setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+        btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);
     });
 
@@ -290,19 +324,19 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
 
     document.getElementById("copyFileBase64").addEventListener("click", function () {
       navigator.clipboard.writeText(document.getElementById("fileOutput").value);
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
       var btn = this;
       setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-copy"></i> Copy Raw';
+        btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy Raw';
       }, 2000);
     });
 
     document.getElementById("copyDataUri").addEventListener("click", function () {
       navigator.clipboard.writeText(document.getElementById("fileOutput").getAttribute("data-datauri") || "");
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
       var btn = this;
       setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-link-45deg"></i> Copy as Data URI';
+        btn.innerHTML = '<i class="bi bi-link-45deg" aria-hidden="true"></i> Copy as Data URI';
       }, 2000);
     });
 

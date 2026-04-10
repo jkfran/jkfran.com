@@ -12,12 +12,12 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
     browser.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" style="display: none">
-    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" style="display: none">
-    <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
+  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+    <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
   <div class="row mb-3">
@@ -27,7 +27,9 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
           >YAML or JSON input</label
         >
         <div>
-          <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+          <button class="btn btn-sm btn-outline-secondary" id="pasteBtn">
+            <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
+          </button>
           <button class="btn btn-sm btn-outline-secondary" id="sampleYaml">YAML sample</button>
           <button class="btn btn-sm btn-outline-secondary" id="sampleJson">JSON sample</button>
         </div>
@@ -42,7 +44,9 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
     <div class="col-md-6">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="outputText" class="form-label mb-0 small text-muted fw-semibold" id="outputLabel">Output</label>
-        <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+        <button class="btn btn-sm btn-outline-secondary" id="copyBtn">
+          <i class="bi bi-copy" aria-hidden="true"></i> Copy
+        </button>
       </div>
       <textarea
         id="outputText"
@@ -55,11 +59,19 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
   </div>
 
   <div class="d-flex gap-2 flex-wrap mb-3">
-    <button class="btn btn-success" id="yamlToJson"><i class="bi bi-arrow-right"></i> YAML to JSON</button>
-    <button class="btn btn-success" id="jsonToYaml"><i class="bi bi-arrow-right"></i> JSON to YAML</button>
-    <button class="btn btn-outline-secondary" id="validateBtn"><i class="bi bi-check2-circle"></i> Validate</button>
-    <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-left-right"></i> Swap</button>
-    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    <button class="btn btn-success" id="yamlToJson">
+      <i class="bi bi-arrow-right" aria-hidden="true"></i> YAML to JSON
+    </button>
+    <button class="btn btn-success" id="jsonToYaml">
+      <i class="bi bi-arrow-right" aria-hidden="true"></i> JSON to YAML
+    </button>
+    <button class="btn btn-outline-secondary" id="validateBtn">
+      <i class="bi bi-check2-circle" aria-hidden="true"></i> Validate
+    </button>
+    <button class="btn btn-outline-secondary" id="swapBtn">
+      <i class="bi bi-arrow-left-right" aria-hidden="true"></i> Swap
+    </button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg" aria-hidden="true"></i> Clear</button>
   </div>
 
   <div class="tool-info">
@@ -226,10 +238,10 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
 
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(outputEl.value).catch(function () {});
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
       var btn = this;
       setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+        btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);
     });
 

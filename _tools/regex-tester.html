@@ -11,8 +11,8 @@ description: "Free online regex tester with live match highlighting, capture gro
     automatically and each part of your pattern is explained in plain English.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" style="display: none">
-    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
   <div class="mb-3">
@@ -55,7 +55,7 @@ description: "Free online regex tester with live match highlighting, capture gro
   <div class="mb-3">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label for="testInput" class="form-label mb-0 small text-muted fw-semibold">Test string</label>
-      <span class="small text-muted" id="matchCount"></span>
+      <span class="small text-muted" id="matchCount" aria-live="polite"></span>
     </div>
     <div id="highlightOutput" class="regex-highlight-box font-monospace" style="display: none"></div>
     <textarea

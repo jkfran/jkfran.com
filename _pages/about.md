@@ -7,12 +7,12 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 
 <div class="about-hero text-center mb-5">
   <h3 class="mb-2">Senior Software Engineer</h3>
-  <p class="about-location"><i class="bi bi-geo-alt"></i> London, UK</p>
+  <p class="about-location"><i class="bi bi-geo-alt" aria-hidden="true"></i> London, UK</p>
   <div class="about-social">
-    <a href="https://github.com/jkfran" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bi bi-github"></i></a>
-    <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-    <a href="https://x.com/jkfran_" target="_blank" rel="noopener noreferrer" title="X"><i class="bi bi-twitter-x"></i></a>
-    <a href="https://www.goodreads.com/user/show/76125049-fran-jim-nez-cabrera" target="_blank" rel="noopener noreferrer" title="Goodreads"><i class="bi bi-book"></i></a>
+    <a href="https://github.com/jkfran" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+    <a href="https://x.com/jkfran_" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+    <a href="https://www.goodreads.com/user/show/76125049-fran-jim-nez-cabrera" target="_blank" rel="noopener noreferrer" aria-label="Goodreads"><i class="bi bi-book" aria-hidden="true"></i></a>
   </div>
 </div>
 

@@ -22,16 +22,18 @@ description: "Free online cron expression builder. Build crontab schedules visua
     />
     <div class="d-flex justify-content-between mt-1">
       <small class="text-muted font-monospace">min &nbsp; hour &nbsp; day &nbsp; month &nbsp; weekday</small>
-      <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+      <button class="btn btn-sm btn-outline-secondary" id="copyBtn">
+        <i class="bi bi-copy" aria-hidden="true"></i> Copy
+      </button>
     </div>
   </div>
 
-  <div class="alert alert-danger" id="errorBox" style="display: none">
-    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div id="description" class="alert alert-success" style="display: none">
-    <i class="bi bi-chat-left-text"></i> <span id="descText"></span>
+  <div id="description" class="alert alert-success" role="status" style="display: none">
+    <i class="bi bi-chat-left-text" aria-hidden="true"></i> <span id="descText"></span>
   </div>
 
   <div class="card mb-4">
@@ -101,7 +103,7 @@ description: "Free online cron expression builder. Build crontab schedules visua
   </div>
 
   <div id="nextRuns" class="mb-4" style="display: none">
-    <h6 class="fw-semibold mb-2"><i class="bi bi-calendar-event"></i> Next 5 runs</h6>
+    <h6 class="fw-semibold mb-2"><i class="bi bi-calendar-event" aria-hidden="true"></i> Next 5 runs</h6>
     <ul id="runsList" class="list-group list-group-flush"></ul>
   </div>
 
@@ -416,10 +418,10 @@ description: "Free online cron expression builder. Build crontab schedules visua
 
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(cronInput.value).catch(function () {});
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
       var btn = this;
       setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+        btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);
     });
 

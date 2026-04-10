@@ -11,14 +11,16 @@ description: "Free online URL encoder and decoder. Convert special characters to
     query strings, and Unicode characters. All processing happens in your browser.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" style="display: none">
-    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
   <div class="mb-3">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label for="inputText" class="form-label mb-0 small text-muted fw-semibold" id="inputLabel">Text to encode</label>
-      <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+      <button class="btn btn-sm btn-outline-secondary" id="pasteBtn">
+        <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
+      </button>
     </div>
     <textarea
       id="inputText"
@@ -29,12 +31,14 @@ description: "Free online URL encoder and decoder. Convert special characters to
   </div>
 
   <div class="d-flex gap-2 flex-wrap mb-2">
-    <button class="btn btn-success" id="encodeBtn"><i class="bi bi-arrow-down"></i> Encode</button>
-    <button class="btn btn-success" id="decodeBtn"><i class="bi bi-arrow-up"></i> Decode</button>
+    <button class="btn btn-success" id="encodeBtn"><i class="bi bi-arrow-down" aria-hidden="true"></i> Encode</button>
+    <button class="btn btn-success" id="decodeBtn"><i class="bi bi-arrow-up" aria-hidden="true"></i> Decode</button>
     <button class="btn btn-outline-secondary" id="encodeComponentBtn">encodeURIComponent</button>
     <button class="btn btn-outline-secondary" id="encodeUriBtn">encodeURI</button>
-    <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-down-up"></i> Swap</button>
-    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    <button class="btn btn-outline-secondary" id="swapBtn">
+      <i class="bi bi-arrow-down-up" aria-hidden="true"></i> Swap
+    </button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg" aria-hidden="true"></i> Clear</button>
   </div>
 
   <div class="small text-muted mb-3" id="modeHint">
@@ -45,7 +49,9 @@ description: "Free online URL encoder and decoder. Convert special characters to
   <div class="mb-3">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label for="outputText" class="form-label mb-0 small text-muted fw-semibold">Result</label>
-      <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+      <button class="btn btn-sm btn-outline-secondary" id="copyBtn">
+        <i class="bi bi-copy" aria-hidden="true"></i> Copy
+      </button>
     </div>
     <textarea
       id="outputText"
@@ -220,10 +226,10 @@ description: "Free online URL encoder and decoder. Convert special characters to
 
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(outputEl.value).catch(function () {});
-      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
       var btn = this;
       setTimeout(function () {
-        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+        btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);
     });
 

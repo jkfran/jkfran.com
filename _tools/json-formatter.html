@@ -11,21 +11,23 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
     the exact line, or minify it for production use. Everything runs in your browser — no data is sent anywhere.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" style="display: none">
-    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" style="display: none">
-    <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
+  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+    <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
   <div class="mb-3">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label for="jsonInput" class="form-label mb-0 small text-muted fw-semibold">Input JSON</label>
       <div>
-        <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+        <button class="btn btn-sm btn-outline-secondary" id="pasteBtn">
+          <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
+        </button>
         <button class="btn btn-sm btn-outline-secondary" id="sampleBtn">
-          <i class="bi bi-filetype-json"></i> Sample
+          <i class="bi bi-filetype-json" aria-hidden="true"></i> Sample
         </button>
       </div>
     </div>
@@ -38,17 +40,23 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
   </div>
 
   <div class="d-flex gap-2 flex-wrap mb-3">
-    <button class="btn btn-success" id="formatBtn"><i class="bi bi-code-slash"></i> Format</button>
-    <button class="btn btn-outline-secondary" id="minifyBtn"><i class="bi bi-arrows-collapse"></i> Minify</button>
-    <button class="btn btn-outline-secondary" id="validateBtn"><i class="bi bi-check2-circle"></i> Validate</button>
-    <button class="btn btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
-    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    <button class="btn btn-success" id="formatBtn"><i class="bi bi-code-slash" aria-hidden="true"></i> Format</button>
+    <button class="btn btn-outline-secondary" id="minifyBtn">
+      <i class="bi bi-arrows-collapse" aria-hidden="true"></i> Minify
+    </button>
+    <button class="btn btn-outline-secondary" id="validateBtn">
+      <i class="bi bi-check2-circle" aria-hidden="true"></i> Validate
+    </button>
+    <button class="btn btn-outline-secondary" id="copyBtn"><i class="bi bi-copy" aria-hidden="true"></i> Copy</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg" aria-hidden="true"></i> Clear</button>
   </div>
 
   <div id="jsonOutput" class="json-output" style="display: none">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label class="form-label mb-0 small text-muted fw-semibold">Output</label>
-      <button class="btn btn-sm btn-outline-secondary" id="copyOutputBtn"><i class="bi bi-copy"></i> Copy</button>
+      <button class="btn btn-sm btn-outline-secondary" id="copyOutputBtn">
+        <i class="bi bi-copy" aria-hidden="true"></i> Copy
+      </button>
     </div>
     <pre class="json-pre"><code id="jsonOutputCode"></code></pre>
   </div>
@@ -57,15 +65,15 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
     <h3>Features</h3>
     <div class="row">
       <div class="col-md-4">
-        <h4><i class="bi bi-code-slash"></i> Format</h4>
+        <h4><i class="bi bi-code-slash" aria-hidden="true"></i> Format</h4>
         <p>Pretty-print JSON with 2-space indentation for easy reading and editing.</p>
       </div>
       <div class="col-md-4">
-        <h4><i class="bi bi-arrows-collapse"></i> Minify</h4>
+        <h4><i class="bi bi-arrows-collapse" aria-hidden="true"></i> Minify</h4>
         <p>Compress JSON by removing all whitespace for smaller payload sizes.</p>
       </div>
       <div class="col-md-4">
-        <h4><i class="bi bi-check2-circle"></i> Validate</h4>
+        <h4><i class="bi bi-check2-circle" aria-hidden="true"></i> Validate</h4>
         <p>Check if your JSON is valid with clear error messages showing exactly where the problem is.</p>
       </div>
     </div>

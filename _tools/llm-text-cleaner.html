@@ -12,8 +12,8 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
     and produce invisible bugs. Paste your text below to clean it instantly.
   </p>
 
-  <div class="alert alert-success" id="stats" style="display: none">
-    <i class="bi bi-check-circle"></i> <span id="charCount"></span> characters cleaned
+  <div class="alert alert-success" id="stats" role="alert" style="display: none">
+    <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="charCount"></span> characters cleaned
   </div>
 
   <div class="mb-3">
@@ -21,7 +21,9 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
       <label for="inputText" class="form-label mb-0 small text-muted fw-semibold"
         >Input (paste AI-generated text)</label
       >
-      <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+      <button class="btn btn-sm btn-outline-secondary" id="pasteBtn">
+        <i class="bi bi-clipboard" aria-hidden="true"></i> Paste
+      </button>
     </div>
     <textarea
       id="inputText"
@@ -32,14 +34,16 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
   </div>
 
   <div class="d-flex gap-2 flex-wrap mb-3">
-    <button class="btn btn-success" id="cleanBtn"><i class="bi bi-stars"></i> Clean Text</button>
-    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    <button class="btn btn-success" id="cleanBtn"><i class="bi bi-stars" aria-hidden="true"></i> Clean Text</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg" aria-hidden="true"></i> Clear</button>
   </div>
 
   <div class="mb-3">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label for="outputText" class="form-label mb-0 small text-muted fw-semibold">Output (cleaned text)</label>
-      <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+      <button class="btn btn-sm btn-outline-secondary" id="copyBtn">
+        <i class="bi bi-copy" aria-hidden="true"></i> Copy
+      </button>
     </div>
     <textarea
       id="outputText"
