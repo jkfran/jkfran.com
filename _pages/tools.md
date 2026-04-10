@@ -36,4 +36,10 @@ permalink: /tools
     <p>Test regular expressions with live match highlighting, capture group extraction, and plain-English explanations of each pattern part.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/cron-builder/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-clock-history"></i></div>
+    <h3>Cron Expression Builder</h3>
+    <p>Build cron expressions visually with dropdowns, see the next scheduled run times, and get a plain-English description of your schedule.</p>
+  </a>
+
 </div>
