@@ -225,7 +225,7 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
     });
 
     document.getElementById("copyBtn").addEventListener("click", function () {
-      navigator.clipboard.writeText(outputEl.value);
+      navigator.clipboard.writeText(outputEl.value).catch(function () {});
       this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
       var btn = this;
       setTimeout(function () {
@@ -234,9 +234,14 @@ description: "Free online YAML to JSON and JSON to YAML converter with validatio
     });
 
     document.getElementById("pasteBtn").addEventListener("click", function () {
-      navigator.clipboard.readText().then(function (t) {
-        inputEl.value = t;
-      });
+      navigator.clipboard
+        .readText()
+        .catch(function () {
+          return "";
+        })
+        .then(function (t) {
+          inputEl.value = t;
+        });
     });
 
     document.getElementById("sampleYaml").addEventListener("click", function () {

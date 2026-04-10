@@ -256,9 +256,14 @@ description: "Free online diff checker. Compare two texts side by side with high
     document.querySelectorAll(".paste-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var target = document.getElementById(btn.getAttribute("data-target"));
-        navigator.clipboard.readText().then(function (t) {
-          target.value = t;
-        });
+        navigator.clipboard
+          .readText()
+          .catch(function () {
+            return "";
+          })
+          .then(function (t) {
+            target.value = t;
+          });
       });
     });
   })();

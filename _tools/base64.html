@@ -244,7 +244,7 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
 
     // Copy
     document.getElementById("copyBtn").addEventListener("click", function () {
-      navigator.clipboard.writeText(outputEl.value);
+      navigator.clipboard.writeText(outputEl.value).catch(function () {});
       this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
       var btn = this;
       setTimeout(function () {
@@ -254,9 +254,14 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
 
     // Paste
     document.getElementById("pasteBtn").addEventListener("click", function () {
-      navigator.clipboard.readText().then(function (t) {
-        inputEl.value = t;
-      });
+      navigator.clipboard
+        .readText()
+        .catch(function () {
+          return "";
+        })
+        .then(function (t) {
+          inputEl.value = t;
+        });
     });
 
     // File encoding (10MB limit to prevent browser hang)
@@ -338,9 +343,14 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     });
 
     document.getElementById("pasteJwt").addEventListener("click", function () {
-      navigator.clipboard.readText().then(function (t) {
-        document.getElementById("jwtInput").value = t;
-      });
+      navigator.clipboard
+        .readText()
+        .catch(function () {
+          return "";
+        })
+        .then(function (t) {
+          document.getElementById("jwtInput").value = t;
+        });
     });
   })();
 </script>

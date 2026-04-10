@@ -415,7 +415,7 @@ description: "Free online cron expression builder. Build crontab schedules visua
     });
 
     document.getElementById("copyBtn").addEventListener("click", function () {
-      navigator.clipboard.writeText(cronInput.value);
+      navigator.clipboard.writeText(cronInput.value).catch(function () {});
       this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
       var btn = this;
       setTimeout(function () {

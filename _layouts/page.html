@@ -7,5 +7,14 @@ layout: default
     <h1><span>{{ page.title }}</span></h1>
   </div>
 
+  {% if page.url contains "/tools/" %}
+  <noscript>
+    <div class="alert alert-warning">
+      <i class="bi bi-exclamation-triangle"></i>
+      This tool requires JavaScript to run. Please enable JavaScript in your browser settings.
+    </div>
+  </noscript>
+  {% endif %}
+
   <div class="page-content">{{content}}</div>
 </section>

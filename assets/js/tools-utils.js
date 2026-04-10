@@ -7,7 +7,7 @@
  * Attach a copy-to-clipboard handler to a button.
  * @param {string} btnId - Button element ID
  * @param {string|function} source - Element ID to copy from, or a function returning text
- * @param {string} [label] - Button label to restore after "Copied!" (default: icon + " Copy")
+ * @param {string} [label] - Button label to restore after feedback (default: current innerHTML)
  */
 function attachCopyBtn(btnId, source, label) {
   var btn = document.getElementById(btnId);
@@ -18,12 +18,20 @@ function attachCopyBtn(btnId, source, label) {
       typeof source === "function"
         ? source()
         : document.getElementById(source).value || document.getElementById(source).textContent;
-    navigator.clipboard.writeText(text).then(function () {
-      btn.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
-      setTimeout(function () {
-        btn.innerHTML = defaultLabel;
-      }, 2000);
-    });
+    navigator.clipboard.writeText(text).then(
+      function () {
+        btn.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+        setTimeout(function () {
+          btn.innerHTML = defaultLabel;
+        }, 2000);
+      },
+      function () {
+        btn.innerHTML = '<i class="bi bi-x-lg"></i> Failed';
+        setTimeout(function () {
+          btn.innerHTML = defaultLabel;
+        }, 2000);
+      }
+    );
   });
 }
 
@@ -35,9 +43,18 @@ function attachCopyBtn(btnId, source, label) {
 function attachPasteBtn(btnId, targetId) {
   var btn = document.getElementById(btnId);
   if (!btn) return;
+  var defaultLabel = btn.innerHTML;
   btn.addEventListener("click", function () {
-    navigator.clipboard.readText().then(function (text) {
-      document.getElementById(targetId).value = text;
-    });
+    navigator.clipboard.readText().then(
+      function (text) {
+        document.getElementById(targetId).value = text;
+      },
+      function () {
+        btn.innerHTML = '<i class="bi bi-x-lg"></i> Denied';
+        setTimeout(function () {
+          btn.innerHTML = defaultLabel;
+        }, 2000);
+      }
+    );
   });
 }

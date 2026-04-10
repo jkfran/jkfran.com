@@ -82,3 +82,15 @@ h6 {
   outline: 2px solid #00ab6b;
   outline-offset: 2px;
 }
+
+// Ensure minimum 44px touch targets on mobile (WCAG 2.5.5)
+@media (max-width: 767px) {
+  .btn-group-sm > .btn,
+  .form-check-inline {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
