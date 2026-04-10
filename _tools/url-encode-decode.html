@@ -1,0 +1,246 @@
+---
+layout: page
+title: "URL Encode / Decode - Percent-Encoding Converter"
+permalink: /tools/url-encode-decode/
+description: "Free online URL encoder and decoder. Convert special characters to percent-encoded format for safe use in URLs, query strings, and API requests. Decode encoded URLs back to readable text."
+---
+
+<div class="tool-container">
+  <p class="text-muted mb-4">
+    Encode special characters for URLs or decode percent-encoded strings. Supports full URLs, individual components,
+    query strings, and Unicode characters. All processing happens in your browser.
+  </p>
+
+  <div class="alert alert-danger" id="errorBox" style="display: none">
+    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  </div>
+
+  <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label for="inputText" class="form-label mb-0 small text-muted fw-semibold" id="inputLabel">Text to encode</label>
+      <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+    </div>
+    <textarea
+      id="inputText"
+      class="form-control font-monospace"
+      rows="5"
+      placeholder="hello world & foo=bar"
+    ></textarea>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mb-2">
+    <button class="btn btn-success" id="encodeBtn"><i class="bi bi-arrow-down"></i> Encode</button>
+    <button class="btn btn-success" id="decodeBtn"><i class="bi bi-arrow-up"></i> Decode</button>
+    <button class="btn btn-outline-secondary" id="encodeComponentBtn">encodeURIComponent</button>
+    <button class="btn btn-outline-secondary" id="encodeUriBtn">encodeURI</button>
+    <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-down-up"></i> Swap</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+  </div>
+
+  <div class="small text-muted mb-3" id="modeHint">
+    <strong>Encode</strong> = encodeURIComponent (encodes everything except letters, digits, <code>- _ . ~ </code>).
+    <strong>encodeURI</strong> = preserves URL structure (<code>: / ? # @ &amp;</code> etc.).
+  </div>
+
+  <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label for="outputText" class="form-label mb-0 small text-muted fw-semibold">Result</label>
+      <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+    </div>
+    <textarea
+      id="outputText"
+      class="form-control font-monospace"
+      rows="5"
+      readonly
+      placeholder="Result will appear here..."
+    ></textarea>
+  </div>
+
+  <div class="mb-4">
+    <h6 class="fw-semibold mb-2">Examples</h6>
+    <div class="d-flex gap-2 flex-wrap">
+      <button
+        class="btn btn-sm btn-outline-secondary url-example"
+        data-text="hello world & goodbye"
+        data-action="encode"
+      >
+        Spaces & ampersand
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary url-example"
+        data-text="https://example.com/search?q=hello world&lang=en"
+        data-action="encodeUri"
+      >
+        Full URL
+      </button>
+      <button class="btn btn-sm btn-outline-secondary url-example" data-text="café résumé naïve" data-action="encode">
+        Unicode text
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary url-example"
+        data-text="hello%20world%20%26%20goodbye"
+        data-action="decode"
+      >
+        Decode %20
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary url-example"
+        data-text="name=John+Doe&city=New+York"
+        data-action="decode"
+      >
+        Decode form data
+      </button>
+    </div>
+  </div>
+
+  <div class="tool-info">
+    <h3>What is URL encoding?</h3>
+    <p>
+      URL encoding (also called percent-encoding) replaces special characters with a <code>%</code> followed by their
+      hex value. For example, a space becomes <code>%20</code> and an ampersand becomes <code>%26</code>. This is
+      required because URLs can only contain a limited set of ASCII characters.
+    </p>
+
+    <h3>encodeURIComponent vs encodeURI</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>encodeURIComponent</h4>
+        <p>Encodes <strong>everything</strong> except: <code>A-Z a-z 0-9 - _ . ~</code></p>
+        <p>Use for: query parameter values, form data, individual path segments.</p>
+      </div>
+      <div class="col-md-6">
+        <h4>encodeURI</h4>
+        <p>Preserves URL-safe characters: <code>: / ? # [ ] @ ! $ & ' ( ) * + , ; =</code></p>
+        <p>Use for: encoding a full URL while keeping its structure intact.</p>
+      </div>
+    </div>
+
+    <h3>Common encodings</h3>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th class="text-muted small">Character</th>
+          <th class="text-muted small">Encoded</th>
+          <th class="text-muted small">Character</th>
+          <th class="text-muted small">Encoded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Space</td>
+          <td><code>%20</code> or <code>+</code></td>
+          <td><code>&</code></td>
+          <td><code>%26</code></td>
+        </tr>
+        <tr>
+          <td><code>=</code></td>
+          <td><code>%3D</code></td>
+          <td><code>?</code></td>
+          <td><code>%3F</code></td>
+        </tr>
+        <tr>
+          <td><code>#</code></td>
+          <td><code>%23</code></td>
+          <td><code>/</code></td>
+          <td><code>%2F</code></td>
+        </tr>
+        <tr>
+          <td><code>@</code></td>
+          <td><code>%40</code></td>
+          <td><code>+</code></td>
+          <td><code>%2B</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var inputEl = document.getElementById("inputText");
+    var outputEl = document.getElementById("outputText");
+    var errorBox = document.getElementById("errorBox");
+
+    function showError(msg) {
+      document.getElementById("errorMsg").textContent = msg;
+      errorBox.style.display = "block";
+    }
+
+    function hideError() {
+      errorBox.style.display = "none";
+    }
+
+    function doEncode() {
+      hideError();
+      if (!inputEl.value) return;
+      try {
+        outputEl.value = encodeURIComponent(inputEl.value);
+      } catch (e) {
+        showError("Encoding failed: " + e.message);
+      }
+    }
+
+    function doDecode() {
+      hideError();
+      if (!inputEl.value) return;
+      try {
+        outputEl.value = decodeURIComponent(inputEl.value.replace(/\+/g, " "));
+      } catch (e) {
+        showError("Decoding failed: " + e.message);
+      }
+    }
+
+    function doEncodeUri() {
+      hideError();
+      if (!inputEl.value) return;
+      try {
+        outputEl.value = encodeURI(inputEl.value);
+      } catch (e) {
+        showError("Encoding failed: " + e.message);
+      }
+    }
+
+    document.getElementById("encodeBtn").addEventListener("click", doEncode);
+    document.getElementById("encodeComponentBtn").addEventListener("click", doEncode);
+    document.getElementById("decodeBtn").addEventListener("click", doDecode);
+    document.getElementById("encodeUriBtn").addEventListener("click", doEncodeUri);
+
+    document.getElementById("swapBtn").addEventListener("click", function () {
+      var tmp = inputEl.value;
+      inputEl.value = outputEl.value;
+      outputEl.value = tmp;
+      hideError();
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      inputEl.value = "";
+      outputEl.value = "";
+      hideError();
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(outputEl.value);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+      }, 2000);
+    });
+
+    document.getElementById("pasteBtn").addEventListener("click", function () {
+      navigator.clipboard.readText().then(function (t) {
+        inputEl.value = t;
+      });
+    });
+
+    document.querySelectorAll(".url-example").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        inputEl.value = btn.getAttribute("data-text");
+        var action = btn.getAttribute("data-action");
+        if (action === "encode") doEncode();
+        else if (action === "decode") doDecode();
+        else if (action === "encodeUri") doEncodeUri();
+      });
+    });
+  })();
+</script>

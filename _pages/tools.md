@@ -42,4 +42,10 @@ permalink: /tools
     <p>Build cron expressions visually with dropdowns, see the next scheduled run times, and get a plain-English description of your schedule.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/url-encode-decode/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-link-45deg"></i></div>
+    <h3>URL Encode / Decode</h3>
+    <p>Encode special characters for safe use in URLs, or decode percent-encoded strings back to readable text.</p>
+  </a>
+
 </div>
