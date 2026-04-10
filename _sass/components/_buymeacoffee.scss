@@ -1,0 +1,34 @@
+// Buy Me A Coffee
+
+.buymeacoffee {
+  text-align: center;
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #f2f2f2;
+
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+
+  .btn-coffee {
+    display: inline-block;
+    background-color: #ff813f;
+    color: #fff;
+    font-size: 1.4em;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #e0702f;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

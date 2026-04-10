@@ -1,0 +1,36 @@
+// Pagination
+
+.bottompagination span.navigation {
+  display: block;
+  font-size: 0.93rem;
+  padding: 15px 0 0;
+  text-align: center;
+  margin-bottom: 0;
+  color: #999;
+  border-top: 1px solid #ddd;
+
+  i {
+    display: inline-block;
+  }
+}
+
+.pointerup {
+  margin-bottom: -17px;
+  margin-left: 49%;
+  font-size: 30px;
+
+  i {
+    color: #eaeaea;
+  }
+}
+
+span.navigation {
+  display: inline-block;
+  font-size: 0.93rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pagination {
+  display: block;
+}

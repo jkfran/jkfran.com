@@ -1,13 +1,28 @@
 ---
 ---
 
-@import "base";
-@import "layout";
-@import "components";
-@import "post";
-@import "projects";
-@import "tools";
-@import "tools-json";
-@import "about";
-@import "goodreads";
-@import "syntax";
+// Base
+@import "base/base";
+
+// Layout
+@import "layout/layout";
+
+// Components
+@import "components/cards";
+@import "components/share";
+@import "components/pagination";
+@import "components/tags";
+@import "components/buymeacoffee";
+@import "components/search";
+@import "components/utilities";
+@import "components/post";
+
+// Pages
+@import "pages/projects";
+@import "pages/tools";
+@import "pages/tools-json";
+@import "pages/about";
+@import "pages/goodreads";
+
+// Vendors
+@import "vendors/syntax";
