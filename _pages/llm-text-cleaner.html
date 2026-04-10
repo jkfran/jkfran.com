@@ -1,0 +1,263 @@
+---
+layout: page
+title: "LLM Text Cleaner - Remove AI-Generated Unicode Characters"
+permalink: /tools/llm-text-cleaner/
+description: "Free online tool to remove hidden Unicode characters, curly quotes, em dashes, non-breaking spaces, and other artifacts from AI-generated text. Paste, clean, copy."
+---
+
+<div class="tool-container">
+  <p class="tool-description">
+    AI models like ChatGPT, Claude, and Gemini often insert invisible Unicode characters into generated text and code —
+    curly quotes, em dashes, non-breaking spaces, zero-width joiners, and more. These break code, cause encoding issues,
+    and produce invisible bugs. Paste your text below to clean it instantly.
+  </p>
+
+  <div class="tool-stats" id="stats" style="display: none"><span id="charCount"></span> characters cleaned</div>
+
+  <div class="tool-area">
+    <div class="tool-panel">
+      <div class="tool-panel-header">
+        <label for="inputText">Input (paste AI-generated text)</label>
+        <button class="tool-btn-sm" id="pasteBtn" title="Paste from clipboard">
+          <i class="bi bi-clipboard"></i> Paste
+        </button>
+      </div>
+      <textarea id="inputText" class="tool-textarea" rows="12" placeholder="Paste your text here..."></textarea>
+    </div>
+
+    <div class="tool-actions">
+      <button class="tool-btn-primary" id="cleanBtn"><i class="bi bi-stars"></i> Clean Text</button>
+      <button class="tool-btn" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    </div>
+
+    <div class="tool-panel">
+      <div class="tool-panel-header">
+        <label for="outputText">Output (cleaned text)</label>
+        <button class="tool-btn-sm" id="copyBtn" title="Copy to clipboard"><i class="bi bi-copy"></i> Copy</button>
+      </div>
+      <textarea
+        id="outputText"
+        class="tool-textarea"
+        rows="12"
+        readonly
+        placeholder="Cleaned text will appear here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="tool-replacements" id="replacements" style="display: none">
+    <h3>Replacements made</h3>
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th>Character</th>
+          <th>Unicode</th>
+          <th>Replaced with</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody id="replacementRows"></tbody>
+    </table>
+  </div>
+
+  <div class="tool-info">
+    <h3>What does this tool fix?</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Typography characters</h4>
+        <ul>
+          <li><strong>Curly quotes</strong> (" " ' ') → straight quotes</li>
+          <li><strong>Em dash</strong> (—) → removed</li>
+          <li><strong>En dash</strong> (–) → hyphen</li>
+          <li><strong>Ellipsis</strong> (…) → three dots</li>
+          <li><strong>Bullet</strong> (•) → hyphen</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Invisible characters</h4>
+        <ul>
+          <li><strong>Non-breaking spaces</strong> (U+00A0, U+202F)</li>
+          <li><strong>Zero-width spaces</strong> (U+200B, U+200C, U+200D)</li>
+          <li><strong>Directional marks</strong> (LTR/RTL overrides)</li>
+          <li><strong>Variation selectors</strong> (U+FE00–U+FE0F)</li>
+          <li><strong>BOM</strong> (U+FEFF) and other invisible controls</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Why do AI models add these characters?</h3>
+    <p>
+      Large language models are trained on diverse text sources including published books, web pages, and formatted
+      documents. These sources use typographically correct characters like curly quotes and em dashes. When you paste
+      AI-generated text into code, terminals, config files, or APIs, these characters cause silent failures — a curly
+      quote in a Python string, a non-breaking space in YAML indentation, or a zero-width character in a variable name.
+    </p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var REPLACEMENTS = {
+      "\u2026": ["...", "Ellipsis"],
+      "\u00A0": [" ", "Non-Breaking Space"],
+      "\u202F": [" ", "Narrow NBSP"],
+      "\u2014": ["", "Em Dash"],
+      "\u201C": ['"', "Left Curly Quote"],
+      "\u201D": ['"', "Right Curly Quote"],
+      "\u2013": ["-", "En Dash"],
+      "\u2019": ["'", "Curly Apostrophe"],
+      "\u2018": ["'", "Left Single Quote"],
+      "\u2022": ["-", "Bullet"],
+      "\u2714": ["", "Check Mark"],
+      "\u2000": [" ", "En Quad"],
+      "\u2001": [" ", "Em Quad"],
+      "\u2002": [" ", "En Space"],
+      "\u2003": [" ", "Em Space"],
+      "\u2004": [" ", "Three-Per-Em Space"],
+      "\u2005": [" ", "Four-Per-Em Space"],
+      "\u2006": [" ", "Six-Per-Em Space"],
+      "\u2007": [" ", "Figure Space"],
+      "\u2008": [" ", "Punctuation Space"],
+      "\u2009": [" ", "Thin Space"],
+      "\u200A": [" ", "Hair Space"],
+      "\u205F": [" ", "Math Space"],
+      "\u3000": [" ", "Ideographic Space"],
+      "\u1680": [" ", "Ogham Space Mark"],
+      "\u200B": [" ", "Zero-Width Space"],
+      "\u2028": ["\n", "Line Separator"],
+      "\u2029": ["\n\n", "Paragraph Separator"],
+      "\u000C": ["", "Form Feed"],
+      "\u200C": ["", "Zero-Width Non-Joiner"],
+      "\u200D": ["", "Zero-Width Joiner"],
+      "\u200E": ["", "LTR Mark"],
+      "\u200F": ["", "RTL Mark"],
+      "\u202A": ["", "LTR Embedding"],
+      "\u202B": ["", "RTL Embedding"],
+      "\u202C": ["", "Pop Directional"],
+      "\u202D": ["", "LTR Override"],
+      "\u202E": ["", "RTL Override"],
+      "\u2060": ["", "Word Joiner"],
+      "\u2061": ["", "Function Application"],
+      "\u2062": ["x", "Invisible Times"],
+      "\u2063": [",", "Invisible Separator"],
+      "\u2066": ["", "LTR Isolate"],
+      "\u2067": ["", "RTL Isolate"],
+      "\u2068": ["", "First Strong Isolate"],
+      "\u2069": ["", "Pop Directional Isolate"],
+      "\u034F": ["", "Grapheme Joiner"],
+      "\u00AD": ["", "Soft Hyphen"],
+      "\uFE00": ["", "Variation Selector-1"],
+      "\uFE01": ["", "Variation Selector-2"],
+      "\uFE02": ["", "Variation Selector-3"],
+      "\uFE03": ["", "Variation Selector-4"],
+      "\uFE04": ["", "Variation Selector-5"],
+      "\uFE05": ["", "Variation Selector-6"],
+      "\uFE06": ["", "Variation Selector-7"],
+      "\uFE07": ["", "Variation Selector-8"],
+      "\uFE08": ["", "Variation Selector-9"],
+      "\uFE09": ["", "Variation Selector-10"],
+      "\uFE0A": ["", "Variation Selector-11"],
+      "\uFE0B": ["", "Variation Selector-12"],
+      "\uFE0C": ["", "Variation Selector-13"],
+      "\uFE0D": ["", "Variation Selector-14"],
+      "\uFE0E": ["", "Variation Selector-15"],
+      "\uFE0F": ["", "Variation Selector-16"],
+      "\uFEFF": ["", "BOM / ZWNBSP"],
+    };
+
+    function cleanText(input) {
+      var output = input;
+      var counts = {};
+      var total = 0;
+
+      for (var ch in REPLACEMENTS) {
+        var replacement = REPLACEMENTS[ch][0];
+        var name = REPLACEMENTS[ch][1];
+        var count = output.split(ch).length - 1;
+        if (count > 0) {
+          counts[ch] = { name: name, replacement: replacement, count: count };
+          total += count;
+          output = output.split(ch).join(replacement);
+        }
+      }
+
+      return { output: output, counts: counts, total: total };
+    }
+
+    function toUnicode(ch) {
+      return "U+" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0");
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    var inputEl = document.getElementById("inputText");
+    var outputEl = document.getElementById("outputText");
+    var statsEl = document.getElementById("stats");
+    var charCountEl = document.getElementById("charCount");
+    var replacementsEl = document.getElementById("replacements");
+    var rowsEl = document.getElementById("replacementRows");
+
+    document.getElementById("cleanBtn").addEventListener("click", function () {
+      var result = cleanText(inputEl.value);
+      outputEl.value = result.output;
+
+      if (result.total > 0) {
+        charCountEl.textContent = result.total;
+        statsEl.style.display = "block";
+
+        rowsEl.innerHTML = "";
+        for (var ch in result.counts) {
+          var r = result.counts[ch];
+          var display =
+            r.replacement === ""
+              ? "(removed)"
+              : r.replacement === " "
+                ? "(space)"
+                : r.replacement === "\n"
+                  ? "(newline)"
+                  : '"' + escapeHtml(r.replacement) + '"';
+          rowsEl.innerHTML +=
+            "<tr><td>" +
+            escapeHtml(r.name) +
+            "</td><td><code>" +
+            toUnicode(ch) +
+            "</code></td><td>" +
+            display +
+            "</td><td>" +
+            r.count +
+            "</td></tr>";
+        }
+        replacementsEl.style.display = "block";
+      } else {
+        statsEl.style.display = "none";
+        replacementsEl.style.display = "none";
+      }
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(outputEl.value);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+      }, 2000);
+    });
+
+    document.getElementById("pasteBtn").addEventListener("click", function () {
+      navigator.clipboard.readText().then(function (text) {
+        inputEl.value = text;
+      });
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      inputEl.value = "";
+      outputEl.value = "";
+      statsEl.style.display = "none";
+      replacementsEl.style.display = "none";
+    });
+  })();
+</script>
