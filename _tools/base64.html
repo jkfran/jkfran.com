@@ -1,0 +1,337 @@
+---
+layout: page
+title: "Base64 Encode / Decode - Free Online Base64 Converter"
+permalink: /tools/base64/
+description: "Free online Base64 encoder and decoder. Convert text or files to Base64, decode Base64 strings, and decode JWTs. All processing happens in your browser."
+---
+
+<div class="tool-container">
+  <p class="text-muted mb-4">
+    Encode text to Base64 or decode Base64 back to readable text. Supports file encoding for data URIs and JWT decoding.
+    Everything runs in your browser — no data is sent anywhere.
+  </p>
+
+  <div class="alert alert-danger" id="errorBox" style="display: none">
+    <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
+  </div>
+
+  <div class="alert alert-success" id="successBox" style="display: none">
+    <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
+  </div>
+
+  <ul class="nav nav-tabs mb-3" id="modeTabs">
+    <li class="nav-item">
+      <button class="nav-link active" data-mode="encode" type="button">Encode</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-mode="decode" type="button">Decode</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-mode="file" type="button">File to Base64</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-mode="jwt" type="button">Decode JWT</button>
+    </li>
+  </ul>
+
+  <div id="textMode">
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="inputText" class="form-label mb-0 small text-muted fw-semibold" id="inputLabel"
+          >Text to encode</label
+        >
+        <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+      </div>
+      <textarea id="inputText" class="form-control font-monospace" rows="8" placeholder="Enter text here..."></textarea>
+    </div>
+
+    <div class="d-flex gap-2 flex-wrap mb-3">
+      <button class="btn btn-success" id="convertBtn">
+        <i class="bi bi-arrow-repeat"></i> <span id="convertLabel">Encode</span>
+      </button>
+      <button class="btn btn-outline-secondary" id="swapBtn"><i class="bi bi-arrow-down-up"></i> Swap</button>
+      <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="outputText" class="form-label mb-0 small text-muted fw-semibold" id="outputLabel"
+          >Base64 output</label
+        >
+        <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+      </div>
+      <textarea
+        id="outputText"
+        class="form-control font-monospace"
+        rows="8"
+        readonly
+        placeholder="Result will appear here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div id="fileMode" style="display: none">
+    <div class="mb-3">
+      <label for="fileInput" class="form-label small text-muted fw-semibold">Choose a file</label>
+      <input type="file" id="fileInput" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="fileOutput" class="form-label mb-0 small text-muted fw-semibold">Base64 output</label>
+        <div>
+          <button class="btn btn-sm btn-outline-secondary" id="copyDataUri">
+            <i class="bi bi-link-45deg"></i> Copy as Data URI
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" id="copyFileBase64">
+            <i class="bi bi-copy"></i> Copy Raw
+          </button>
+        </div>
+      </div>
+      <textarea
+        id="fileOutput"
+        class="form-control font-monospace"
+        rows="8"
+        readonly
+        placeholder="File Base64 will appear here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div id="jwtMode" style="display: none">
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="jwtInput" class="form-label mb-0 small text-muted fw-semibold">JWT token</label>
+        <button class="btn btn-sm btn-outline-secondary" id="pasteJwt"><i class="bi bi-clipboard"></i> Paste</button>
+      </div>
+      <textarea
+        id="jwtInput"
+        class="form-control font-monospace"
+        rows="4"
+        placeholder="eyJhbGciOiJIUzI1NiIs..."
+      ></textarea>
+    </div>
+
+    <div class="d-flex gap-2 flex-wrap mb-3">
+      <button class="btn btn-success" id="decodeJwt"><i class="bi bi-unlock"></i> Decode JWT</button>
+    </div>
+
+    <div id="jwtOutput" style="display: none">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label small text-muted fw-semibold">Header</label>
+          <pre class="json-pre"><code id="jwtHeader"></code></pre>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label small text-muted fw-semibold">Payload</label>
+          <pre class="json-pre"><code id="jwtPayload"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-info">
+    <h3>What is Base64?</h3>
+    <p>
+      Base64 is a binary-to-text encoding scheme that represents binary data as ASCII characters. It uses 64 characters
+      (A-Z, a-z, 0-9, +, /) to encode data, making it safe to transmit through text-based systems like email, JSON, and
+      URLs.
+    </p>
+
+    <h3>Common uses</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <li><strong>Data URIs</strong> — Embed images directly in HTML/CSS</li>
+          <li><strong>JWT tokens</strong> — Header and payload are Base64-encoded</li>
+          <li><strong>API payloads</strong> — Send binary data in JSON</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li><strong>Email attachments</strong> — MIME encoding uses Base64</li>
+          <li><strong>Basic auth</strong> — HTTP Basic authentication header</li>
+          <li><strong>Config files</strong> — Encode secrets in Kubernetes/Docker</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var currentMode = "encode";
+    var inputEl = document.getElementById("inputText");
+    var outputEl = document.getElementById("outputText");
+    var errorBox = document.getElementById("errorBox");
+    var successBox = document.getElementById("successBox");
+
+    function hideMessages() {
+      errorBox.style.display = "none";
+      successBox.style.display = "none";
+    }
+    function showError(msg) {
+      hideMessages();
+      document.getElementById("errorMsg").textContent = msg;
+      errorBox.style.display = "block";
+    }
+    function showSuccess(msg) {
+      hideMessages();
+      document.getElementById("successMsg").textContent = msg;
+      successBox.style.display = "block";
+    }
+
+    // Tab switching
+    document.querySelectorAll("#modeTabs .nav-link").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        document.querySelectorAll("#modeTabs .nav-link").forEach(function (t) {
+          t.classList.remove("active");
+        });
+        tab.classList.add("active");
+        var mode = tab.getAttribute("data-mode");
+        document.getElementById("textMode").style.display = mode === "encode" || mode === "decode" ? "block" : "none";
+        document.getElementById("fileMode").style.display = mode === "file" ? "block" : "none";
+        document.getElementById("jwtMode").style.display = mode === "jwt" ? "block" : "none";
+        hideMessages();
+
+        if (mode === "encode") {
+          currentMode = "encode";
+          document.getElementById("inputLabel").textContent = "Text to encode";
+          document.getElementById("outputLabel").textContent = "Base64 output";
+          document.getElementById("convertLabel").textContent = "Encode";
+          inputEl.placeholder = "Enter text here...";
+        } else if (mode === "decode") {
+          currentMode = "decode";
+          document.getElementById("inputLabel").textContent = "Base64 to decode";
+          document.getElementById("outputLabel").textContent = "Decoded text";
+          document.getElementById("convertLabel").textContent = "Decode";
+          inputEl.placeholder = "Paste Base64 string here...";
+        }
+      });
+    });
+
+    // Encode / Decode
+    document.getElementById("convertBtn").addEventListener("click", function () {
+      var text = inputEl.value;
+      if (!text) return showError("Please enter some text");
+      try {
+        if (currentMode === "encode") {
+          outputEl.value = btoa(unescape(encodeURIComponent(text)));
+          showSuccess("Encoded — " + outputEl.value.length + " characters");
+        } else {
+          outputEl.value = decodeURIComponent(escape(atob(text.trim())));
+          showSuccess("Decoded — " + outputEl.value.length + " characters");
+        }
+      } catch (e) {
+        showError("Failed to " + currentMode + ": " + e.message);
+      }
+    });
+
+    // Swap
+    document.getElementById("swapBtn").addEventListener("click", function () {
+      var tmp = inputEl.value;
+      inputEl.value = outputEl.value;
+      outputEl.value = tmp;
+      hideMessages();
+    });
+
+    // Clear
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      inputEl.value = "";
+      outputEl.value = "";
+      hideMessages();
+    });
+
+    // Copy
+    document.getElementById("copyBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(outputEl.value);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy';
+      }, 2000);
+    });
+
+    // Paste
+    document.getElementById("pasteBtn").addEventListener("click", function () {
+      navigator.clipboard.readText().then(function (t) {
+        inputEl.value = t;
+      });
+    });
+
+    // File encoding
+    document.getElementById("fileInput").addEventListener("change", function (e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        var base64 = reader.result.split(",")[1];
+        document.getElementById("fileOutput").value = base64;
+        document.getElementById("fileOutput").setAttribute("data-mime", file.type || "application/octet-stream");
+        document.getElementById("fileOutput").setAttribute("data-datauri", reader.result);
+        showSuccess(file.name + " — " + (base64.length / 1024).toFixed(1) + " KB encoded");
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById("copyFileBase64").addEventListener("click", function () {
+      navigator.clipboard.writeText(document.getElementById("fileOutput").value);
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-copy"></i> Copy Raw';
+      }, 2000);
+    });
+
+    document.getElementById("copyDataUri").addEventListener("click", function () {
+      navigator.clipboard.writeText(document.getElementById("fileOutput").getAttribute("data-datauri") || "");
+      this.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+      var btn = this;
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-link-45deg"></i> Copy as Data URI';
+      }, 2000);
+    });
+
+    // JWT decoding
+    function syntaxHighlight(json) {
+      json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return json.replace(
+        /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
+        function (match) {
+          var cls = "json-number";
+          if (/^"/.test(match)) {
+            cls = /:$/.test(match) ? "json-key" : "json-string";
+          } else if (/true|false/.test(match)) {
+            cls = "json-boolean";
+          } else if (/null/.test(match)) {
+            cls = "json-null";
+          }
+          return '<span class="' + cls + '">' + match + "</span>";
+        }
+      );
+    }
+
+    document.getElementById("decodeJwt").addEventListener("click", function () {
+      var jwt = document.getElementById("jwtInput").value.trim();
+      if (!jwt) return showError("Please enter a JWT token");
+      var parts = jwt.split(".");
+      if (parts.length < 2) return showError("Invalid JWT format — expected header.payload.signature");
+      try {
+        var header = JSON.parse(decodeURIComponent(escape(atob(parts[0].replace(/-/g, "+").replace(/_/g, "/")))));
+        var payload = JSON.parse(decodeURIComponent(escape(atob(parts[1].replace(/-/g, "+").replace(/_/g, "/")))));
+        document.getElementById("jwtHeader").innerHTML = syntaxHighlight(JSON.stringify(header, null, 2));
+        document.getElementById("jwtPayload").innerHTML = syntaxHighlight(JSON.stringify(payload, null, 2));
+        document.getElementById("jwtOutput").style.display = "block";
+        showSuccess("JWT decoded — " + Object.keys(payload).length + " claims");
+      } catch (e) {
+        showError("Failed to decode JWT: " + e.message);
+      }
+    });
+
+    document.getElementById("pasteJwt").addEventListener("click", function () {
+      navigator.clipboard.readText().then(function (t) {
+        document.getElementById("jwtInput").value = t;
+      });
+    });
+  })();
+</script>

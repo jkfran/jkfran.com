@@ -18,4 +18,10 @@ permalink: /tools
     <p>Format, minify, and validate JSON with syntax highlighting and clear error messages with line numbers.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/tools/base64/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-shield-lock"></i></div>
+    <h3>Base64 Encode / Decode</h3>
+    <p>Encode text or files to Base64, or decode Base64 strings back to text. Useful for JWTs, data URIs, and API payloads.</p>
+  </a>
+
 </div>
