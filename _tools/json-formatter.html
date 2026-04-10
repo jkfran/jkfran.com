@@ -6,55 +6,51 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
 ---
 
 <div class="tool-container">
-  <p class="tool-description">
+  <p class="text-muted mb-4">
     Paste your JSON to instantly format it with proper indentation, validate it with clear error messages pointing to
     the exact line, or minify it for production use. Everything runs in your browser — no data is sent anywhere.
   </p>
 
-  <div class="tool-stats tool-stats-error" id="errorBox" style="display: none">
+  <div class="alert alert-danger" id="errorBox" style="display: none">
     <i class="bi bi-exclamation-triangle"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="tool-stats" id="successBox" style="display: none">
+  <div class="alert alert-success" id="successBox" style="display: none">
     <i class="bi bi-check-circle"></i> <span id="successMsg"></span>
   </div>
 
-  <div class="tool-area">
-    <div class="tool-panel">
-      <div class="tool-panel-header">
-        <label for="jsonInput">Input JSON</label>
-        <div>
-          <button class="tool-btn-sm" id="pasteBtn" title="Paste from clipboard">
-            <i class="bi bi-clipboard"></i> Paste
-          </button>
-          <button class="tool-btn-sm" id="sampleBtn" title="Load sample JSON">
-            <i class="bi bi-filetype-json"></i> Sample
-          </button>
-        </div>
+  <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label for="jsonInput" class="form-label mb-0 small text-muted fw-semibold">Input JSON</label>
+      <div>
+        <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+        <button class="btn btn-sm btn-outline-secondary" id="sampleBtn">
+          <i class="bi bi-filetype-json"></i> Sample
+        </button>
       </div>
-      <textarea
-        id="jsonInput"
-        class="tool-textarea tool-textarea-mono"
-        rows="16"
-        placeholder='{"paste": "your JSON here"}'
-      ></textarea>
     </div>
+    <textarea
+      id="jsonInput"
+      class="form-control font-monospace"
+      rows="16"
+      placeholder='{"paste": "your JSON here"}'
+    ></textarea>
+  </div>
 
-    <div class="tool-actions">
-      <button class="tool-btn-primary" id="formatBtn"><i class="bi bi-code-slash"></i> Format</button>
-      <button class="tool-btn" id="minifyBtn"><i class="bi bi-arrows-collapse"></i> Minify</button>
-      <button class="tool-btn" id="validateBtn"><i class="bi bi-check2-circle"></i> Validate</button>
-      <button class="tool-btn" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
-      <button class="tool-btn" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
-    </div>
+  <div class="d-flex gap-2 flex-wrap mb-3">
+    <button class="btn btn-success" id="formatBtn"><i class="bi bi-code-slash"></i> Format</button>
+    <button class="btn btn-outline-secondary" id="minifyBtn"><i class="bi bi-arrows-collapse"></i> Minify</button>
+    <button class="btn btn-outline-secondary" id="validateBtn"><i class="bi bi-check2-circle"></i> Validate</button>
+    <button class="btn btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+  </div>
 
-    <div id="jsonOutput" class="json-output" style="display: none">
-      <div class="tool-panel-header">
-        <label>Output</label>
-        <button class="tool-btn-sm" id="copyOutputBtn" title="Copy output"><i class="bi bi-copy"></i> Copy</button>
-      </div>
-      <pre id="jsonOutputPre" class="json-pre"><code id="jsonOutputCode"></code></pre>
+  <div id="jsonOutput" class="json-output" style="display: none">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label class="form-label mb-0 small text-muted fw-semibold">Output</label>
+      <button class="btn btn-sm btn-outline-secondary" id="copyOutputBtn"><i class="bi bi-copy"></i> Copy</button>
     </div>
+    <pre class="json-pre"><code id="jsonOutputCode"></code></pre>
   </div>
 
   <div class="tool-info">
@@ -99,14 +95,12 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
       errorBox.style.display = "none";
       successBox.style.display = "none";
     }
-
     function showError(msg) {
       hideMessages();
       errorMsg.textContent = msg;
       errorBox.style.display = "block";
       outputEl.style.display = "none";
     }
-
     function showSuccess(msg) {
       hideMessages();
       successMsg.textContent = msg;
@@ -128,11 +122,7 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
         function (match) {
           var cls = "json-number";
           if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-              cls = "json-key";
-            } else {
-              cls = "json-string";
-            }
+            cls = /:$/.test(match) ? "json-key" : "json-string";
           } else if (/true|false/.test(match)) {
             cls = "json-boolean";
           } else if (/null/.test(match)) {
@@ -147,8 +137,7 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
       var text = inputEl.value.trim();
       if (!text) return showError("Please enter some JSON");
       try {
-        var parsed = JSON.parse(text);
-        var formatted = JSON.stringify(parsed, null, 2);
+        var formatted = JSON.stringify(JSON.parse(text), null, 2);
         outputCode.innerHTML = syntaxHighlight(formatted);
         outputEl.style.display = "block";
         showSuccess("Valid JSON — " + formatted.split("\n").length + " lines formatted");
@@ -161,12 +150,10 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
       var text = inputEl.value.trim();
       if (!text) return showError("Please enter some JSON");
       try {
-        var parsed = JSON.parse(text);
-        var minified = JSON.stringify(parsed);
+        var minified = JSON.stringify(JSON.parse(text));
         outputCode.innerHTML = syntaxHighlight(minified);
         outputEl.style.display = "block";
-        var saved = text.length - minified.length;
-        showSuccess("Minified — " + minified.length + " chars (" + saved + " bytes saved)");
+        showSuccess("Minified — " + minified.length + " chars (" + (text.length - minified.length) + " bytes saved)");
       } catch (e) {
         showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
       }
@@ -210,8 +197,8 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
     });
 
     document.getElementById("pasteBtn").addEventListener("click", function () {
-      navigator.clipboard.readText().then(function (text) {
-        inputEl.value = text;
+      navigator.clipboard.readText().then(function (t) {
+        inputEl.value = t;
       });
     });
 
@@ -226,7 +213,6 @@ description: "Free online JSON formatter, validator, and minifier. Paste your JS
         '{\n  "name": "jkfran",\n  "role": "Senior Software Engineer",\n  "skills": ["Python", "DevOps", "Rust", "MLOps"],\n  "projects": [\n    {"name": "killport", "stars": 1817, "language": "Rust"},\n    {"name": "QdrantSync", "stars": 9, "language": "Python"}\n  ],\n  "open_source": true\n}';
     });
 
-    // Auto-format on Ctrl+Enter
     inputEl.addEventListener("keydown", function (e) {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
         e.preventDefault();

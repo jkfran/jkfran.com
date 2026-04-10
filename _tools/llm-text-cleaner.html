@@ -6,54 +6,59 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
 ---
 
 <div class="tool-container">
-  <p class="tool-description">
+  <p class="text-muted mb-4">
     AI models like ChatGPT, Claude, and Gemini often insert invisible Unicode characters into generated text and code —
     curly quotes, em dashes, non-breaking spaces, zero-width joiners, and more. These break code, cause encoding issues,
     and produce invisible bugs. Paste your text below to clean it instantly.
   </p>
 
-  <div class="tool-stats" id="stats" style="display: none"><span id="charCount"></span> characters cleaned</div>
-
-  <div class="tool-area">
-    <div class="tool-panel">
-      <div class="tool-panel-header">
-        <label for="inputText">Input (paste AI-generated text)</label>
-        <button class="tool-btn-sm" id="pasteBtn" title="Paste from clipboard">
-          <i class="bi bi-clipboard"></i> Paste
-        </button>
-      </div>
-      <textarea id="inputText" class="tool-textarea" rows="12" placeholder="Paste your text here..."></textarea>
-    </div>
-
-    <div class="tool-actions">
-      <button class="tool-btn-primary" id="cleanBtn"><i class="bi bi-stars"></i> Clean Text</button>
-      <button class="tool-btn" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
-    </div>
-
-    <div class="tool-panel">
-      <div class="tool-panel-header">
-        <label for="outputText">Output (cleaned text)</label>
-        <button class="tool-btn-sm" id="copyBtn" title="Copy to clipboard"><i class="bi bi-copy"></i> Copy</button>
-      </div>
-      <textarea
-        id="outputText"
-        class="tool-textarea"
-        rows="12"
-        readonly
-        placeholder="Cleaned text will appear here..."
-      ></textarea>
-    </div>
+  <div class="alert alert-success" id="stats" style="display: none">
+    <i class="bi bi-check-circle"></i> <span id="charCount"></span> characters cleaned
   </div>
 
-  <div class="tool-replacements" id="replacements" style="display: none">
-    <h3>Replacements made</h3>
-    <table class="tool-table">
+  <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label for="inputText" class="form-label mb-0 small text-muted fw-semibold"
+        >Input (paste AI-generated text)</label
+      >
+      <button class="btn btn-sm btn-outline-secondary" id="pasteBtn"><i class="bi bi-clipboard"></i> Paste</button>
+    </div>
+    <textarea
+      id="inputText"
+      class="form-control font-monospace"
+      rows="12"
+      placeholder="Paste your text here..."
+    ></textarea>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mb-3">
+    <button class="btn btn-success" id="cleanBtn"><i class="bi bi-stars"></i> Clean Text</button>
+    <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg"></i> Clear</button>
+  </div>
+
+  <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <label for="outputText" class="form-label mb-0 small text-muted fw-semibold">Output (cleaned text)</label>
+      <button class="btn btn-sm btn-outline-secondary" id="copyBtn"><i class="bi bi-copy"></i> Copy</button>
+    </div>
+    <textarea
+      id="outputText"
+      class="form-control font-monospace"
+      rows="12"
+      readonly
+      placeholder="Cleaned text will appear here..."
+    ></textarea>
+  </div>
+
+  <div id="replacements" style="display: none" class="mb-4">
+    <h3 class="h6 fw-bold">Replacements made</h3>
+    <table class="table table-sm">
       <thead>
         <tr>
-          <th>Character</th>
-          <th>Unicode</th>
-          <th>Replaced with</th>
-          <th>Count</th>
+          <th class="text-muted small">Character</th>
+          <th class="text-muted small">Unicode</th>
+          <th class="text-muted small">Replaced with</th>
+          <th class="text-muted small">Count</th>
         </tr>
       </thead>
       <tbody id="replacementRows"></tbody>
@@ -146,70 +151,59 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
       "\u2069": ["", "Pop Directional Isolate"],
       "\u034F": ["", "Grapheme Joiner"],
       "\u00AD": ["", "Soft Hyphen"],
-      "\uFE00": ["", "Variation Selector-1"],
-      "\uFE01": ["", "Variation Selector-2"],
-      "\uFE02": ["", "Variation Selector-3"],
-      "\uFE03": ["", "Variation Selector-4"],
-      "\uFE04": ["", "Variation Selector-5"],
-      "\uFE05": ["", "Variation Selector-6"],
-      "\uFE06": ["", "Variation Selector-7"],
-      "\uFE07": ["", "Variation Selector-8"],
-      "\uFE08": ["", "Variation Selector-9"],
-      "\uFE09": ["", "Variation Selector-10"],
-      "\uFE0A": ["", "Variation Selector-11"],
-      "\uFE0B": ["", "Variation Selector-12"],
-      "\uFE0C": ["", "Variation Selector-13"],
-      "\uFE0D": ["", "Variation Selector-14"],
-      "\uFE0E": ["", "Variation Selector-15"],
-      "\uFE0F": ["", "Variation Selector-16"],
+      "\uFE00": ["", "VS-1"],
+      "\uFE01": ["", "VS-2"],
+      "\uFE02": ["", "VS-3"],
+      "\uFE03": ["", "VS-4"],
+      "\uFE04": ["", "VS-5"],
+      "\uFE05": ["", "VS-6"],
+      "\uFE06": ["", "VS-7"],
+      "\uFE07": ["", "VS-8"],
+      "\uFE08": ["", "VS-9"],
+      "\uFE09": ["", "VS-10"],
+      "\uFE0A": ["", "VS-11"],
+      "\uFE0B": ["", "VS-12"],
+      "\uFE0C": ["", "VS-13"],
+      "\uFE0D": ["", "VS-14"],
+      "\uFE0E": ["", "VS-15"],
+      "\uFE0F": ["", "VS-16"],
       "\uFEFF": ["", "BOM / ZWNBSP"],
     };
 
     function cleanText(input) {
-      var output = input;
-      var counts = {};
-      var total = 0;
-
+      var output = input,
+        counts = {},
+        total = 0;
       for (var ch in REPLACEMENTS) {
-        var replacement = REPLACEMENTS[ch][0];
-        var name = REPLACEMENTS[ch][1];
         var count = output.split(ch).length - 1;
         if (count > 0) {
-          counts[ch] = { name: name, replacement: replacement, count: count };
+          counts[ch] = { name: REPLACEMENTS[ch][1], replacement: REPLACEMENTS[ch][0], count: count };
           total += count;
-          output = output.split(ch).join(replacement);
+          output = output.split(ch).join(REPLACEMENTS[ch][0]);
         }
       }
-
       return { output: output, counts: counts, total: total };
     }
 
     function toUnicode(ch) {
       return "U+" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0");
     }
-
-    function escapeHtml(str) {
-      var div = document.createElement("div");
-      div.textContent = str;
-      return div.innerHTML;
+    function escapeHtml(s) {
+      var d = document.createElement("div");
+      d.textContent = s;
+      return d.innerHTML;
     }
 
     var inputEl = document.getElementById("inputText");
     var outputEl = document.getElementById("outputText");
-    var statsEl = document.getElementById("stats");
-    var charCountEl = document.getElementById("charCount");
-    var replacementsEl = document.getElementById("replacements");
-    var rowsEl = document.getElementById("replacementRows");
 
     document.getElementById("cleanBtn").addEventListener("click", function () {
       var result = cleanText(inputEl.value);
       outputEl.value = result.output;
-
       if (result.total > 0) {
-        charCountEl.textContent = result.total;
-        statsEl.style.display = "block";
-
-        rowsEl.innerHTML = "";
+        document.getElementById("charCount").textContent = result.total;
+        document.getElementById("stats").style.display = "block";
+        var rows = "";
         for (var ch in result.counts) {
           var r = result.counts[ch];
           var display =
@@ -220,7 +214,7 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
                 : r.replacement === "\n"
                   ? "(newline)"
                   : '"' + escapeHtml(r.replacement) + '"';
-          rowsEl.innerHTML +=
+          rows +=
             "<tr><td>" +
             escapeHtml(r.name) +
             "</td><td><code>" +
@@ -231,10 +225,11 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
             r.count +
             "</td></tr>";
         }
-        replacementsEl.style.display = "block";
+        document.getElementById("replacementRows").innerHTML = rows;
+        document.getElementById("replacements").style.display = "block";
       } else {
-        statsEl.style.display = "none";
-        replacementsEl.style.display = "none";
+        document.getElementById("stats").style.display = "none";
+        document.getElementById("replacements").style.display = "none";
       }
     });
 
@@ -248,16 +243,16 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
     });
 
     document.getElementById("pasteBtn").addEventListener("click", function () {
-      navigator.clipboard.readText().then(function (text) {
-        inputEl.value = text;
+      navigator.clipboard.readText().then(function (t) {
+        inputEl.value = t;
       });
     });
 
     document.getElementById("clearBtn").addEventListener("click", function () {
       inputEl.value = "";
       outputEl.value = "";
-      statsEl.style.display = "none";
-      replacementsEl.style.display = "none";
+      document.getElementById("stats").style.display = "none";
+      document.getElementById("replacements").style.display = "none";
     });
   })();
 </script>
