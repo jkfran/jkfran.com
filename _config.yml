@@ -3,6 +3,11 @@ name: "jkfran"
 title: "Francisco Jiménez Cabrera"
 description: "Technical blog and free developer tools by Francisco Jiménez Cabrera. Tutorials on DevOps, Linux, Python, MLOps, and AI — plus online tools like JSON formatter, regex tester, and more."
 logo: "assets/images/logo.png"
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: https://github.com/jkfran/jkfran.com/releases/download/blog-images/og-default.jpg
 baseurl: /
 url: "https://jkfran.com"
 include: ["_pages", "_tools"]
@@ -25,6 +30,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
+
+twitter:
+  card: summary_large_image
+  username: jkfran_
 
 # Pagination
 paginate: 9
