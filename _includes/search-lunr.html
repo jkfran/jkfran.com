@@ -1,7 +1,4 @@
-<form
-  class="d-flex my-2 my-lg-0"
-  onsubmit="return handleSearch(document.getElementById('lunrsearch').value);"
->
+<form class="d-flex my-2 my-lg-0" id="searchForm" role="search">
   <input
     type="search"
     class="form-control"
@@ -10,6 +7,7 @@
     maxlength="255"
     value=""
     placeholder="Search..."
+    aria-label="Search blog posts"
   />
 </form>
 
@@ -44,15 +42,18 @@
     });
   }
 
-  document.getElementById('lunrsearch').addEventListener('focus', loadSearchScripts, { once: true });
+  var searchInput = document.getElementById('lunrsearch');
+  searchInput.addEventListener('focus', loadSearchScripts, { once: true });
 
-  window.handleSearch = function (term) {
+  document.getElementById('searchForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var term = searchInput.value;
     if (searchReady) {
-      return lunr_search(term);
+      lunr_search(term);
+    } else {
+      pendingSearch = term;
+      loadSearchScripts();
     }
-    pendingSearch = term;
-    loadSearchScripts();
-    return false;
-  };
+  });
 })();
 </script>

@@ -259,10 +259,16 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
       });
     });
 
-    // File encoding
+    // File encoding (10MB limit to prevent browser hang)
+    var MAX_FILE_SIZE = 10 * 1024 * 1024;
     document.getElementById("fileInput").addEventListener("change", function (e) {
       var file = e.target.files[0];
       if (!file) return;
+      if (file.size > MAX_FILE_SIZE) {
+        showError("File too large (" + (file.size / 1024 / 1024).toFixed(1) + " MB). Maximum is 10 MB.");
+        e.target.value = "";
+        return;
+      }
       var reader = new FileReader();
       reader.onload = function () {
         var base64 = reader.result.split(",")[1];
@@ -270,6 +276,9 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
         document.getElementById("fileOutput").setAttribute("data-mime", file.type || "application/octet-stream");
         document.getElementById("fileOutput").setAttribute("data-datauri", reader.result);
         showSuccess(file.name + " — " + (base64.length / 1024).toFixed(1) + " KB encoded");
+      };
+      reader.onerror = function () {
+        showError("Failed to read file.");
       };
       reader.readAsDataURL(file);
     });
