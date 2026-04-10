@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Free Online Tools
+title: Free Online Developer Tools
 permalink: /tools
+description: "Free online developer tools: JSON formatter, regex tester, Base64 encoder, password generator, diff checker, cron builder, YAML/JSON converter, URL encoder, and LLM text cleaner. All client-side, no data sent anywhere."
 ---
 
 <div class="tools-grid">

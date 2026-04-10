@@ -2,6 +2,7 @@
 layout: page
 title: Open Source Projects
 permalink: /projects
+description: "Open source projects by Francisco Jiménez Cabrera. Including killport (1.8k+ stars), QdrantSync, Home Assistant integrations, and more. Rust, Python, and DevOps tools."
 ---
 
 <div class="projects-grid">

@@ -2,6 +2,7 @@
 layout: page
 title: Francisco Jiménez Cabrera
 permalink: /about
+description: "Senior Software Engineer in London specialising in DevOps, MLOps, and building better software. Previously at Canonical and Builder.ai. Creator of killport (1.8k+ GitHub stars)."
 ---
 
 <div class="about-hero text-center mb-5">
