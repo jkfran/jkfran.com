@@ -1,0 +1,36 @@
+// JSON Formatter tool — syntax highlighting and output
+
+.json-output {
+  margin-bottom: 1rem;
+}
+
+.json-pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  max-height: 500px;
+}
+
+.json-key {
+  color: #9cdcfe;
+}
+
+.json-string {
+  color: #ce9178;
+}
+
+.json-number {
+  color: #b5cea8;
+}
+
+.json-boolean {
+  color: #569cd6;
+}
+
+.json-null {
+  color: #569cd6;
+}

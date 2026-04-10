@@ -5,7 +5,7 @@ description: "A blog featuring tutorials, ideas, and anything interesting to me.
 logo: "assets/images/logo.png"
 baseurl: /
 url: "https://jkfran.com"
-include: ["_pages"]
+include: ["_pages", "_tools"]
 permalink: /:title/
 
 # Authors
