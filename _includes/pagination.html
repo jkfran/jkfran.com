@@ -1,16 +1,17 @@
 {% if paginator.total_pages > 1 %}
-<div class="pagination">
+<nav class="pagination" aria-label="Blog pagination">
   {% if paginator.previous_page %}
   <a
     class="ms-1 me-1"
+    rel="prev"
     href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
     >&laquo; Prev</a
   >
   {% else %}
-  <span>&laquo; Prev</span>
+  <span class="ms-1 me-1">&laquo; Prev</span>
   {% endif %} {% for page in (1..paginator.total_pages) %} {% if page ==
   paginator.page %}
-  <span class="ms-1 me-1">{{ page }}</span>
+  <span class="ms-1 me-1" aria-current="page">{{ page }}</span>
   {% elsif page == 1 %}
   <a
     class="ms-1 me-1"
@@ -26,11 +27,12 @@
   {% endif %} {% endfor %} {% if paginator.next_page %}
   <a
     class="ms-1 me-1"
+    rel="next"
     href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
     >Next &raquo;</a
   >
   {% else %}
-  <span>Next &raquo;</span>
+  <span class="ms-1 me-1">Next &raquo;</span>
   {% endif %}
-</div>
+</nav>
 {% endif %}

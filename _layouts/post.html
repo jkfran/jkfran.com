@@ -2,14 +2,44 @@
 layout: default
 ---
 
+{% assign author = site.authors[page.author] %}
+{% assign words = content | number_of_words %}
+{% if words < 200 %}{% assign read_time = 1 %}{% else %}{% assign read_time = words | divided_by: 200 %}{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.excerpt | strip_html | truncatewords: 30 | jsonify }},
+  "image": "{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | absolute_url }}{% endif %}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ author.display_name }}",
+    "url": "{{ author.web }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ author.display_name }}",
+    "url": "{{ site.url }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "wordCount": {{ words }},
+  "timeRequired": "PT{{ read_time }}M"
+}
+</script>
+
 <div class="container">
     <div class="row">
 
         <div class="col-md-2 ps-0">
             {% include share.html %}
         </div>
-
-        {% assign author = site.authors[page.author] %}
 
         <div class="col-md-9 order-first order-md-0">
             <div class="mainheading">
@@ -38,8 +68,6 @@ layout: default
             <img class="featured-image img-fluid" loading="lazy" width="1200" height="675" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
             {% endif %}
 
-            {% assign words = content | number_of_words %}
-            {% if words < 200 %}{% assign read_time = 1 %}{% else %}{% assign read_time = words | divided_by: 200 %}{% endif %}
             <p class="post-meta-info">
                 <span class="post-date"><time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>
                 <span class="post-meta-sep"><i class="bi bi-dot"></i></span>
