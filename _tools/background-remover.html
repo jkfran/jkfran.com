@@ -1,0 +1,296 @@
+---
+layout: page
+title: "Background Remover - AI-Powered Background Removal"
+permalink: /tools/background-remover/
+description: "Free online AI background remover. Remove backgrounds from photos instantly using the RMBG neural network. Runs entirely in your browser — no images are uploaded anywhere."
+---
+
+<div class="tool-container">
+  <p class="text-muted mb-4">
+    Remove backgrounds from images using AI. The neural network runs entirely in your browser — your images never leave
+    your device. First use downloads the model (~40 MB, cached for future visits).
+  </p>
+
+  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+    <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
+  </div>
+
+  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+    <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
+  </div>
+
+  <div class="mb-3">
+    <label for="imageInput" class="form-label small text-muted fw-semibold">Upload an image</label>
+    <input type="file" id="imageInput" class="form-control" accept="image/*" />
+  </div>
+
+  <div id="modelProgress" class="mb-3" style="display: none">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <small class="text-muted fw-semibold" id="modelStatus">Loading AI model...</small>
+      <small class="text-muted" id="modelPercent"></small>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Model loading progress" id="progressWrapper">
+      <div
+        class="progress-bar progress-bar-striped progress-bar-animated"
+        id="modelProgressBar"
+        style="width: 0%"
+      ></div>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mb-3">
+    <button class="btn btn-success" id="processBtn" disabled>
+      <i class="bi bi-scissors" aria-hidden="true"></i> Remove Background
+    </button>
+    <button class="btn btn-outline-secondary" id="downloadBtn" style="display: none">
+      <i class="bi bi-download" aria-hidden="true"></i> Download PNG
+    </button>
+    <button class="btn btn-outline-secondary" id="clearBtn" style="display: none">
+      <i class="bi bi-x-lg" aria-hidden="true"></i> Clear
+    </button>
+  </div>
+
+  <div id="previewArea" style="display: none">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label small text-muted fw-semibold">Original</label>
+        <div class="bg-preview">
+          <img id="originalImage" alt="Original uploaded image" />
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label small text-muted fw-semibold">Result</label>
+        <div class="bg-preview bg-checkerboard">
+          <canvas id="resultCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-info">
+    <h3>How it works</h3>
+    <p>
+      This tool uses <a href="https://huggingface.co/briaai/RMBG-1.4">RMBG-1.4</a>, a neural network by
+      <strong>BRIA AI</strong> trained to detect and remove backgrounds from images. The model runs entirely in your
+      browser using <a href="https://huggingface.co/docs/transformers.js">Transformers.js</a> and WebAssembly — no
+      images are uploaded to any server.
+    </p>
+
+    <h3>Tips for best results</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <li><strong>Clear subjects</strong> — People, products, animals with distinct edges</li>
+          <li><strong>Good lighting</strong> — Contrast between subject and background</li>
+          <li><strong>Simple backgrounds</strong> — Solid or blurred backgrounds work best</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li><strong>First use</strong> — Model (~40 MB) downloads once, then cached</li>
+          <li><strong>Processing time</strong> — Usually 2-10 seconds depending on device</li>
+          <li><strong>File size</strong> — Images up to 10 MB supported</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+  const MODEL_ID = "briaai/RMBG-1.4";
+
+  const imageInput = document.getElementById("imageInput");
+  const processBtn = document.getElementById("processBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
+  const clearBtn = document.getElementById("clearBtn");
+  const errorBox = document.getElementById("errorBox");
+  const successBox = document.getElementById("successBox");
+  const modelProgress = document.getElementById("modelProgress");
+  const modelStatus = document.getElementById("modelStatus");
+  const modelPercent = document.getElementById("modelPercent");
+  const modelProgressBar = document.getElementById("modelProgressBar");
+  const previewArea = document.getElementById("previewArea");
+  const originalImage = document.getElementById("originalImage");
+  const resultCanvas = document.getElementById("resultCanvas");
+
+  let model = null;
+  let processor = null;
+  let currentImageUrl = null;
+
+  function hideMessages() {
+    errorBox.style.display = "none";
+    successBox.style.display = "none";
+  }
+
+  function showError(msg) {
+    hideMessages();
+    document.getElementById("errorMsg").textContent = msg;
+    errorBox.style.display = "block";
+  }
+
+  function showSuccess(msg) {
+    hideMessages();
+    document.getElementById("successMsg").textContent = msg;
+    successBox.style.display = "block";
+  }
+
+  // Track model download progress
+  const fileProgress = {};
+  function onProgress(event) {
+    if (event.status === "progress" && event.total) {
+      fileProgress[event.file] = { loaded: event.loaded, total: event.total };
+      const totals = Object.values(fileProgress);
+      const loaded = totals.reduce((s, f) => s + f.loaded, 0);
+      const total = totals.reduce((s, f) => s + f.total, 0);
+      const pct = Math.round((loaded / total) * 100);
+      modelProgressBar.style.width = pct + "%";
+      modelPercent.textContent = pct + "%";
+    } else if (event.status === "ready") {
+      modelProgressBar.style.width = "100%";
+      modelPercent.textContent = "Ready";
+    }
+  }
+
+  async function ensureModel() {
+    if (model && processor) return;
+
+    modelProgress.style.display = "block";
+    modelStatus.textContent = "Loading AI model...";
+    modelPercent.textContent = "";
+    modelProgressBar.style.width = "0%";
+
+    const { AutoModel, AutoProcessor, env } = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3");
+
+    env.allowLocalModels = false;
+
+    modelStatus.textContent = "Downloading model files...";
+
+    processor = await AutoProcessor.from_pretrained(MODEL_ID, {
+      progress_callback: onProgress,
+    });
+
+    model = await AutoModel.from_pretrained(MODEL_ID, {
+      progress_callback: onProgress,
+    });
+
+    modelProgress.style.display = "none";
+  }
+
+  // File upload
+  imageInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    hideMessages();
+
+    if (!file.type.startsWith("image/")) {
+      showError("Please select an image file.");
+      e.target.value = "";
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      showError("Image too large (" + (file.size / 1024 / 1024).toFixed(1) + " MB). Maximum is 10 MB.");
+      e.target.value = "";
+      return;
+    }
+
+    if (currentImageUrl) URL.revokeObjectURL(currentImageUrl);
+    currentImageUrl = URL.createObjectURL(file);
+    originalImage.src = currentImageUrl;
+    previewArea.style.display = "block";
+    resultCanvas.getContext("2d").clearRect(0, 0, resultCanvas.width, resultCanvas.height);
+    resultCanvas.style.display = "none";
+    downloadBtn.style.display = "none";
+    processBtn.disabled = false;
+    clearBtn.style.display = "inline-block";
+  });
+
+  // Process
+  processBtn.addEventListener("click", async () => {
+    if (!currentImageUrl) return showError("Please upload an image first.");
+
+    processBtn.disabled = true;
+    processBtn.innerHTML = '<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Processing...';
+    hideMessages();
+
+    try {
+      await ensureModel();
+
+      const { RawImage } = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3");
+
+      modelStatus.textContent = "Processing image...";
+      modelProgress.style.display = "block";
+      modelProgressBar.style.width = "100%";
+      modelProgressBar.classList.remove("progress-bar-animated");
+      modelPercent.textContent = "";
+
+      // Load and process image
+      const image = await RawImage.fromURL(currentImageUrl);
+      const { pixel_values } = await processor(image);
+      const { output } = await model({ input: pixel_values });
+
+      // Generate mask at original resolution
+      const maskTensor = output[0].mul(255).to("uint8");
+      const mask = await RawImage.fromTensor(maskTensor).resize(image.width, image.height);
+
+      // Composite on canvas
+      const ctx = resultCanvas.getContext("2d");
+      resultCanvas.width = image.width;
+      resultCanvas.height = image.height;
+
+      const img = new Image();
+      img.src = currentImageUrl;
+      await new Promise((resolve) => {
+        img.onload = resolve;
+      });
+      ctx.drawImage(img, 0, 0);
+
+      const imageData = ctx.getImageData(0, 0, resultCanvas.width, resultCanvas.height);
+      for (let i = 0; i < mask.data.length; i++) {
+        imageData.data[i * 4 + 3] = mask.data[i];
+      }
+      ctx.putImageData(imageData, 0, 0);
+
+      resultCanvas.style.display = "block";
+      downloadBtn.style.display = "inline-block";
+      modelProgress.style.display = "none";
+      modelProgressBar.classList.add("progress-bar-animated");
+      showSuccess("Background removed — " + image.width + "×" + image.height + "px");
+    } catch (err) {
+      modelProgress.style.display = "none";
+      modelProgressBar.classList.add("progress-bar-animated");
+      showError("Processing failed: " + err.message);
+    }
+
+    processBtn.disabled = false;
+    processBtn.innerHTML = '<i class="bi bi-scissors" aria-hidden="true"></i> Remove Background';
+  });
+
+  // Download
+  downloadBtn.addEventListener("click", () => {
+    resultCanvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "background-removed.png";
+      a.click();
+      URL.revokeObjectURL(url);
+    }, "image/png");
+  });
+
+  // Clear
+  clearBtn.addEventListener("click", () => {
+    imageInput.value = "";
+    if (currentImageUrl) URL.revokeObjectURL(currentImageUrl);
+    currentImageUrl = null;
+    originalImage.src = "";
+    resultCanvas.getContext("2d").clearRect(0, 0, resultCanvas.width, resultCanvas.height);
+    previewArea.style.display = "none";
+    downloadBtn.style.display = "none";
+    clearBtn.style.display = "none";
+    processBtn.disabled = true;
+    modelProgress.style.display = "none";
+    hideMessages();
+  });
+</script>

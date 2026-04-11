@@ -7,6 +7,12 @@ description: "Free online developer tools: JSON formatter, regex tester, Base64 
 
 <div class="tools-grid">
 
+  <a href="{{ site.baseurl }}/tools/background-remover/" class="tool-card">
+    <div class="tool-icon"><i class="bi bi-scissors" aria-hidden="true"></i></div>
+    <h3>Background Remover</h3>
+    <p>Remove backgrounds from photos instantly using AI. Runs a neural network in your browser — no images are uploaded anywhere.</p>
+  </a>
+
   <a href="{{ site.baseurl }}/tools/llm-text-cleaner/" class="tool-card">
     <div class="tool-icon"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></div>
     <h3>LLM Text Cleaner</h3>
