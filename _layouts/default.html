@@ -17,6 +17,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="dns-prefetch" href="https://github.com">
+{% if page.url contains "/tools/" %}
+<script src="{{ site.baseurl }}/assets/js/tools-utils.js"></script>
+{% endif %}
 </head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
@@ -90,9 +93,6 @@
 </main>
 
 <script defer src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
-{% if page.url contains "/tools/" %}
-<script src="{{ site.baseurl }}/assets/js/tools-utils.js"></script>
-{% endif %}
 
 {% if page.url == "/about" %}
 <script async src="https://www.goodreads.com/review/custom_widget/76125049.Currently%20reading?cover_position=left&cover_size=medium&num_books=1&order=a&shelf=currently-reading&show_author=1&show_cover=1&show_rating=0&show_review=0&show_tags=0&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=none&widget_id=1643813099&widget_text_color=212529&widget_title_size=large&widget_width=full" charset="utf-8"></script>
