@@ -180,6 +180,14 @@ description: "Free online cron expression builder. Build crontab schedules visua
     var runsList = document.getElementById("runsList");
     var fields = ["rawMinute", "rawHour", "rawDay", "rawMonth", "rawWeekday"];
     var selects = ["selMinute", "selHour", "selDay", "selMonth", "selWeekday"];
+    var fieldEls = {};
+    fields.forEach(function (id) {
+      fieldEls[id] = document.getElementById(id);
+    });
+    var selectEls = {};
+    selects.forEach(function (id) {
+      selectEls[id] = document.getElementById(id);
+    });
 
     var MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -321,12 +329,12 @@ description: "Free online cron expression builder. Build crontab schedules visua
 
       // Sync raw inputs
       fields.forEach(function (id, i) {
-        document.getElementById(id).value = parts[i];
+        fieldEls[id].value = parts[i];
       });
 
       // Sync selects
       selects.forEach(function (id, i) {
-        var sel = document.getElementById(id);
+        var sel = selectEls[id];
         var matched = false;
         for (var j = 0; j < sel.options.length; j++) {
           if (sel.options[j].value === parts[i]) {
@@ -389,7 +397,7 @@ description: "Free online cron expression builder. Build crontab schedules visua
 
     function syncFromBuilder() {
       var parts = fields.map(function (id) {
-        return document.getElementById(id).value;
+        return fieldEls[id].value;
       });
       cronInput.value = parts.join(" ");
       update();
@@ -399,12 +407,12 @@ description: "Free online cron expression builder. Build crontab schedules visua
     cronInput.addEventListener("input", update);
 
     fields.forEach(function (id) {
-      document.getElementById(id).addEventListener("input", syncFromBuilder);
+      fieldEls[id].addEventListener("input", syncFromBuilder);
     });
 
     selects.forEach(function (id, i) {
-      document.getElementById(id).addEventListener("change", function () {
-        document.getElementById(fields[i]).value = this.value;
+      selectEls[id].addEventListener("change", function () {
+        fieldEls[fields[i]].value = this.value;
         syncFromBuilder();
       });
     });

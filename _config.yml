@@ -39,6 +39,9 @@ twitter:
 paginate: 9
 paginate_path: /page:num/
 
+sass:
+  style: compressed
+
 # Other
 markdown: kramdown
 

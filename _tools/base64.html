@@ -214,9 +214,10 @@ description: "Free online Base64 encoder and decoder. Convert text or files to B
     }
 
     // Tab switching
-    document.querySelectorAll("#modeTabs .nav-link").forEach(function (tab) {
+    var tabLinks = document.querySelectorAll("#modeTabs .nav-link");
+    tabLinks.forEach(function (tab) {
       tab.addEventListener("click", function () {
-        document.querySelectorAll("#modeTabs .nav-link").forEach(function (t) {
+        tabLinks.forEach(function (t) {
           t.classList.remove("active");
           t.setAttribute("aria-selected", "false");
         });

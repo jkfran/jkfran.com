@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Math.abs(lastScrollTop - st) <= delta) return;
 
     if (st > lastScrollTop && st > navbarHeight) {
-      nav.style.top = `${-nav.offsetHeight}px`;
+      nav.style.top = `${-navbarHeight}px`;
     } else if (st + window.innerHeight < document.body.scrollHeight) {
       nav.style.top = "0px";
     }
