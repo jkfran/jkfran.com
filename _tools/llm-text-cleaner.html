@@ -3,6 +3,11 @@ layout: page
 title: "LLM Text Cleaner - Remove AI-Generated Unicode Characters"
 permalink: /tools/llm-text-cleaner/
 description: "Free online tool to remove hidden Unicode characters, curly quotes, em dashes, non-breaking spaces, and other artifacts from AI-generated text. Paste, clean, copy."
+faqs:
+  - q: "What does this tool fix in AI-generated text?"
+    a: "It replaces typography characters (curly quotes, em dashes, en dashes, ellipses, bullets) with ASCII equivalents and removes invisible characters like non-breaking spaces, zero-width spaces, directional marks, variation selectors, and BOM."
+  - q: "Why do AI models add special Unicode characters?"
+    a: "LLMs are trained on diverse text sources including published books and formatted documents that use typographically correct characters. When pasted into code, terminals, config files, or APIs, these characters cause silent failures like broken strings, invalid YAML indentation, or invisible variable name errors."
 ---
 
 <div class="tool-container">

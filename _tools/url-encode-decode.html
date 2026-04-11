@@ -3,6 +3,11 @@ layout: page
 title: "URL Encode / Decode - Percent-Encoding Converter"
 permalink: /tools/url-encode-decode/
 description: "Free online URL encoder and decoder. Convert special characters to percent-encoded format for safe use in URLs, query strings, and API requests. Decode encoded URLs back to readable text."
+faqs:
+  - q: "What is URL encoding?"
+    a: "URL encoding (percent-encoding) replaces special characters with a % followed by their hex value. For example, a space becomes %20 and an ampersand becomes %26. This is required because URLs can only contain a limited set of ASCII characters."
+  - q: "What is the difference between encodeURIComponent and encodeURI?"
+    a: "encodeURIComponent encodes everything except A-Z, a-z, 0-9, -, _, ., and ~ — use it for query parameter values and form data. encodeURI preserves URL-safe characters like :, /, ?, and # — use it for encoding a full URL while keeping its structure intact."
 ---
 
 <div class="tool-container">

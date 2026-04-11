@@ -3,6 +3,11 @@ layout: page
 title: "Cron Expression Builder - Visual Crontab Generator"
 permalink: /tools/cron-builder/
 description: "Free online cron expression builder. Build crontab schedules visually with dropdowns, see the next 5 run times, and get plain-English descriptions of your schedule."
+faqs:
+  - q: "What is cron syntax?"
+    a: "A cron expression has five fields: minute (0-59), hour (0-23), day of month (1-31), month (1-12), and day of week (0-6, where 0 is Sunday). Special characters include * (every value), comma (list), hyphen (range), and slash (step)."
+  - q: "How do I schedule a cron job to run every 5 minutes?"
+    a: "Use the expression */5 * * * *. The */5 in the minute field means every 5 minutes, and the asterisks in the remaining fields mean every hour, every day, every month, and every day of the week."
 ---
 
 <div class="tool-container">
