@@ -31,7 +31,7 @@ After the Jailbreak process, Cydia is installed on your device.
 
 It is important to mention that I wouldn't do it on my main iPhone for security reasons. If you know what you are doing, a jailbroken iPhone is not more insecure, but the main issue is that you need to stick with older iOS versions.
 
-![image](https://user-images.githubusercontent.com/6353928/150762168-e6352d3e-8254-4501-8ced-35c2d00ac8f8.png)
+<img src="https://user-images.githubusercontent.com/6353928/150762168-e6352d3e-8254-4501-8ced-35c2d00ac8f8.png" alt="iPhone bot setup" width="960" height="1280" loading="lazy">
 
 ## Preparing our environment
 
@@ -49,7 +49,7 @@ Something that cached my attention was how fast this phone was after installing 
 ### SSH into our phone
 
 Once we have an SSH server installed, we are ready to start bashing:
-![image](https://user-images.githubusercontent.com/6353928/150141263-678c6459-17aa-4f65-bb7a-6ea247bf5a8b.png)
+<img src="https://user-images.githubusercontent.com/6353928/150141263-678c6459-17aa-4f65-bb7a-6ea247bf5a8b.png" alt="Shortcuts automation workflow" width="696" height="143" loading="lazy">
 
 ## An important reminder is to change the default root password
 
@@ -57,12 +57,12 @@ Once we have an SSH server installed, we are ready to start bashing:
 
 I was really surprised by this tool; it allows you to script everything you can do with your phone, plus the execution of JavaScript/Lua code that will enable you to do everything, even access the official Apple SDK!
 
-![image](https://user-images.githubusercontent.com/6353928/150153033-55902e45-58a6-42a1-9174-c5a2122b132d.png)
+<img src="https://user-images.githubusercontent.com/6353928/150153033-55902e45-58a6-42a1-9174-c5a2122b132d.png" alt="Shortcut actions configuration" width="726" height="325" loading="lazy">
 
 Official site: [autotouch.net](https://autotouch.net/) and docs: [docs.autotouch.net](https://docs.autotouch.net/)
 
 It provides a web server option, where it is possible to access our phone scripts to create and run scripts remotely:
-![image](https://user-images.githubusercontent.com/6353928/150154039-9bd76168-e673-43bb-9e14-e77ed545c209.png)
+<img src="https://user-images.githubusercontent.com/6353928/150154039-9bd76168-e673-43bb-9e14-e77ed545c209.png" alt="Automation trigger settings" width="1189" height="1119" loading="lazy">
 
 #### Scripting time
 
@@ -70,7 +70,7 @@ One thing to mention is that we can create easy scripts by recording our actions
 
 One issue was that I needed the Bundle ID of my phone apps for my scripts. It is like a unique ID for each application on iOS, like: `com.apple.calculator`. It was a bit difficult to find a solution for this. I tried a bash script from Reddit to get them without any luck, then I found [this website](https://offcornerdev.com/bundleid.html) that list many apps IDs, but the app I needed wasn't there. In the end, I found a fork of BundleIDs called [BundleIDsXII](https://github.com/mass1ve-err0r/BundleIDsXII) that worked on my iOS version.
 
-![image](https://user-images.githubusercontent.com/6353928/150164830-c7cfa88e-4798-45dc-8922-5240ce34a628.png)
+<img src="https://user-images.githubusercontent.com/6353928/150164830-c7cfa88e-4798-45dc-8922-5240ce34a628.png" alt="Bot running on iPhone" width="238" height="278" loading="lazy">
 _The ID of Twitter_
 
 I made my script work as expected, being able to screenshot one application and post the image to Twitter. I think this is it for now. I found it very interesting, and I think it is an option to keep in mind, don't let your old iPhones stored in a drawer get unused.

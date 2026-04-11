@@ -32,7 +32,7 @@ sudo snap enable docker
 ## Running images from different architectures
 
 By default, you can't run images that are not for your host architecture on Docker:
-![image](https://user-images.githubusercontent.com/6353928/155134822-e4aa01c7-0852-4df3-85a7-902cf3afde30.png)
+<img src="https://user-images.githubusercontent.com/6353928/155134822-e4aa01c7-0852-4df3-85a7-902cf3afde30.png" alt="Docker pull command output" width="1010" height="37" loading="lazy">
 
 However, it is possible to set up Docker to use QEMU, an emulator to run these images, and there is an easy way to do it.
 
@@ -48,4 +48,4 @@ And we are done! In this case, I am running an Ubuntu image for ARM64:
 docker run -it --rm --platform linux/arm64 arm64v8/ubuntu sh
 ```
 
-![image](https://user-images.githubusercontent.com/6353928/155136139-5beddb9c-738e-4ce8-b4f1-830118d9d375.png)
+<img src="https://user-images.githubusercontent.com/6353928/155136139-5beddb9c-738e-4ce8-b4f1-830118d9d375.png" alt="Docker run command output" width="588" height="59" loading="lazy">

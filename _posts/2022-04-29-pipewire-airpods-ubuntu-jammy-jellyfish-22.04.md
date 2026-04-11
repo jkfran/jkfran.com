@@ -50,7 +50,7 @@ sudo apt remove pulseaudio-module-bluetooth
 ```
 
 Edit your `/etc/bluetooth/main.conf` and uncomment the ControllerMode line with the value `bredr`:
-![image](https://user-images.githubusercontent.com/6353928/166062425-b0cf16cb-3989-456b-8f2d-85b54309cfec.png)
+<img src="https://user-images.githubusercontent.com/6353928/166062425-b0cf16cb-3989-456b-8f2d-85b54309cfec.png" alt="PipeWire audio codec settings" width="652" height="109" loading="lazy">
 
 And, finally enable the media session by running this command:
 

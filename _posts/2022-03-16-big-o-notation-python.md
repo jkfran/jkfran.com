@@ -41,7 +41,7 @@ constant_algo([4, 5, 6, 8])
 
 In the above script, irrespective of the input size or the number of items in the input list, the algorithm performs only two steps: Finding the first element's square and printing the result on the screen. Hence, the complexity remains constant.
 
-![image](https://user-images.githubusercontent.com/6353928/158669428-b71e6a3d-2915-42a1-bff4-74887afcca34.png)
+<img src="https://user-images.githubusercontent.com/6353928/158669428-b71e6a3d-2915-42a1-bff4-74887afcca34.png" alt="Big O complexity chart" width="415" height="277" loading="lazy">
 
 ## Linear Complexity (O(n))
 
@@ -57,7 +57,7 @@ linear_algo([4, 5, 6, 8])
 
 The complexity of the linear_algo function is linear in the above example since the number of iterations of the for-loop will equal the size of the input items array. For instance, if there are four items in the items list, the for-loop will be executed four times, and so on.
 
-![image](https://user-images.githubusercontent.com/6353928/158670540-0f22ddff-75a9-4cdc-8069-066744080eb4.png)
+<img src="https://user-images.githubusercontent.com/6353928/158670540-0f22ddff-75a9-4cdc-8069-066744080eb4.png" alt="Linear time complexity graph" width="394" height="274" loading="lazy">
 
 ## Quadratic Complexity (O(n^2))
 
@@ -72,7 +72,7 @@ def quadratic_algo(items):
 quadratic_algo([4, 5, 6, 8])
 ```
 
-![image](https://user-images.githubusercontent.com/6353928/158675551-3b645715-92f2-44da-aa30-b2e2cdf889f4.png)
+<img src="https://user-images.githubusercontent.com/6353928/158675551-3b645715-92f2-44da-aa30-b2e2cdf889f4.png" alt="Quadratic time complexity graph" width="414" height="277" loading="lazy">
 
 ## Conclusion
 

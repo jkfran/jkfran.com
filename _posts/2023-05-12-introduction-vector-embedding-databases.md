@@ -23,7 +23,7 @@ Several types of vector representations are commonly used, each with its unique 
 
 - **Audio Embeddings:** For audio data, audio embeddings provide a means to capture and represent the distinct characteristics of sound. These vector representations, trained on extensive audio corpora, can encapsulate the content of audio recordings. Applications for audio embeddings are diverse and include speech recognition, speaker identification, and music genre classification.
 
-![image](https://github.com/jkfran/jkfran.com/assets/6353928/3176a677-479d-4f5d-b3b2-a3bb721da1e2)
+<img src="https://github.com/jkfran/jkfran.com/assets/6353928/3176a677-479d-4f5d-b3b2-a3bb721da1e2" alt="Vector embedding similarity diagram" width="1136" height="535" loading="lazy">
 
 In essence, vector representations provide a powerful tool to translate various forms of data into a language that machines can understand, process, and learn from, paving the way for a broad spectrum of data analysis and machine learning tasks.
 

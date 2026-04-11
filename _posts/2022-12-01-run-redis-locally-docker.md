@@ -21,7 +21,7 @@ docker run -it -p 6379:6379 --rm --name my-redis redis
 
 That's it!
 
-![image](https://user-images.githubusercontent.com/6353928/205104552-7ae20743-10ae-4f7f-a521-d81d16291074.png)
+<img src="https://user-images.githubusercontent.com/6353928/205104552-7ae20743-10ae-4f7f-a521-d81d16291074.png" alt="Redis CLI connected to Docker container" width="1472" height="556" loading="lazy">
 
 Note: If you want to run something more customized, I recommend looking into the [Redis documentation](https://redis.io/docs/).
 
@@ -42,6 +42,6 @@ sudo pip3 install qredis
 qredis -p 6379
 ```
 
-![image](https://user-images.githubusercontent.com/6353928/205104704-e6d2f91a-df9d-41c7-a69c-102410f61417.png)
+<img src="https://user-images.githubusercontent.com/6353928/205104704-e6d2f91a-df9d-41c7-a69c-102410f61417.png" alt="RedisInsight GUI showing keys" width="769" height="598" loading="lazy">
 
 Ah! Much better.
