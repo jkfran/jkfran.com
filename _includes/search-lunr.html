@@ -30,7 +30,7 @@
   function loadSearchScripts() {
     if (searchReady || window._searchLoading) return;
     window._searchLoading = true;
-    loadScript('{{ site.baseurl }}/assets/js/lunr.js', function () {
+    loadScript('https://cdn.jsdelivr.net/npm/lunr@2.1.5/lunr.min.js', function () {
       loadScript('{{ site.baseurl }}/assets/js/lunrsearchengine.js', function () {
         searchReady = true;
         window._searchLoading = false;

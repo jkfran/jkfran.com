@@ -10,15 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Smooth scroll to hash on page load
-  setTimeout(function () {
-    if (location.hash) {
-      window.scrollTo(0, 0);
-      var target = document.getElementById(location.hash.substring(1));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+  if (location.hash) {
+    var target = document.getElementById(location.hash.substring(1));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
     }
-  }, 1);
+  }
 
   // Smooth scroll for anchor links
   document.addEventListener("click", function (e) {

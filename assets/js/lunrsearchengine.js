@@ -50,13 +50,15 @@ window.lunr_search = function (term) {
         var results = idx.search(term);
         var listEl = document.querySelectorAll('#lunrsearchresults ul')[0];
         if (results.length > 0) {
+            var html = '';
             for (var i = 0; i < results.length; i++) {
                 var ref = results[i]['ref'];
                 var url = documents[ref]['url'];
                 var title = documents[ref]['title'];
                 var body = documents[ref]['body'].substring(0, 160) + '...';
-                listEl.innerHTML += "<li class='lunrsearchresult'><a href='" + escapeHtml(url) + "'><span class='title'>" + escapeHtml(title) + "</span><br /><small><span class='body'>" + escapeHtml(body) + "</span><br /><span class='url'>" + escapeHtml(url) + "</span></small></a></li>";
+                html += "<li class='lunrsearchresult'><a href='" + escapeHtml(url) + "'><span class='title'>" + escapeHtml(title) + "</span><br /><small><span class='body'>" + escapeHtml(body) + "</span><br /><span class='url'>" + escapeHtml(url) + "</span></small></a></li>";
             }
+            listEl.innerHTML = html;
         } else {
             listEl.innerHTML = "<li class='lunrsearchresult'>Sorry, no results found. Close & try a different search!</li>";
         }
