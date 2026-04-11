@@ -1,7 +1,7 @@
 // Diff Checker tool
 
 .diff-container {
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid $border-color;
   border-radius: 6px;
   overflow: auto;
   max-height: 600px;

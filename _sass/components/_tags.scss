@@ -16,7 +16,7 @@ ul.tags {
       padding: 5px 10px;
 
       &:hover {
-        background: rgba(0, 0, 0, 0.07);
+        background: $border-light;
         text-decoration: none;
       }
     }
