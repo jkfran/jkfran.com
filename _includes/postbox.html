@@ -3,8 +3,8 @@
     <div class="maxthumb">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {% if post.image %}
-        {% if post.image contains "://" %}{% assign img_base = post.image %}{% else %}{% assign img_base = post.image | prepend: "/" | prepend: site.baseurl %}{% endif %}
-        <img class="img-fluid" loading="lazy" decoding="async" width="1200" height="675" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw" srcset="{{ img_base | replace: '.jpg', '-400w.jpg' }} 400w, {{ img_base | replace: '.jpg', '-800w.jpg' }} 800w, {{ img_base }} 1200w" src="{{ img_base }}" alt="{{ post.title }}">
+        {% if post.image contains "://" %}{% assign img_base = post.image %}{% assign img_local = false %}{% else %}{% assign img_base = post.image | prepend: "/" | prepend: site.baseurl %}{% assign img_local = true %}{% endif %}
+        <img class="img-fluid" loading="lazy" decoding="async" width="1200" height="675"{% if img_local %} sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw" srcset="{{ img_base | replace: '.jpg', '-400w.jpg' }} 400w, {{ img_base | replace: '.jpg', '-800w.jpg' }} 800w, {{ img_base }} 1200w"{% endif %} src="{{ img_base }}" alt="{{ post.title }}">
         {% endif %}
       </a>
     </div>
