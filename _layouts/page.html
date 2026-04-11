@@ -2,58 +2,10 @@
 layout: default
 ---
 
-{% if page.url contains "/tools/" %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": {{ page.title | jsonify }},
-  "description": {{ page.description | jsonify }},
-  "url": "{{ page.url | absolute_url }}",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-{% endif %}
-{% if page.faqs %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {% for faq in page.faqs %}
-    {
-      "@type": "Question",
-      "name": {{ faq.q | jsonify }},
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": {{ faq.a | jsonify }}
-      }
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ]
-}
-</script>
-{% endif %}
-
 <section>
   <div class="section-title">
     <h1><span>{{ page.title }}</span></h1>
   </div>
-
-  {% if page.url contains "/tools/" %}
-  <noscript>
-    <div class="alert alert-warning">
-      <i class="bi bi-exclamation-triangle" aria-hidden="true"></i>
-      This tool requires JavaScript to run. Please enable JavaScript in your browser settings.
-    </div>
-  </noscript>
-  {% endif %}
 
   <div class="page-content">{{content}}</div>
 </section>
