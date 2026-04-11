@@ -12,7 +12,7 @@ ul.tags {
     a {
       background: $subtle-overlay;
       color: $text-secondary;
-      border-radius: 3px;
+      border-radius: $radius-sm;
       padding: 5px 10px;
 
       &:hover {

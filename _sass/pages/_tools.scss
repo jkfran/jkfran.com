@@ -13,7 +13,7 @@
   align-items: center;
   padding: 2rem 1.5rem;
   border: 1px solid $border-color;
-  border-radius: 8px;
+  border-radius: $radius-lg;
   color: $text-body;
   transition:
     transform 0.2s,

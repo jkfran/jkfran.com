@@ -13,7 +13,7 @@
 a {
   color: $color-primary;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: color 0.2s;
 
   &:hover {
     color: $color-primary-hover;
@@ -23,7 +23,7 @@ a {
 
 pre {
   box-sizing: border-box;
-  border: #e3edf3 1px solid;
+  border: $pre-border 1px solid;
   width: 100%;
   padding: 7px;
   font-family: monospace, sans-serif;
@@ -33,7 +33,7 @@ pre {
   background: #fff;
   border-radius: 0;
   line-height: 1.6;
-  color: #333;
+  color: $pre-text;
 }
 
 blockquote {
@@ -85,7 +85,7 @@ a.link-dark {
 }
 
 // Ensure minimum 44px touch targets on mobile (WCAG 2.5.5)
-@media (max-width: $bp-below-md) {
+@media (max-width: $bp-md - 1px) {
   .btn-group-sm > .btn,
   .form-check-inline {
     min-height: 44px;

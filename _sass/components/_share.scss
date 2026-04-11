@@ -3,6 +3,7 @@
 .share {
   color: $text-muted;
   fill: $text-muted;
+  margin-top: 30px;
 
   a {
     color: $text-muted;
@@ -26,18 +27,14 @@
   }
 }
 
-.sticky-top-offset {
-  top: 100px;
-}
-
 @media (min-width: $bp-lg) {
   .share ul li {
     display: block;
   }
 }
 
-@media (max-width: $bp-below-md) {
+@media (min-width: $bp-md) {
   .share {
-    margin-top: 30px;
+    margin-top: 0;
   }
 }

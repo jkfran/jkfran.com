@@ -1,5 +1,13 @@
 // Custom utilities
 
 .sticky-top-80 {
-  top: 80px;
+  top: $navbar-height;
+}
+
+.sticky-top-offset {
+  top: $navbar-height + 20px;
+}
+
+.is-hidden {
+  display: none;
 }

@@ -3,8 +3,8 @@
 .site-content {
   min-height: 60vh;
   padding-top: 1.5rem;
-  margin-top: 80px;
-  transition: all 0.4s;
+  margin-top: $navbar-height;
+  transition: margin-top $transition-base;
 }
 
 .main-content {
@@ -36,18 +36,17 @@ section.recent-posts {
   }
 }
 
-// Navigation
+// Navigation (mobile-first)
 .mediumnavigation {
-  background: rgba(255, 255, 255, 0.97);
+  background: $bg-nav;
   box-shadow: 0 2px 2px -2px $border-color;
-  transition: top 0.2s ease-in-out;
+  transition: top $transition-fast;
 
   .form-control {
     font-size: 16px;
-    border-radius: 30px;
+    border-radius: $radius-pill;
     overflow: hidden;
     border: 1px solid $border-color;
-    min-width: 180px;
   }
 
   .navbar-brand {
@@ -61,31 +60,36 @@ section.recent-posts {
   .navbar-collapse {
     padding-bottom: 0.5rem;
   }
+
+  .navbar-nav {
+    padding-top: 0.5rem;
+    border-top: 1px solid $border-color;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0;
+  }
 }
 
 @media (min-width: $bp-lg) {
-  .mediumnavigation .navbar-collapse {
-    padding-bottom: 0;
+  .mediumnavigation {
+    .navbar-collapse {
+      padding-bottom: 0;
+    }
+
+    .navbar-nav {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .form-control {
+      min-width: 180px;
+    }
   }
 
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.8rem;
     padding-left: 0.8rem;
-  }
-}
-
-@media (max-width: $bp-below-lg) {
-  .mediumnavigation .navbar-nav {
-    padding-top: 0.5rem;
-    border-top: 1px solid $border-color;
-  }
-
-  .mediumnavigation .nav-link {
-    padding: 0.5rem 0;
-  }
-
-  .mediumnavigation .form-control {
-    min-width: auto;
   }
 }
 
@@ -97,22 +101,20 @@ section.recent-posts {
   margin: 0;
 }
 
-// Footer
+// Footer (mobile-first: no margins on mobile, added on desktop)
 .footer {
   border-top: 1px solid $subtle-overlay;
   padding-top: 15px;
   padding-bottom: 12px;
   font-size: 0.8rem;
   color: $text-muted;
-  margin-top: 50px;
-  margin-bottom: 62px;
   position: relative;
   background: #fff;
 }
 
-@media (max-width: $bp-below-lg) {
+@media (min-width: $bp-lg) {
   .footer {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 50px;
+    margin-bottom: 62px;
   }
 }

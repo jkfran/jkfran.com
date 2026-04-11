@@ -3,7 +3,7 @@
 .regex-highlight-box {
   padding: 0.75rem;
   border: 1px solid $border-color;
-  border-radius: 6px;
+  border-radius: $radius;
   background: #fff;
   font-size: 0.85rem;
   line-height: 1.6;

@@ -13,6 +13,64 @@ function escapeHtml(s) {
 }
 
 /**
+ * Hide error and success message boxes.
+ * Expects elements with IDs "errorBox" and "successBox" (both optional).
+ */
+function hideMessages() {
+  const errorBox = document.getElementById("errorBox");
+  const successBox = document.getElementById("successBox");
+  if (errorBox) errorBox.style.display = "none";
+  if (successBox) successBox.style.display = "none";
+}
+
+/**
+ * Show an error message in the standard error alert box.
+ * @param {string} msg - Error message text
+ */
+function showError(msg) {
+  hideMessages();
+  const errorBox = document.getElementById("errorBox");
+  const errorMsg = document.getElementById("errorMsg");
+  if (errorMsg) errorMsg.textContent = msg;
+  if (errorBox) errorBox.style.display = "block";
+}
+
+/**
+ * Show a success message in the standard success alert box.
+ * @param {string} msg - Success message text
+ */
+function showSuccess(msg) {
+  hideMessages();
+  const successBox = document.getElementById("successBox");
+  const successMsg = document.getElementById("successMsg");
+  if (successMsg) successMsg.textContent = msg;
+  if (successBox) successBox.style.display = "block";
+}
+
+/**
+ * Syntax-highlight a JSON string with span wrappers for CSS theming.
+ * @param {string} json - JSON string to highlight
+ * @returns {string} HTML with .json-key, .json-string, .json-number, .json-boolean, .json-null spans
+ */
+function syntaxHighlight(json) {
+  json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return json.replace(
+    /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
+    function (match) {
+      let cls = "json-number";
+      if (/^"/.test(match)) {
+        cls = /:$/.test(match) ? "json-key" : "json-string";
+      } else if (/true|false/.test(match)) {
+        cls = "json-boolean";
+      } else if (/null/.test(match)) {
+        cls = "json-null";
+      }
+      return '<span class="' + cls + '">' + match + "</span>";
+    }
+  );
+}
+
+/**
  * Attach a copy-to-clipboard handler to a button.
  * @param {string} btnId - Button element ID
  * @param {string|function} source - Element ID to copy from, or a function returning text

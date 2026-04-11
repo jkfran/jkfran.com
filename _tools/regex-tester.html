@@ -16,7 +16,7 @@ faqs:
     automatically and each part of your pattern is explained in plain English.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
@@ -94,7 +94,7 @@ faqs:
       <label for="testInput" class="form-label mb-0 small text-muted fw-semibold">Test string</label>
       <span class="small text-muted" id="matchCount" aria-live="polite"></span>
     </div>
-    <div id="highlightOutput" class="regex-highlight-box font-monospace" style="display: none"></div>
+    <div id="highlightOutput" class="regex-highlight-box font-monospace is-hidden"></div>
     <textarea
       id="testInput"
       class="form-control font-monospace"
@@ -108,13 +108,13 @@ test123@gmail.com"
 
   <div class="row">
     <div class="col-md-6 mb-3">
-      <div id="groupsPanel" style="display: none">
+      <div id="groupsPanel" class="is-hidden">
         <h6 class="fw-semibold mb-2">Capture groups</h6>
         <div id="groupsOutput"></div>
       </div>
     </div>
     <div class="col-md-6 mb-3">
-      <div id="explainPanel" style="display: none">
+      <div id="explainPanel" class="is-hidden">
         <h6 class="fw-semibold mb-2">Pattern explanation</h6>
         <div id="explainOutput"></div>
       </div>
@@ -176,7 +176,7 @@ test123@gmail.com"
   </div>
 
   <div class="tool-info">
-    <h3>Regex quick reference</h3>
+    <h2>Regex quick reference</h2>
     <div class="row">
       <div class="col-md-4">
         <h4>Characters</h4>

@@ -6,7 +6,7 @@
   padding: 15px 0 0;
   margin-bottom: 0;
   color: $text-muted;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid $border-medium;
 
   i {
     display: inline-block;
@@ -14,12 +14,12 @@
 }
 
 .pointerup {
-  margin-bottom: -17px;
-  margin-left: 49%;
+  text-align: center;
+  margin-bottom: -17px; // overlap with pagination border
   font-size: 30px;
 
   i {
-    color: #eaeaea;
+    color: $text-disabled;
   }
 }
 

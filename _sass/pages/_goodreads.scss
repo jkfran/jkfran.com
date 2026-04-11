@@ -10,7 +10,7 @@ div[class^="gr_custom_container_"] {
 }
 
 h2[class^="gr_custom_header_"] {
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid $border-muted;
   width: 100%;
   padding-bottom: 0.5rem;
   margin-top: 1rem;
@@ -28,9 +28,11 @@ div[class^="gr_custom_each_container_"] {
   margin-bottom: 10px;
   overflow: auto;
   padding-bottom: 4px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid $border-muted;
 }
 
+// Float is intentional: text (title, author) wraps around the book cover image.
+// Flexbox/grid cannot replicate this flow because Goodreads injects sibling divs.
 div[class^="gr_custom_book_container_"] {
   overflow: hidden;
   float: left;

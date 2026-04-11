@@ -1,12 +1,76 @@
 #!/bin/bash
-# Download all post images, resize to max 1200x675, convert to JPEG
+# Download all post images, resize to max 1200x675, convert to JPEG + WebP
+# Optionally generates smaller variants (800px, 400px wide) for responsive srcset.
+#
+# Requirements:
+#   sips   — macOS built-in (always available)
+#   cwebp  — brew install webp (optional, skipped with warning if missing)
+#
+# Usage:
+#   ./scripts/optimize-images.sh           # JPEG only (default)
+#   ./scripts/optimize-images.sh --webp    # JPEG + WebP
+#   ./scripts/optimize-images.sh --sizes   # JPEG at 1200, 800, 400 widths
+#   ./scripts/optimize-images.sh --all     # JPEG + WebP + all sizes
 set -e
 
 MAX_WIDTH=1200
 MAX_HEIGHT=675
+WEBP_QUALITY=80
+JPEG_QUALITY=85
 TMPDIR=$(mktemp -d)
+GENERATE_WEBP=false
+GENERATE_SIZES=false
+
+for arg in "$@"; do
+  case "$arg" in
+    --webp) GENERATE_WEBP=true ;;
+    --sizes) GENERATE_SIZES=true ;;
+    --all) GENERATE_WEBP=true; GENERATE_SIZES=true ;;
+  esac
+done
+
+if $GENERATE_WEBP && ! command -v cwebp &>/dev/null; then
+  echo "Warning: cwebp not found. Install with: brew install webp"
+  echo "Continuing without WebP generation."
+  GENERATE_WEBP=false
+fi
 
 echo "Working in $TMPDIR"
+echo "Options: JPEG=${JPEG_QUALITY}q WebP=$GENERATE_WEBP Sizes=$GENERATE_SIZES"
+echo ""
+
+generate_webp() {
+  local src="$1"
+  local dst="${src%.jpg}.webp"
+  cwebp -q "$WEBP_QUALITY" "$src" -o "$dst" -quiet
+  size=$(ls -lh "$dst" | awk '{print $5}')
+  echo "  WebP: $size"
+}
+
+generate_size_variant() {
+  local src="$1"
+  local name="$2"
+  local target_w="$3"
+
+  local w h
+  w=$(sips -g pixelWidth "$src" | tail -1 | awk '{print $2}')
+  h=$(sips -g pixelHeight "$src" | tail -1 | awk '{print $2}')
+
+  if [ "$w" -le "$target_w" ]; then
+    return
+  fi
+
+  local new_h
+  new_h=$(echo "$h * $target_w / $w" | bc)
+  local outfile="$TMPDIR/${name}-${target_w}w.jpg"
+  sips -z "$new_h" "$target_w" "$src" --out "$outfile" -s format jpeg -s formatOptions "$JPEG_QUALITY" >/dev/null 2>&1
+  size=$(ls -lh "$outfile" | awk '{print $5}')
+  echo "  ${target_w}w: ${target_w}x${new_h} ($size)"
+
+  if $GENERATE_WEBP; then
+    generate_webp "$outfile"
+  fi
+}
 
 process_image() {
   local name="$1"
@@ -33,10 +97,10 @@ process_image() {
     fi
 
     echo "  Resizing to: ${new_w}x${new_h}"
-    sips -z "$new_h" "$new_w" "$TMPDIR/${name}_orig" --out "$outfile" -s format jpeg -s formatOptions 85 >/dev/null 2>&1
+    sips -z "$new_h" "$new_w" "$TMPDIR/${name}_orig" --out "$outfile" -s format jpeg -s formatOptions "$JPEG_QUALITY" >/dev/null 2>&1
   else
     echo "  Already within limits"
-    sips -s format jpeg -s formatOptions 85 "$TMPDIR/${name}_orig" --out "$outfile" >/dev/null 2>&1
+    sips -s format jpeg -s formatOptions "$JPEG_QUALITY" "$TMPDIR/${name}_orig" --out "$outfile" >/dev/null 2>&1
   fi
 
   rm "$TMPDIR/${name}_orig"
@@ -44,6 +108,15 @@ process_image() {
   final_w=$(sips -g pixelWidth "$outfile" | tail -1 | awk '{print $2}')
   final_h=$(sips -g pixelHeight "$outfile" | tail -1 | awk '{print $2}')
   echo "  Final: ${final_w}x${final_h} ($size)"
+
+  if $GENERATE_WEBP; then
+    generate_webp "$outfile"
+  fi
+
+  if $GENERATE_SIZES; then
+    generate_size_variant "$outfile" "$name" 800
+    generate_size_variant "$outfile" "$name" 400
+  fi
 }
 
 process_local() {
@@ -71,10 +144,10 @@ process_local() {
     fi
 
     echo "  Resizing to: ${new_w}x${new_h}"
-    sips -z "$new_h" "$new_w" "$TMPDIR/${name}_orig" --out "$outfile" -s format jpeg -s formatOptions 85 >/dev/null 2>&1
+    sips -z "$new_h" "$new_w" "$TMPDIR/${name}_orig" --out "$outfile" -s format jpeg -s formatOptions "$JPEG_QUALITY" >/dev/null 2>&1
   else
     echo "  Already within limits"
-    sips -s format jpeg -s formatOptions 85 "$TMPDIR/${name}_orig" --out "$outfile" >/dev/null 2>&1
+    sips -s format jpeg -s formatOptions "$JPEG_QUALITY" "$TMPDIR/${name}_orig" --out "$outfile" >/dev/null 2>&1
   fi
 
   rm "$TMPDIR/${name}_orig"
@@ -82,6 +155,15 @@ process_local() {
   final_w=$(sips -g pixelWidth "$outfile" | tail -1 | awk '{print $2}')
   final_h=$(sips -g pixelHeight "$outfile" | tail -1 | awk '{print $2}')
   echo "  Final: ${final_w}x${final_h} ($size)"
+
+  if $GENERATE_WEBP; then
+    generate_webp "$outfile"
+  fi
+
+  if $GENERATE_SIZES; then
+    generate_size_variant "$outfile" "$name" 800
+    generate_size_variant "$outfile" "$name" 400
+  fi
 }
 
 process_local "hello-world" "assets/images/hello-world.png"
@@ -104,4 +186,11 @@ process_image "mlflow-custom-metrics" "https://github.com/jkfran/jkfran.com/asse
 
 echo ""
 echo "All images processed in $TMPDIR"
-ls -lh "$TMPDIR"/*.jpg
+echo ""
+echo "JPEG files:"
+ls -lh "$TMPDIR"/*.jpg 2>/dev/null || echo "  (none)"
+if $GENERATE_WEBP; then
+  echo ""
+  echo "WebP files:"
+  ls -lh "$TMPDIR"/*.webp 2>/dev/null || echo "  (none)"
+fi

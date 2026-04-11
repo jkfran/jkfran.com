@@ -58,25 +58,25 @@ faqs:
     </button>
   </div>
 
-  <div class="alert alert-success" id="statsBox" role="alert" style="display: none">
+  <div class="alert alert-success is-hidden" id="statsBox" role="status">
     <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="statsText"></span>
   </div>
 
-  <div id="diffOutput" style="display: none">
+  <div id="diffOutput" class="is-hidden">
     <div class="diff-container">
       <table class="diff-table" id="diffTable"></table>
     </div>
   </div>
 
   <div class="tool-info">
-    <h3>How to use</h3>
+    <h2>How to use</h2>
     <ol>
       <li>Paste the <strong>original</strong> text on the left</li>
       <li>Paste the <strong>modified</strong> text on the right</li>
       <li>Click <strong>Compare</strong> to see the diff</li>
     </ol>
 
-    <h3>Reading the diff</h3>
+    <h2>Reading the diff</h2>
     <ul>
       <li>
         <span style="color: #22863a; background: #e6ffec; padding: 1px 4px; border-radius: 2px">Green lines</span> —
@@ -89,7 +89,7 @@ faqs:
       <li>Grey lines — Unchanged</li>
     </ul>
 
-    <h3>Common uses</h3>
+    <h2>Common uses</h2>
     <ul>
       <li>Comparing configuration file changes before deploying</li>
       <li>Reviewing text edits in documents or emails</li>
@@ -179,17 +179,13 @@ faqs:
       return ops;
     }
 
-    function escapeHtml(s) {
-      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/ /g, "&nbsp;");
-    }
-
     function renderDiff(ops) {
       let added = 0,
         removed = 0;
       let html = "";
 
       ops.forEach(function (op) {
-        const line = escapeHtml(op.text) || "&nbsp;";
+        const line = escapeHtml(op.text).replace(/ /g, "&nbsp;") || "&nbsp;";
         if (op.type === "equal") {
           html +=
             '<tr class="diff-equal"><td class="diff-ln">' +

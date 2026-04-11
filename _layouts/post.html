@@ -65,7 +65,8 @@ layout: default
             </div>
 
             {% if page.image %}
-            <img class="featured-image img-fluid" loading="lazy" width="1200" height="675" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+            {% if page.image contains "://" %}{% assign img_base = page.image %}{% else %}{% assign img_base = page.image | prepend: "/" | prepend: site.baseurl %}{% endif %}
+            <img class="featured-image img-fluid" loading="lazy" decoding="async" width="1200" height="675" sizes="(min-width: 768px) 66vw, 100vw" srcset="{{ img_base | replace: '.jpg', '-400w.jpg' }} 400w, {{ img_base | replace: '.jpg', '-800w.jpg' }} 800w, {{ img_base }} 1200w" src="{{ img_base }}" alt="{{ page.title }}">
             {% endif %}
 
             <p class="post-meta-info">

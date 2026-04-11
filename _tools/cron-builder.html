@@ -33,11 +33,11 @@ faqs:
     </div>
   </div>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div id="description" class="alert alert-success" role="status" style="display: none">
+  <div id="description" class="alert alert-success is-hidden" role="status">
     <i class="bi bi-chat-left-text" aria-hidden="true"></i> <span id="descText"></span>
   </div>
 
@@ -107,7 +107,7 @@ faqs:
     </div>
   </div>
 
-  <div id="nextRuns" class="mb-4" style="display: none">
+  <div id="nextRuns" class="mb-4 is-hidden">
     <h6 class="fw-semibold mb-2"><i class="bi bi-calendar-event" aria-hidden="true"></i> Next 5 runs</h6>
     <ul id="runsList" class="list-group list-group-flush"></ul>
   </div>
@@ -127,7 +127,7 @@ faqs:
   </div>
 
   <div class="tool-info">
-    <h3>Cron syntax reference</h3>
+    <h2>Cron syntax reference</h2>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -165,7 +165,7 @@ faqs:
       </tbody>
     </table>
 
-    <h3>Special characters</h3>
+    <h2>Special characters</h2>
     <ul>
       <li><code>*</code> — Every value</li>
       <li><code>,</code> — List of values (e.g. <code>1,3,5</code>)</li>

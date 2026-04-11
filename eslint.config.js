@@ -16,6 +16,23 @@ export default [
     },
   },
   {
-    ignores: ["assets/js/lunr.js", "assets/js/lunrsearchengine.js", "node_modules/"],
+    files: ["assets/js/tools-utils.js"],
+    languageOptions: {
+      globals: {
+        document: "readonly",
+        navigator: "readonly",
+        setTimeout: "readonly",
+      },
+    },
+    rules: {
+      "no-unused-vars": "off",
+    },
+  },
+  {
+    ignores: [
+      "assets/js/lunrsearchengine.js",
+      "assets/js/*.min.js",
+      "node_modules/",
+    ],
   },
 ];

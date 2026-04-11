@@ -5,7 +5,7 @@ sitemap: false
 
 {% assign counter = 0 %}
 (function () {
-var documents = [{% for page in site.pages %}{% if page.url contains '.xml' or page.url contains 'assets' or page.url contains 'category' or page.url contains 'tag' %}{% else %}{
+const documents = [{% for page in site.pages %}{% if page.url contains '.xml' or page.url contains 'assets' or page.url contains 'category' or page.url contains 'tag' %}{% else %}{
     "id": {{ counter }},
     "url": "{{ site.url }}{{site.baseurl}}{{ page.url }}",
     "title": "{{ page.title }}",
@@ -22,7 +22,7 @@ var documents = [{% for page in site.pages %}{% if page.url contains '.xml' or p
     "body": "{{ page.date | date: "%Y/%m/%d" }} - {{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
     }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
 
-var idx = lunr(function () {
+const idx = lunr(function () {
     this.ref('id')
     this.field('title')
     this.field('body')
@@ -33,13 +33,13 @@ var idx = lunr(function () {
 });
 
 function escapeHtml(s) {
-    var div = document.createElement('div');
+    const div = document.createElement('div');
     div.textContent = s;
     return div.innerHTML;
 }
 
 window.lunr_search = function (term) {
-    var resultsEl = document.getElementById('lunrsearchresults');
+    const resultsEl = document.getElementById('lunrsearchresults');
     resultsEl.style.display = 'block';
     document.body.classList.add('modal-open');
 
@@ -47,15 +47,15 @@ window.lunr_search = function (term) {
 
     if (term) {
         document.getElementById('modtit').innerHTML = "<h5 class='modal-title'>Search results for '" + escapeHtml(term) + "'</h5>" + document.getElementById('modtit').innerHTML;
-        var results = idx.search(term);
-        var listEl = document.querySelectorAll('#lunrsearchresults ul')[0];
+        const results = idx.search(term);
+        const listEl = document.querySelectorAll('#lunrsearchresults ul')[0];
         if (results.length > 0) {
-            var html = '';
-            for (var i = 0; i < results.length; i++) {
-                var ref = results[i]['ref'];
-                var url = documents[ref]['url'];
-                var title = documents[ref]['title'];
-                var body = documents[ref]['body'].substring(0, 160) + '...';
+            let html = '';
+            for (let i = 0; i < results.length; i++) {
+                const ref = results[i]['ref'];
+                const url = documents[ref]['url'];
+                const title = documents[ref]['title'];
+                const body = documents[ref]['body'].substring(0, 160) + '...';
                 html += "<li class='lunrsearchresult'><a href='" + escapeHtml(url) + "'><span class='title'>" + escapeHtml(title) + "</span><br /><small><span class='body'>" + escapeHtml(body) + "</span><br /><span class='url'>" + escapeHtml(url) + "</span></small></a></li>";
             }
             listEl.innerHTML = html;

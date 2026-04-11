@@ -16,7 +16,7 @@ faqs:
     query strings, and Unicode characters. All processing happens in your browser.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
@@ -105,14 +105,14 @@ faqs:
   </div>
 
   <div class="tool-info">
-    <h3>What is URL encoding?</h3>
+    <h2>What is URL encoding?</h2>
     <p>
       URL encoding (also called percent-encoding) replaces special characters with a <code>%</code> followed by their
       hex value. For example, a space becomes <code>%20</code> and an ampersand becomes <code>%26</code>. This is
       required because URLs can only contain a limited set of ASCII characters.
     </p>
 
-    <h3>encodeURIComponent vs encodeURI</h3>
+    <h2>encodeURIComponent vs encodeURI</h2>
     <div class="row">
       <div class="col-md-6">
         <h4>encodeURIComponent</h4>
@@ -126,7 +126,7 @@ faqs:
       </div>
     </div>
 
-    <h3>Common encodings</h3>
+    <h2>Common encodings</h2>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -170,19 +170,8 @@ faqs:
   (function () {
     const inputEl = document.getElementById("inputText");
     const outputEl = document.getElementById("outputText");
-    const errorBox = document.getElementById("errorBox");
-
-    function showError(msg) {
-      document.getElementById("errorMsg").textContent = msg;
-      errorBox.style.display = "block";
-    }
-
-    function hideError() {
-      errorBox.style.display = "none";
-    }
-
     function doEncode() {
-      hideError();
+      hideMessages();
       if (!inputEl.value) return;
       try {
         outputEl.value = encodeURIComponent(inputEl.value);
@@ -192,7 +181,7 @@ faqs:
     }
 
     function doDecode() {
-      hideError();
+      hideMessages();
       if (!inputEl.value) return;
       try {
         outputEl.value = decodeURIComponent(inputEl.value.replace(/\+/g, " "));
@@ -202,7 +191,7 @@ faqs:
     }
 
     function doEncodeUri() {
-      hideError();
+      hideMessages();
       if (!inputEl.value) return;
       try {
         outputEl.value = encodeURI(inputEl.value);
@@ -220,13 +209,13 @@ faqs:
       const tmp = inputEl.value;
       inputEl.value = outputEl.value;
       outputEl.value = tmp;
-      hideError();
+      hideMessages();
     });
 
     document.getElementById("clearBtn").addEventListener("click", function () {
       inputEl.value = "";
       outputEl.value = "";
-      hideError();
+      hideMessages();
     });
 
     document.getElementById("copyBtn").addEventListener("click", function () {

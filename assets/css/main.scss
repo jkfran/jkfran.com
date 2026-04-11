@@ -18,16 +18,8 @@
 @import "components/utilities";
 @import "components/post";
 
-// Pages
+// Pages (tool and about styles split into separate files for conditional loading)
 @import "pages/projects";
-@import "pages/tools";
-@import "pages/tools-json";
-@import "pages/tools-password";
-@import "pages/tools-regex";
-@import "pages/tools-diff";
-@import "pages/tools-bg-remover";
-@import "pages/about";
-@import "pages/goodreads";
 
 // Vendors
 @import "vendors/syntax";

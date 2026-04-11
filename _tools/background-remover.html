@@ -16,11 +16,11 @@ faqs:
     your device. First use downloads the model (~40 MB, cached for future visits).
   </p>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+  <div class="alert alert-success is-hidden" id="successBox" role="status">
     <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
@@ -29,7 +29,7 @@ faqs:
     <input type="file" id="imageInput" class="form-control" accept="image/*" />
   </div>
 
-  <div id="modelProgress" class="mb-3" style="display: none">
+  <div id="modelProgress" class="mb-3 is-hidden">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <small class="text-muted fw-semibold" id="modelStatus">Loading AI model...</small>
       <small class="text-muted" id="modelPercent"></small>
@@ -47,15 +47,15 @@ faqs:
     <button class="btn btn-success" id="processBtn" disabled>
       <i class="bi bi-scissors" aria-hidden="true"></i> Remove Background
     </button>
-    <button class="btn btn-outline-secondary" id="downloadBtn" style="display: none">
+    <button class="btn btn-outline-secondary is-hidden" id="downloadBtn">
       <i class="bi bi-download" aria-hidden="true"></i> Download PNG
     </button>
-    <button class="btn btn-outline-secondary" id="clearBtn" style="display: none">
+    <button class="btn btn-outline-secondary is-hidden" id="clearBtn">
       <i class="bi bi-x-lg" aria-hidden="true"></i> Clear
     </button>
   </div>
 
-  <div id="previewArea" style="display: none">
+  <div id="previewArea" class="is-hidden">
     <div class="row">
       <div class="col-md-6 mb-3">
         <label class="form-label small text-muted fw-semibold">Original</label>
@@ -73,7 +73,7 @@ faqs:
   </div>
 
   <div class="tool-info">
-    <h3>How it works</h3>
+    <h2>How it works</h2>
     <p>
       This tool uses <a href="https://huggingface.co/briaai/RMBG-1.4">RMBG-1.4</a>, a neural network by
       <strong>BRIA AI</strong> trained to detect and remove backgrounds from images. The model runs entirely in your
@@ -81,7 +81,7 @@ faqs:
       images are uploaded to any server.
     </p>
 
-    <h3>Tips for best results</h3>
+    <h2>Tips for best results</h2>
     <div class="row">
       <div class="col-md-6">
         <ul>
@@ -109,8 +109,6 @@ faqs:
   const processBtn = document.getElementById("processBtn");
   const downloadBtn = document.getElementById("downloadBtn");
   const clearBtn = document.getElementById("clearBtn");
-  const errorBox = document.getElementById("errorBox");
-  const successBox = document.getElementById("successBox");
   const modelProgress = document.getElementById("modelProgress");
   const modelStatus = document.getElementById("modelStatus");
   const modelPercent = document.getElementById("modelPercent");
@@ -122,23 +120,6 @@ faqs:
   let model = null;
   let processor = null;
   let currentImageUrl = null;
-
-  function hideMessages() {
-    errorBox.style.display = "none";
-    successBox.style.display = "none";
-  }
-
-  function showError(msg) {
-    hideMessages();
-    document.getElementById("errorMsg").textContent = msg;
-    errorBox.style.display = "block";
-  }
-
-  function showSuccess(msg) {
-    hideMessages();
-    document.getElementById("successMsg").textContent = msg;
-    successBox.style.display = "block";
-  }
 
   // Track model download progress
   const fileProgress = {};

@@ -6,12 +6,12 @@
   }
 
   .url {
-    color: #767676;
+    color: $search-url;
   }
 
   a {
     display: block;
-    color: #707070;
+    color: $search-url-hover;
 
     &:hover,
     &:focus {

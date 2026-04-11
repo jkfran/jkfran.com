@@ -2,7 +2,7 @@
 
 .diff-container {
   border: 1px solid $border-color;
-  border-radius: 6px;
+  border-radius: $radius;
   overflow: auto;
   max-height: 600px;
   margin-bottom: 1.5rem;

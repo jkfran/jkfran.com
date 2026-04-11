@@ -17,11 +17,11 @@ faqs:
     browser.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+  <div class="alert alert-success is-hidden" id="successBox" role="status">
     <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
@@ -80,7 +80,7 @@ faqs:
   </div>
 
   <div class="tool-info">
-    <h3>When to use YAML vs JSON</h3>
+    <h2>When to use YAML vs JSON</h2>
     <div class="row">
       <div class="col-md-6">
         <h4>YAML</h4>
@@ -104,7 +104,7 @@ faqs:
       </div>
     </div>
 
-    <h3>Key differences</h3>
+    <h2>Key differences</h2>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -149,24 +149,6 @@ faqs:
   (function () {
     const inputEl = document.getElementById("inputText");
     const outputEl = document.getElementById("outputText");
-    const errorBox = document.getElementById("errorBox");
-    const successBox = document.getElementById("successBox");
-
-    function hideMessages() {
-      errorBox.style.display = "none";
-      successBox.style.display = "none";
-    }
-    function showError(msg) {
-      hideMessages();
-      document.getElementById("errorMsg").textContent = msg;
-      errorBox.style.display = "block";
-    }
-    function showSuccess(msg) {
-      hideMessages();
-      document.getElementById("successMsg").textContent = msg;
-      successBox.style.display = "block";
-    }
-
     document.getElementById("yamlToJson").addEventListener("click", function () {
       hideMessages();
       const text = inputEl.value.trim();

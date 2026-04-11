@@ -16,11 +16,11 @@ faqs:
     Everything runs in your browser — no data is sent anywhere.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+  <div class="alert alert-success is-hidden" id="successBox" role="status">
     <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
@@ -28,6 +28,7 @@ faqs:
     <li class="nav-item" role="presentation">
       <button
         class="nav-link active"
+        id="tab-encode"
         data-mode="encode"
         type="button"
         role="tab"
@@ -40,6 +41,7 @@ faqs:
     <li class="nav-item" role="presentation">
       <button
         class="nav-link"
+        id="tab-decode"
         data-mode="decode"
         type="button"
         role="tab"
@@ -50,18 +52,34 @@ faqs:
       </button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" data-mode="file" type="button" role="tab" aria-selected="false" aria-controls="fileMode">
+      <button
+        class="nav-link"
+        id="tab-file"
+        data-mode="file"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        aria-controls="fileMode"
+      >
         File to Base64
       </button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" data-mode="jwt" type="button" role="tab" aria-selected="false" aria-controls="jwtMode">
+      <button
+        class="nav-link"
+        id="tab-jwt"
+        data-mode="jwt"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        aria-controls="jwtMode"
+      >
         Decode JWT
       </button>
     </li>
   </ul>
 
-  <div id="textMode" role="tabpanel">
+  <div id="textMode" role="tabpanel" aria-labelledby="tab-encode" tabindex="-1">
     <div class="mb-3">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="inputText" class="form-label mb-0 small text-muted fw-semibold" id="inputLabel"
@@ -105,7 +123,7 @@ faqs:
     </div>
   </div>
 
-  <div id="fileMode" role="tabpanel" style="display: none">
+  <div id="fileMode" role="tabpanel" aria-labelledby="tab-file" tabindex="-1" class="is-hidden">
     <div class="mb-3">
       <label for="fileInput" class="form-label small text-muted fw-semibold">Choose a file</label>
       <input type="file" id="fileInput" class="form-control" />
@@ -133,7 +151,7 @@ faqs:
     </div>
   </div>
 
-  <div id="jwtMode" role="tabpanel" style="display: none">
+  <div id="jwtMode" role="tabpanel" aria-labelledby="tab-jwt" tabindex="-1" class="is-hidden">
     <div class="mb-3">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <label for="jwtInput" class="form-label mb-0 small text-muted fw-semibold">JWT token</label>
@@ -153,7 +171,7 @@ faqs:
       <button class="btn btn-success" id="decodeJwt"><i class="bi bi-unlock" aria-hidden="true"></i> Decode JWT</button>
     </div>
 
-    <div id="jwtOutput" style="display: none">
+    <div id="jwtOutput" class="is-hidden">
       <div class="row">
         <div class="col-md-6 mb-3">
           <label class="form-label small text-muted fw-semibold">Header</label>
@@ -168,14 +186,14 @@ faqs:
   </div>
 
   <div class="tool-info">
-    <h3>What is Base64?</h3>
+    <h2>What is Base64?</h2>
     <p>
       Base64 is a binary-to-text encoding scheme that represents binary data as ASCII characters. It uses 64 characters
       (A-Z, a-z, 0-9, +, /) to encode data, making it safe to transmit through text-based systems like email, JSON, and
       URLs.
     </p>
 
-    <h3>Common uses</h3>
+    <h2>Common uses</h2>
     <div class="row">
       <div class="col-md-6">
         <ul>
@@ -200,24 +218,6 @@ faqs:
     let currentMode = "encode";
     const inputEl = document.getElementById("inputText");
     const outputEl = document.getElementById("outputText");
-    const errorBox = document.getElementById("errorBox");
-    const successBox = document.getElementById("successBox");
-
-    function hideMessages() {
-      errorBox.style.display = "none";
-      successBox.style.display = "none";
-    }
-    function showError(msg) {
-      hideMessages();
-      document.getElementById("errorMsg").textContent = msg;
-      errorBox.style.display = "block";
-    }
-    function showSuccess(msg) {
-      hideMessages();
-      document.getElementById("successMsg").textContent = msg;
-      successBox.style.display = "block";
-    }
-
     // Tab switching
     const tabLinks = document.querySelectorAll("#modeTabs .nav-link");
     tabLinks.forEach(function (tab) {
@@ -233,6 +233,12 @@ faqs:
         document.getElementById("fileMode").style.display = mode === "file" ? "block" : "none";
         document.getElementById("jwtMode").style.display = mode === "jwt" ? "block" : "none";
         hideMessages();
+        document
+          .getElementById("textMode")
+          .setAttribute("aria-labelledby", mode === "decode" ? "tab-decode" : "tab-encode");
+
+        const activePanel = mode === "file" ? "fileMode" : mode === "jwt" ? "jwtMode" : "textMode";
+        document.getElementById(activePanel).focus();
 
         if (mode === "encode") {
           currentMode = "encode";
@@ -347,24 +353,6 @@ faqs:
     });
 
     // JWT decoding
-    function syntaxHighlight(json) {
-      json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      return json.replace(
-        /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
-        function (match) {
-          const cls = "json-number";
-          if (/^"/.test(match)) {
-            cls = /:$/.test(match) ? "json-key" : "json-string";
-          } else if (/true|false/.test(match)) {
-            cls = "json-boolean";
-          } else if (/null/.test(match)) {
-            cls = "json-null";
-          }
-          return '<span class="' + cls + '">' + match + "</span>";
-        }
-      );
-    }
-
     document.getElementById("decodeJwt").addEventListener("click", function () {
       const jwt = document.getElementById("jwtInput").value.trim();
       if (!jwt) return showError("Please enter a JWT token");

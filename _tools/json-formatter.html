@@ -16,11 +16,11 @@ faqs:
     the exact line, or minify it for production use. Everything runs in your browser — no data is sent anywhere.
   </p>
 
-  <div class="alert alert-danger" id="errorBox" role="alert" style="display: none">
+  <div class="alert alert-danger is-hidden" id="errorBox" role="alert">
     <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <span id="errorMsg"></span>
   </div>
 
-  <div class="alert alert-success" id="successBox" role="alert" style="display: none">
+  <div class="alert alert-success is-hidden" id="successBox" role="status">
     <i class="bi bi-check-circle" aria-hidden="true"></i> <span id="successMsg"></span>
   </div>
 
@@ -41,7 +41,9 @@ faqs:
       class="form-control font-monospace"
       rows="16"
       placeholder='{"paste": "your JSON here"}'
+      aria-describedby="jsonInputHint"
     ></textarea>
+    <small id="jsonInputHint" class="form-text text-muted">Press Ctrl+Enter (Cmd+Enter on Mac) to format.</small>
   </div>
 
   <div class="d-flex gap-2 flex-wrap mb-3">
@@ -56,7 +58,7 @@ faqs:
     <button class="btn btn-outline-secondary" id="clearBtn"><i class="bi bi-x-lg" aria-hidden="true"></i> Clear</button>
   </div>
 
-  <div id="jsonOutput" class="json-output" style="display: none">
+  <div id="jsonOutput" class="json-output is-hidden">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <label class="form-label mb-0 small text-muted fw-semibold">Output</label>
       <button class="btn btn-sm btn-outline-secondary" id="copyOutputBtn">
@@ -67,7 +69,7 @@ faqs:
   </div>
 
   <div class="tool-info">
-    <h3>Features</h3>
+    <h2>Features</h2>
     <div class="row">
       <div class="col-md-4">
         <h4><i class="bi bi-code-slash" aria-hidden="true"></i> Format</h4>
@@ -83,7 +85,7 @@ faqs:
       </div>
     </div>
 
-    <h3>Common JSON errors this tool catches</h3>
+    <h2>Common JSON errors this tool catches</h2>
     <ul>
       <li><strong>Trailing commas</strong> — <code>{"a": 1,}</code> is invalid JSON</li>
       <li><strong>Single quotes</strong> — JSON requires double quotes: <code>{'key': 'value'}</code> is invalid</li>
@@ -99,25 +101,9 @@ faqs:
     const inputEl = document.getElementById("jsonInput");
     const outputEl = document.getElementById("jsonOutput");
     const outputCode = document.getElementById("jsonOutputCode");
-    const errorBox = document.getElementById("errorBox");
-    const errorMsg = document.getElementById("errorMsg");
-    const successBox = document.getElementById("successBox");
-    const successMsg = document.getElementById("successMsg");
-
-    function hideMessages() {
-      errorBox.style.display = "none";
-      successBox.style.display = "none";
-    }
-    function showError(msg) {
-      hideMessages();
-      errorMsg.textContent = msg;
-      errorBox.style.display = "block";
+    function showJsonError(msg) {
+      showError(msg);
       outputEl.style.display = "none";
-    }
-    function showSuccess(msg) {
-      hideMessages();
-      successMsg.textContent = msg;
-      successBox.style.display = "block";
     }
 
     function getErrorPosition(text, err) {
@@ -128,53 +114,35 @@ faqs:
       return " (line " + lines.length + ", column " + lines[lines.length - 1].length + ")";
     }
 
-    function syntaxHighlight(json) {
-      json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      return json.replace(
-        /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
-        function (match) {
-          let cls = "json-number";
-          if (/^"/.test(match)) {
-            cls = /:$/.test(match) ? "json-key" : "json-string";
-          } else if (/true|false/.test(match)) {
-            cls = "json-boolean";
-          } else if (/null/.test(match)) {
-            cls = "json-null";
-          }
-          return '<span class="' + cls + '">' + match + "</span>";
-        }
-      );
-    }
-
     function formatJSON() {
       const text = inputEl.value.trim();
-      if (!text) return showError("Please enter some JSON");
+      if (!text) return showJsonError("Please enter some JSON");
       try {
         const formatted = JSON.stringify(JSON.parse(text), null, 2);
         outputCode.innerHTML = syntaxHighlight(formatted);
         outputEl.style.display = "block";
         showSuccess("Valid JSON — " + formatted.split("\n").length + " lines formatted");
       } catch (e) {
-        showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
+        showJsonError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
       }
     }
 
     function minifyJSON() {
       const text = inputEl.value.trim();
-      if (!text) return showError("Please enter some JSON");
+      if (!text) return showJsonError("Please enter some JSON");
       try {
         const minified = JSON.stringify(JSON.parse(text));
         outputCode.innerHTML = syntaxHighlight(minified);
         outputEl.style.display = "block";
         showSuccess("Minified — " + minified.length + " chars (" + (text.length - minified.length) + " bytes saved)");
       } catch (e) {
-        showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
+        showJsonError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
       }
     }
 
     function validateJSON() {
       const text = inputEl.value.trim();
-      if (!text) return showError("Please enter some JSON");
+      if (!text) return showJsonError("Please enter some JSON");
       try {
         const parsed = JSON.parse(text);
         const type = Array.isArray(parsed)
@@ -183,7 +151,7 @@ faqs:
         outputEl.style.display = "none";
         showSuccess("Valid JSON — " + type);
       } catch (e) {
-        showError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
+        showJsonError("Invalid JSON" + getErrorPosition(text, e) + ": " + e.message);
       }
     }
 

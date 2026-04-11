@@ -6,7 +6,8 @@
     "format:check": "prettier --check \"**/*.{html,scss,js,md,yml}\"",
     "lint:css": "stylelint \"_sass/**/*.scss\"",
     "lint:css:fix": "stylelint \"_sass/**/*.scss\" --fix",
-    "lint:js": "eslint \"assets/js/mediumish.js\"",
+    "lint:js": "eslint \"assets/js/mediumish.js\" \"assets/js/tools-utils.js\"",
+    "build:js": "npx terser assets/js/mediumish.js -o assets/js/mediumish.min.js -c -m && npx terser assets/js/tools-utils.js -o assets/js/tools-utils.min.js -c -m",
     "lint:md": "markdownlint-cli2 \"**/*.md\"",
     "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\"",
     "lint:html": "htmlhint \"_layouts/**/*.html\" \"_includes/**/*.html\" \"*.html\"",
@@ -19,6 +20,7 @@
     "markdownlint-cli2": "^0.22.0",
     "prettier": "^3.8.1",
     "stylelint": "^17.6.0",
-    "stylelint-config-standard-scss": "^17.0.0"
+    "stylelint-config-standard-scss": "^17.0.0",
+    "terser": "^5.46.1"
   }
 }

@@ -1,11 +1,23 @@
 // Centralized design tokens
 
 // Breakpoints (Bootstrap 5 standard, plus custom wide)
+// Use min-width for mobile-first queries; use ($bp-* - 1px) for max-width where needed
 $bp-md: 768px;
-$bp-below-md: 767px;
 $bp-lg: 992px;
-$bp-below-lg: 991px;
 $bp-wide: 1500px;
+
+// Spacing scale (aligned with Bootstrap 5)
+$space-1: 0.25rem; // 4px
+$space-2: 0.5rem; // 8px
+$space-3: 1rem; // 16px
+$space-4: 1.5rem; // 24px
+$space-5: 3rem; // 48px
+
+// Border-radius scale
+$radius-sm: 3px;
+$radius: 6px;
+$radius-lg: 8px;
+$radius-pill: 30px;
 
 // Brand
 $color-primary: #00ab6b;
@@ -46,6 +58,43 @@ $diff-add-ln: #d4f8db;
 $diff-remove-bg: #ffeef0;
 $diff-remove-text: #cb2431;
 $diff-remove-ln: #fdd;
+
+// Code blocks
+$pre-border: #e3edf3;
+$pre-text: #333;
+
+// Layout
+$navbar-height: 80px;
+$card-max-height: 300px;
+
+// Transitions
+$transition-fast: 0.2s ease-in-out;
+$transition-base: 0.4s;
+
+// Navigation
+$bg-nav: rgba(255, 255, 255, 0.97);
+
+// Surfaces
+$bg-muted: #f2f2f2;
+$checkerboard-color: #e0e0e0;
+
+// Featured project gradient
+$project-gradient-start: #f8fffe;
+$project-gradient-end: #f0faf6;
+
+// Search result links
+$search-url: #767676;
+$search-url-hover: #707070;
+
+// Borders
+$border-medium: #ddd;
+$border-muted: #aaa;
+
+// States
+$text-disabled: #eaeaea;
+
+// Shadows
+$shadow-image: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 
 // GitHub language dots
 $lang-rust: #dea584;

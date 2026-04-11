@@ -9,16 +9,30 @@
 <title>{{ page.title }} | {{site.name}}</title>
 
 {% seo %}
+{% if page.layout == "post" and page.categories.size > 0 %}
+<meta property="article:section" content="{{ page.categories.first }}">
+{% for cat in page.categories %}
+<meta property="article:tag" content="{{ cat }}">
+{% endfor %}
+{% endif %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://github.com">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
-{% if page.url contains "/tools/" %}
-<script defer src="{{ site.baseurl }}/assets/js/tools-utils.js"></script>
+{% if page.url contains "/tools" %}
+<link href="{{ site.baseurl }}/assets/css/tools.css" rel="stylesheet">
+<script defer src="{{ site.baseurl }}/assets/js/tools-utils.min.js"></script>
+{% endif %}
+{% if page.url == "/about" %}
+<link href="{{ site.baseurl }}/assets/css/about.css" rel="stylesheet">
 {% endif %}
 </head>
 
@@ -41,19 +55,19 @@
     <div class="collapse navbar-collapse" id="navbarMediumish">
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item{% if page.url == "/" %} active{% endif %}">
-                <a class="nav-link" href="/">Blog</a>
+                <a class="nav-link" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>Blog</a>
                 </li>
 
                 <li class="nav-item{% if page.url == "/projects" %} active{% endif %}">
-                <a class="nav-link" href="{{ site.baseurl }}/projects">Projects</a>
+                <a class="nav-link" href="{{ site.baseurl }}/projects"{% if page.url == "/projects" %} aria-current="page"{% endif %}>Projects</a>
                 </li>
 
                 <li class="nav-item{% if page.url contains "/tools" %} active{% endif %}">
-                <a class="nav-link" href="{{ site.baseurl }}/tools">Tools</a>
+                <a class="nav-link" href="{{ site.baseurl }}/tools"{% if page.url contains "/tools" %} aria-current="page"{% endif %}>Tools</a>
                 </li>
 
                 <li class="nav-item{% if page.url == "/about" %} active{% endif %}">
-                <a class="nav-link" href="{{ site.baseurl }}/about">About</a>
+                <a class="nav-link" href="{{ site.baseurl }}/about"{% if page.url == "/about" %} aria-current="page"{% endif %}>About</a>
                 </li>
 
                 <li class="nav-item">
@@ -92,7 +106,7 @@
 
 </main>
 
-<script defer src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
+<script defer src="{{ site.baseurl }}/assets/js/mediumish.min.js"></script>
 
 {% if page.url == "/about" %}
 <script async src="https://www.goodreads.com/review/custom_widget/76125049.Currently%20reading?cover_position=left&cover_size=medium&num_books=1&order=a&shelf=currently-reading&show_author=1&show_cover=1&show_rating=0&show_review=0&show_tags=0&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=none&widget_id=1643813099&widget_text_color=212529&widget_title_size=large&widget_width=full" charset="utf-8"></script>
