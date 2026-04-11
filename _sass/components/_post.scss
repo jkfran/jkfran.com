@@ -4,7 +4,7 @@
   font-family: Merriweather, serif;
   font-size: 1.1rem;
   line-height: 1.84;
-  color: rgba(0, 0, 0, 0.8);
+  color: $text-body;
 
   p,
   blockquote {
@@ -92,7 +92,7 @@
 
   span {
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.55);
+    color: $text-muted;
     display: inline-block;
   }
 
@@ -105,7 +105,7 @@
 
 .post-meta-info {
   font-size: 0.85rem;
-  color: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -123,7 +123,7 @@
 
 span.post-date {
   display: inline-block;
-  color: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
 }
 
 .featured-image {

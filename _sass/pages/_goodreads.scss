@@ -18,7 +18,7 @@ h2[class^="gr_custom_header_"] {
   font-size: 1rem;
 
   > a {
-    color: rgba(0, 0, 0, 0.8);
+    color: $text-body;
   }
 }
 
@@ -67,5 +67,5 @@ div[class^="gr_custom_review_"] {
 
 .goodreads-follow {
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
 }

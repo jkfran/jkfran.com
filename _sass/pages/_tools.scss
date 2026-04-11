@@ -13,9 +13,9 @@
   align-items: center;
   text-align: center;
   padding: 2rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid $border-color;
   border-radius: 8px;
-  color: rgba(0, 0, 0, 0.8);
+  color: $text-body;
   transition:
     transform 0.2s,
     box-shadow 0.2s,
@@ -23,9 +23,9 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadow-card;
     border-color: $color-primary;
-    color: rgba(0, 0, 0, 0.8);
+    color: $text-body;
     text-decoration: none;
   }
 
@@ -37,7 +37,7 @@
 
   p {
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: $text-secondary;
     line-height: 1.6;
     margin-bottom: 0;
   }
@@ -57,7 +57,7 @@
 
 .tool-info {
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid $border-light;
 
   h3 {
     font-size: 1.1rem;
@@ -79,13 +79,13 @@
   ul {
     padding-left: 1.2rem;
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: $text-secondary;
     line-height: 1.8;
   }
 
   p {
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: $text-secondary;
     line-height: 1.7;
   }
 }

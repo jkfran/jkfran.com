@@ -21,8 +21,8 @@
   min-width: 40px;
   padding: 0 8px;
   text-align: right;
-  color: rgba(0, 0, 0, 0.3);
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  color: $text-faint;
+  border-right: 1px solid $border-light;
   user-select: none;
   vertical-align: top;
 }
@@ -38,25 +38,25 @@
 }
 
 .diff-add {
-  background: #e6ffec;
+  background: $diff-add-bg;
 
   .diff-code {
-    color: #22863a;
+    color: $diff-add-text;
   }
 
   .diff-ln {
-    background: #d4f8db;
+    background: $diff-add-ln;
   }
 }
 
 .diff-remove {
-  background: #ffeef0;
+  background: $diff-remove-bg;
 
   .diff-code {
-    color: #cb2431;
+    color: $diff-remove-text;
   }
 
   .diff-ln {
-    background: #fdd;
+    background: $diff-remove-ln;
   }
 }

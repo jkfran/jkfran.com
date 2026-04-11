@@ -1,4 +1,46 @@
 // Centralized color variables
 
+// Brand
 $color-primary: #00ab6b;
 $color-primary-hover: #038252;
+
+// Text scale (dark-on-light, WCAG AA compliant)
+$text-body: rgba(0, 0, 0, 0.8);
+$text-secondary: rgba(0, 0, 0, 0.6);
+$text-muted: rgba(0, 0, 0, 0.55);
+$text-light: rgba(0, 0, 0, 0.5);
+$text-faint: rgba(0, 0, 0, 0.3);
+
+// Borders and surfaces
+$border-color: rgba(0, 0, 0, 0.1);
+$border-light: rgba(0, 0, 0, 0.08);
+$subtle-overlay: rgba(0, 0, 0, 0.05);
+$shadow-card: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+// UI accent colors
+$color-coffee: #ff813f;
+$color-coffee-hover: #e0702f;
+$color-search-title: #d9230f;
+$color-stars: #e3b341;
+$color-regex-match: #ffc107;
+
+// JSON syntax theme (VS Code Dark+)
+$json-bg: #1e1e1e;
+$json-text: #d4d4d4;
+$json-key: #9cdcfe;
+$json-string: #ce9178;
+$json-number: #b5cea8;
+$json-keyword: #569cd6;
+
+// Diff colors (GitHub style)
+$diff-add-bg: #e6ffec;
+$diff-add-text: #22863a;
+$diff-add-ln: #d4f8db;
+$diff-remove-bg: #ffeef0;
+$diff-remove-text: #cb2431;
+$diff-remove-ln: #fdd;
+
+// GitHub language dots
+$lang-rust: #dea584;
+$lang-python: #3572a5;
+$lang-ruby: #701516;

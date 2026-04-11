@@ -13,7 +13,7 @@
 }
 
 .about-location {
-  color: rgba(0, 0, 0, 0.5);
+  color: $text-light;
   font-size: 0.95rem;
 }
 
@@ -29,8 +29,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.05);
-    color: rgba(0, 0, 0, 0.6);
+    background: $subtle-overlay;
+    color: $text-secondary;
     font-size: 1.1rem;
     transition:
       background 0.2s,
@@ -56,7 +56,7 @@
     top: 0.5rem;
     bottom: 0.5rem;
     width: 2px;
-    background: rgba(0, 0, 0, 0.1);
+    background: $border-color;
   }
 }
 
@@ -94,7 +94,7 @@
   }
 
   p:last-child {
-    color: rgba(0, 0, 0, 0.6);
+    color: $text-secondary;
     font-size: 0.9rem;
     line-height: 1.6;
   }
@@ -112,5 +112,5 @@
 
 .timeline-date {
   font-size: 0.85rem;
-  color: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
 }

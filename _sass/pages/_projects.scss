@@ -11,9 +11,9 @@
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid $border-color;
   border-radius: 8px;
-  color: rgba(0, 0, 0, 0.8);
+  color: $text-body;
   transition:
     transform 0.2s,
     box-shadow 0.2s,
@@ -21,9 +21,9 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadow-card;
     border-color: $color-primary;
-    color: rgba(0, 0, 0, 0.8);
+    color: $text-body;
     text-decoration: none;
 
     .project-link {
@@ -40,7 +40,7 @@
 
   p {
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: $text-secondary;
     line-height: 1.6;
     flex-grow: 1;
     margin-bottom: 1rem;
@@ -92,7 +92,7 @@
 .project-stars {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #e3b341;
+  color: $color-stars;
   white-space: nowrap;
 
   i {
@@ -105,11 +105,11 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: $text-secondary;
 }
 
 .project-link {
-  color: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
   transition: color 0.2s;
 
   i {
@@ -132,13 +132,13 @@
 }
 
 .lang-rust {
-  background-color: #dea584;
+  background-color: $lang-rust;
 }
 
 .lang-python {
-  background-color: #3572a5;
+  background-color: $lang-python;
 }
 
 .lang-ruby {
-  background-color: #701516;
+  background-color: $lang-ruby;
 }

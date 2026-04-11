@@ -2,12 +2,12 @@
 
 .share {
   text-align: center;
-  color: rgba(0, 0, 0, 0.55);
-  fill: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
+  fill: $text-muted;
 
   a {
-    color: rgba(0, 0, 0, 0.55);
-    fill: rgba(0, 0, 0, 0.55);
+    color: $text-muted;
+    fill: $text-muted;
   }
 
   p {

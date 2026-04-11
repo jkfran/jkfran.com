@@ -1,7 +1,7 @@
 // Background Remover tool
 
 .bg-preview {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid $border-color;
   border-radius: 6px;
   overflow: hidden;
   min-height: 120px;

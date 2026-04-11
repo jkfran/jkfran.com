@@ -10,8 +10,8 @@ ul.tags {
     font-size: 0.9rem;
 
     a {
-      background: rgba(0, 0, 0, 0.05);
-      color: rgba(0, 0, 0, 0.6);
+      background: $subtle-overlay;
+      color: $text-secondary;
       border-radius: 3px;
       padding: 5px 10px;
 

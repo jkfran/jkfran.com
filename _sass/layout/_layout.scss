@@ -29,7 +29,7 @@ section.recent-posts {
   }
 
   span {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid $text-muted;
     display: inline-block;
     padding-bottom: 20px;
     margin-bottom: -1px;
@@ -77,7 +77,7 @@ section.recent-posts {
 @media (max-width: 991px) {
   .mediumnavigation .navbar-nav {
     padding-top: 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid $border-color;
   }
 
   .mediumnavigation .nav-link {
@@ -99,11 +99,11 @@ section.recent-posts {
 
 // Footer
 .footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid $subtle-overlay;
   padding-top: 15px;
   padding-bottom: 12px;
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.55);
+  color: $text-muted;
   margin-top: 50px;
   margin-bottom: 62px;
   position: relative;

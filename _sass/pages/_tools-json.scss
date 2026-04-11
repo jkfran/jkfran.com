@@ -5,8 +5,8 @@
 }
 
 .json-pre {
-  background: #1e1e1e;
-  color: #d4d4d4;
+  background: $json-bg;
+  color: $json-text;
   padding: 1rem;
   border-radius: 6px;
   overflow: auto;
@@ -16,21 +16,21 @@
 }
 
 .json-key {
-  color: #9cdcfe;
+  color: $json-key;
 }
 
 .json-string {
-  color: #ce9178;
+  color: $json-string;
 }
 
 .json-number {
-  color: #b5cea8;
+  color: $json-number;
 }
 
 .json-boolean {
-  color: #569cd6;
+  color: $json-keyword;
 }
 
 .json-null {
-  color: #569cd6;
+  color: $json-keyword;
 }

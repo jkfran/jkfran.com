@@ -18,7 +18,7 @@
 
   .btn-coffee {
     display: inline-block;
-    background-color: #ff813f;
+    background-color: $color-coffee;
     color: #fff;
     font-size: 1.4em;
     padding: 12px 25px;
@@ -26,7 +26,7 @@
     border-radius: 5px;
 
     &:hover {
-      background-color: #e0702f;
+      background-color: $color-coffee-hover;
       color: #fff;
       text-decoration: none;
     }
