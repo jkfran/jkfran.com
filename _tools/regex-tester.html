@@ -241,7 +241,7 @@ test123@gmail.com"
 
       if (!pattern || !text) return;
 
-      const regex;
+      let regex;
       try {
         regex = new RegExp(pattern, flags);
       } catch (e) {

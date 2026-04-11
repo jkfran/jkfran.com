@@ -263,7 +263,7 @@ faqs:
         day = parts[2],
         month = parts[3],
         weekday = parts[4];
-      const desc = "At ";
+      let desc = "At ";
 
       if (min === "0" && hour !== "*") {
         const h = parseInt(hour);

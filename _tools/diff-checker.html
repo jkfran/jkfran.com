@@ -147,7 +147,7 @@ faqs:
       for (let d = dMax; d > 0; d--) {
         const v = trace[d - 1];
         const k = x - y;
-        const prevK;
+        let prevK;
         if (k === -d || (k !== d && (v[k - 1] || 0) < (v[k + 1] || 0))) {
           prevK = k + 1;
         } else {
