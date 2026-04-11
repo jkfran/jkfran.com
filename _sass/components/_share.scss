@@ -1,7 +1,6 @@
 // Share buttons
 
 .share {
-  text-align: center;
   color: $text-muted;
   fill: $text-muted;
 
@@ -31,13 +30,13 @@
   top: 100px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: $bp-lg) {
   .share ul li {
     display: block;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: $bp-below-md) {
   .share {
     margin-top: 30px;
   }

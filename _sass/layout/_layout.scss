@@ -63,7 +63,7 @@ section.recent-posts {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $bp-lg) {
   .mediumnavigation .navbar-collapse {
     padding-bottom: 0;
   }
@@ -74,7 +74,7 @@ section.recent-posts {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: $bp-below-lg) {
   .mediumnavigation .navbar-nav {
     padding-top: 0.5rem;
     border-top: 1px solid $border-color;
@@ -110,7 +110,7 @@ section.recent-posts {
   background: #fff;
 }
 
-@media (max-width: 991px) {
+@media (max-width: $bp-below-lg) {
   .footer {
     margin-top: 0;
     margin-bottom: 0;

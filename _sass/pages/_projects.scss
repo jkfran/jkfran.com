@@ -61,7 +61,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: $bp-md) {
   .project-featured {
     flex-direction: row;
     align-items: center;

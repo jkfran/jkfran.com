@@ -1,4 +1,11 @@
-// Centralized color variables
+// Centralized design tokens
+
+// Breakpoints (Bootstrap 5 standard, plus custom wide)
+$bp-md: 768px;
+$bp-below-md: 767px;
+$bp-lg: 992px;
+$bp-below-lg: 991px;
+$bp-wide: 1500px;
 
 // Brand
 $color-primary: #00ab6b;

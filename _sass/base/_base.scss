@@ -1,6 +1,6 @@
 // Base element styles and typography
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: $bp-wide) {
   html {
     font-size: 18px;
   }
@@ -85,7 +85,7 @@ a.link-dark {
 }
 
 // Ensure minimum 44px touch targets on mobile (WCAG 2.5.5)
-@media (max-width: 767px) {
+@media (max-width: $bp-below-md) {
   .btn-group-sm > .btn,
   .form-check-inline {
     min-height: 44px;
