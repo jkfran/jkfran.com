@@ -66,3 +66,5 @@ exclude:
   - .stylelintrc.json
   - .htmlhintrc
   - .markdownlint-cli2.jsonc
+  - purgecss.config.cjs
+  - scripts

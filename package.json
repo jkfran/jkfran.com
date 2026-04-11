@@ -11,7 +11,9 @@
     "lint:md": "markdownlint-cli2 \"**/*.md\"",
     "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\"",
     "lint:html": "htmlhint \"_layouts/**/*.html\" \"_includes/**/*.html\" \"*.html\"",
-    "lint": "npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:html && npm run format:check"
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:html && npm run format:check",
+    "audit:build-css": "mkdir -p .audit && for f in assets/css/*.scss; do tail -n +3 \"$f\" > \".audit/$(basename \"$f\")\"; done && npx sass .audit/main.scss .audit/main.css --load-path=_sass --no-source-map --style=expanded --quiet-deps 2>/dev/null && npx sass .audit/tools.scss .audit/tools.css --load-path=_sass --no-source-map --style=expanded --quiet-deps 2>/dev/null && npx sass .audit/about.scss .audit/about.css --load-path=_sass --no-source-map --style=expanded --quiet-deps 2>/dev/null",
+    "audit:css": "npm run audit:build-css && node scripts/audit-css.cjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -19,6 +21,7 @@
     "htmlhint": "^1.9.2",
     "markdownlint-cli2": "^0.22.0",
     "prettier": "^3.8.1",
+    "purgecss": "^8.0.0",
     "stylelint": "^17.6.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "terser": "^5.46.1"
