@@ -26,7 +26,7 @@ function attachCopyBtn(btnId, source, label) {
     const text =
       typeof source === "function"
         ? source()
-        : document.getElementById(source).value || document.getElementById(source).textContent;
+        : document.getElementById(source)?.value || document.getElementById(source)?.textContent;
     navigator.clipboard.writeText(text).then(
       () => {
         btn.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';

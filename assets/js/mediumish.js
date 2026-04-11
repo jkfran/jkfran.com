@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastScrollTop = 0;
   const delta = 5;
   const nav = document.querySelector("nav");
-  const navbarHeight = nav ? nav.offsetHeight : 0;
+  const navbarHeight = nav?.offsetHeight ?? 0;
   let ticking = false;
 
   function hasScrolled() {
