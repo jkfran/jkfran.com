@@ -6,7 +6,7 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 ---
 
 <div class="about-hero text-center mb-5">
-  <h3 class="mb-2">Senior Software Engineer</h3>
+  <h2 class="mb-2">Senior Software Engineer</h2>
   <p class="about-location"><i class="bi bi-geo-alt" aria-hidden="true"></i> London, UK</p>
   <div class="about-social">
     <a href="https://github.com/jkfran" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new window)"><i class="bi bi-github" aria-hidden="true"></i></a>
@@ -23,14 +23,14 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 
 <p>Today, I work as a Senior Software Engineer at PolyModels Hub in London, where I focus on DevOps engineering for scientific software platforms.</p>
 
-<h3 class="mb-4">Work Experience</h3>
+<h2 class="mb-4">Work Experience</h2>
 
 <ol class="timeline">
 
 <li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
-    <h4>Senior Software Engineer - DevOps</h4>
+    <h3>Senior Software Engineer - DevOps</h3>
     <p class="timeline-company">PolyModels Hub</p>
     <p class="timeline-date"><time datetime="2025-05">May 2025</time> - Present</p>
     <p>DevOps engineering for a chromatography and bioprocessing technology company, building and maintaining the infrastructure that supports scientific software platforms.</p>
@@ -40,7 +40,7 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 <li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
-    <h4>Associate Tech Lead / Senior MLOps Engineer</h4>
+    <h3>Associate Tech Lead / Senior MLOps Engineer</h3>
     <p class="timeline-company">Builder.ai</p>
     <p class="timeline-date"><time datetime="2023-02">February 2023</time> - <time datetime="2025-05">May 2025</time></p>
     <p>Progressed from Senior Software Engineer to Associate Tech Lead within the MLOps team. Spearheaded the integration of advanced AI solutions and ML lifecycle management, growing the team from two to five members. Built FastAPI services, optimised ML pipelines, directed Kubernetes orchestration, and integrated vector databases and monitoring systems.</p>
@@ -50,7 +50,7 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 <li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
-    <h4>Senior Web Engineer</h4>
+    <h3>Senior Web Engineer</h3>
     <p class="timeline-company">Canonical</p>
     <p class="timeline-date"><time datetime="2019-10">October 2019</time> - <time datetime="2023-01">January 2023</time></p>
     <p>Lead developer of the <a href="https://snapcraft.io/">snapcraft.io</a> and <a href="https://charmhub.io/">charmhub.io</a> websites. Responsible for breaking down significant projects, writing specifications, providing code reviews, mentoring new hires, and driving initiatives to completion. Built internal tooling for Kubernetes deployments and optimised Docker container builds.</p>
@@ -60,7 +60,7 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 <li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
-    <h4>Full Stack Developer</h4>
+    <h3>Full Stack Developer</h3>
     <p class="timeline-company">Howamigoing</p>
     <p class="timeline-date"><time datetime="2018-01">January 2018</time> - <time datetime="2019-09">September 2019</time></p>
     <p>First employee at the startup. Worked closely with the CEO to deliver an MVP SaaS product and helped secure the first round of funding.</p>
@@ -75,7 +75,7 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 
   <div class="col-lg-4">
     <div class="sticky-top sticky-top-80">
-      <h5 class="mt-0">Bookshelf</h5>
+      <h2 class="mt-0">Bookshelf</h2>
       <div id="gr_custom_widget_1643813099"></div>
       <div id="gr_custom_widget_1643812651"></div>
       <p class="text-end goodreads-follow">

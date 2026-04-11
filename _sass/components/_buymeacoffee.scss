@@ -1,7 +1,7 @@
 // Buy Me A Coffee
 
 .buymeacoffee {
-  margin: 50px 0;
+  margin: $space-5 0;
   padding: 20px;
   background-color: $bg-muted;
 
@@ -22,7 +22,7 @@
     font-size: 1.4em;
     padding: 12px 25px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: $radius;
 
     &:hover {
       background-color: $color-coffee-hover;

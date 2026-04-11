@@ -15,7 +15,7 @@
 
 .pointerup {
   text-align: center;
-  margin-bottom: -17px; // overlap with pagination border
+  margin-bottom: $pagination-overlap; // overlap with pagination border
   font-size: 30px;
 
   i {
