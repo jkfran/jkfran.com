@@ -19,24 +19,24 @@ function escapeHtml(s) {
  * @param {string} [label] - Button label to restore after feedback (default: current innerHTML)
  */
 function attachCopyBtn(btnId, source, label) {
-  var btn = document.getElementById(btnId);
+  const btn = document.getElementById(btnId);
   if (!btn) return;
-  var defaultLabel = label || btn.innerHTML;
-  btn.addEventListener("click", function () {
-    var text =
+  const defaultLabel = label || btn.innerHTML;
+  btn.addEventListener("click", () => {
+    const text =
       typeof source === "function"
         ? source()
-        : document.getElementById(source).value || document.getElementById(source).textContent;
+        : document.getElementById(source)?.value || document.getElementById(source)?.textContent;
     navigator.clipboard.writeText(text).then(
-      function () {
-        btn.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
-        setTimeout(function () {
+      () => {
+        btn.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
+        setTimeout(() => {
           btn.innerHTML = defaultLabel;
         }, 2000);
       },
-      function () {
-        btn.innerHTML = '<i class="bi bi-x-lg"></i> Failed';
-        setTimeout(function () {
+      () => {
+        btn.innerHTML = '<i class="bi bi-x-lg" aria-hidden="true"></i> Failed';
+        setTimeout(() => {
           btn.innerHTML = defaultLabel;
         }, 2000);
       }
@@ -50,17 +50,17 @@ function attachCopyBtn(btnId, source, label) {
  * @param {string} targetId - Element ID to paste into
  */
 function attachPasteBtn(btnId, targetId) {
-  var btn = document.getElementById(btnId);
+  const btn = document.getElementById(btnId);
   if (!btn) return;
-  var defaultLabel = btn.innerHTML;
-  btn.addEventListener("click", function () {
+  const defaultLabel = btn.innerHTML;
+  btn.addEventListener("click", () => {
     navigator.clipboard.readText().then(
-      function (text) {
+      (text) => {
         document.getElementById(targetId).value = text;
       },
-      function () {
-        btn.innerHTML = '<i class="bi bi-x-lg"></i> Denied';
-        setTimeout(function () {
+      () => {
+        btn.innerHTML = '<i class="bi bi-x-lg" aria-hidden="true"></i> Denied';
+        setTimeout(() => {
           btn.innerHTML = defaultLabel;
         }, 2000);
       }

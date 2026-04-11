@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // Navbar toggle
-  var toggler = document.querySelector(".navbar-toggler");
+  const toggler = document.querySelector(".navbar-toggler");
   if (toggler) {
-    toggler.addEventListener("click", function () {
-      var nav = document.getElementById("navbarMediumish");
+    toggler.addEventListener("click", () => {
+      const nav = document.getElementById("navbarMediumish");
       if (!nav) return;
       nav.classList.toggle("show");
       toggler.setAttribute("aria-expanded", nav.classList.contains("show"));
@@ -12,22 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Smooth scroll to hash on page load
   if (location.hash) {
-    var target = document.getElementById(location.hash.substring(1));
+    const target = document.getElementById(location.hash.substring(1));
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }
   }
 
   // Smooth scroll for anchor links
-  document.addEventListener("click", function (e) {
-    var link = e.target.closest('a[href*="#"]:not([href="#"])');
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href*="#"]:not([href="#"])');
     if (!link) return;
 
     if (
       link.pathname.replace(/^\//, "") === location.pathname.replace(/^\//, "") &&
       link.hostname === location.hostname
     ) {
-      var target = document.querySelector(link.hash);
+      const target = document.querySelector(link.hash);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: "smooth" });
@@ -36,16 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Share links: native share on mobile, popup on desktop
-  document.querySelectorAll(".share-link").forEach(function (link) {
-    link.addEventListener("click", function (e) {
+  document.querySelectorAll(".share-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
       if (navigator.share) {
-        navigator
-          .share({
-            title: document.title,
-            url: window.location.href,
-          })
-          .catch(function () {});
+        navigator.share({ title: document.title, url: window.location.href }).catch(() => {});
       } else {
         window.open(link.href, "share", "width=550,height=435");
       }
@@ -53,24 +48,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Hide navbar on scroll down, show on scroll up
-  var lastScrollTop = 0;
-  var delta = 5;
-  var nav = document.querySelector("nav");
-  var navbarHeight = nav ? nav.offsetHeight : 0;
-  var ticking = false;
+  let lastScrollTop = 0;
+  const delta = 5;
+  const nav = document.querySelector("nav");
+  const navbarHeight = nav?.offsetHeight ?? 0;
+  let ticking = false;
 
   function hasScrolled() {
     if (!nav) return;
-    var st = window.pageYOffset || document.documentElement.scrollTop;
+    const st = window.pageYOffset || document.documentElement.scrollTop;
 
     if (Math.abs(lastScrollTop - st) <= delta) return;
 
     if (st > lastScrollTop && st > navbarHeight) {
-      nav.style.top = -nav.offsetHeight + "px";
-    } else {
-      if (st + window.innerHeight < document.body.scrollHeight) {
-        nav.style.top = "0px";
-      }
+      nav.style.top = `${-nav.offsetHeight}px`;
+    } else if (st + window.innerHeight < document.body.scrollHeight) {
+      nav.style.top = "0px";
     }
 
     lastScrollTop = st;
@@ -78,9 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener(
     "scroll",
-    function () {
+    () => {
       if (!ticking) {
-        requestAnimationFrame(function () {
+        requestAnimationFrame(() => {
           hasScrolled();
           ticking = false;
         });
