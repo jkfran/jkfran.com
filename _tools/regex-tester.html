@@ -20,7 +20,13 @@ description: "Free online regex tester with live match highlighting, capture gro
     <div class="d-flex gap-2">
       <div class="input-group">
         <span class="input-group-text font-monospace">/</span>
-        <input type="text" id="regexInput" class="form-control font-monospace" placeholder="(\w+)@(\w+)\.(\w+)" />
+        <input
+          type="text"
+          id="regexInput"
+          class="form-control font-monospace"
+          placeholder="(\w+)@(\w+)\.(\w+)"
+          aria-label="Regular expression pattern"
+        />
         <span class="input-group-text font-monospace">/</span>
         <input
           type="text"
@@ -29,6 +35,7 @@ description: "Free online regex tester with live match highlighting, capture gro
           style="max-width: 80px"
           value="g"
           placeholder="gi"
+          aria-label="Regex flags"
         />
       </div>
     </div>

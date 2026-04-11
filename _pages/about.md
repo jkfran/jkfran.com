@@ -9,10 +9,10 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
   <h3 class="mb-2">Senior Software Engineer</h3>
   <p class="about-location"><i class="bi bi-geo-alt" aria-hidden="true"></i> London, UK</p>
   <div class="about-social">
-    <a href="https://github.com/jkfran" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
-    <a href="https://x.com/jkfran_" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
-    <a href="https://www.goodreads.com/user/show/76125049-fran-jim-nez-cabrera" target="_blank" rel="noopener noreferrer" aria-label="Goodreads"><i class="bi bi-book" aria-hidden="true"></i></a>
+    <a href="https://github.com/jkfran" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new window)"><i class="bi bi-github" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new window)"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+    <a href="https://x.com/jkfran_" target="_blank" rel="noopener noreferrer" aria-label="X (opens in new window)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+    <a href="https://www.goodreads.com/user/show/76125049-fran-jim-nez-cabrera" target="_blank" rel="noopener noreferrer" aria-label="Goodreads (opens in new window)"><i class="bi bi-book" aria-hidden="true"></i></a>
   </div>
 </div>
 
@@ -25,49 +25,49 @@ description: "Senior Software Engineer in London specialising in DevOps, MLOps, 
 
 <h3 class="mb-4">Work Experience</h3>
 
-<div class="timeline">
+<ol class="timeline">
 
-<div class="timeline-item">
+<li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
     <h4>Senior Software Engineer - DevOps</h4>
     <p class="timeline-company">PolyModels Hub</p>
-    <p class="timeline-date">May 2025 - Present</p>
+    <p class="timeline-date"><time datetime="2025-05">May 2025</time> - Present</p>
     <p>DevOps engineering for a chromatography and bioprocessing technology company, building and maintaining the infrastructure that supports scientific software platforms.</p>
   </div>
-</div>
+</li>
 
-<div class="timeline-item">
+<li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
     <h4>Associate Tech Lead / Senior MLOps Engineer</h4>
     <p class="timeline-company">Builder.ai</p>
-    <p class="timeline-date">February 2023 - May 2025</p>
+    <p class="timeline-date"><time datetime="2023-02">February 2023</time> - <time datetime="2025-05">May 2025</time></p>
     <p>Progressed from Senior Software Engineer to Associate Tech Lead within the MLOps team. Spearheaded the integration of advanced AI solutions and ML lifecycle management, growing the team from two to five members. Built FastAPI services, optimised ML pipelines, directed Kubernetes orchestration, and integrated vector databases and monitoring systems.</p>
   </div>
-</div>
+</li>
 
-<div class="timeline-item">
+<li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
     <h4>Senior Web Engineer</h4>
     <p class="timeline-company">Canonical</p>
-    <p class="timeline-date">October 2019 - January 2023</p>
+    <p class="timeline-date"><time datetime="2019-10">October 2019</time> - <time datetime="2023-01">January 2023</time></p>
     <p>Lead developer of the <a href="https://snapcraft.io/">snapcraft.io</a> and <a href="https://charmhub.io/">charmhub.io</a> websites. Responsible for breaking down significant projects, writing specifications, providing code reviews, mentoring new hires, and driving initiatives to completion. Built internal tooling for Kubernetes deployments and optimised Docker container builds.</p>
   </div>
-</div>
+</li>
 
-<div class="timeline-item">
+<li class="timeline-item">
   <div class="timeline-marker"></div>
   <div class="timeline-content">
     <h4>Full Stack Developer</h4>
     <p class="timeline-company">Howamigoing</p>
-    <p class="timeline-date">January 2018 - September 2019</p>
+    <p class="timeline-date"><time datetime="2018-01">January 2018</time> - <time datetime="2019-09">September 2019</time></p>
     <p>First employee at the startup. Worked closely with the CEO to deliver an MVP SaaS product and helped secure the first round of funding.</p>
   </div>
-</div>
+</li>
 
-</div>
+</ol>
 
 <p>For more about my earlier experience, check my <a href="https://www.linkedin.com/in/francisco-jim%C3%A9nez-cabrera/">LinkedIn profile</a>.</p>
 

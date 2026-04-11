@@ -213,7 +213,10 @@ description: "Free online diff checker. Compare two texts side by side with high
         }
       });
 
-      diffTable.innerHTML = html;
+      diffTable.innerHTML =
+        '<thead class="visually-hidden"><tr><th scope="col">Original line</th><th scope="col">Modified line</th><th scope="col">Content</th></tr></thead><tbody>' +
+        html +
+        "</tbody>";
       diffOutput.style.display = "block";
 
       var total = ops.length;
