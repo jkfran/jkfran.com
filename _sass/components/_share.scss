@@ -31,13 +31,13 @@
   top: 100px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   .share ul li {
     display: block;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .share {
     margin-top: 30px;
   }

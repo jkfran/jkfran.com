@@ -8,7 +8,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 4px solid #00ab6b;
+  border: 4px solid $color-primary;
   padding: 3px;
 }
 
@@ -37,7 +37,7 @@
       color 0.2s;
 
     &:hover {
-      background: #00ab6b;
+      background: $color-primary;
       color: #fff;
     }
   }
@@ -76,9 +76,9 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #00ab6b;
+  background: $color-primary;
   border: 2px solid #fff;
-  box-shadow: 0 0 0 2px #00ab6b;
+  box-shadow: 0 0 0 2px $color-primary;
   transform: translateX(-5px);
 }
 
@@ -102,11 +102,11 @@
 
 .timeline-company {
   font-weight: 600;
-  color: #00ab6b;
+  color: $color-primary;
   font-size: 0.95rem;
 
   a {
-    color: #00ab6b;
+    color: $color-primary;
   }
 }
 

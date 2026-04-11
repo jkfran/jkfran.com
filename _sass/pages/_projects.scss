@@ -22,12 +22,12 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: #00ab6b;
+    border-color: $color-primary;
     color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
 
     .project-link {
-      color: #00ab6b;
+      color: $color-primary;
     }
   }
 
@@ -50,7 +50,7 @@
 .project-featured {
   grid-column: 1 / -1;
   background: linear-gradient(135deg, #f8fffe 0%, #f0faf6 100%);
-  border-color: #00ab6b;
+  border-color: $color-primary;
 
   h3 {
     font-size: 1.4rem;

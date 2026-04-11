@@ -198,10 +198,6 @@ test123@gmail.com"
     var explainOutput = document.getElementById("explainOutput");
     var errorBox = document.getElementById("errorBox");
 
-    function escapeHtml(s) {
-      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
     function update() {
       var pattern = regexInput.value;
       var flags = flagsInput.value;

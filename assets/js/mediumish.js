@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (toggler) {
     toggler.addEventListener("click", function () {
       var nav = document.getElementById("navbarMediumish");
+      if (!nav) return;
       nav.classList.toggle("show");
       toggler.setAttribute("aria-expanded", nav.classList.contains("show"));
     });
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var ticking = false;
 
   function hasScrolled() {
+    if (!nav) return;
     var st = window.pageYOffset || document.documentElement.scrollTop;
 
     if (Math.abs(lastScrollTop - st) <= delta) return;

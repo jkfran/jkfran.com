@@ -4,6 +4,15 @@
  */
 
 /**
+ * Escape HTML special characters to prevent XSS.
+ * @param {string} s - Raw string
+ * @returns {string} Escaped string safe for innerHTML
+ */
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/**
  * Attach a copy-to-clipboard handler to a button.
  * @param {string} btnId - Button element ID
  * @param {string|function} source - Element ID to copy from, or a function returning text

@@ -192,11 +192,6 @@ description: "Free online tool to remove hidden Unicode characters, curly quotes
     function toUnicode(ch) {
       return "U+" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0");
     }
-    function escapeHtml(s) {
-      var d = document.createElement("div");
-      d.textContent = s;
-      return d.innerHTML;
-    }
 
     var inputEl = document.getElementById("inputText");
     var outputEl = document.getElementById("outputText");

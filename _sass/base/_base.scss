@@ -11,12 +11,12 @@
 }
 
 a {
-  color: #00ab6b;
+  color: $color-primary;
   text-decoration: none;
   transition: all 0.2s;
 
   &:hover {
-    color: #038252;
+    color: $color-primary-hover;
     text-decoration: none;
   }
 }
@@ -37,7 +37,7 @@ pre {
 }
 
 blockquote {
-  border-left: 4px solid #00ab6b;
+  border-left: 4px solid $color-primary;
   padding: 0 20px;
   font-style: italic;
   color: rgba(0, 0, 0, 0.5);
@@ -72,14 +72,14 @@ h6 {
     sans-serif;
 }
 
-.link-dark {
-  color: rgba(0, 0, 0, 0.8) !important;
-  text-decoration: none !important;
+a.link-dark {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
 }
 
 // Visible focus indicators for keyboard navigation
 :focus-visible {
-  outline: 2px solid #00ab6b;
+  outline: 2px solid $color-primary;
   outline-offset: 2px;
 }
 
