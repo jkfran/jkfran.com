@@ -44,21 +44,46 @@ faqs:
         />
       </div>
     </div>
-    <div class="d-flex gap-3 mt-2">
+    <div class="d-flex gap-3 mt-2" role="group" aria-label="Regex flags — toggles sync with the flags input field">
       <div class="form-check form-check-inline">
-        <input class="form-check-input flag-check" type="checkbox" id="flagG" checked data-flag="g" />
+        <input
+          class="form-check-input flag-check"
+          type="checkbox"
+          id="flagG"
+          checked
+          data-flag="g"
+          aria-describedby="flagsInput"
+        />
         <label class="form-check-label small" for="flagG"><strong>g</strong> global</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input flag-check" type="checkbox" id="flagI" data-flag="i" />
+        <input
+          class="form-check-input flag-check"
+          type="checkbox"
+          id="flagI"
+          data-flag="i"
+          aria-describedby="flagsInput"
+        />
         <label class="form-check-label small" for="flagI"><strong>i</strong> case-insensitive</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input flag-check" type="checkbox" id="flagM" data-flag="m" />
+        <input
+          class="form-check-input flag-check"
+          type="checkbox"
+          id="flagM"
+          data-flag="m"
+          aria-describedby="flagsInput"
+        />
         <label class="form-check-label small" for="flagM"><strong>m</strong> multiline</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input flag-check" type="checkbox" id="flagS" data-flag="s" />
+        <input
+          class="form-check-input flag-check"
+          type="checkbox"
+          id="flagS"
+          data-flag="s"
+          aria-describedby="flagsInput"
+        />
         <label class="form-check-label small" for="flagS"><strong>s</strong> dotAll</label>
       </div>
     </div>
