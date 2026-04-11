@@ -96,13 +96,13 @@ faqs:
 
 <script>
   (function () {
-    var inputEl = document.getElementById("jsonInput");
-    var outputEl = document.getElementById("jsonOutput");
-    var outputCode = document.getElementById("jsonOutputCode");
-    var errorBox = document.getElementById("errorBox");
-    var errorMsg = document.getElementById("errorMsg");
-    var successBox = document.getElementById("successBox");
-    var successMsg = document.getElementById("successMsg");
+    const inputEl = document.getElementById("jsonInput");
+    const outputEl = document.getElementById("jsonOutput");
+    const outputCode = document.getElementById("jsonOutputCode");
+    const errorBox = document.getElementById("errorBox");
+    const errorMsg = document.getElementById("errorMsg");
+    const successBox = document.getElementById("successBox");
+    const successMsg = document.getElementById("successMsg");
 
     function hideMessages() {
       errorBox.style.display = "none";
@@ -121,10 +121,10 @@ faqs:
     }
 
     function getErrorPosition(text, err) {
-      var match = err.message.match(/position (\d+)/i);
+      const match = err.message.match(/position (\d+)/i);
       if (!match) return "";
-      var pos = parseInt(match[1]);
-      var lines = text.substring(0, pos).split("\n");
+      const pos = parseInt(match[1]);
+      const lines = text.substring(0, pos).split("\n");
       return " (line " + lines.length + ", column " + lines[lines.length - 1].length + ")";
     }
 
@@ -133,7 +133,7 @@ faqs:
       return json.replace(
         /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
         function (match) {
-          var cls = "json-number";
+          let cls = "json-number";
           if (/^"/.test(match)) {
             cls = /:$/.test(match) ? "json-key" : "json-string";
           } else if (/true|false/.test(match)) {
@@ -147,10 +147,10 @@ faqs:
     }
 
     function formatJSON() {
-      var text = inputEl.value.trim();
+      const text = inputEl.value.trim();
       if (!text) return showError("Please enter some JSON");
       try {
-        var formatted = JSON.stringify(JSON.parse(text), null, 2);
+        const formatted = JSON.stringify(JSON.parse(text), null, 2);
         outputCode.innerHTML = syntaxHighlight(formatted);
         outputEl.style.display = "block";
         showSuccess("Valid JSON — " + formatted.split("\n").length + " lines formatted");
@@ -160,10 +160,10 @@ faqs:
     }
 
     function minifyJSON() {
-      var text = inputEl.value.trim();
+      const text = inputEl.value.trim();
       if (!text) return showError("Please enter some JSON");
       try {
-        var minified = JSON.stringify(JSON.parse(text));
+        const minified = JSON.stringify(JSON.parse(text));
         outputCode.innerHTML = syntaxHighlight(minified);
         outputEl.style.display = "block";
         showSuccess("Minified — " + minified.length + " chars (" + (text.length - minified.length) + " bytes saved)");
@@ -173,11 +173,11 @@ faqs:
     }
 
     function validateJSON() {
-      var text = inputEl.value.trim();
+      const text = inputEl.value.trim();
       if (!text) return showError("Please enter some JSON");
       try {
-        var parsed = JSON.parse(text);
-        var type = Array.isArray(parsed)
+        const parsed = JSON.parse(text);
+        const type = Array.isArray(parsed)
           ? "array with " + parsed.length + " elements"
           : "object with " + Object.keys(parsed).length + " keys";
         outputEl.style.display = "none";

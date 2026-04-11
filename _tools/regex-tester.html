@@ -217,21 +217,21 @@ test123@gmail.com"
 
 <script>
   (function () {
-    var regexInput = document.getElementById("regexInput");
-    var flagsInput = document.getElementById("flagsInput");
-    var testInput = document.getElementById("testInput");
-    var highlightOutput = document.getElementById("highlightOutput");
-    var matchCount = document.getElementById("matchCount");
-    var groupsPanel = document.getElementById("groupsPanel");
-    var groupsOutput = document.getElementById("groupsOutput");
-    var explainPanel = document.getElementById("explainPanel");
-    var explainOutput = document.getElementById("explainOutput");
-    var errorBox = document.getElementById("errorBox");
+    const regexInput = document.getElementById("regexInput");
+    const flagsInput = document.getElementById("flagsInput");
+    const testInput = document.getElementById("testInput");
+    const highlightOutput = document.getElementById("highlightOutput");
+    const matchCount = document.getElementById("matchCount");
+    const groupsPanel = document.getElementById("groupsPanel");
+    const groupsOutput = document.getElementById("groupsOutput");
+    const explainPanel = document.getElementById("explainPanel");
+    const explainOutput = document.getElementById("explainOutput");
+    const errorBox = document.getElementById("errorBox");
 
     function update() {
-      var pattern = regexInput.value;
-      var flags = flagsInput.value;
-      var text = testInput.value;
+      const pattern = regexInput.value;
+      const flags = flagsInput.value;
+      const text = testInput.value;
 
       errorBox.style.display = "none";
       highlightOutput.style.display = "none";
@@ -241,7 +241,7 @@ test123@gmail.com"
 
       if (!pattern || !text) return;
 
-      var regex;
+      const regex;
       try {
         regex = new RegExp(pattern, flags);
       } catch (e) {
@@ -251,13 +251,13 @@ test123@gmail.com"
       }
 
       // Highlight matches
-      var count = 0;
-      var groups = [];
-      var highlighted = "";
-      var lastIndex = 0;
+      let count = 0;
+      const groups = [];
+      let highlighted = "";
+      let lastIndex = 0;
 
       if (flags.indexOf("g") === -1) {
-        var m = regex.exec(text);
+        let m = regex.exec(text);
         if (m) {
           count = 1;
           groups.push(m);
@@ -271,7 +271,7 @@ test123@gmail.com"
           highlighted = escapeHtml(text);
         }
       } else {
-        var m;
+        let m;
         regex.lastIndex = 0;
         while ((m = regex.exec(text)) !== null) {
           if (m[0].length === 0) {
@@ -293,7 +293,7 @@ test123@gmail.com"
 
       // Capture groups
       if (groups.length > 0 && groups[0].length > 1) {
-        var html = '<div class="list-group list-group-flush small">';
+        let html = '<div class="list-group list-group-flush small">';
         groups.forEach(function (m, mi) {
           html +=
             '<div class="list-group-item py-1"><strong class="text-muted">Match ' +
@@ -301,7 +301,7 @@ test123@gmail.com"
             ":</strong> <code>" +
             escapeHtml(m[0]) +
             "</code>";
-          for (var i = 1; i < m.length; i++) {
+          for (let i = 1; i < m.length; i++) {
             html +=
               '<br><span class="text-muted">Group ' + i + ":</span> <code>" + escapeHtml(m[i] || "(empty)") + "</code>";
           }
@@ -317,7 +317,7 @@ test123@gmail.com"
     }
 
     function explainPattern(pattern) {
-      var explanations = {
+      const explanations = {
         ".": "any character",
         "\\d": "digit (0-9)",
         "\\D": "non-digit",
@@ -335,13 +335,13 @@ test123@gmail.com"
         "|": "or",
       };
 
-      var parts = [];
-      var i = 0;
+      const parts = [];
+      let i = 0;
       while (i < pattern.length) {
-        var ch = pattern[i];
+        const ch = pattern[i];
 
         if (ch === "\\") {
-          var seq = pattern.substring(i, i + 2);
+          const seq = pattern.substring(i, i + 2);
           if (explanations[seq]) {
             parts.push({ token: seq, desc: explanations[seq] });
           } else {
@@ -349,16 +349,16 @@ test123@gmail.com"
           }
           i += 2;
         } else if (ch === "[") {
-          var end = pattern.indexOf("]", i);
+          let end = pattern.indexOf("]", i);
           if (end === -1) end = pattern.length;
-          var set = pattern.substring(i, end + 1);
-          var neg = set[1] === "^" ? "any character NOT in " : "any character in ";
+          const set = pattern.substring(i, end + 1);
+          const neg = set[1] === "^" ? "any character NOT in " : "any character in ";
           parts.push({ token: set, desc: neg + set });
           i = end + 1;
         } else if (ch === "(") {
-          var end = pattern.indexOf(")", i);
+          let end = pattern.indexOf(")", i);
           if (end === -1) end = pattern.length;
-          var group = pattern.substring(i, end + 1);
+          const group = pattern.substring(i, end + 1);
           if (group.startsWith("(?:")) {
             parts.push({ token: group, desc: "non-capturing group" });
           } else if (group.startsWith("(?=")) {
@@ -374,9 +374,9 @@ test123@gmail.com"
           }
           i = end + 1;
         } else if (ch === "{") {
-          var end = pattern.indexOf("}", i);
+          let end = pattern.indexOf("}", i);
           if (end === -1) end = pattern.length;
-          var quant = pattern.substring(i, end + 1);
+          const quant = pattern.substring(i, end + 1);
           parts.push({ token: quant, desc: "repeat " + quant });
           i = end + 1;
         } else if (explanations[ch]) {
@@ -389,7 +389,7 @@ test123@gmail.com"
       }
 
       if (parts.length > 0) {
-        var html = '<table class="table table-sm small mb-0">';
+        let html = '<table class="table table-sm small mb-0">';
         parts.forEach(function (p) {
           html +=
             "<tr><td><code>" +
@@ -412,7 +412,7 @@ test123@gmail.com"
     // Flag checkboxes sync with flags input
     document.querySelectorAll(".flag-check").forEach(function (cb) {
       cb.addEventListener("change", function () {
-        var flags = "";
+        let flags = "";
         document.querySelectorAll(".flag-check:checked").forEach(function (c) {
           flags += c.getAttribute("data-flag");
         });

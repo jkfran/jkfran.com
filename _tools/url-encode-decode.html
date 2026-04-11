@@ -168,9 +168,9 @@ faqs:
 
 <script>
   (function () {
-    var inputEl = document.getElementById("inputText");
-    var outputEl = document.getElementById("outputText");
-    var errorBox = document.getElementById("errorBox");
+    const inputEl = document.getElementById("inputText");
+    const outputEl = document.getElementById("outputText");
+    const errorBox = document.getElementById("errorBox");
 
     function showError(msg) {
       document.getElementById("errorMsg").textContent = msg;
@@ -217,7 +217,7 @@ faqs:
     document.getElementById("encodeUriBtn").addEventListener("click", doEncodeUri);
 
     document.getElementById("swapBtn").addEventListener("click", function () {
-      var tmp = inputEl.value;
+      const tmp = inputEl.value;
       inputEl.value = outputEl.value;
       outputEl.value = tmp;
       hideError();
@@ -232,7 +232,7 @@ faqs:
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(outputEl.value).catch(function () {});
       this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
-      var btn = this;
+      const btn = this;
       setTimeout(function () {
         btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);
@@ -252,7 +252,7 @@ faqs:
     document.querySelectorAll(".url-example").forEach(function (btn) {
       btn.addEventListener("click", function () {
         inputEl.value = btn.getAttribute("data-text");
-        var action = btn.getAttribute("data-action");
+        const action = btn.getAttribute("data-action");
         if (action === "encode") doEncode();
         else if (action === "decode") doDecode();
         else if (action === "encodeUri") doEncodeUri();

@@ -111,7 +111,7 @@ faqs:
 
 <script>
   (function () {
-    var REPLACEMENTS = {
+    const REPLACEMENTS = {
       "\u2026": ["...", "Ellipsis"],
       "\u00A0": [" ", "Non-Breaking Space"],
       "\u202F": [" ", "Narrow NBSP"],
@@ -180,11 +180,11 @@ faqs:
     };
 
     function cleanText(input) {
-      var output = input,
+      let output = input,
         counts = {},
         total = 0;
-      for (var ch in REPLACEMENTS) {
-        var count = output.split(ch).length - 1;
+      for (const ch in REPLACEMENTS) {
+        const count = output.split(ch).length - 1;
         if (count > 0) {
           counts[ch] = { name: REPLACEMENTS[ch][1], replacement: REPLACEMENTS[ch][0], count: count };
           total += count;
@@ -198,19 +198,19 @@ faqs:
       return "U+" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0");
     }
 
-    var inputEl = document.getElementById("inputText");
-    var outputEl = document.getElementById("outputText");
+    const inputEl = document.getElementById("inputText");
+    const outputEl = document.getElementById("outputText");
 
     document.getElementById("cleanBtn").addEventListener("click", function () {
-      var result = cleanText(inputEl.value);
+      const result = cleanText(inputEl.value);
       outputEl.value = result.output;
       if (result.total > 0) {
         document.getElementById("charCount").textContent = result.total;
         document.getElementById("stats").style.display = "block";
-        var rows = "";
-        for (var ch in result.counts) {
-          var r = result.counts[ch];
-          var display =
+        let rows = "";
+        for (const ch in result.counts) {
+          const r = result.counts[ch];
+          const display =
             r.replacement === ""
               ? "(removed)"
               : r.replacement === " "

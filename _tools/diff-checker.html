@@ -101,31 +101,31 @@ faqs:
 
 <script>
   (function () {
-    var leftEl = document.getElementById("leftText");
-    var rightEl = document.getElementById("rightText");
-    var diffOutput = document.getElementById("diffOutput");
-    var diffTable = document.getElementById("diffTable");
-    var statsBox = document.getElementById("statsBox");
-    var statsText = document.getElementById("statsText");
+    const leftEl = document.getElementById("leftText");
+    const rightEl = document.getElementById("rightText");
+    const diffOutput = document.getElementById("diffOutput");
+    const diffTable = document.getElementById("diffTable");
+    const statsBox = document.getElementById("statsBox");
+    const statsText = document.getElementById("statsText");
 
     function diff(a, b) {
-      var aLines = a.split("\n");
-      var bLines = b.split("\n");
-      var max = aLines.length + bLines.length;
-      var v = {};
+      const aLines = a.split("\n");
+      const bLines = b.split("\n");
+      const max = aLines.length + bLines.length;
+      let v = {};
       v[1] = 0;
-      var trace = [];
+      const trace = [];
 
-      for (var d = 0; d <= max; d++) {
+      for (let d = 0; d <= max; d++) {
         trace.push(Object.assign({}, v));
-        for (var k = -d; k <= d; k += 2) {
-          var x;
+        for (let k = -d; k <= d; k += 2) {
+          let x;
           if (k === -d || (k !== d && (v[k - 1] || 0) < (v[k + 1] || 0))) {
             x = v[k + 1] || 0;
           } else {
             x = (v[k - 1] || 0) + 1;
           }
-          var y = x - k;
+          let y = x - k;
           while (x < aLines.length && y < bLines.length && aLines[x] === bLines[y]) {
             x++;
             y++;
@@ -140,21 +140,21 @@ faqs:
     }
 
     function backtrack(trace, aLines, bLines, dMax) {
-      var ops = [];
-      var x = aLines.length;
-      var y = bLines.length;
+      const ops = [];
+      let x = aLines.length;
+      let y = bLines.length;
 
-      for (var d = dMax; d > 0; d--) {
-        var v = trace[d - 1];
-        var k = x - y;
-        var prevK;
+      for (let d = dMax; d > 0; d--) {
+        const v = trace[d - 1];
+        const k = x - y;
+        const prevK;
         if (k === -d || (k !== d && (v[k - 1] || 0) < (v[k + 1] || 0))) {
           prevK = k + 1;
         } else {
           prevK = k - 1;
         }
-        var prevX = v[prevK] || 0;
-        var prevY = prevX - prevK;
+        const prevX = v[prevK] || 0;
+        const prevY = prevX - prevK;
 
         while (x > prevX && y > prevY) {
           x--;
@@ -184,12 +184,12 @@ faqs:
     }
 
     function renderDiff(ops) {
-      var added = 0,
+      let added = 0,
         removed = 0;
-      var html = "";
+      let html = "";
 
       ops.forEach(function (op) {
-        var line = escapeHtml(op.text) || "&nbsp;";
+        const line = escapeHtml(op.text) || "&nbsp;";
         if (op.type === "equal") {
           html +=
             '<tr class="diff-equal"><td class="diff-ln">' +
@@ -224,8 +224,8 @@ faqs:
         "</tbody>";
       diffOutput.style.display = "block";
 
-      var total = ops.length;
-      var unchanged = total - added - removed;
+      const total = ops.length;
+      const unchanged = total - added - removed;
       statsText.textContent =
         added +
         " addition" +
@@ -242,12 +242,12 @@ faqs:
     }
 
     document.getElementById("diffBtn").addEventListener("click", function () {
-      var ops = diff(leftEl.value, rightEl.value);
+      const ops = diff(leftEl.value, rightEl.value);
       renderDiff(ops);
     });
 
     document.getElementById("swapBtn").addEventListener("click", function () {
-      var tmp = leftEl.value;
+      const tmp = leftEl.value;
       leftEl.value = rightEl.value;
       rightEl.value = tmp;
     });
@@ -267,7 +267,7 @@ faqs:
 
     document.querySelectorAll(".paste-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var target = document.getElementById(btn.getAttribute("data-target"));
+        const target = document.getElementById(btn.getAttribute("data-target"));
         navigator.clipboard
           .readText()
           .catch(function () {

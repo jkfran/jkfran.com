@@ -147,10 +147,10 @@ faqs:
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 <script>
   (function () {
-    var inputEl = document.getElementById("inputText");
-    var outputEl = document.getElementById("outputText");
-    var errorBox = document.getElementById("errorBox");
-    var successBox = document.getElementById("successBox");
+    const inputEl = document.getElementById("inputText");
+    const outputEl = document.getElementById("outputText");
+    const errorBox = document.getElementById("errorBox");
+    const successBox = document.getElementById("successBox");
 
     function hideMessages() {
       errorBox.style.display = "none";
@@ -169,11 +169,11 @@ faqs:
 
     document.getElementById("yamlToJson").addEventListener("click", function () {
       hideMessages();
-      var text = inputEl.value.trim();
+      const text = inputEl.value.trim();
       if (!text) return showError("Please enter some YAML");
       try {
-        var parsed = jsyaml.load(text);
-        var json = JSON.stringify(parsed, null, 2);
+        const parsed = jsyaml.load(text);
+        const json = JSON.stringify(parsed, null, 2);
         outputEl.value = json;
         document.getElementById("inputLabel").textContent = "YAML input";
         document.getElementById("outputLabel").textContent = "JSON output";
@@ -185,11 +185,11 @@ faqs:
 
     document.getElementById("jsonToYaml").addEventListener("click", function () {
       hideMessages();
-      var text = inputEl.value.trim();
+      const text = inputEl.value.trim();
       if (!text) return showError("Please enter some JSON");
       try {
-        var parsed = JSON.parse(text);
-        var yaml = jsyaml.dump(parsed, { indent: 2, lineWidth: -1, noRefs: true });
+        const parsed = JSON.parse(text);
+        const yaml = jsyaml.dump(parsed, { indent: 2, lineWidth: -1, noRefs: true });
         outputEl.value = yaml;
         document.getElementById("inputLabel").textContent = "JSON input";
         document.getElementById("outputLabel").textContent = "YAML output";
@@ -201,13 +201,13 @@ faqs:
 
     document.getElementById("validateBtn").addEventListener("click", function () {
       hideMessages();
-      var text = inputEl.value.trim();
+      const text = inputEl.value.trim();
       if (!text) return showError("Please enter some text");
 
       // Try JSON first
       try {
-        var parsed = JSON.parse(text);
-        var type = Array.isArray(parsed)
+        const parsed = JSON.parse(text);
+        const type = Array.isArray(parsed)
           ? "array with " + parsed.length + " elements"
           : "object with " + Object.keys(parsed).length + " keys";
         return showSuccess("Valid JSON — " + type);
@@ -215,9 +215,9 @@ faqs:
 
       // Try YAML
       try {
-        var parsed = jsyaml.load(text);
+        const parsed = jsyaml.load(text);
         if (typeof parsed === "object" && parsed !== null) {
-          var type = Array.isArray(parsed)
+          const type = Array.isArray(parsed)
             ? "array with " + parsed.length + " elements"
             : "object with " + Object.keys(parsed).length + " keys";
           return showSuccess("Valid YAML — " + type);
@@ -229,7 +229,7 @@ faqs:
     });
 
     document.getElementById("swapBtn").addEventListener("click", function () {
-      var tmp = inputEl.value;
+      const tmp = inputEl.value;
       inputEl.value = outputEl.value;
       outputEl.value = tmp;
       hideMessages();
@@ -244,7 +244,7 @@ faqs:
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(outputEl.value).catch(function () {});
       this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
-      var btn = this;
+      const btn = this;
       setTimeout(function () {
         btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);

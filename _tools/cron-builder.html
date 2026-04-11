@@ -177,25 +177,25 @@ faqs:
 
 <script>
   (function () {
-    var cronInput = document.getElementById("cronInput");
-    var errorBox = document.getElementById("errorBox");
-    var descriptionBox = document.getElementById("description");
-    var descText = document.getElementById("descText");
-    var nextRunsBox = document.getElementById("nextRuns");
-    var runsList = document.getElementById("runsList");
-    var fields = ["rawMinute", "rawHour", "rawDay", "rawMonth", "rawWeekday"];
-    var selects = ["selMinute", "selHour", "selDay", "selMonth", "selWeekday"];
-    var fieldEls = {};
+    const cronInput = document.getElementById("cronInput");
+    const errorBox = document.getElementById("errorBox");
+    const descriptionBox = document.getElementById("description");
+    const descText = document.getElementById("descText");
+    const nextRunsBox = document.getElementById("nextRuns");
+    const runsList = document.getElementById("runsList");
+    const fields = ["rawMinute", "rawHour", "rawDay", "rawMonth", "rawWeekday"];
+    const selects = ["selMinute", "selHour", "selDay", "selMonth", "selWeekday"];
+    const fieldEls = {};
     fields.forEach(function (id) {
       fieldEls[id] = document.getElementById(id);
     });
-    var selectEls = {};
+    const selectEls = {};
     selects.forEach(function (id) {
       selectEls[id] = document.getElementById(id);
     });
 
-    var MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     function hideMessages() {
       errorBox.style.display = "none";
@@ -210,20 +210,20 @@ faqs:
     }
 
     function parseField(val, min, max) {
-      var results = [];
+      const results = [];
       val.split(",").forEach(function (part) {
         part = part.trim();
-        var stepMatch = part.match(/^(.+)\/(\d+)$/);
-        var step = stepMatch ? parseInt(stepMatch[2]) : 1;
-        var range = stepMatch ? stepMatch[1] : part;
+        const stepMatch = part.match(/^(.+)\/(\d+)$/);
+        const step = stepMatch ? parseInt(stepMatch[2]) : 1;
+        const range = stepMatch ? stepMatch[1] : part;
 
         if (range === "*") {
-          for (var i = min; i <= max; i += step) results.push(i);
+          for (let i = min; i <= max; i += step) results.push(i);
         } else if (range.indexOf("-") !== -1) {
-          var bounds = range.split("-");
-          var start = parseInt(bounds[0]);
-          var end = parseInt(bounds[1]);
-          for (var i = start; i <= end; i += step) results.push(i);
+          const bounds = range.split("-");
+          const start = parseInt(bounds[0]);
+          const end = parseInt(bounds[1]);
+          for (let i = start; i <= end; i += step) results.push(i);
         } else {
           results.push(parseInt(range));
         }
@@ -241,9 +241,9 @@ faqs:
       if (val === "*") return "every " + unit;
       if (val.startsWith("*/")) return "every " + val.substring(2) + " " + unit + "s";
       if (val.indexOf("-") !== -1 && val.indexOf("/") === -1) {
-        var parts = val.split("-");
-        var from = names ? names[parseInt(parts[0])] : parts[0];
-        var to = names ? names[parseInt(parts[1])] : parts[1];
+        const parts = val.split("-");
+        const from = names ? names[parseInt(parts[0])] : parts[0];
+        const to = names ? names[parseInt(parts[1])] : parts[1];
         return from + " through " + to;
       }
       if (val.indexOf(",") !== -1) {
@@ -258,15 +258,15 @@ faqs:
     }
 
     function describe(parts) {
-      var min = parts[0],
+      const min = parts[0],
         hour = parts[1],
         day = parts[2],
         month = parts[3],
         weekday = parts[4];
-      var desc = "At ";
+      const desc = "At ";
 
       if (min === "0" && hour !== "*") {
-        var h = parseInt(hour);
+        const h = parseInt(hour);
         desc += h === 0 ? "midnight" : h === 12 ? "noon" : h > 12 ? h - 12 + ":00 PM" : h + ":00 AM";
       } else if (min === "*" && hour === "*") {
         desc = "Every minute";
@@ -275,8 +275,8 @@ faqs:
       } else if (hour === "*") {
         desc = "At minute " + min + " of every hour";
       } else {
-        var h = parseInt(hour);
-        var m = min.padStart(2, "0");
+        const h = parseInt(hour);
+        const m = min.padStart(2, "0");
         desc += (h > 12 ? h - 12 : h) + ":" + m + " " + (h >= 12 ? "PM" : "AM");
       }
 
@@ -288,25 +288,25 @@ faqs:
     }
 
     function getNextRuns(parts, count) {
-      var minutes = parseField(parts[0], 0, 59);
-      var hours = parseField(parts[1], 0, 23);
-      var daysOfMonth = parseField(parts[2], 1, 31);
-      var months = parseField(parts[3], 1, 12);
-      var weekdays = parseField(parts[4].replace(/7/g, "0"), 0, 6);
+      const minutes = parseField(parts[0], 0, 59);
+      const hours = parseField(parts[1], 0, 23);
+      const daysOfMonth = parseField(parts[2], 1, 31);
+      const months = parseField(parts[3], 1, 12);
+      const weekdays = parseField(parts[4].replace(/7/g, "0"), 0, 6);
 
       if (!minutes.length || !hours.length) return [];
 
-      var runs = [];
-      var now = new Date();
-      var d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + 1, 0, 0);
-      var limit = 365 * 24 * 60;
+      const runs = [];
+      const now = new Date();
+      let d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + 1, 0, 0);
+      const limit = 365 * 24 * 60;
 
-      for (var i = 0; i < limit && runs.length < count; i++) {
-        var mon = d.getMonth() + 1;
-        var dom = d.getDate();
-        var dow = d.getDay();
-        var hr = d.getHours();
-        var mn = d.getMinutes();
+      for (let i = 0; i < limit && runs.length < count; i++) {
+        const mon = d.getMonth() + 1;
+        const dom = d.getDate();
+        const dow = d.getDay();
+        const hr = d.getHours();
+        const mn = d.getMinutes();
 
         if (
           months.indexOf(mon) !== -1 &&
@@ -324,8 +324,8 @@ faqs:
 
     function update() {
       hideMessages();
-      var expr = cronInput.value.trim();
-      var parts = expr.split(/\s+/);
+      const expr = cronInput.value.trim();
+      const parts = expr.split(/\s+/);
 
       if (parts.length !== 5) {
         if (expr) showError("Expected 5 fields (minute hour day month weekday), got " + parts.length);
@@ -339,9 +339,9 @@ faqs:
 
       // Sync selects
       selects.forEach(function (id, i) {
-        var sel = selectEls[id];
-        var matched = false;
-        for (var j = 0; j < sel.options.length; j++) {
+        const sel = selectEls[id];
+        let matched = false;
+        for (let j = 0; j < sel.options.length; j++) {
           if (sel.options[j].value === parts[i]) {
             sel.selectedIndex = j;
             matched = true;
@@ -362,9 +362,9 @@ faqs:
 
       // Next runs
       try {
-        var runs = getNextRuns(parts, 5);
+        const runs = getNextRuns(parts, 5);
         if (runs.length > 0) {
-          var opts = {
+          const opts = {
             weekday: "short",
             year: "numeric",
             month: "short",
@@ -375,7 +375,7 @@ faqs:
           };
           runsList.innerHTML = runs
             .map(function (r) {
-              var relative = getRelative(r);
+              const relative = getRelative(r);
               return (
                 '<li class="list-group-item d-flex justify-content-between py-2"><span>' +
                 r.toLocaleString(undefined, opts) +
@@ -391,17 +391,17 @@ faqs:
     }
 
     function getRelative(date) {
-      var diff = date - new Date();
-      var mins = Math.floor(diff / 60000);
+      const diff = date - new Date();
+      const mins = Math.floor(diff / 60000);
       if (mins < 60) return "in " + mins + " min";
-      var hours = Math.floor(mins / 60);
+      const hours = Math.floor(mins / 60);
       if (hours < 24) return "in " + hours + "h " + (mins % 60) + "m";
-      var days = Math.floor(hours / 24);
+      const days = Math.floor(hours / 24);
       return "in " + days + " day" + (days > 1 ? "s" : "");
     }
 
     function syncFromBuilder() {
-      var parts = fields.map(function (id) {
+      const parts = fields.map(function (id) {
         return fieldEls[id].value;
       });
       cronInput.value = parts.join(" ");
@@ -432,7 +432,7 @@ faqs:
     document.getElementById("copyBtn").addEventListener("click", function () {
       navigator.clipboard.writeText(cronInput.value).catch(function () {});
       this.innerHTML = '<i class="bi bi-check-lg" aria-hidden="true"></i> Copied!';
-      var btn = this;
+      const btn = this;
       setTimeout(function () {
         btn.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i> Copy';
       }, 2000);
