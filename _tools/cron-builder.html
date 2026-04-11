@@ -17,7 +17,7 @@ faqs:
   </p>
 
   <div class="mb-4">
-    <label class="form-label small text-muted fw-semibold">Cron expression</label>
+    <label for="cronInput" class="form-label small text-muted fw-semibold">Cron expression</label>
     <input
       type="text"
       id="cronInput"
@@ -43,10 +43,10 @@ faqs:
 
   <div class="card mb-4">
     <div class="card-body">
-      <h6 class="fw-semibold mb-3">Visual builder</h6>
+      <h2 class="h6 fw-semibold mb-3">Visual builder</h2>
       <div class="row g-3">
         <div class="col">
-          <label class="form-label small text-muted">Minute</label>
+          <label for="selMinute" class="form-label small text-muted">Minute</label>
           <select id="selMinute" class="form-select form-select-sm">
             <option value="*">Every (*)</option>
             <option value="0" selected>0</option>
@@ -58,7 +58,7 @@ faqs:
           <input type="text" class="form-control form-control-sm font-monospace mt-1" id="rawMinute" value="0" />
         </div>
         <div class="col">
-          <label class="form-label small text-muted">Hour</label>
+          <label for="selHour" class="form-label small text-muted">Hour</label>
           <select id="selHour" class="form-select form-select-sm">
             <option value="*">Every (*)</option>
             <option value="0">0 (midnight)</option>
@@ -73,7 +73,7 @@ faqs:
           <input type="text" class="form-control form-control-sm font-monospace mt-1" id="rawHour" value="9" />
         </div>
         <div class="col">
-          <label class="form-label small text-muted">Day of Month</label>
+          <label for="selDay" class="form-label small text-muted">Day of Month</label>
           <select id="selDay" class="form-select form-select-sm">
             <option value="*" selected>Every (*)</option>
             <option value="1">1st</option>
@@ -83,7 +83,7 @@ faqs:
           <input type="text" class="form-control form-control-sm font-monospace mt-1" id="rawDay" value="*" />
         </div>
         <div class="col">
-          <label class="form-label small text-muted">Month</label>
+          <label for="selMonth" class="form-label small text-muted">Month</label>
           <select id="selMonth" class="form-select form-select-sm">
             <option value="*" selected>Every (*)</option>
             <option value="1">Jan</option>
@@ -93,7 +93,7 @@ faqs:
           <input type="text" class="form-control form-control-sm font-monospace mt-1" id="rawMonth" value="*" />
         </div>
         <div class="col">
-          <label class="form-label small text-muted">Weekday</label>
+          <label for="selWeekday" class="form-label small text-muted">Weekday</label>
           <select id="selWeekday" class="form-select form-select-sm">
             <option value="*">Every (*)</option>
             <option value="1-5" selected>Mon-Fri</option>
@@ -108,12 +108,12 @@ faqs:
   </div>
 
   <div id="nextRuns" class="mb-4 is-hidden">
-    <h6 class="fw-semibold mb-2"><i class="bi bi-calendar-event" aria-hidden="true"></i> Next 5 runs</h6>
+    <h2 class="h6 fw-semibold mb-2"><i class="bi bi-calendar-event" aria-hidden="true"></i> Next 5 runs</h2>
     <ul id="runsList" class="list-group list-group-flush"></ul>
   </div>
 
   <div class="mb-4">
-    <h6 class="fw-semibold mb-2">Presets</h6>
+    <h2 class="h6 fw-semibold mb-2">Presets</h2>
     <div class="d-flex gap-2 flex-wrap">
       <button class="btn btn-sm btn-outline-secondary cron-preset" data-cron="* * * * *">Every minute</button>
       <button class="btn btn-sm btn-outline-secondary cron-preset" data-cron="*/5 * * * *">Every 5 min</button>

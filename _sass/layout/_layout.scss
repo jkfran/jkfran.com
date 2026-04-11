@@ -25,13 +25,13 @@ section.recent-posts {
     border-bottom: 1px solid $border-color;
     font-weight: 700;
     font-size: 1.4rem;
-    margin-bottom: 27px;
+    margin-bottom: $space-4;
   }
 
   span {
     border-bottom: 1px solid $text-muted;
     display: inline-block;
-    padding-bottom: 20px;
+    padding-bottom: $space-4;
     margin-bottom: -1px;
   }
 }
@@ -104,8 +104,8 @@ section.recent-posts {
 // Footer (mobile-first: no margins on mobile, added on desktop)
 .footer {
   border-top: 1px solid $subtle-overlay;
-  padding-top: 15px;
-  padding-bottom: 12px;
+  padding-top: $space-3;
+  padding-bottom: $space-3;
   font-size: 0.8rem;
   color: $text-muted;
   position: relative;
@@ -114,7 +114,7 @@ section.recent-posts {
 
 @media (min-width: $bp-lg) {
   .footer {
-    margin-top: 50px;
+    margin-top: $space-5;
     margin-bottom: 62px;
   }
 }

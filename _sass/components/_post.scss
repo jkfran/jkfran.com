@@ -22,12 +22,6 @@
     margin-bottom: 0;
   }
 
-  .h1,
-  .h2,
-  .h3,
-  .h4,
-  .h5,
-  .h6,
   h1,
   h2,
   h3,
@@ -78,7 +72,7 @@
 .author-thumb {
   width: 40px;
   height: 40px;
-  margin-right: 13px;
+  margin-right: $space-3;
   border-radius: 100%;
 }
 
@@ -97,8 +91,8 @@
   }
 
   .author-description {
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: $space-1;
+    margin-top: $space-1;
     font-size: 0.95rem;
   }
 }
