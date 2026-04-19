@@ -52,7 +52,7 @@ faqs:
 
   <div class="mb-4">
     <h2 class="h6 fw-semibold mb-2">Bulk check</h2>
-    <p class="text-muted small mb-2">One domain per line. Check up to 20 at once.</p>
+    <p class="text-muted small mb-2">One domain per line. Check up to 100 at once.</p>
     <textarea
       id="bulkInput"
       class="form-control font-monospace mb-2"
@@ -128,7 +128,7 @@ my-project.app"
   (function () {
     var DOH_URL = "https://cloudflare-dns.com/dns-query";
     var SUGGEST_TLDS = ["com", "net", "org", "io", "dev", "app", "co", "me", "xyz", "ai", "sh"];
-    var MAX_BULK = 20;
+    var MAX_BULK = 100;
 
     var domainInput = document.getElementById("domainInput");
     var checkBtn = document.getElementById("checkBtn");
