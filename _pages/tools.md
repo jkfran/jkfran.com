@@ -2,7 +2,7 @@
 layout: page
 title: Free Online Developer Tools
 permalink: /tools
-description: "Free online developer tools: JSON formatter, regex tester, Base64 encoder, password generator, diff checker, cron builder, YAML/JSON converter, URL encoder, and LLM text cleaner. All client-side, no data sent anywhere."
+description: "Free online developer tools: domain checker, JSON formatter, regex tester, Base64 encoder, password generator, diff checker, cron builder, YAML/JSON converter, URL encoder, and LLM text cleaner. All client-side, no data sent anywhere."
 ---
 
 <div class="tools-grid">
@@ -11,6 +11,12 @@ description: "Free online developer tools: JSON formatter, regex tester, Base64 
     <div class="tool-icon"><i class="bi bi-scissors" aria-hidden="true"></i></div>
     <h3>Background Remover</h3>
     <p>Remove backgrounds from photos instantly using AI. Runs a neural network in your browser — no images are uploaded anywhere.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/tools/domain-checker/" class="tool-card text-center">
+    <div class="tool-icon"><i class="bi bi-globe2" aria-hidden="true"></i></div>
+    <h3>Domain Checker</h3>
+    <p>Check if a domain name is available instantly. Lookups go directly from your browser to Cloudflare DNS — your ideas are never tracked or logged.</p>
   </a>
 
   <a href="{{ site.baseurl }}/tools/llm-text-cleaner/" class="tool-card text-center">
