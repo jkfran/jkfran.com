@@ -19,7 +19,7 @@ curl -d '{"left":40000,"right":40000,"ms":1500}' http://192.168.2.1/_rumble
 
 ---
 
-## First attempt: Xbox firmware
+## First attempt
 
 A Bluetooth HID controller presents whatever identity its firmware tells it to, and hosts do no cryptographic check of it. So the obvious first idea: flash the Stadia Controller with firmware that makes it _present as an Xbox Wireless Controller_. Microsoft's vendor ID, the Xbox report map, native support everywhere, rumble included.
 
