@@ -97,7 +97,7 @@ Stadiacast is an independent interoperability project, not affiliated with or en
 
 ### What you need
 
-- A Stadia Controller **still on its Wi-Fi firmware**. Google's post-shutdown Bluetooth firmware replaces the Wi-Fi mode, so a controller that was switched to Bluetooth mode cannot use this. (Bluetooth mode is a fine option if your controller is already there. The official way in is gone: Google's switch tool, kept alive until the end of 2025, [went offline in January 2026](https://9to5google.com/2026/01/20/google-stadia-controller-conversion-tool-dead/), and only unofficial copies of it remain.)
+- A Stadia Controller **running its Wi-Fi firmware**. Google's post-shutdown Bluetooth firmware replaces the Wi-Fi mode, but the switch is not one-way: the firmware images are Google-signed, the controller accepts older ones, and the community keeps both the images and a flashing tool around, so a controller in Bluetooth mode can be put back on the Wi-Fi firmware. Google's own switch tool, kept alive until the end of 2025, [went offline in January 2026](https://9to5google.com/2026/01/20/google-stadia-controller-conversion-tool-dead/).
 - A macOS or Linux machine that can be the controller's DNS server. A hotspot hosted by that machine is the simplest setup, and it is what I use.
 - A free Google Trust Services certificate for a domain you own. The [setup guide](https://github.com/jkfran/stadiacast/blob/main/docs/setup.md) walks through the whole flow, including the one-time Bluetooth provisioning that puts the controller on your network.
 - Python 3.11 or newer.
