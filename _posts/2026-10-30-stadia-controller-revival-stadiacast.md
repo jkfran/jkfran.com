@@ -71,6 +71,8 @@ The controller in my hands buzzed, and acknowledged the vibration series 8 milli
 
 I had built an automated renewal pipeline before the firmware's TLS code showed it was unnecessary: the firmware never checks certificate dates. It walks the chain up to a Google Trust Services root and stops there. Its clock restarts at 1970 on every boot and takes its time from my server, and none of that has mattered to a single handshake so far. So: issue the certificate once and keep the files. The renewal code is gone from the project, and the first real expiry, in January 2027, is the one test left.
 
+<img src="https://github.com/jkfran/jkfran.com/releases/download/blog-images/stadia-certificate-gap.png" alt="What the Stadia Controller firmware checks in a server certificate: the chain to a Google Trust Services root is checked, the hostname and the validity dates are not" width="1200" height="675" loading="lazy">
+
 ## How it was done
 
 Most of this work was done with AI coding agents: a coordinating session that spawned per-task sessions, with the hard problems sent to parallel research agents whose findings were reconciled against the packet captures. The one workflow habit worth passing on is to have every session write its findings to the project's docs first and treat the chat reply as a pointer, so a session that gets cut off mid-answer loses nothing. Everything in this post was then checked against a real controller.
