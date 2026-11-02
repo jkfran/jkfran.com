@@ -19,7 +19,7 @@ The result is [Stadiacast](https://github.com/jkfran/stadiacast), an MIT-license
 curl -d '{"left":40000,"right":40000,"ms":1500}' http://192.168.2.1/_rumble
 ```
 
-[Skip to the end](#what-exists-now) if you just want to try it. It isn't a complete replacement for a PC gamepad yet: the input currently goes to a log and a Python API, rather than a virtual controller.
+[Skip to Stadiacast](#stadiacast) if you just want to try it. It isn't a complete replacement for a PC gamepad yet: the input currently goes to a log and a Python API, rather than a virtual controller.
 
 The rest is how it got there: a firmware dead end, a protocol nobody documented, and a controller that kept powering itself off for no visible reason.
 
@@ -88,6 +88,12 @@ That meant I didn't need a certificate for `googleapis.com`. A Google Trust Serv
 
 GTS is a public certificate authority with a free issuance flow. I obtained a certificate for my own domain and verified it against the trust store extracted from the controller. Now my server could accept the controller's connections.
 
+The firmware skips certificate date checks too. Its clock starts at 1970 on every boot and later gets the time from my server, but neither has affected a handshake: it checks the chain back to a trusted GTS root, not the hostname or validity dates.
+
+That also meant the automated renewal pipeline I'd built appeared unnecessary, so I removed it. The certificate should only need to be issued once. **The real-world expiry test is still pending, though:** mine expires in January 2027. The firmware analysis says it should keep working after that; I haven't observed that first expiry yet.
+
+<img src="https://github.com/jkfran/jkfran.com/releases/download/blog-images/stadia-certificate-gap-flow.png" alt="How the controller comes to trust a server on your LAN: it sends a TLS hello for a Google name, the LAN server presents a certificate for your own domain, and the firmware skips the hostname and validity checks and only verifies that the chain ends at a Google Trust Services root" width="1200" height="675" loading="lazy">
+
 ## Why it powered off after nine seconds
 
 With the certificate in place, the controller got through the connection sequence:
@@ -155,25 +161,7 @@ curl -d '{"left":40000,"right":40000,"ms":1500}' http://192.168.2.1/_rumble
 
 The controller in my hands buzzed. Eight milliseconds later, it acknowledged the vibration series.
 
-## One more surprise: certificate expiry isn't checked
-
-I had already built an automated certificate renewal pipeline when I found another omission in the firmware's TLS code: it doesn't check certificate dates either.
-
-It walks the certificate chain up to a Google Trust Services root and stops there. The controller's clock starts at 1970 on every boot and later gets the time from my server. None of that has affected a handshake so far.
-
-Based on that code, the certificate should only need to be issued once, so I removed the renewal pipeline. **The real-world expiry test is still pending:** my certificate expires in January 2027. The firmware analysis says it should keep working after that; I haven't observed that first expiry yet.
-
-<img src="https://github.com/jkfran/jkfran.com/releases/download/blog-images/stadia-certificate-gap-flow.png" alt="How the controller comes to trust a server on your LAN: it sends a TLS hello for a Google name, the LAN server presents a certificate for your own domain, and the firmware skips the hostname and validity checks and only verifies that the chain ends at a Google Trust Services root" width="1200" height="675" loading="lazy">
-
-## How it was done
-
-Most of this work was done with AI coding agents. A coordinating session split the work into separate tasks, and the harder questions went to parallel research agents. Their findings were then checked against the packet captures.
-
-The workflow habit worth passing on is simple: **have each session write its findings to the project docs first, then use its chat reply to point to those docs.** If a session gets cut off halfway through an answer, the useful work is still there.
-
-The protocol work was checked against a real controller. Where a conclusion still depends on firmware analysis rather than a completed real-world test, such as certificate expiry, I've called that out above.
-
-## What exists now
+## Stadiacast
 
 [Stadiacast](https://github.com/jkfran/stadiacast) now handles the full path from boot to input and rumble:
 
